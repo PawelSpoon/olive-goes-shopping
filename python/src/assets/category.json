@@ -1,1 +1,14 @@
-["Fresh produce", "Personal hygiene", "Meat"]
+[
+    {"Name": "dairy products", "Order": 0},
+    {"Name": "meat products", "Order": 1},
+    {"Name": "fresh produce", "Order": 2},
+    {"Name": "bakery products", "Order": 3},
+    {"Name": "frozen food", "Order": 4},
+    {"Name": "canned food", "Order": 5},
+    {"Name": "personal hygiene", "Order": 6},
+    {"Name": "cleaning supplies", "Order": 7},
+    {"Name": "magazines", "Order": 8},
+    {"Name": "hardware", "Order": 9},
+    {"Name": "automotive", "Order": 10},
+    {"Name": "others", "Order":11}
+]

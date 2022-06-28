@@ -10,4 +10,5 @@
     {"Name": "10er", "Phydim": "Piece", "Factor": 10, "Offset": 0},
     {"Name": "dozen", "Phydim": "Piece", "Factor": 1, "Offset": 0},
     {"Name": "m", "Phydim": "Length", "Factor": 1, "Offset": 0},
-    {"Name": "cm", "Phydim": "Length", "Factor": 0.01, "Offset": 0}]
+    {"Name": "cm", "Phydim": "Length", "Factor": 0.01, "Offset": 0}
+]

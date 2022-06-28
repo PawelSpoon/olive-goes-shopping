@@ -36,7 +36,7 @@ class ListManager:
                 if (self.type == tasklistType):
                     ctl = TaskListController(self.file2ListName(list)) 
                 if (self.type == shoplistType):
-                    ctl = ShoppingListController(self.file2ListName(list))
+                    ctl = ShoppingListController(self.file2ListName(list),self.rootDir)
                 ctl.load(lst)
                 self.listController[ctl.getItemName()] = ctl
 
@@ -55,7 +55,7 @@ class ListManager:
             if (self.type == tasklistType):
                 ctl = TaskListController(name) 
             if (self.type == shoplistType):
-                ctl = ShoppingListController(name)  
+                ctl = ShoppingListController(name,self.rootDir)  
             self.listController[name] = ctl
         else:
             print("name already exists, will not add controller")
