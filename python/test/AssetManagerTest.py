@@ -45,6 +45,7 @@ class AssetManagerTest(unittest.TestCase):
         manager.load()
         rpc = manager.getController("recipe")
         rpc.add({"Name":"My-Recipe"})
+        manager.rootDir = self.outDir
         manager.store()
 
 if __name__ == '__main__':
