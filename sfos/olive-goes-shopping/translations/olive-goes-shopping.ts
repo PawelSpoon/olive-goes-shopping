@@ -2,35 +2,148 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>CoverPage</name>
-    <message>
-        <source>My Cover</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FirstPage</name>
     <message>
-        <source>Show Page 2</source>
+        <source>Shopping List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
+        <source>Manage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>SecondPage</name>
+    <name>ManageEnumsPage</name>
     <message>
-        <source>Nested Page</source>
+        <source>Please fill store with items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Item</source>
+        <source>Clear Categories Db</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Categories Db</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ManageItemsPage</name>
+    <message>
+        <source>Please fill store with items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Items Db</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Items Db</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ManageMainPage</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Food</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Household</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ManageRecipesPage</name>
+    <message>
+        <source>Please add or import recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Recipes Db</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Recipes Db</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Settings</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use household items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use food items</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

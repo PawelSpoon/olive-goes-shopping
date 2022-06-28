@@ -12,22 +12,55 @@
 # The name of your application
 TARGET = olive-goes-shopping
 
+# added by JS as perhttps://stackoverflow.com/questions/27035880/how-to-add-files-in-the-rpm-package-of-an-sailfish-os-project
+DEPLOYMENT_PATH = /usr/share/$${TARGET}
+
 CONFIG += sailfishapp
 
-SOURCES += src/olive-goes-shopping.cpp
+HEADERS += \
+ #   src/importexport.h \
+    src/ogssettings.h \
+    src/settings.h
+
+SOURCES += src/olive-goes-shopping.cpp \
+    src/ogssettings.cpp \
+    src/settings.cpp
 
 DISTFILES += qml/olive-goes-shopping.qml \
+    qml/ApplicationController.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
+    qml/pages/ManageMainPage.qml \
+    qml/pages/ManageEnumsPage.qml\
+    qml/pages/Settings.qml \
+    \
+    assets/category.json \
+    assets/current/annual maintenance - Breva.task.json \
+    assets/current/jan.shop.json \
+    assets/item/entertainment.json \
+    assets/item/food.json \
+    assets/item/household.json \
+    assets/itemtype.json \
+    assets/phydim.json \
+    assets/recipe/Krautsuppe.json \
+    assets/recipe/My-Recipe.json \
+    assets/recipe/annual maintenance - Breva.json \
+    assets/shoplist/weekly.json \
+    assets/tasklist/annual maintenance - Breva.json \
+    assets/tasklist/annual maintenance - KTM.json \
+    assets/unit.json \
+    \
     rpm/olive-goes-shopping.changes.in \
     rpm/olive-goes-shopping.changes.run.in \
     rpm/olive-goes-shopping.spec \
     rpm/olive-goes-shopping.yaml \
-    translations/*.ts \
-    olive-goes-shopping.desktop
+    olive-goes-shopping.desktop \
+    translations/*.ts
 
-SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
+SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
+
+assets.files = assets
+assets.path = $${DEPLOYMENT_PATH}
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -38,3 +71,9 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/olive-goes-shopping-de.ts
+
+OTHER_FILES += assets/category.json \
+    assets/unit.json \
+    assets/shoplist/weekly.json
+
+INSTALLS += assets
