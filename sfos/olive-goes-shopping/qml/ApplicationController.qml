@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import "pages"
-
+import io.thp.pyotherside 1.4
 
 Item {
 
@@ -17,6 +17,16 @@ Item {
         }
         console.log('no need to push, already there, lets replace')
         pages[getCurrentPageIndex(name1)].page = page1
+    }
+
+    function getListManager()
+    {
+
+    }
+
+    function getAssetManager()
+    {
+
     }
 
     function refreshAll()
@@ -165,6 +175,51 @@ Item {
        else {
            console.log("dont know where to naviage from here: " + currentPage);
        }
+    }
+
+    Python {
+
+        id: python
+
+        Component.onCompleted: {
+            addImportPath(Qt.resolvedUrl('.'));
+
+            /*setHandler('progress', function(ratio) {
+                dlprogress.value = ratio;
+            });
+            setHandler('finished', function(newvalue) {
+                page.downloading = false;
+                mainLabel.text = 'Color is ' + newvalue + '.';
+            });
+
+            importModule('datadownloader', function () {});*/
+            importModule('initpythonenv', function () {
+                console.log("init done");
+                console.log('number of categories: ' + evaluate('len(initpythonenv.getController("category").getList())'))})
+
+        }
+
+        function init() {
+
+
+        }
+
+        function startDownload() {
+            page.downloading = true;
+            dlprogress.value = 0.0;
+            call('datadownloader.downloader.download', function() {});
+        }
+
+        onError: {
+            // when an exception is raised, this error handler will be called
+            console.log('python error: ' + traceback);
+        }
+
+        onReceived: {
+            // asychronous messages from Python arrive here
+            // in Python, this can be accomplished via pyotherside.send()
+            console.log('got message from python: ' + data);
+        }
     }
 
 }
