@@ -50,3 +50,22 @@ compile_commands.json
 
 # QtCreator local machine specific files for imported projects
 *creator.user*
+
+# Python caches
+python/src/controller/__pycache__/__init__.cpython-38.pyc
+python/src/controller/__pycache__/amountcalculator.cpython-38.pyc
+python/src/controller/__pycache__/assetmanager.cpython-38.pyc
+python/src/controller/__pycache__/constants.cpython-38.pyc
+python/src/controller/__pycache__/enumcontroller.cpython-38.pyc
+python/src/controller/__pycache__/itemcontroller.cpython-38.pyc
+python/src/controller/__pycache__/listmanager.cpython-38.pyc
+python/src/controller/__pycache__/shoppinglistcontroller.cpython-38.pyc
+python/src/controller/__pycache__/tasklistcontroller.cpython-38.pyc
+python/src/storage/__pycache__/__init__.cpython-38.pyc
+python/src/storage/__pycache__/persistance.cpython-38.pyc
+python/test/__pycache__/testconstants.cpython-38.pyc
+
+# test result files
+python/test/test-out/current/*
+python/test/test-out/*.json
+
