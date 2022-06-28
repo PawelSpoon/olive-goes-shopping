@@ -66,6 +66,10 @@ python/src/storage/__pycache__/persistance.cpython-38.pyc
 python/test/__pycache__/testconstants.cpython-38.pyc
 
 # test result files
-python/test/test-out/current/*
+python/test/test-out/current/*.json
 python/test/test-out/*.json
+python/test/test-out/recipe/*.json
+python/test/test-out/tasklist/*.json
+python/test/test-out/shoplist/*.json
+python/test/test-out/item/*.json
 
