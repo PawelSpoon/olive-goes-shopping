@@ -5,7 +5,6 @@
 # pre defined task lists
 
 import os
-from typing import Dict
 from controller.enumcontroller import EnumController
 from controller.itemcontroller import ItemController
 from storage import persistance

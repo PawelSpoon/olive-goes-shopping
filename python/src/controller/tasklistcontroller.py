@@ -1,6 +1,5 @@
 
-# for a single shopping likst
-from dataclasses import Field
+# for a single shopping list
 from controller.constants import FieldDone, FieldName
 from controller.itemcontroller import ItemController
 

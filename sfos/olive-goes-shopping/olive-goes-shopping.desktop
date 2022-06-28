@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=olive-goes-shopping
+Exec=olive-goes-shopping
+Name=Olive goes shoppin'
+
+Name[de]=Olivia geht transcheln
+Name[cs]=Oliv jde nakoupit
+Name[es]=Oliva va a' comprar
+
+
+[X-Sailjail]
+Permissions=UserDirs;RemovableMedia
+OrganizationName=oarg.pawelspoon
+ApplicationName=olive-goes-shopping
+
+[X-HarbourBackup]
+BackupPathList=.local/share/oarg.pawelspoon/olive-goes-shopping/:.config/oarg.pawelspoon/olive-goes-shopping/
+BackupConfigList=
