@@ -4,23 +4,22 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 //import QtQuick.Controls 2.0
 
-import "../DbLayer/OliveDb/Persistance.js" as DB
-
 Dialog {
     id: settings
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
     property string id : ""
-    property ManageItemsPage itemsPage: null
+
     property string itemType
-    Sproperty int mode
+    property int mode
     property alias name_ : itemName.text
-    
+
     property alias amount_ : defaultAmount.text
     property string unit_
     property alias category_ : categoryName.text
 
+    property var item
 
     SilicaFlickable{
 
@@ -77,16 +76,28 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: unit.focus = true
             }
+            /*MenuLayout {
+             id: customLayout
+            }
+*/
 
             ComboBox {
                 id: unit
                 label: qsTr("Unit")
-                menu: ContextMenu {
+                /*menu: ContextMenu {
                     MenuItem { text: "-" }
                     MenuItem { text: "g" }
                     MenuItem { text: "kg" }
                     MenuItem { text: "ml" }
                     MenuItem { text: "l" }
+                }*/
+                menu: ContextMenu {
+                    Repeater {
+                        model: targetModel
+                        MenuItem {
+                            text: name
+                        }
+                    }
                 }
             }
 
@@ -151,7 +162,21 @@ Dialog {
         }
     }
 
+    ListModel {
+        id: targetModel
+    }
+
     Component.onCompleted: {
+
+        targetModel.clear()
+        //% "Internal storage"
+        targetModel.append({"name": qsTr("internal-storage-label"), "path": StandardPaths.documents})
+        for (var i = 0; i < 10; i++) {
+            //: Label for SD-Cards where %1 represents the increasing number for each card
+            //% "SD-Card %1"
+            targetModel.append({"name": qsTr("sdcard-label").arg(i + 1), "path": i})
+        } 
+
         if (id === "") {
             print (id)
         }
@@ -180,6 +205,13 @@ Dialog {
                 unit.currentIndex = 4
             }
         }
+
+        /*
+        var menuComponent = Qt.createComponent("MenuItem.qml");
+if(menuComponent.status == Component.Ready) {
+  var createdMenu = menuComponent.createObject(customLayout);
+  createdMenu.text = "Text from your QList";
+}*/
     }
 
     Component.onDestruction: {

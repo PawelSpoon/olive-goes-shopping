@@ -40,6 +40,74 @@
     </message>
 </context>
 <context>
+    <name>ItemDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard package size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set standard package size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change Category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>co2 in []</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set co2 footprint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal-storage-label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sdcard-label</source>
+        <extracomment>Label for SD-Cards where %1 represents the increasing number for each card</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ManageEnumsPage</name>
     <message>
         <source>Manage </source>

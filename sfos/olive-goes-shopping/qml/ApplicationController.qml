@@ -151,7 +151,14 @@ Item {
         case "category":
             pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode, item: item})
             break
+        case "food":
+            pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
+        case "household":
+            pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
         }
+
 
     }
 

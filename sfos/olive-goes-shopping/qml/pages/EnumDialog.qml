@@ -12,7 +12,7 @@ Dialog {
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
     property string id : ""
-    property ManageEnumsPage itemsPage: null
+
     property string itemType // type == tablename where enum is stored
     property int mode
     property alias name_ : itemName.text // enum value

@@ -108,6 +108,7 @@ Page {
             }
             Column {
                 width: parent.width
+                spacing: Theme.horizontalPageMargin
                 Button {
                     id: managePhydims
                     visible: true
@@ -142,6 +143,7 @@ Page {
             }
             Column {
                 width: parent.width
+                spacing: Theme.horizontalPageMargin
                 Button {
                     id: manageRecipes
                     visible: applicationWindow.settings.useRecipes
@@ -174,6 +176,7 @@ Page {
             }
             Column {
                 width: parent.width
+                spacing: Theme.horizontalPageMargin
                 Button {
                     id: impExport
                     text: qsTr("Import Export")
