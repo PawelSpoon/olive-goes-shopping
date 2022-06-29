@@ -54,8 +54,25 @@ Python {
   }
 
 
-  function getEnums(type) {
+  function getAssets(type) {
       return call_sync('app.app.getAssetList',[type])
+  }
+
+
+  function clearAssets(type) {
+      return call_sync('app.app.deleteAssetList',[type])
+  }
+
+  function deleteAsset(type, item) {
+      return call_sync('app.app.deleteAsset',[type])
+  }
+
+  function updateAsset(type, item) {
+      return call_sync('app.app.updateAsset',[type])
+  }
+
+  function addAsset(type, item) {
+      return call_sync('app.app.addAsset',[type])
   }
 
   function stop_point_sort_default(a, b) {

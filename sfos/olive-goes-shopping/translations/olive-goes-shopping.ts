@@ -2,6 +2,33 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>EnumDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
         <source>Shopping List</source>
@@ -15,15 +42,19 @@
 <context>
     <name>ManageEnumsPage</name>
     <message>
-        <source>Please fill store with items</source>
+        <source>Manage </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear Categories Db</source>
+        <source>Add or import items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import Categories Db</source>
+        <source>Clear all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import example items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -32,6 +63,10 @@
     </message>
     <message>
         <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -44,25 +79,6 @@
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ManageItemsPage</name>
-    <message>
-        <source>Please fill store with items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear Items Db</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import Items Db</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -128,23 +144,8 @@
         <source>Configure Application</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ManageRecipesPage</name>
     <message>
-        <source>Please add or import recipes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear Recipes Db</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import Recipes Db</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add</source>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

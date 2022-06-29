@@ -33,6 +33,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/FirstPage.qml \
     qml/pages/ManageMainPage.qml \
     qml/pages/ManageEnumsPage.qml\
+    qml/pages/EnumDialog.qml \
     qml/pages/Settings.qml \
     \
     assets/category.json \

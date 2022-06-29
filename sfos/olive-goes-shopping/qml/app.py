@@ -16,4 +16,29 @@ class App:
     def getAssetList(self, type):
         return self.assetManager.getController(type).getAsList()
 
+    def clearAssetList(self, type):
+        temp = self.assetManager.getController(type)
+        temp.clearItems()
+        temp.store()
+        return temp.getAsList()
+
+    def deleteAsset(self, type, name):
+        temp = self.assetManager.getController(type)
+        temp.remove(name)
+        temp.store()
+        return temp.getAsList()
+
+    def addAsset(self, type, item):
+        temp = self.assetManager.getController(type)
+        temp.add(item)
+        temp.store()
+        return temp.getAsList()
+
+    def updateAsset(self, type, item):
+        temp = self.assetManager.getController(type)
+        temp.update(item)
+        temp.store()
+        return temp.getAsList()
+    
+
 app = App()

@@ -81,7 +81,6 @@ Page {
             spacing: Theme.paddingLarge
             // could be f(orientation)
             anchors.topMargin: Theme.paddingLarge * 3.5 * Theme.pixelRatio
-            anchors.fill: shoppingList
             anchors.horizontalCenter: parent.horizontalCenter
 
             TextArea {
@@ -90,7 +89,7 @@ Page {
                 readOnly: true
             }
             SectionHeader {
-                text: qsTr("Basics")
+                text: qsTr("General")
             }
             Column {
                 width: parent.width
@@ -114,28 +113,28 @@ Page {
                     visible: true
                     text: qsTr("Physical dimensions")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "phydim", editable: false})
+                    onClicked: applicationWindow.controller.openPhyDimMngmtPage()
                 }
                 Button {
                     id: manageUnits
                     visible: true
                     text: qsTr("Units")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "unit", editable: false})
+                    onClicked: applicationWindow.controller.openUnitsMngmtPage()
                 }
                 Button {
                     id: manageItemTypes
                     visible: true
                     text: qsTr("Item types")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "itemtype", editable: true})
+                    onClicked: applicationWindow.controller.openItemTypeMngmtPage()
                 }
                 Button {
                     id: manageCategories
                     visible: applicationWindow.settings.useCategories
                     text: qsTr("Categories")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "category"})
+                    onClicked: applicationWindow.controller.openCategoryMngmtPage();
                 }
             }
             SectionHeader {
@@ -150,15 +149,16 @@ Page {
                     // anchors.top: head.bottom -- not defined, guess i would need to reference col
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("ManageRecipesPage.qml"), {itemType: "recipe", itemsPage: null})
+                        applicationWindow.controller.openRecipesMngmtPage();
                     }
                 }
+                // here we need a loop over all item-types
                 Button {
                     id: manageFood
                     visible: applicationWindow.settings.useFood
                     text: qsTr("Food")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "food"})
+                    onClicked: applicationWindow.controller.openItemsMngmtPage("food")
 
                 }
                 Button {
@@ -166,7 +166,7 @@ Page {
                     visible: applicationWindow.settings.useHousehold
                     text: qsTr("Household")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "household"})
+                    onClicked: applicationWindow.controller.openItemsMngmtPage("household")
                 }
             }
             SectionHeader {

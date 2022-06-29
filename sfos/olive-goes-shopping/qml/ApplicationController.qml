@@ -22,16 +22,6 @@ Item {
         pages[getCurrentPageIndex(name1)].page = page1
     }
 
-    function getListManager()
-    {
-
-    }
-
-    function getAssetManager()
-    {
-
-    }
-
     function propageteCategoryChanged()
     {
        // update everyone with new category orders
@@ -40,6 +30,16 @@ Item {
     function propageteUnitChanged()
     {
 
+    }
+
+    function getUniqueId() {
+        console.log("getUniqueId() called.");
+        var dateObject = new Date();
+        var uniqueId = dateObject.getFullYear() + '' +
+            dateObject.getMonth() + '' +
+            dateObject.getDate() + '' +
+            dateObject.getTime();
+        return uniqueId;
     }
 
     function refreshAll()
@@ -95,15 +95,62 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/Settings.qml"), { })
     }
 
-    function openUnitsPage()
+    function openUnitsMngmtPage()
     {
-         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "unit"})
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "unit", readonly: true})
     }
 
-    function openPhyDimsPage()
+    function openPhyDimMngmtPage()
     {
-         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "phydim"})
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "phydim", readonly: true})
     }
+
+    function openCategoryMngmtPage()
+    {
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "category", readonly: false, sortable: true, groupbyCategory: false})
+    }
+
+    function openItemTypeMngmtPage()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "itemtype", readonly: false, sortable: true})
+    }
+
+    function openRecipesMngmtPage()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false})
+    }
+
+    function openItemsMngmtPage(itemtype)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: itemtype, readonly: false})
+    }
+
+    // this is the page for managing re-ocurring shoping lists
+    function openShopListMngmtPage()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "shop", readonly: false})
+    }
+
+    // type, page, 0: read-only, 1: edit, 2: add
+    function openMgmtDetailPage(type, page, mode)
+    {
+        switch(type) {
+        case "unit":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: 0})
+            break
+        case "phydim":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: 0})
+            break
+        case "itemtype":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode})
+            break
+        case "category":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode})
+            break
+        }
+
+    }
+
 
     function setCurrentPage(pageName) {
         console.log("setCurrentPage: " + pageName)

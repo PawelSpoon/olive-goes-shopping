@@ -2,13 +2,21 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 
+/***********
+  * generic list mgmt dialog for everything
+  * applicaton controller has to set the proper detail window
+  *
+  */
+
 Dialog {
 
     id: page
 
     property string enumType
-    property bool editable
+    property bool readonly
     property bool sortable
+    property bool groupbyCatetgory
+    property bool neverCapitalize
 
     allowedOrientations: defaultAllowedOrientations
 
@@ -20,14 +28,14 @@ Dialog {
         // itemsPage.initPage()
     }
 
-    // user has rejected editing entry data, check if there are unsaved details
+    // user has rejected ing entry data, check if there are unsaved details
     onRejected: {
         // itemsPage.initPage()
     }
 
     function initPage()
     {
-        var items = applicationWindow.pythonController.getEnums(enumType)
+        var items = applicationWindow.pythonController.getAssets(enumType)
         itemModel.clear()
         fillItemsModel(items)
     }
@@ -38,7 +46,7 @@ Dialog {
         for (var i = 0; i < items.length; i++)
         {
             print(items[i])
-            itemModel.append({"uid": items[i].Id, "name": items[i].Name, "ordernr" : items[i].OrderNr })
+            itemModel.append({"uid": items[i].Id, "name": items[i].Name, "ordernr" : items[i].OrderNr, "cat": items[i].Category, "body": item })
         }
     }
 
@@ -79,29 +87,29 @@ Dialog {
         height: page.height
         anchors.top: parent.top
         model: itemModel
-        header: PageHeader { title: "Manage Store" }
+        header: PageHeader { title: qsTr("Manage ") + qsTr(enumType) }
         ViewPlaceholder {
             enabled: itemList.count == 0
-            text: qsTr("Please fill store with items")
+            text: qsTr("Add or import items")
         }
 
         PushUpMenu {
 
             MenuItem {
-                text: qsTr("Clear Categories Db")
+                text: qsTr("Clear all")
                 onClicked: {
-                    remorse.execute("Deleting Categories db", cleanEnumsTable);
+                    remorse.execute("Deleting items", cleanEnumsTable);
                 }
                 RemorsePopup {id: remorse }
                 function cleanEnumsTable()
                 {
-                    DB.getDatabase().db.cleanTable("category")
+                    applicationWindow.pythonHanlder.clearAssets(enumType)
                     initPage()
                 }
             }
 
             MenuItem {
-                text: qsTr("Import Categories Db")
+                text: qsTr("Import example items")
                 onClicked: {
                     DB.getDatabase().importCategoriesFromJson()
                     initPage()
@@ -118,7 +126,9 @@ Dialog {
 
             MenuItem {
                 text: qsTr("Add");
-                onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
+                visible: !readonly
+                //onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
+                onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, page, 2)
             }
 
         }
@@ -154,7 +164,7 @@ Dialog {
                 }
                 onClicked: {
                     //console.log("Clicked " + title)
-                    //todo: edit already existing item
+                    //todo:  already existing item
                     //pageStack.push(Qt.resolvedUrl("ItemDialog.qml"),
                     //               {uid_: uid, name_: name, itemType: type, itemsPage: page} )
                 }
@@ -213,7 +223,15 @@ Dialog {
                 ContextMenu {
                     id: menu
                     MenuItem {
+                        text: qsTr("Edit");
+                        visible: !readonly
+                        onClicked: {
+                            applicationWindow.controller.openMgmtDetailPage(enumType,page,1)
+                        }
+                    }
+                    MenuItem {
                         text: qsTr("Delete");
+                        visible: !readonly
                         onClicked: {
                             menu.parent.remove();
                         }
