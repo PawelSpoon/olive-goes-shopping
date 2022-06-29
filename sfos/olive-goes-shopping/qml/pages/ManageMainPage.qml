@@ -41,7 +41,7 @@ Page {
 
     Component.onCompleted:
     {
-        // applicationWindow.settings.onModuleChanged : { console.log('test') }
+        console.log(applicationWindow.settings);
     }
 
 
@@ -98,7 +98,20 @@ Page {
                     applicationWindow.controller.openSettingsPage();
                 }
             }
-
+            Button {
+                id: managePhydims
+                visible: true
+                text: qsTr("Physical dimensions")
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "phydim"})
+            }
+            Button {
+                id: manageUnits
+                visible: true
+                text: qsTr("Units")
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "unit"})
+            }
             Button {
                 id: manageRecipes
                 visible: applicationWindow.settings.useRecipes
@@ -108,7 +121,6 @@ Page {
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("ManageRecipesPage.qml"), {itemType: "recipe", itemsPage: null})
                 }
-
             }
             Button {
                 id: manageFood
@@ -132,6 +144,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "category"})
             }
+
             Button {
                 id: impExport
                 text: qsTr("Import Export")

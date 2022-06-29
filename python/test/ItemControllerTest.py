@@ -3,8 +3,7 @@ import sys
 sys.path.append('../src')
 
 from controller.itemcontroller import ItemController
-from controller.enumcontroller import EnumController
-from storage.persistance import readEnums, readItems, storeEnums, storeItems
+from storage.persistance import readItems, storeItems
 
 class ItemControllerTest(unittest.TestCase):
   

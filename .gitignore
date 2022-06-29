@@ -72,17 +72,10 @@ python/test/test-out/recipe/*.json
 python/test/test-out/tasklist/*.json
 python/test/test-out/shoplist/*.json
 python/test/test-out/item/*.json
+python/test/test-out/item/*
 
 # ignore the python copies in sfos
-sfos/olive-goes-shopping/qml/controller/__init__.py
-sfos/olive-goes-shopping/qml/controller/amountcalculator.py
-sfos/olive-goes-shopping/qml/controller/assetmanager.py
-sfos/olive-goes-shopping/qml/controller/constants.py
-sfos/olive-goes-shopping/qml/controller/enumcontroller.py
-sfos/olive-goes-shopping/qml/controller/itemcontroller.py
-sfos/olive-goes-shopping/qml/controller/listmanager.py
-sfos/olive-goes-shopping/qml/controller/model.py
-sfos/olive-goes-shopping/qml/controller/shoppinglistcontroller.py
-sfos/olive-goes-shopping/qml/controller/tasklistcontroller.py
-sfos/olive-goes-shopping/qml/storage/__init__.py
-sfos/olive-goes-shopping/qml/storage/persistance.py
+sfos/olive-goes-shopping/qml/controller/*/*
+sfos/olive-goes-shopping/qml/storage/*
+
+

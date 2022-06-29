@@ -1,13 +1,15 @@
 [
-    {"Name": "kg", "Phydim": "Weight", "Factor": 1, "Offset": 0},
-    {"Name": "dag", "Phydim": "Weight", "Factor": 0.01, "Offset": 0},
-    {"Name": "g", "Phydim": "Weight", "Factor": 0.001, "Offset": 0},
-    {"Name": "pound", "Phydim": "Weight", "Factor": 0.5, "Offset": 0},
-    {"Name": "l", "Phydim": "Volume", "Factor": 1, "Offset": 0},
-    {"Name": "dl", "Phydim": "Volume", "Factor": 0.1, "Offset": 0},
-    {"Name": "ml", "Phydim": "Volume", "Factor": 0.01, "Offset": 0},
-    {"Name": "-", "Phydim": "Piece", "Factor": 1, "Offset": 0},
-    {"Name": "10er", "Phydim": "Piece", "Factor": 10, "Offset": 0},
-    {"Name": "dozen", "Phydim": "Piece", "Factor": 1, "Offset": 0},
-    {"Name": "m", "Phydim": "Length", "Factor": 1, "Offset": 0},
-    {"Name": "cm", "Phydim": "Length", "Factor": 0.01, "Offset": 0}]
+    {"Id": "0", "Name": "kg", "Phydim": "Weight", "Factor": 1, "Offset": 0},
+    {"Id": "1", "Name": "dag", "Phydim": "Weight", "Factor": 0.01, "Offset": 0},
+    {"Id": "2", "Name": "g", "Phydim": "Weight", "Factor": 0.001, "Offset": 0},
+    {"Id": "3", "Name": "t", "Phydim": "Weight", "Factor": 1000, "Offset": 0},
+    {"Id": "4", "Name": "pound", "Phydim": "Weight", "Factor": 0.5, "Offset": 0},
+    {"Id": "5", "Name": "l", "Phydim": "Volume", "Factor": 1, "Offset": 0},
+    {"Id": "6", "Name": "dl", "Phydim": "Volume", "Factor": 0.1, "Offset": 0},
+    {"Id": "7", "Name": "ml", "Phydim": "Volume", "Factor": 0.01, "Offset": 0},
+    {"Id": "8", "Name": "-", "Phydim": "Piece", "Factor": 1, "Offset": 0},
+    {"Id": "9", "Name": "10er", "Phydim": "Piece", "Factor": 10, "Offset": 0},
+    {"Id": "10", "Name": "dozen", "Phydim": "Piece", "Factor": 12, "Offset": 0},
+    {"Id": "11", "Name": "m", "Phydim": "Length", "Factor": 1, "Offset": 0},
+    {"Id": "12", "Name": "cm", "Phydim": "Length", "Factor": 0.01, "Offset": 0}
+]

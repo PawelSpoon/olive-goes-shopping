@@ -29,6 +29,16 @@ Item {
 
     }
 
+    function propageteCategoryChanged()
+    {
+       // update everyone with new category orders
+    }
+
+    function propageteUnitChanged()
+    {
+
+    }
+
     function refreshAll()
     {
         var count = pages.length
@@ -80,6 +90,16 @@ Item {
     function openSettingsPage()
     {
         pageStack.push(Qt.resolvedUrl("pages/Settings.qml"), { })
+    }
+
+    function openUnitsPage()
+    {
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "unit"})
+    }
+
+    function openPhyDimsPage()
+    {
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "phydim"})
     }
 
     function setCurrentPage(pageName) {

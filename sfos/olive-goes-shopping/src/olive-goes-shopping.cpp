@@ -4,10 +4,18 @@
 
 #include <sailfishapp.h>
 #include <QGuiApplication>
+#include <QLocale>
 #include <QtGui>
+#include <QtQml>
 #include <QSettings>
 #include "settings.h"
 #include "ogssettings.h"
+
+
+/*#include <QTranslator>
+#include <QProcess>
+#include "importexport.h"
+*/
 
 int main(int argc, char *argv[])
 {

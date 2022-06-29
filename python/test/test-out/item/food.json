@@ -1,1 +1,1 @@
-[{"Name": "Potato", "Amount": 1, "Unit": "kg", "Category": null, "Co2": null}, {"Name": "Apple", "Amount": 1, "Unit": "kg", "Category": "Fresh Produce", "Co2": null}]
+[{"Name": "annual maintenance - Breva", "Tasks": [{"Name": "Oil change", "Description": "", "Amount": 4, "Unit": "l"}, {"Name": "Oil change", "Description": "", "Amount": 4, "Unit": "l"}]}, {"Name": "Krautsuppe", "Servings": 4, "Category": "Soup", "Rating": 10, "Ingredients": [{"Name": "Kraut", "Amount": "1", "Unit": "-"}], "HowTo": "This very long text describes the cooking process"}, {"Name": "My-Recipe"}]

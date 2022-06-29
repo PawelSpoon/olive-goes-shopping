@@ -1,14 +1,14 @@
 [
-    {"Name": "dairy products", "Order": 0},
-    {"Name": "meat products", "Order": 1},
-    {"Name": "fresh produce", "Order": 2},
-    {"Name": "bakery products", "Order": 3},
-    {"Name": "frozen food", "Order": 4},
-    {"Name": "canned food", "Order": 5},
-    {"Name": "personal hygiene", "Order": 6},
-    {"Name": "cleaning supplies", "Order": 7},
-    {"Name": "magazines", "Order": 8},
-    {"Name": "hardware", "Order": 9},
-    {"Name": "automotive", "Order": 10},
-    {"Name": "others", "Order":11}
+    {"Id": "1", "Name": "dairy products", "Order": 1},
+    {"Id": "2", "Name": "meat products", "Order": 2},
+    {"Id": "3", "Name": "fresh produce", "Order": 3},
+    {"Id": "4", "Name": "bakery products", "Order": 4},
+    {"Id": "5", "Name": "frozen food", "Order": 5},
+    {"Id": "6", "Name": "canned food", "Order": 6},
+    {"Id": "7", "Name": "personal hygiene", "Order": 7},
+    {"Id": "8", "Name": "cleaning supplies", "Order": 8},
+    {"Id": "9", "Name": "magazines", "Order": 9},
+    {"Id": "10", "Name": "hardware", "Order": 10},
+    {"Id": "11", "Name": "automotive", "Order": 11},
+    {"Id": "12", "Name": "others", "Order":12}
 ]
