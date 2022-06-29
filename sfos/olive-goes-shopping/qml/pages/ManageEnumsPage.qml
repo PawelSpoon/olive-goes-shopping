@@ -103,7 +103,7 @@ Dialog {
                 RemorsePopup {id: remorse }
                 function cleanEnumsTable()
                 {
-                    applicationWindow.pythonHanlder.clearAssets(enumType)
+                    applicationWindow.pythonController.clearAssets(enumType)
                     initPage()
                 }
             }
@@ -147,8 +147,7 @@ Dialog {
                 var removal = removalComponent.createObject(myListItem)
                 ListView.remove.connect(removal.deleteAnimation.start)
                 removal.execute(contentItem, "Deleting", function() {
-                    print("u:" + Id + ",n:"+Name)
-                    applicationWindow.pythonController.deleteAsset(enumType,name)
+                    applicationWindow.pythonController.deleteAsset(enumType,Name)
                     itemModel.remove(index); }
                 )
             }
@@ -166,7 +165,7 @@ Dialog {
                     //console.log("Clicked " + title)
                     //todo:  already existing item
                     //pageStack.push(Qt.resolvedUrl("ItemDialog.qml"),
-                    //               {uid_: uid, name_: name, itemType: type, itemsPage: page} )
+                    //               {id: uid, name_: name, itemType: type, itemsPage: page} )
                 }
                 Image {
                     id: typeIcon

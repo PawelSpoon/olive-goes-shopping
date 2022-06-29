@@ -11,12 +11,14 @@ Dialog {
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
-    property string uid_ : ""
+    property string id : ""
     property ManageEnumsPage itemsPage: null
     property string itemType // type == tablename where enum is stored
-    property alias name_ : itemName.text // enum value
-    property var item
     property int mode
+    property alias name_ : itemName.text // enum value
+    
+    property var item
+
     property bool showCategory
 
     SilicaFlickable{
@@ -41,7 +43,7 @@ Dialog {
             }
 
             Label {
-                text: { if (uid_ === "") qsTr("New item")
+                text: { if (id === "") qsTr("New item")
                         else qsTr("Edit item") }
                 font.pixelSize: Theme.fontSizeLarge
                 anchors.left: parent.left
@@ -85,7 +87,7 @@ Dialog {
        }
        else {
            name_ = item.Name
-           uid_ = item.Id
+           id = item.Id
        }
     }
 
@@ -97,11 +99,11 @@ Dialog {
         // save to db and reload the prev page to make the new item visible
         var oldName = item['Name']
         if (oldName === undefined || oldName === null || oldName === '') oldName = name_
-        if (uid_ == "" ) uid_ = applicationWindow.controller.getUniqueId()
+        if (id == "" ) id = applicationWindow.controller.getUniqueId()
         // var orderNr = DB.getDatabase().db.executeSelect("select max(ordernr) from category");
         // here i could check old and new name for rename :)
         item['Name'] = name_
-        item['Id'] = uid_
+        item['Id'] = id
         if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, oldName, item)
         if (mode == 2) applicationWindow.pythonController.addAsset(itemType, item)
         //itemsPage.initPage()

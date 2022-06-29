@@ -28,11 +28,12 @@ SOURCES += src/olive-goes-shopping.cpp \
 
 DISTFILES += qml/olive-goes-shopping.qml \
     qml/ApplicationController.qml \
-    qml/PythonHandler.qml \
+    qml/pythonController.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/ManageMainPage.qml \
     qml/pages/ManageEnumsPage.qml\
+    qml/pages/ItemDialog.qml\
     qml/pages/EnumDialog.qml \
     qml/pages/Settings.qml \
     \

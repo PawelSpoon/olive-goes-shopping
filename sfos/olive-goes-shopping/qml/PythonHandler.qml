@@ -60,7 +60,7 @@ Python {
 
 
   function clearAssets(type) {
-      return call_sync('app.app.deleteAssetList',[type])
+      return call_sync('app.app.clearAssets',[type])
   }
 
   function deleteAsset(type, name) {
