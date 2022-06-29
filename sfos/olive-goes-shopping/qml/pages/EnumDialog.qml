@@ -81,7 +81,7 @@ Dialog {
 
     Component.onCompleted: {
        if (item == null) {
-           item = { Id: null, Category: null, OrderNr: 0}
+           item = { Id: null, Category: null, Order: 0}
        }
        else {
            name_ = item.Name
@@ -95,12 +95,14 @@ Dialog {
 
     onAccepted: {
         // save to db and reload the prev page to make the new item visible
+        var oldName = item['Name']
+        if (oldName === undefined || oldName === null || oldName === '') oldName = name_
         if (uid_ == "" ) uid_ = applicationWindow.controller.getUniqueId()
         // var orderNr = DB.getDatabase().db.executeSelect("select max(ordernr) from category");
         // here i could check old and new name for rename :)
         item['Name'] = name_
         item['Id'] = uid_
-        if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, item)
+        if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, oldName, item)
         if (mode == 2) applicationWindow.pythonController.addAsset(itemType, item)
         //itemsPage.initPage()
     }

@@ -34,9 +34,9 @@ class App:
         temp.store()
         return temp.getAsList()
 
-    def updateAsset(self, type, item):
+    def updateAsset(self, type, oldName, item):
         temp = self.assetManager.getController(type)
-        temp.update(item)
+        temp.update(oldName, item)
         temp.store()
         return temp.getAsList()
     

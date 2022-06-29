@@ -67,8 +67,8 @@ Python {
       return call_sync('app.app.deleteAsset',[type,name])
   }
 
-  function updateAsset(type, item) {
-      return call_sync('app.app.updateAsset',[type,item])
+  function updateAsset(type, oldName, item) {
+      return call_sync('app.app.updateAsset',[type,oldName,item])
   }
 
   function addAsset(type, item) {

@@ -46,7 +46,7 @@ Dialog {
         for (var i = 0; i < items.length; i++)
         {
             print(items[i])
-            itemModel.append({"uid": items[i].Id, "name": items[i].Name, "ordernr" : items[i].OrderNr, "cat": items[i].Category, "body": item })
+            itemModel.append({"Id": items[i].Id, "Name": items[i].Name, "Order" : items[i].Order, "Category": items[i].Category, "Item": items[i] })
         }
     }
 
@@ -57,11 +57,11 @@ Dialog {
 
     ListModel {
         id: itemModel
-        ListElement {uid: "123"; name: "dummy"; ordernr: 0}
+        //ListElement {Id: "123"; Name: "dummy"; Order: 0; Category: null; Obj: null}
 
         function contains(uid) {
             for (var i=0; i<count; i++) {
-                if (get(i).uid === uid)  {
+                if (get(i).Id === uid)  {
                     return [true, i];
                 }
             }
@@ -69,7 +69,7 @@ Dialog {
         }
         function containsTitle(name) {
             for (var i=0; i<count; i++) {
-                if (get(i).name === name)  {
+                if (get(i).Name === name)  {
                     return true;
                 }
             }
@@ -147,7 +147,7 @@ Dialog {
                 var removal = removalComponent.createObject(myListItem)
                 ListView.remove.connect(removal.deleteAnimation.start)
                 removal.execute(contentItem, "Deleting", function() {
-                    print("u:" + uid + ",n:"+name)
+                    print("u:" + Id + ",n:"+Name)
                     applicationWindow.pythonController.deleteAsset(enumType,name)
                     itemModel.remove(index); }
                 )
@@ -181,7 +181,7 @@ Dialog {
                 }
                 Label {
                     id: nameLabel
-                    text: name
+                    text: Name
                     anchors.left: typeIcon.right
                     anchors.leftMargin: Theme.paddingMedium
                     anchors.verticalCenter: parent.verticalCenter
@@ -192,7 +192,7 @@ Dialog {
                 }
                 /*Label {
                     id: orderLabel
-                    text: ordernr
+                    text: order
                     anchors.left: nameLabel.right
                     anchors.leftMargin: Theme.paddingMedium
                     //anchors.verticalCenter: parent.verticalCenter
@@ -226,7 +226,8 @@ Dialog {
                         text: qsTr("Edit");
                         visible: !readonly
                         onClicked: {
-                            applicationWindow.controller.openMgmtDetailPage(enumType,page,1)
+                            var temp = itemModel.get(index).Item
+                            applicationWindow.controller.openMgmtDetailPage(enumType,page,1,temp)
                         }
                     }
                     MenuItem {

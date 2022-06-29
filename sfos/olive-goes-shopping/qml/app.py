@@ -16,7 +16,7 @@ class App:
     def getAssetList(self, type):
         return self.assetManager.getController(type).getAsList()
 
-    def clearAssetList(self, type):
+    def clearAssets(self, type):
         temp = self.assetManager.getController(type)
         temp.clearItems()
         temp.store()
@@ -34,9 +34,9 @@ class App:
         temp.store()
         return temp.getAsList()
 
-    def updateAsset(self, type, item):
+    def updateAsset(self, type, oldName, item):
         temp = self.assetManager.getController(type)
-        temp.update(item)
+        temp.update(oldName, item)
         temp.store()
         return temp.getAsList()
     
