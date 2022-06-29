@@ -84,7 +84,9 @@ class AssetManager:
         # shall we look into active too ?
         # no this i another controller
 
+    # not used as the controller copies contain data not the managers ones
     def store(self):
+        return
         print('asset manager storing to: ' + self.rootDir)
         persistance.storeItems(self.rootDir + categoryFilePath,self.catController.getList())
         persistance.storeItems(self.rootDir + itemtypeFilePath,self.itemtypeController.getList())

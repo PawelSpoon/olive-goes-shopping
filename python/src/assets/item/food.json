@@ -1,2 +1,4 @@
-[{"Name": "Potato", "Amount": 1, "Unit":{"Id":"0", "Name": "kg"}, "Category": null, "Co2": null},
- {"Name": "Apple", "Amount": 1, "Unit": {"Id":"0", "Name": "kg"}, "Category": {"Id":"7", "Name": "fresh produce"}, "Co2": null}]
+[
+    {"Name": "Potato", "Amount": 1, "Unit":{"Id":"0", "Name": "kg"}, "Category": null, "Co2": null},
+    {"Name": "Apple", "Amount": 1, "Unit": {"Id":"0", "Name": "kg"}, "Category": {"Id":"7", "Name": "fresh produce"}, "Co2": null}
+]

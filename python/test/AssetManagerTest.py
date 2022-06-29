@@ -38,7 +38,6 @@ class AssetManagerTest(unittest.TestCase):
         manager = AssetManager(self.rootDir)
         manager.load()
         manager.rootDir = self.outDir
-        manager.store()
 
     def testGetController(self):
         print("testGetController")
@@ -48,7 +47,6 @@ class AssetManagerTest(unittest.TestCase):
         ret = rpc.add({"Name":"My-Recipe"})
         self.assertTrue(ret)
         manager.rootDir = self.outDir
-        manager.store()
 
     def testGetNoneController(self):
         print("testGetNoneController")
