@@ -148,7 +148,7 @@ Dialog {
                 ListView.remove.connect(removal.deleteAnimation.start)
                 removal.execute(contentItem, "Deleting", function() {
                     print("u:" + uid + ",n:"+name)
-                    DB.getDatabase().removeEnum(enumType, uid);
+                    applicationWindow.pythonController.deleteAsset(enumType,name)
                     itemModel.remove(index); }
                 )
             }

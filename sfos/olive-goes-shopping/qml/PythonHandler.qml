@@ -23,7 +23,7 @@ Python {
     addImportPath(Qt.resolvedUrl('.'));
     importModule('controller.assetmanager', function () {});
     importModule('app', function () {
-      call('app.app.setup', ['/usr/share/olive-goes-shopping/assets',python]);
+      call('app.app.setup', ['/home/defaultuser/.local/share/oarg.pawelspoon/olive-goes-shopping/assets',python]);
       //call('tfl.tfl_object.set_python_handler', [python]);
     });
     /*importModule('database', function () {
@@ -63,16 +63,16 @@ Python {
       return call_sync('app.app.deleteAssetList',[type])
   }
 
-  function deleteAsset(type, item) {
-      return call_sync('app.app.deleteAsset',[type])
+  function deleteAsset(type, name) {
+      return call_sync('app.app.deleteAsset',[type,name])
   }
 
   function updateAsset(type, item) {
-      return call_sync('app.app.updateAsset',[type])
+      return call_sync('app.app.updateAsset',[type,item])
   }
 
   function addAsset(type, item) {
-      return call_sync('app.app.addAsset',[type])
+      return call_sync('app.app.addAsset',[type,item])
   }
 
   function stop_point_sort_default(a, b) {

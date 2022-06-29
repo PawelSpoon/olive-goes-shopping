@@ -16,7 +16,7 @@ class App:
     def getAssetList(self, type):
         return self.assetManager.getController(type).getAsList()
 
-    def clearAssetList(self, type):
+    def clearAssets(self, type):
         temp = self.assetManager.getController(type)
         temp.clearItems()
         temp.store()

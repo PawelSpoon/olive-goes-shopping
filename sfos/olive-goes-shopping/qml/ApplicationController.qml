@@ -132,8 +132,12 @@ Item {
     }
 
     // type, page, 0: read-only, 1: edit, 2: add
-    function openMgmtDetailPage(type, page, mode)
+    function openMgmtDetailPage(type, page, mode, item)
     {
+        if (mode === 2 && item === null) {
+            item = {Id:null, Name:"", OrderNr: -1, Category: null}
+        }
+
         switch(type) {
         case "unit":
             pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: 0})
@@ -142,10 +146,10 @@ Item {
             pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: 0})
             break
         case "itemtype":
-            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode})
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode, item: item})
             break
         case "category":
-            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode})
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode, item: item})
             break
         }
 

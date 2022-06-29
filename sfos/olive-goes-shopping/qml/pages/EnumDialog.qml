@@ -59,7 +59,7 @@ Dialog {
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 font.capitalization: Font.MixedCase
-                EnterKey.onClicked: defaultAmount.focus = true
+                //EnterKey.onClicked: defaultAmount.focus = true
             }
 
             TextField {
@@ -80,8 +80,13 @@ Dialog {
     }
 
     Component.onCompleted: {
-       if (item != null)
+       if (item == null) {
+           item = { Id: null, Category: null, OrderNr: 0}
+       }
+       else {
            name_ = item.Name
+           uid_ = item.Id
+       }
     }
 
     Component.onDestruction: {
@@ -92,9 +97,12 @@ Dialog {
         // save to db and reload the prev page to make the new item visible
         if (uid_ == "" ) uid_ = applicationWindow.controller.getUniqueId()
         // var orderNr = DB.getDatabase().db.executeSelect("select max(ordernr) from category");
+        // here i could check old and new name for rename :)
+        item['Name'] = name_
+        item['Id'] = uid_
         if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, item)
         if (mode == 2) applicationWindow.pythonController.addAsset(itemType, item)
-        itemsPage.initPage()
+        //itemsPage.initPage()
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {
