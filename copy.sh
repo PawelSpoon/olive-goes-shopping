@@ -3,3 +3,4 @@ cp ./python/src/controller ./sfos/olive-goes-shopping/qml -r
 cp ./python/src/storage ./sfos/olive-goes-shopping/qml -r
 rm ./sfos/olive-goes-shopping/qml/controller/__pycache__ -r
 rm ./sfos/olive-goes-shopping/qml/storage/__pycache__ -r
+cp ./python/src/app.py ./sfos/olive-goes-shopping/qml 

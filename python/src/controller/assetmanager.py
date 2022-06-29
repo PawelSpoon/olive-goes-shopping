@@ -6,7 +6,6 @@
 
 import os
 from controller.constants import *
-from controller.enumcontroller import EnumController
 from controller.folderitemcontroller import FolderItemController
 from controller.itemcontroller import ItemController
 from storage import persistance
@@ -15,10 +14,10 @@ from storage import persistance
 class AssetManager:
     def __init__(self, root) -> None:
         self.rootDir = root
-        self.catController = ItemController(category,self.rootDir + categoryFilePath) # due to ordernr
-        self.itemtypeController = ItemController(itemtype, self.rootDir + itemtypeFilePath) #due to id
-        self.unitController = ItemController(unit, self.rootDir + unitFilePath) # due to id
-        self.phydimController = EnumController(phydim,self.rootDir + phydimFilePath)
+        self.catController = ItemController(category,self.rootDir + categoryFilePath) 
+        self.itemtypeController = ItemController(itemtype, self.rootDir + itemtypeFilePath) 
+        self.unitController = ItemController(unit, self.rootDir + unitFilePath)
+        self.phydimController = ItemController(phydim,self.rootDir + phydimFilePath)
         # multiple itemControllers
         self.itemControllerDict = dict()
         # one recipe controller
@@ -34,9 +33,8 @@ class AssetManager:
 
     def load(self):
         print('asset manager loading from: ' + self.rootDir)
-        # simple string
+        # complex type        
         self.phydimController.load()
-        # complex type
         self.catController.load()
         self.itemtypeController.load()        
         self.unitController.load()
@@ -84,6 +82,7 @@ class AssetManager:
         # shall we look into active too ?
         # no this i another controller
 
+
     # not used as the controller copies contain data not the managers ones
     def store(self):
         return
@@ -104,7 +103,4 @@ class AssetManager:
 
         for item in self.taskitemController.keys():
             persistance.storeItems(self.getTaskPath() + "/" + item + ".json", self.taskitemController[item])
-
-
-
-        
+  

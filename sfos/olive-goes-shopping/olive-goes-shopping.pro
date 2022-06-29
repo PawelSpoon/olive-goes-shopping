@@ -28,6 +28,7 @@ SOURCES += src/olive-goes-shopping.cpp \
 
 DISTFILES += qml/olive-goes-shopping.qml \
     qml/ApplicationController.qml \
+    qml/PythonHandler.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/ManageMainPage.qml \

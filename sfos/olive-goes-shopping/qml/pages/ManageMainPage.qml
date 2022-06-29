@@ -46,9 +46,10 @@ Page {
 
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaListView {
+    SilicaFlickable {
         id: shoppingList
         anchors.fill: parent
+        contentHeight: col.height
 
 
         PushUpMenu {
@@ -66,9 +67,9 @@ Page {
             }
         }
 
-        header: PageHeader {
-            id: head
-            title: qsTr("Manage Application")
+        PageHeader {
+            id: header
+            title: qsTr("Configure Application")
         }
 
         VerticalScrollDecorator {}
@@ -88,69 +89,98 @@ Page {
                 text: "\n \n"
                 readOnly: true
             }
-
-            Button {
-                id: settings
-                text: qsTr("Settings")
-                // anchors.top: head.bottom -- not defined, guess i would need to reference col
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    applicationWindow.controller.openSettingsPage();
+            SectionHeader {
+                text: qsTr("Basics")
+            }
+            Column {
+                width: parent.width
+                Button {
+                    id: settings
+                    text: qsTr("Settings")
+                    // anchors.top: head.bottom -- not defined, guess i would need to reference col
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        applicationWindow.controller.openSettingsPage();
+                    }
                 }
             }
-            Button {
-                id: managePhydims
-                visible: true
-                text: qsTr("Physical dimensions")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "phydim"})
+            SectionHeader {
+                text: qsTr("Basics")
             }
-            Button {
-                id: manageUnits
-                visible: true
-                text: qsTr("Units")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "unit"})
-            }
-            Button {
-                id: manageRecipes
-                visible: applicationWindow.settings.useRecipes
-                text: qsTr("Recipes")
-                // anchors.top: head.bottom -- not defined, guess i would need to reference col
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ManageRecipesPage.qml"), {itemType: "recipe", itemsPage: null})
+            Column {
+                width: parent.width
+                Button {
+                    id: managePhydims
+                    visible: true
+                    text: qsTr("Physical dimensions")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "phydim", editable: false})
+                }
+                Button {
+                    id: manageUnits
+                    visible: true
+                    text: qsTr("Units")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "unit", editable: false})
+                }
+                Button {
+                    id: manageItemTypes
+                    visible: true
+                    text: qsTr("Item types")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "itemtype", editable: true})
+                }
+                Button {
+                    id: manageCategories
+                    visible: applicationWindow.settings.useCategories
+                    text: qsTr("Categories")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "category"})
                 }
             }
-            Button {
-                id: manageFood
-                visible: applicationWindow.settings.useFood
-                text: qsTr("Food")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "food"})
+            SectionHeader {
+                text: qsTr("Presets")
+            }
+            Column {
+                width: parent.width
+                Button {
+                    id: manageRecipes
+                    visible: applicationWindow.settings.useRecipes
+                    text: qsTr("Recipes")
+                    // anchors.top: head.bottom -- not defined, guess i would need to reference col
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        pageStack.push(Qt.resolvedUrl("ManageRecipesPage.qml"), {itemType: "recipe", itemsPage: null})
+                    }
+                }
+                Button {
+                    id: manageFood
+                    visible: applicationWindow.settings.useFood
+                    text: qsTr("Food")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "food"})
 
+                }
+                Button {
+                    id: manageHouseHold
+                    visible: applicationWindow.settings.useHousehold
+                    text: qsTr("Household")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "household"})
+                }
             }
-            Button {
-                id: manageHouseHold
-                visible: applicationWindow.settings.useHousehold
-                text: qsTr("Household")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "household"})
+            SectionHeader {
+                text: qsTr("Advanced")
             }
-            Button {
-                id: manageCategories
-                visible: applicationWindow.settings.useCategories
-                text: qsTr("Categories")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "category"})
-            }
-
-            Button {
-                id: impExport
-                text: qsTr("Import Export")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ExportPage.qml"))
+            Column {
+                width: parent.width
+                Button {
+                    id: impExport
+                    text: qsTr("Import Export")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        pageStack.push(Qt.resolvedUrl("ExportPage.qml"))
+                    }
                 }
             }
         }

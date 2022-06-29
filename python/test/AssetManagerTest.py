@@ -73,9 +73,10 @@ class AssetManagerTest(unittest.TestCase):
         rpc = manager.getController(phydim)
         self.assertTrue(rpc != None)
         ret = rpc.add("My-Recipe")
-        self.assertTrue(ret)
+        self.assertTrue(ret)    
         rpc.filePath = self.outDir + phydimFilePath
         rpc.store()
+
 
 
 

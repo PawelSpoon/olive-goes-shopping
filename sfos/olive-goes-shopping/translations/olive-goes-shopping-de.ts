@@ -77,10 +77,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manage Application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -110,6 +106,26 @@
     </message>
     <message>
         <source>Units</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Basics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Presets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure Application</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

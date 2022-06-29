@@ -1,1 +1,6 @@
-["Weight", "Volume", "Piece", "Length"]
+[
+    {"Id": "1", "Name": "Weight", "OrderNr": 0},
+    {"Id": "2", "Name": "Volume", "OrderNr": 0},
+    {"Id": "3", "Name": "Piece", "OrderNr":  0},
+    {"Id": "4", "Name": "Length", "OrderNr": 0}
+]

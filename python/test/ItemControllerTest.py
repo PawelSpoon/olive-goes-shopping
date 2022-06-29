@@ -26,6 +26,9 @@ class ItemControllerTest(unittest.TestCase):
         controller = ItemController("food",self.foodFile)
         controller.loadString(enums)
         self.assertTrue("Potato" in controller.getList())
+        test = controller.getAsList()
+        for t in test:
+            print(t)
 
     def testAdd(self):
         print("testAdd")
@@ -61,7 +64,6 @@ class ItemControllerTest(unittest.TestCase):
         ret = controller.rename("Potato","Patata")
         controller.filePath = self.foodOutFile
         controller.store()
-
   
 if __name__ == '__main__':
     unittest.main()

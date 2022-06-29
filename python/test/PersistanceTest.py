@@ -12,8 +12,8 @@ class PersistanceTest(unittest.TestCase):
     recipeFile = "../src/assets/recipe/Krautsuppe.json"
     recipeOutFile = "./test-out/recipe/Krautsuppe.json"
 
-    phydimFile = "../src/assets/phydim.json"
-    phydimOutFile = "./test-out/phydim.json"
+    simpleFile = "../src/assets/simple.json"
+    simpleOutFile = "./test-out/simple.json"
     
     unitFile = "../src/assets/unit.json"
     unitOutFile = "./test-out/unit.json"
@@ -29,15 +29,15 @@ class PersistanceTest(unittest.TestCase):
         self.assertTrue(True)
     
     def testReadEnum(self):
-        enums = readEnums(self.phydimFile)
+        enums = readEnums(self.simpleFile)
         self.assertTrue("Length" in enums)
 
     def testWriteEnum(self):
-        enums = readEnums(self.phydimFile)
+        enums = readEnums(self.simpleFile)
         enums.append("Hot stuff")
         self.assertTrue("Volume" in enums)
-        storeEnums(self.phydimOutFile,enums)
-        enums = readEnums(self.phydimOutFile)
+        storeEnums(self.simpleOutFile,enums)
+        enums = readEnums(self.simpleOutFile)
         self.assertTrue("Hot stuff" in enums)
 
     def testReadItems(self):

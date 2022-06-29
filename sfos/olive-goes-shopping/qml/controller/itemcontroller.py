@@ -62,6 +62,9 @@ class ItemController:
     def getList(self):
         return self.items
 
+    def getAsList(self):
+        return list(self.items.values()).copy()
+
     def loadString(self, json):
         self.items = dict(json)
         return True

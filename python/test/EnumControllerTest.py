@@ -8,10 +8,8 @@ from controller.constants import *
 
 class EnumControllerTest(unittest.TestCase):
   
-    phydimFile = "../src/assets/phydim.json"
-    phydimOutFile = "./test-out/phydim.json"
-    itemtypeFile = "../src/assets/itemtype.json"
-    itemtypeOutFile = "./test-out/itemtype.json"  
+    simpleFile = "../src/assets/simple.json"
+    simpleOutFile = "./test-out/simple.json"
 
     def setUp(self) -> None:
         return super().setUp()
@@ -19,38 +17,38 @@ class EnumControllerTest(unittest.TestCase):
 
     def testCreation(self):
         print("create controller")
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         self.assertTrue(controller.getEnumName() == phydim)  
 
     def testLoadString(self):
-        enums = readEnums(self.phydimFile)
+        enums = readEnums(self.simpleFile)
         self.assertTrue("Volume" in enums)
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         controller.loadString(enums)
         self.assertTrue("Volume" in controller.getList())
 
     def testLoad(self):
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         controller.load()
         self.assertTrue("Volume" in controller.getList())
 
     def testAdd(self):
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         controller.load()
         controller.add("me")
         self.assertTrue("me" in controller.getList())
 
     def testDuplicateAdd(self):
-        enums = readEnums(self.phydimFile)
+        enums = readEnums(self.simpleFile)
         self.assertTrue("Length" in enums)
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         controller.loadString(enums)
         ret = controller.add("Length")
         self.assertTrue(ret == False)
         self.assertTrue(len(controller.getList()) == 4)
 
     def testRename(self):
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         controller.load()
         self.assertTrue("Weight" in controller.items)
         ret = controller.rename("Weight","Muschi")
@@ -63,17 +61,13 @@ class EnumControllerTest(unittest.TestCase):
         self.assertTrue("Maus" not in controller.getList())
 
     def testStore(self):
-        controller = EnumController(phydim,self.phydimFile)
+        controller = EnumController(phydim,self.simpleFile)
         controller.load()
         self.assertTrue("Weight" in controller.getList())
         ret = controller.rename("Weight","Muschi")
-        controller.filePath = self.phydimOutFile
+        controller.filePath = self.simpleOutFile
         controller.store()
-        ##
-        enums = readEnums(self.itemtypeFile)
-        controller = EnumController(itemtype,self.itemtypeFile)
-        controller.loadString(enums)
-        storeEnums(self.itemtypeOutFile, controller.getList())
+
   
 if __name__ == '__main__':
     unittest.main()

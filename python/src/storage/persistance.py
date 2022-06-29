@@ -44,7 +44,7 @@ def readItems(path):
         enums = json.load(read_file)
 
     print("Decoded JSON Data From File")
-    thislist = {}
+    thislist = dict()
     for key in enums:
         if (key["Name"] in thislist.keys()):
             print('key is already in')
