@@ -32,7 +32,10 @@ class App:
         temp = self.assetManager.getController(type)
         temp.add(item)
         temp.store()
+        # if type was itemtype, i need to create an itemcontroller too + file
+        # rename is also nice         
         return temp.getAsList()
+
 
     def updateAsset(self, type, oldName, item):
         temp = self.assetManager.getController(type)
