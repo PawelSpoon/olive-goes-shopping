@@ -23,7 +23,7 @@ class ShoppingListControllerTest(unittest.TestCase):
 
     def testCreation(self):
         controller = ShoppingListController("jan",self.rootDir)
-        self.assertTrue(controller.getItemName() == "jan")  
+        self.assertTrue(controller.getTypeName() == "jan")  
         self.assertTrue(controller.rootDir == self.rootDir)  
 
     def testLoad(self):

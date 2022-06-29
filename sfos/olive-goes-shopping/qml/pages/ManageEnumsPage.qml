@@ -1,16 +1,24 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import io.thp.pyotherside 1.4
+import io.thp.pyotherside 1.5
+
+/***********
+  * generic list mgmt dialog for everything
+  * applicaton controller has to set the proper detail window
+  *
+  */
 
 Dialog {
 
     id: page
-    // property ItemsPage itemsPage
-    // property FirstPage mainPage
+
     property string enumType
+    property bool readonly
+    property bool sortable
+    property bool groupbyCatetgory
+    property bool neverCapitalize
 
     allowedOrientations: defaultAllowedOrientations
-
 
     Component.onCompleted: {
         initPage()
@@ -20,14 +28,14 @@ Dialog {
         // itemsPage.initPage()
     }
 
-    // user has rejected editing entry data, check if there are unsaved details
+    // user has rejected ing entry data, check if there are unsaved details
     onRejected: {
         // itemsPage.initPage()
     }
 
     function initPage()
     {
-        var items = python.getItems()
+        var items = applicationWindow.pythonController.getAssets(enumType)
         itemModel.clear()
         fillItemsModel(items)
     }
@@ -38,27 +46,22 @@ Dialog {
         for (var i = 0; i < items.length; i++)
         {
             print(items[i])
-            itemModel.append({"uid": i, "name": items[i], "ordernr" : 0 })
+            itemModel.append({"Id": items[i].Id, "Name": items[i].Name, "Order" : items[i].Order, "Category": items[i].Category, "Item": items[i] })
         }
     }
 
     function updateCategoriesInShoppingList()
     {
-        for (var i=0; i < itemModel.count; i++)
-        {
-            var current = itemModel.get(i);
-            if (current.ordernr === 0) continue;
-            DB.getDatabase().updateCategoryOrder(current.name, current.ordernr)
-        }
+
     }
 
     ListModel {
         id: itemModel
-        ListElement {uid: "123"; name: "dummy"; ordernr: 0}
+        //ListElement {Id: "123"; Name: "dummy"; Order: 0; Category: null; Obj: null}
 
         function contains(uid) {
             for (var i=0; i<count; i++) {
-                if (get(i).uid === uid)  {
+                if (get(i).Id === uid)  {
                     return [true, i];
                 }
             }
@@ -66,7 +69,7 @@ Dialog {
         }
         function containsTitle(name) {
             for (var i=0; i<count; i++) {
-                if (get(i).name === name)  {
+                if (get(i).Name === name)  {
                     return true;
                 }
             }
@@ -74,49 +77,7 @@ Dialog {
         }
     }
 
-    Python {
 
-        id: python
-
-        Component.onCompleted: {
-            addImportPath(Qt.resolvedUrl('.'));
-
-            /*setHandler('progress', function(ratio) {
-                dlprogress.value = ratio;
-            });
-            setHandler('finished', function(newvalue) {
-                page.downloading = false;
-                mainLabel.text = 'Color is ' + newvalue + '.';
-            });
-
-            importModule('datadownloader', function () {});*/
-            console.log("eval:" + evaluate('len(initpythonenv.getController("category").getList())'))
-
-        }
-
-
-        function getItems()
-        {
-            return evaluate('initpythonenv.getController("category").getList()')
-        }
-
-        function startDownload() {
-            page.downloading = true;
-            dlprogress.value = 0.0;
-            call('datadownloader.downloader.download', function() {});
-        }
-
-        onError: {
-            // when an exception is raised, this error handler will be called
-            console.log('python error: ' + traceback);
-        }
-
-        onReceived: {
-            // asychronous messages from Python arrive here
-            // in Python, this can be accomplished via pyotherside.send()
-            console.log('got message from python: ' + data);
-        }
-    }
 
     // Place our content in a Column.  The PageHeader is always placed at the top
     // of the page, followed by our content.
@@ -126,29 +87,29 @@ Dialog {
         height: page.height
         anchors.top: parent.top
         model: itemModel
-        header: PageHeader { title: "Manage Store" }
+        header: PageHeader { title: qsTr("Manage ") + qsTr(enumType) }
         ViewPlaceholder {
             enabled: itemList.count == 0
-            text: qsTr("Please fill store with items")
+            text: qsTr("Add or import items")
         }
 
         PushUpMenu {
 
             MenuItem {
-                text: qsTr("Clear Categories Db")
+                text: qsTr("Clear all")
                 onClicked: {
-                    remorse.execute("Deleting Categories db", cleanEnumsTable);
+                    remorse.execute("Deleting items", cleanEnumsTable);
                 }
                 RemorsePopup {id: remorse }
                 function cleanEnumsTable()
                 {
-                    DB.getDatabase().db.cleanTable("category")
+                    applicationWindow.pythonHanlder.clearAssets(enumType)
                     initPage()
                 }
             }
 
             MenuItem {
-                text: qsTr("Import Categories Db")
+                text: qsTr("Import example items")
                 onClicked: {
                     DB.getDatabase().importCategoriesFromJson()
                     initPage()
@@ -165,7 +126,9 @@ Dialog {
 
             MenuItem {
                 text: qsTr("Add");
-                onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
+                visible: !readonly
+                //onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
+                onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, page, 2)
             }
 
         }
@@ -184,8 +147,8 @@ Dialog {
                 var removal = removalComponent.createObject(myListItem)
                 ListView.remove.connect(removal.deleteAnimation.start)
                 removal.execute(contentItem, "Deleting", function() {
-                    print("u:" + uid + ",n:"+name)
-                    DB.getDatabase().removeEnum(enumType, uid);
+                    print("u:" + Id + ",n:"+Name)
+                    applicationWindow.pythonController.deleteAsset(enumType,name)
                     itemModel.remove(index); }
                 )
             }
@@ -201,7 +164,7 @@ Dialog {
                 }
                 onClicked: {
                     //console.log("Clicked " + title)
-                    //todo: edit already existing item
+                    //todo:  already existing item
                     //pageStack.push(Qt.resolvedUrl("ItemDialog.qml"),
                     //               {uid_: uid, name_: name, itemType: type, itemsPage: page} )
                 }
@@ -218,7 +181,7 @@ Dialog {
                 }
                 Label {
                     id: nameLabel
-                    text: name
+                    text: Name
                     anchors.left: typeIcon.right
                     anchors.leftMargin: Theme.paddingMedium
                     anchors.verticalCenter: parent.verticalCenter
@@ -229,7 +192,7 @@ Dialog {
                 }
                 /*Label {
                     id: orderLabel
-                    text: ordernr
+                    text: order
                     anchors.left: nameLabel.right
                     anchors.leftMargin: Theme.paddingMedium
                     //anchors.verticalCenter: parent.verticalCenter
@@ -260,7 +223,16 @@ Dialog {
                 ContextMenu {
                     id: menu
                     MenuItem {
+                        text: qsTr("Edit");
+                        visible: !readonly
+                        onClicked: {
+                            var temp = itemModel.get(index).Item
+                            applicationWindow.controller.openMgmtDetailPage(enumType,page,1,temp)
+                        }
+                    }
+                    MenuItem {
                         text: qsTr("Delete");
+                        visible: !readonly
                         onClicked: {
                             menu.parent.remove();
                         }

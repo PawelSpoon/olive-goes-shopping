@@ -12,11 +12,14 @@ class PersistanceTest(unittest.TestCase):
     recipeFile = "../src/assets/recipe/Krautsuppe.json"
     recipeOutFile = "./test-out/recipe/Krautsuppe.json"
 
-    categoryFile = "../src/assets/category.json"
-    categoryOutFile = "./test-out/category.json"
+    simpleFile = "../src/assets/simple.json"
+    simpleOutFile = "./test-out/simple.json"
     
     unitFile = "../src/assets/unit.json"
     unitOutFile = "./test-out/unit.json"
+
+    catFile = "../src/assets/category.json"
+    catOutFile = "./test-out/category.json"
 
     def setUp(self) -> None:
         return super().setUp()
@@ -26,20 +29,24 @@ class PersistanceTest(unittest.TestCase):
         self.assertTrue(True)
     
     def testReadEnum(self):
-        enums = readEnums(self.categoryFile)
-        self.assertTrue("Meat" in enums)
+        enums = readEnums(self.simpleFile)
+        self.assertTrue("Length" in enums)
 
     def testWriteEnum(self):
-        enums = readEnums(self.categoryFile)
+        enums = readEnums(self.simpleFile)
         enums.append("Hot stuff")
-        self.assertTrue("Meat" in enums)
-        storeEnums(self.categoryOutFile,enums)
-        enums = readEnums(self.categoryOutFile)
+        self.assertTrue("Volume" in enums)
+        storeEnums(self.simpleOutFile,enums)
+        enums = readEnums(self.simpleOutFile)
         self.assertTrue("Hot stuff" in enums)
 
     def testReadItems(self):
         items = readItems(self.unitFile)
         print(items.get("kg"))
+
+    def testReadItems(self):
+        items = readItems(self.catFile)
+        self.assertTrue("meat products" in items)
 
     def testStoreItems(self):
         items = readItems(self.unitFile)

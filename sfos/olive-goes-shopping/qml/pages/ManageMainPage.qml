@@ -41,14 +41,15 @@ Page {
 
     Component.onCompleted:
     {
-        // applicationWindow.settings.onModuleChanged : { console.log('test') }
+        console.log(applicationWindow.settings);
     }
 
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaListView {
+    SilicaFlickable {
         id: shoppingList
         anchors.fill: parent
+        contentHeight: col.height
 
 
         PushUpMenu {
@@ -66,9 +67,9 @@ Page {
             }
         }
 
-        header: PageHeader {
-            id: head
-            title: qsTr("Manage Application")
+        PageHeader {
+            id: header
+            title: qsTr("Configure Application")
         }
 
         VerticalScrollDecorator {}
@@ -80,7 +81,6 @@ Page {
             spacing: Theme.paddingLarge
             // could be f(orientation)
             anchors.topMargin: Theme.paddingLarge * 3.5 * Theme.pixelRatio
-            anchors.fill: shoppingList
             anchors.horizontalCenter: parent.horizontalCenter
 
             TextArea {
@@ -88,56 +88,99 @@ Page {
                 text: "\n \n"
                 readOnly: true
             }
-
-            Button {
-                id: settings
-                text: qsTr("Settings")
-                // anchors.top: head.bottom -- not defined, guess i would need to reference col
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    applicationWindow.controller.openSettingsPage();
+            SectionHeader {
+                text: qsTr("General")
+            }
+            Column {
+                width: parent.width
+                Button {
+                    id: settings
+                    text: qsTr("Settings")
+                    // anchors.top: head.bottom -- not defined, guess i would need to reference col
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        applicationWindow.controller.openSettingsPage();
+                    }
                 }
             }
-
-            Button {
-                id: manageRecipes
-                visible: applicationWindow.settings.useRecipes
-                text: qsTr("Recipes")
-                // anchors.top: head.bottom -- not defined, guess i would need to reference col
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ManageRecipesPage.qml"), {itemType: "recipe", itemsPage: null})
+            SectionHeader {
+                text: qsTr("Basics")
+            }
+            Column {
+                width: parent.width
+                Button {
+                    id: managePhydims
+                    visible: true
+                    text: qsTr("Physical dimensions")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openPhyDimMngmtPage()
                 }
+                Button {
+                    id: manageUnits
+                    visible: true
+                    text: qsTr("Units")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openUnitsMngmtPage()
+                }
+                Button {
+                    id: manageItemTypes
+                    visible: true
+                    text: qsTr("Item types")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openItemTypeMngmtPage()
+                }
+                Button {
+                    id: manageCategories
+                    visible: applicationWindow.settings.useCategories
+                    text: qsTr("Categories")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openCategoryMngmtPage();
+                }
+            }
+            SectionHeader {
+                text: qsTr("Presets")
+            }
+            Column {
+                width: parent.width
+                Button {
+                    id: manageRecipes
+                    visible: applicationWindow.settings.useRecipes
+                    text: qsTr("Recipes")
+                    // anchors.top: head.bottom -- not defined, guess i would need to reference col
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        applicationWindow.controller.openRecipesMngmtPage();
+                    }
+                }
+                // here we need a loop over all item-types
+                Button {
+                    id: manageFood
+                    visible: applicationWindow.settings.useFood
+                    text: qsTr("Food")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openItemsMngmtPage("food")
 
+                }
+                Button {
+                    id: manageHouseHold
+                    visible: applicationWindow.settings.useHousehold
+                    text: qsTr("Household")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openItemsMngmtPage("household")
+                }
             }
-            Button {
-                id: manageFood
-                visible: applicationWindow.settings.useFood
-                text: qsTr("Food")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "food"})
-
+            SectionHeader {
+                text: qsTr("Advanced")
             }
-            Button {
-                id: manageHouseHold
-                visible: applicationWindow.settings.useHousehold
-                text: qsTr("Household")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageItemsPage.qml"), {itemType: "household"})
-            }
-            Button {
-                id: manageCategories
-                visible: applicationWindow.settings.useCategories
-                text: qsTr("Categories")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: pageStack.push(Qt.resolvedUrl("ManageEnumsPage.qml"), {enumType: "category"})
-            }
-            Button {
-                id: impExport
-                text: qsTr("Import Export")
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ExportPage.qml"))
+            Column {
+                width: parent.width
+                Button {
+                    id: impExport
+                    text: qsTr("Import Export")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        pageStack.push(Qt.resolvedUrl("ExportPage.qml"))
+                    }
                 }
             }
         }

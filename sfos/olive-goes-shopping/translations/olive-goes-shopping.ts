@@ -2,6 +2,33 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>EnumDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
         <source>Shopping List</source>
@@ -15,15 +42,19 @@
 <context>
     <name>ManageEnumsPage</name>
     <message>
-        <source>Please fill store with items</source>
+        <source>Manage </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear Categories Db</source>
+        <source>Add or import items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import Categories Db</source>
+        <source>Clear all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import example items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -32,6 +63,10 @@
     </message>
     <message>
         <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -48,25 +83,6 @@
     </message>
 </context>
 <context>
-    <name>ManageItemsPage</name>
-    <message>
-        <source>Please fill store with items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear Items Db</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import Items Db</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ManageMainPage</name>
     <message>
         <source>Help</source>
@@ -74,10 +90,6 @@
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Manage Application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -104,23 +116,36 @@
         <source>Import Export</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ManageRecipesPage</name>
     <message>
-        <source>Please add or import recipes</source>
+        <source>Physical dimensions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear Recipes Db</source>
+        <source>Units</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import Recipes Db</source>
+        <source>Item types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add</source>
+        <source>Basics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Presets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Advanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

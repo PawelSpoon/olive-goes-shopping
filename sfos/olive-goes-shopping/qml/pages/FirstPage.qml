@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import io.thp.pyotherside 1.4
+import io.thp.pyotherside 1.5
 
 Page {
 
@@ -76,7 +76,7 @@ Page {
         visible: page.downloading
     }
 
-    Button {
+    /*Button {
         text: "Update color"
         enabled: !page.downloading
         anchors.bottom: parent.bottom
@@ -84,7 +84,7 @@ Page {
         onClicked: {
             python.startDownload();
         }
-    }
+    }*/
 
     }
     Python {

@@ -1,1 +1,3 @@
-[{"Name": "Condoms", "Amount": 1, "Unit": "-", "Category": "Personal hygiene", "Co2": null}]
+[
+    {"Id":"", "Name": "Condoms", "Amount": 1, "Unit": {"Id":"8","Name":"-"}, "Category": {"Id":"3", "Name": "personal hygiene"}, "Co2": null}
+]

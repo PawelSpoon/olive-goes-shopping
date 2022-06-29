@@ -1,1 +1,14 @@
-["Fresh produce", "Personal hygiene", "Meat"]
+[
+    {"Id": "1", "Name": "dairy products", "Order": 1},
+    {"Id": "2", "Name": "meat products", "Order": 2},
+    {"Id": "3", "Name": "fresh produce", "Order": 3},
+    {"Id": "4", "Name": "bakery products", "Order": 4},
+    {"Id": "5", "Name": "frozen food", "Order": 5},
+    {"Id": "6", "Name": "canned food", "Order": 6},
+    {"Id": "7", "Name": "personal hygiene", "Order": 7},
+    {"Id": "8", "Name": "cleaning supplies", "Order": 8},
+    {"Id": "9", "Name": "magazines", "Order": 9},
+    {"Id": "10", "Name": "hardware", "Order": 10},
+    {"Id": "11", "Name": "automotive", "Order": 11},
+    {"Id": "12", "Name": "others", "Order":12}
+]

@@ -1,11 +1,14 @@
 import QtQuick 2.0
 import "pages"
-import io.thp.pyotherside 1.4
+
+// responsible to connect the various pages together do the updates etc
+// not responsible for data reading / storing -> all in python via applicationWindow.python
 
 Item {
 
     id: applicationController
     property string currentPage: 'any'
+
 
     // array of pages
     property variant pages: []
@@ -19,14 +22,24 @@ Item {
         pages[getCurrentPageIndex(name1)].page = page1
     }
 
-    function getListManager()
+    function propageteCategoryChanged()
+    {
+       // update everyone with new category orders
+    }
+
+    function propageteUnitChanged()
     {
 
     }
 
-    function getAssetManager()
-    {
-
+    function getUniqueId() {
+        console.log("getUniqueId() called.");
+        var dateObject = new Date();
+        var uniqueId = dateObject.getFullYear() + '' +
+            dateObject.getMonth() + '' +
+            dateObject.getDate() + '' +
+            dateObject.getTime();
+        return uniqueId;
     }
 
     function refreshAll()
@@ -81,6 +94,67 @@ Item {
     {
         pageStack.push(Qt.resolvedUrl("pages/Settings.qml"), { })
     }
+
+    function openUnitsMngmtPage()
+    {
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "unit", readonly: true})
+    }
+
+    function openPhyDimMngmtPage()
+    {
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "phydim", readonly: true})
+    }
+
+    function openCategoryMngmtPage()
+    {
+         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "category", readonly: false, sortable: true, groupbyCategory: false})
+    }
+
+    function openItemTypeMngmtPage()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "itemtype", readonly: false, sortable: true})
+    }
+
+    function openRecipesMngmtPage()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false})
+    }
+
+    function openItemsMngmtPage(itemtype)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: itemtype, readonly: false})
+    }
+
+    // this is the page for managing re-ocurring shoping lists
+    function openShopListMngmtPage()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "shop", readonly: false})
+    }
+
+    // type, page, 0: read-only, 1: edit, 2: add
+    function openMgmtDetailPage(type, page, mode, item)
+    {
+        if (mode === 2 && item === null) {
+            item = {Id:null, Name:"", OrderNr: -1, Category: null}
+        }
+
+        switch(type) {
+        case "unit":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: 0})
+            break
+        case "phydim":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: 0})
+            break
+        case "itemtype":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
+        case "category":
+            pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
+        }
+
+    }
+
 
     function setCurrentPage(pageName) {
         console.log("setCurrentPage: " + pageName)
@@ -177,49 +251,5 @@ Item {
        }
     }
 
-    Python {
-
-        id: python
-
-        Component.onCompleted: {
-            addImportPath(Qt.resolvedUrl('.'));
-
-            /*setHandler('progress', function(ratio) {
-                dlprogress.value = ratio;
-            });
-            setHandler('finished', function(newvalue) {
-                page.downloading = false;
-                mainLabel.text = 'Color is ' + newvalue + '.';
-            });
-
-            importModule('datadownloader', function () {});*/
-            importModule('initpythonenv', function () {
-                console.log("init done");
-                console.log('number of categories: ' + evaluate('len(initpythonenv.getController("category").getList())'))})
-
-        }
-
-        function init() {
-
-
-        }
-
-        function startDownload() {
-            page.downloading = true;
-            dlprogress.value = 0.0;
-            call('datadownloader.downloader.download', function() {});
-        }
-
-        onError: {
-            // when an exception is raised, this error handler will be called
-            console.log('python error: ' + traceback);
-        }
-
-        onReceived: {
-            // asychronous messages from Python arrive here
-            // in Python, this can be accomplished via pyotherside.send()
-            console.log('got message from python: ' + data);
-        }
-    }
 
 }

@@ -15,6 +15,8 @@ Page {
 
         Component.onCompleted:
         {
+            console.log(applicationWindow.settings.useRecipes)
+
             useRecipes.checked = applicationWindow.settings.useRecipes
             useHousehould.checked = applicationWindow.settings.useHousehold
             useFood.checked = applicationWindow.settings.useFood
