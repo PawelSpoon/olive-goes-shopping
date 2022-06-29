@@ -3,7 +3,7 @@ import sys
 sys.path.append('../src')
 
 from controller.itemcontroller import ItemController
-from storage.persistance import readItems, storeItems
+from storage.persistance import readItems
 
 class ItemControllerTest(unittest.TestCase):
   
@@ -16,38 +16,36 @@ class ItemControllerTest(unittest.TestCase):
 
     def testCreation(self):
         print("testCreation")
-        controller = ItemController("food")
-        self.assertTrue(controller.getItemName() == "food")  
+        controller = ItemController("food",self.foodFile)
+        self.assertTrue(controller.getTypeName() == "food")  
 
     def testLoad(self):
         print("testLoad")
         enums = readItems(self.foodFile)
         self.assertTrue("Potato" in enums)
-        controller = ItemController("food")
-        controller.load(enums)
+        controller = ItemController("food",self.foodFile)
+        controller.loadString(enums)
         self.assertTrue("Potato" in controller.getList())
 
     def testAdd(self):
         print("testAdd")
-        enums = readItems(self.foodFile)
-        self.assertTrue("Potato" in enums)
-        controller = ItemController("food")
-        controller.load(enums)
-        controller.add({"Name":"me"})
+        controller = ItemController("food",self.foodFile)
+        controller.load()
+        self.assertTrue("Potato" in controller.getList().keys())
+        self.assertTrue(controller.add({"Name":"me"}))
         self.assertTrue("me" in controller.getList().keys())
 
     def testDuplicateAdd(self):
-        enums = readItems(self.foodFile)
-        controller = ItemController("food")
-        controller.load(enums)
+        controller = ItemController("food",self.foodFile)
+        controller.load()
         ret = controller.add({"Name": "Potato"})
         self.assertTrue(ret == False)
         self.assertTrue(len(controller.getList()) == 2)
 
     def testRename(self):
         enums = readItems(self.foodFile)
-        controller = ItemController("food")
-        controller.load(enums)
+        controller = ItemController("food",self.foodFile)
+        controller.loadString(enums)
         ret = controller.rename("Potato","Pitato")
         self.assertTrue(ret == True)
         self.assertTrue("Pitato" in controller.getList())
@@ -58,11 +56,12 @@ class ItemControllerTest(unittest.TestCase):
         self.assertTrue("Patata" not in controller.getList())
 
     def testStore(self):
-        enums = readItems(self.foodFile)
-        controller = ItemController("food")
-        controller.load(enums)
+        controller = ItemController("food",self.foodFile)
+        controller.load()
         ret = controller.rename("Potato","Patata")
-        storeItems(self.foodOutFile, controller.getList())
+        controller.filePath = self.foodOutFile
+        controller.store()
+
   
 if __name__ == '__main__':
     unittest.main()

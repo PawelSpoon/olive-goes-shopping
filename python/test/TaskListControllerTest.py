@@ -25,7 +25,7 @@ class TaskListControllerTest(unittest.TestCase):
         print('testCreation')
         manager = TaskListController(tasklistBreva)
         #self.assertTrue(manager.rootDir == self.rootDir)
-        self.assertTrue(manager.getItemName() == tasklistBreva)
+        self.assertTrue(manager.getTypeName() == tasklistBreva)
 
     def testLoad(self):
         print('testLoad')

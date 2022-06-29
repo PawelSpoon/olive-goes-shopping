@@ -38,7 +38,7 @@ class ListManager:
                 if (self.type == shoplistType):
                     ctl = ShoppingListController(self.file2ListName(list),self.rootDir)
                 ctl.load(lst)
-                self.listController[ctl.getItemName()] = ctl
+                self.listController[ctl.getTypeName()] = ctl
 
     def store(self):
         for key in self.listController.keys():

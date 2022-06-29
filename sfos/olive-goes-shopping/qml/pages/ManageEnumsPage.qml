@@ -5,8 +5,7 @@ import io.thp.pyotherside 1.4
 Dialog {
 
     id: page
-    // property ItemsPage itemsPage
-    // property FirstPage mainPage
+
     property string enumType
 
     allowedOrientations: defaultAllowedOrientations
@@ -44,12 +43,7 @@ Dialog {
 
     function updateCategoriesInShoppingList()
     {
-        for (var i=0; i < itemModel.count; i++)
-        {
-            var current = itemModel.get(i);
-            if (current.ordernr === 0) continue;
-            DB.getDatabase().updateCategoryOrder(current.name, current.ordernr)
-        }
+
     }
 
     ListModel {

@@ -4,6 +4,7 @@ sys.path.append('../src')
 
 from controller.assetmanager import AssetManager
 from storage.persistance import readEnums, readItems, storeEnums, storeItems
+from controller.constants import *
 
 class AssetManagerTest(unittest.TestCase):
   
@@ -43,10 +44,42 @@ class AssetManagerTest(unittest.TestCase):
         print("testGetController")
         manager = AssetManager(self.rootDir)
         manager.load()
-        rpc = manager.getController("recipe")
-        rpc.add({"Name":"My-Recipe"})
+        rpc = manager.getController(recipe)
+        ret = rpc.add({"Name":"My-Recipe"})
+        self.assertTrue(ret)
         manager.rootDir = self.outDir
         manager.store()
+
+    def testGetNoneController(self):
+        print("testGetNoneController")
+        manager = AssetManager(self.rootDir)
+        manager.load()
+        rpc = manager.getController("None")
+        self.assertTrue(None==rpc)
+
+    def testGetCategoryController(self):
+        print("testGetCategoryController")
+        manager = AssetManager(self.rootDir)
+        manager.load()
+        rpc = manager.getController(category)
+        self.assertTrue(rpc != None)
+        ret = rpc.add({"Id":"doit","Name":"My-Recipe"})
+        self.assertTrue(ret)
+        rpc.filePath = self.outDir + categoryFilePath
+        rpc.store()
+
+    def testGetPhydimController(self):
+        print("testGetPhydimController")
+        manager = AssetManager(self.rootDir)
+        manager.load()
+        rpc = manager.getController(phydim)
+        self.assertTrue(rpc != None)
+        ret = rpc.add("My-Recipe")
+        self.assertTrue(ret)
+        rpc.filePath = self.outDir + phydimFilePath
+        rpc.store()
+
+
 
 if __name__ == '__main__':
     unittest.main()

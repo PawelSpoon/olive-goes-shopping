@@ -76,7 +76,7 @@ Page {
         visible: page.downloading
     }
 
-    Button {
+    /*Button {
         text: "Update color"
         enabled: !page.downloading
         anchors.bottom: parent.bottom
@@ -84,7 +84,7 @@ Page {
         onClicked: {
             python.startDownload();
         }
-    }
+    }*/
 
     }
     Python {

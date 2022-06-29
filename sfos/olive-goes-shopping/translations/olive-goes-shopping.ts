@@ -104,6 +104,14 @@
         <source>Import Export</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Physical dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Units</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManageRecipesPage</name>

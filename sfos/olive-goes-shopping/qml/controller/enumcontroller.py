@@ -1,19 +1,23 @@
 
+from storage import persistance
+
+
 class Enum:
     mytype = type
  
 class EnumController:
 
-    def __init__(self,enumName):
+    def __init__(self,enumName, _filePath):
         self.mytype = enumName
+        self.filePath = _filePath
 
     items =[]
-    #mytype = ""
 
     def getEnumName(self):
         return self.mytype
 
     def add(self,item):
+        # we could check here for strings or literals only
         if (item in self.items):
             print(item + " already in list")
             return False
@@ -44,7 +48,14 @@ class EnumController:
     def getList(self):
         return self.items
 
-    def load(self, json):
+    def loadString(self, json):
         self.items = list(json)
         return True
+
+    def load(self):
+        self.items = list(persistance.readEnumsIfExists(self.filePath))
+
+    def store(self):
+        persistance.storeEnums(self.filePath, self.items)
+
 

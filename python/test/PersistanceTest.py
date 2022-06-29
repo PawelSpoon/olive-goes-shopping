@@ -18,6 +18,9 @@ class PersistanceTest(unittest.TestCase):
     unitFile = "../src/assets/unit.json"
     unitOutFile = "./test-out/unit.json"
 
+    catFile = "../src/assets/category.json"
+    catOutFile = "./test-out/category.json"
+
     def setUp(self) -> None:
         return super().setUp()
         
@@ -40,6 +43,10 @@ class PersistanceTest(unittest.TestCase):
     def testReadItems(self):
         items = readItems(self.unitFile)
         print(items.get("kg"))
+
+    def testReadItems(self):
+        items = readItems(self.catFile)
+        self.assertTrue("meat products" in items)
 
     def testStoreItems(self):
         items = readItems(self.unitFile)
