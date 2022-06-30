@@ -70,7 +70,7 @@ bool copyDir(const QString &source, const QString &destination, bool override)
      return !error;
 }
 
-void copyAssetsToWriteable()
+void copyAssetsToWriteable(bool force)
 {
 
     QString pathNew = "/oarg.pawelspoon/olive-goes-shopping/assets";
@@ -78,7 +78,7 @@ void copyAssetsToWriteable()
 
     if(newDbDir.exists()) {
         std::cout << "leaving early folder exits! fake" << std::endl;
-       //return;
+        if (!force) return;
     }
 
      std::cout << copyDir("/usr/share/olive-goes-shopping/assets" ,newDbDir.absolutePath(), true);
@@ -91,12 +91,12 @@ int main(int argc, char *argv[])
     QString orgname = "oarg.pawelspoon";
 
     // rem: i could use args to forcefully rewrite the shit
-    copyAssetsToWriteable();
+    copyAssetsToWriteable(false);
 
 //    it did work without these settings so lets try to avoid them
-//    QCoreApplication::setOrganizationDomain(orgname);
-//    QCoreApplication::setOrganizationName(orgname); // needed for Sailjail
-//    QCoreApplication::setApplicationName(pkgname);
+    QCoreApplication::setOrganizationDomain(orgname);
+    QCoreApplication::setOrganizationName(orgname); // needed for Sailjail
+    QCoreApplication::setApplicationName(pkgname);
 
     qmlRegisterType<ImportExport>("oarg.pawelspoon.olivegoesshopping.import_export", 1, 0, "ImportExport");
     qmlRegisterType<OGSSettings>("oarg.pawelspoon.olivegoesshopping.ogssettings", 1, 0, "OGSSettings");

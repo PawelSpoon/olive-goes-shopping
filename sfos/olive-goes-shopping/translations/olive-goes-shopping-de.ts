@@ -29,6 +29,101 @@
     </message>
 </context>
 <context>
+    <name>ExportPage</name>
+    <message>
+        <source>no-importfiles-placeholder</source>
+        <extracomment>informing user that no former exports are available</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal-storage-label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sdcard-label</source>
+        <extracomment>Label for SD-Cards where %1 represents the increasing number for each card</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export / Import</source>
+        <extracomment>export/import page headline</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export target</source>
+        <extracomment>headline for exports</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter a file name for export</source>
+        <extracomment>placeholder message to remind the user that he has to enter a name for the data export</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export data</source>
+        <extracomment>headline for the data export section</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>select-file-header</source>
+        <extracomment>headline for imports</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>delete-file-button</source>
+        <extracomment>Button to delete the selected data file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>import-button</source>
+        <extracomment>Button to import data form the selected file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>information-label</source>
+        <extracomment>headline for information about import/export mechanism</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>export-import-description</source>
+        <extracomment>Explanation of how importing and exporting data works and where the files are/have to be located.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-header</source>
+        <extracomment>headline for the database purge</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-warning</source>
+        <extracomment>warn user of destructive drop DB function</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-confirmation</source>
+        <extracomment>let user confirm the database purge</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-button</source>
+        <extracomment>Button to import data form the selected file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-success</source>
+        <extracomment>informational notification about the successful dropped data tables</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-detail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
         <source>Shopping List</source>
@@ -231,11 +326,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Servings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set number of servings</source>
+        <source>Rating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>..how do you cook that..</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

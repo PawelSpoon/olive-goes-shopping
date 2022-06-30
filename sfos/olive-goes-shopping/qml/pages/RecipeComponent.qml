@@ -13,18 +13,8 @@ import Sailfish.Silica 1.0
         property string itemType
         property int mode
 
-        property var item
+        property var item_
 
-        function collectCurrentItem()
-        {
-            var current = {}
-            current['Id'] = id
-            current['Name']  = itemName.text
-            current['Services']  = servings.text
-            current['Ingredients']  = {}
-            current['Category']  = {} // need to get that from combo
-            return current;
-        }
 
         onActiveFocusChanged: print(activeFocus)
         anchors.fill: parent
@@ -38,6 +28,10 @@ import Sailfish.Silica 1.0
             id: commons
         }
 
+        ListModel {
+            id: categoryModel
+        }
+
         Column {
             id: col
             width: parent.width
@@ -49,7 +43,7 @@ import Sailfish.Silica 1.0
             }
 
             Label {
-                text: { if (id === "") qsTr("New recipe")
+                text: { if ( mode === 2) qsTr("New recipe")
                         else qsTr("Recipe") }
                 font.pixelSize: Theme.fontSizeLarge
                 anchors.left: parent.left
@@ -70,13 +64,72 @@ import Sailfish.Silica 1.0
                 EnterKey.onClicked: servings.focus = true
             }
 
-            TextField {
+            ComboBox {
+                id: categoryCombo
+                label: qsTr("Category")
+                menu: ContextMenu {
+                    Repeater {
+                        id: catRepeater
+                        model: categoryModel
+                        MenuItem {
+                            text: Name
+                        }
+                    }
+                }
+            }
+
+            ComboBox {
                 id: servings
                 width: parent.width
-                inputMethodHints: Qt.ImhDigitsOnly
                 label: qsTr("Servings")
+                menu: ContextMenu {
+                     Repeater {
+                        model: ListModel {
+                            id: servItems
+                            ListElement { Name: "12"; color: "Green" }
+                            ListElement { Name: "10"; color: "Green" }
+                            ListElement { Name: "8"; color: "Green" }
+                            ListElement { Name: "6"; color: "Yellow" }
+                            ListElement { Name: "4"; color: "Orange" }
+                            ListElement { Name: "2"; color: "Red" }
+                            ListElement { Name: "1"; color: "Brown" }
+                        }
+                        MenuItem {
+                            text: Name
+                        }
+                     }
+                 }
+
+            }
+
+            ComboBox {
+                id: rating
+                width: parent.width
+                label: qsTr("Rating")
+                menu: ContextMenu {
+                    Repeater {
+                        model: ListModel {
+                            ListElement { Name: "11"; color: "Green" }
+                            ListElement { Name: "4"; color: "Yellow" }
+                            ListElement { Name: "3"; color: "Yellow" }
+                            ListElement { Name: "2"; color: "Red" }
+                            ListElement { Name: "1"; color: "Brown" }
+                            ListElement { Name: "0"; color: "Brown" }
+                        }
+                       MenuItem {
+                           text: Name
+                       }
+                    }
+                }
+            }
+
+            TextField {
+                id: howto
+                width: parent.width
+                inputMethodHints: Qt.ImhNone
+                label: qsTr("Recipe")
                 text: ""
-                placeholderText: qsTr("Set number of servings")
+                placeholderText: qsTr("..how do you cook that..")
                 errorHighlight: text.length === 0
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -228,7 +281,8 @@ import Sailfish.Silica 1.0
         }
 
         function doAccept() {
-            commons.onAccept()
+            //(itemType,mode,oldItem, currentItem)
+            commons.onAccept(itemType,item_,collectCurrentItem())
 
             // save to db and reload the prev page to make the new item visible
             //if (uid_ == "" ) uid_ = DB.getDatabase().db.getUniqueId()
@@ -237,34 +291,60 @@ import Sailfish.Silica 1.0
             commons.updateParentPage(itemType)
         }
 
+        function collectCurrentItem()
+        {
+            var current = {}
+            current['Id'] = id
+            current['Name']  = itemName.text
+            current['Servings']  = servings.text
+            current['Category']  = commons.getUnit(categoryCombo.value, categoryModel)
+            // todo ingres:
+            return current;
+        }
+
 
     Component.onCompleted: {
+        categoryModel.clear()
+        commons.fillCategoryModel(categoryModel)
+
+        if (mode == 1) {
+           send2Controlls()
+        }
+    }
+
+    function copy2Controls()
+    {
+        itemName.text = item['Name']
+        servings.text = item['Servings']
+        categoryCombo.currentIndex = commons.getUnitIndex(item['Category'], categoryModel)
+        rating.text = item['Rating']
+        howto.text = item['HowTo']
        fillIngredientsList()
     }
 
-
     function fillIngredientsList()
     {
-        if (ingredients_ == null)
+        var ingres = itemitem['Ingredients']
+        if (ingres === null)
         {
             print("ingredient is null, set howMany to 0")
             return
         }
-        if (ingredients_ == "")
+        if (ingres == "")
         {
             print("ingredient is empty string set howMany to 0")
             return
         }
-        print(ingredients_)
+        print(ingres)
         // convert string to object
-        var ingre = JSON.parse(ingredients_)
+        var ingre = JSON.parse(ingres)
         ingredientsModel.clear()
         if (ingre === null) return; // no ingredients yet
         for (var i = 0; i < ingre.length; i++)
         {
             var ing = ingre[i]
-            print(ing.name + " " + ing.amount  + " " + ing.unit)
-            var elem =  {name: ing.name, amount:ing.amount, unit: ing.unit}
+            print(ing.Name + " " + ing.Amount  + " " + ing.Unit)
+            var elem =  {Name: ing.Name, Amount:ing.Amount, Unit: ing.Unit}
             ingredientsModel.append(elem)
         }
         ingredientsList.height = i * 150

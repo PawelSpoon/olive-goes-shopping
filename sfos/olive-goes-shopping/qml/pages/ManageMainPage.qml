@@ -197,6 +197,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
                         // should trigger copy action)
+                        applicationWindow.copyAssetsToWriteable(true)
                     }
                 }
             }

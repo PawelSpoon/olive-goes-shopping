@@ -41,6 +41,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/Settings.qml \
     qml/pages/RecipeDialog.qml \
     qml/pages/RecipeComponent.qml \
+    qml/pages/ExportPage.qml\
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \

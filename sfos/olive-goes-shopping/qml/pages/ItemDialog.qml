@@ -106,7 +106,6 @@ Dialog {
             ComboBox {
                 id: categoryCombo
                 label: qsTr("Category")
-                //model: categoryModel
                 menu: ContextMenu {
                     Repeater {
                         id: catRepeater
