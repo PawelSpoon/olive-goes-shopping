@@ -11,12 +11,14 @@ Dialog {
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
-    property string uid_ : ""
-    property ManageEnumsPage itemsPage: null
+    property string id : ""
+
     property string itemType // type == tablename where enum is stored
-    property alias name_ : itemName.text // enum value
-    property var item
     property int mode
+    //property alias name_ : itemName.text // enum value
+    
+    property var item
+
     property bool showCategory
 
     SilicaFlickable{
@@ -30,6 +32,10 @@ Dialog {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
+        AssetCommons {
+            id: commons
+        }
+
         Column {
             id: col
             width: parent.width
@@ -41,7 +47,7 @@ Dialog {
             }
 
             Label {
-                text: { if (uid_ === "") qsTr("New item")
+                text: { if (id === "") qsTr("New item")
                         else qsTr("Edit item") }
                 font.pixelSize: Theme.fontSizeLarge
                 anchors.left: parent.left
@@ -80,12 +86,12 @@ Dialog {
     }
 
     Component.onCompleted: {
-       if (item == null) {
+       if (item === null) {
            item = { Id: null, Category: null, Order: 0}
        }
        else {
-           name_ = item.Name
-           uid_ = item.Id
+           itemName.text = item.Name
+           id = item.Id
        }
     }
 
@@ -93,18 +99,18 @@ Dialog {
 
     }
 
+    function collectCurrentItem()
+    {
+        var current = {}
+        current['Id'] = id
+        current['Name']  = itemName.text
+        return current;
+    }
+
     onAccepted: {
-        // save to db and reload the prev page to make the new item visible
-        var oldName = item['Name']
-        if (oldName === undefined || oldName === null || oldName === '') oldName = name_
-        if (uid_ == "" ) uid_ = applicationWindow.controller.getUniqueId()
-        // var orderNr = DB.getDatabase().db.executeSelect("select max(ordernr) from category");
-        // here i could check old and new name for rename :)
-        item['Name'] = name_
-        item['Id'] = uid_
-        if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, oldName, item)
-        if (mode == 2) applicationWindow.pythonController.addAsset(itemType, item)
-        //itemsPage.initPage()
+        // itemType,mode,oldItem, currentItem
+        commons.onAccept(itemType, mode, item, collectCurrentItem())
+        commons.updateParentPage(itemType)
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {

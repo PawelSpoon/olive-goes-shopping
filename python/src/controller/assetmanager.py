@@ -8,6 +8,7 @@ import os
 from controller.constants import *
 from controller.folderitemcontroller import FolderItemController
 from controller.itemcontroller import ItemController
+from controller.itemtypecontroller import ItemTypeController
 from storage import persistance
 
 
@@ -15,7 +16,9 @@ class AssetManager:
     def __init__(self, root) -> None:
         self.rootDir = root
         self.catController = ItemController(category,self.rootDir + categoryFilePath) 
-        self.itemtypeController = ItemController(itemtype, self.rootDir + itemtypeFilePath) 
+        self.itemtypeController = ItemTypeController(itemtype,
+         self.rootDir + itemtypeFilePath,
+         os.path.join(self.rootDir,itemDir)) 
         self.unitController = ItemController(unit, self.rootDir + unitFilePath)
         self.phydimController = ItemController(phydim,self.rootDir + phydimFilePath)
         # multiple itemControllers
@@ -26,10 +29,10 @@ class AssetManager:
         self.taskitemController = dict()
 
     def getRecipePath(self):
-        return self.rootDir + recipeDirPath
+        return os.path.join(self.rootDir,recipeDir)
 
     def getTaskPath(self):
-        return self.rootDir + tasklistDirPath
+        return os.path.join(self.rootDir,tasklistDir)
 
     def load(self):
         print('asset manager loading from: ' + self.rootDir)

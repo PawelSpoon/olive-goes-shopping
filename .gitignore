@@ -80,3 +80,4 @@ sfos/olive-goes-shopping/qml/storage/*
 
 
 python/src/controller/__pycache__/folderitemcontroller.cpython-38.pyc
+python/src/controller/__pycache__/itemtypecontroller.cpython-38.pyc

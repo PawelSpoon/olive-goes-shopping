@@ -22,8 +22,14 @@ Dialog {
 
     Component.onCompleted: {
         initPage()
+        applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
     }
 
+    function onAssetChanged(itemType) {
+        console.log("IINNN")
+        console.log(itemType)
+        page.initPage()
+    }
     onAccepted: {
         // itemsPage.initPage()
     }
@@ -45,7 +51,7 @@ Dialog {
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
-            print(items[i])
+            print(items[i].Name)
             itemModel.append({"Id": items[i].Id, "Name": items[i].Name, "Order" : items[i].Order, "Category": items[i].Category, "Item": items[i] })
         }
     }
@@ -103,7 +109,7 @@ Dialog {
                 RemorsePopup {id: remorse }
                 function cleanEnumsTable()
                 {
-                    applicationWindow.pythonHanlder.clearAssets(enumType)
+                    applicationWindow.pythonController.clearAssets(enumType)
                     initPage()
                 }
             }
@@ -128,7 +134,7 @@ Dialog {
                 text: qsTr("Add");
                 visible: !readonly
                 //onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
-                onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, page, 2)
+                onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, 2, {})
             }
 
         }
@@ -147,8 +153,7 @@ Dialog {
                 var removal = removalComponent.createObject(myListItem)
                 ListView.remove.connect(removal.deleteAnimation.start)
                 removal.execute(contentItem, "Deleting", function() {
-                    print("u:" + Id + ",n:"+Name)
-                    applicationWindow.pythonController.deleteAsset(enumType,name)
+                    applicationWindow.pythonController.deleteAsset(enumType,Name)
                     itemModel.remove(index); }
                 )
             }
@@ -166,7 +171,7 @@ Dialog {
                     //console.log("Clicked " + title)
                     //todo:  already existing item
                     //pageStack.push(Qt.resolvedUrl("ItemDialog.qml"),
-                    //               {uid_: uid, name_: name, itemType: type, itemsPage: page} )
+                    //               {id: uid, name_: name, itemType: type, itemsPage: page} )
                 }
                 Image {
                     id: typeIcon
@@ -227,7 +232,7 @@ Dialog {
                         visible: !readonly
                         onClicked: {
                             var temp = itemModel.get(index).Item
-                            applicationWindow.controller.openMgmtDetailPage(enumType,page,1,temp)
+                            applicationWindow.controller.openMgmtDetailPage(enumType, 1, temp)
                         }
                     }
                     MenuItem {

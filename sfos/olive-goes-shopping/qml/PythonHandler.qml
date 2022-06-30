@@ -5,7 +5,7 @@ Python {
   id: python
 
   Component.onCompleted: {
-    /*setHandler('a_search_stop', a_search_stop);
+    /*setHandler('asset_updated', asset_updated);
     setHandler('a_geo_stop', a_geo_stop);
     setHandler('a_geo_stops', a_geo_stops);
     setHandler('a_stops_by_ids', a_stops_by_ids);
@@ -53,14 +53,13 @@ Python {
     app.signal_error(module_id, method_id, description);
   }
 
-
   function getAssets(type) {
       return call_sync('app.app.getAssetList',[type])
   }
 
 
   function clearAssets(type) {
-      return call_sync('app.app.deleteAssetList',[type])
+      return call_sync('app.app.clearAssets',[type])
   }
 
   function deleteAsset(type, name) {
@@ -74,6 +73,8 @@ Python {
   function addAsset(type, item) {
       return call_sync('app.app.addAsset',[type,item])
   }
+
+  //////////////////////////////////////////////
 
   function stop_point_sort_default(a, b) {
     const stop_sort_pref = {

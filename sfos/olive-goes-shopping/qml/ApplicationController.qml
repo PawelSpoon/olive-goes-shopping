@@ -8,7 +8,9 @@ Item {
 
     id: applicationController
     property string currentPage: 'any'
+    property var unitsList: 'undefined'
 
+    signal signal_asset_updated(var itemType)
 
     // array of pages
     property variant pages: []
@@ -20,6 +22,12 @@ Item {
         }
         console.log('no need to push, already there, lets replace')
         pages[getCurrentPageIndex(name1)].page = page1
+    }
+
+    function updateParentPage(itemType)
+    {
+       console.log('sending?')
+       signal_asset_updated(itemType)
     }
 
     function propageteCategoryChanged()
@@ -120,6 +128,14 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false})
     }
 
+    function getUnits() {
+        if (unitsList === 'undefined')
+        {
+            unitsList = applicationWindow.pythonController.getAssets("unit")
+        }
+        return unitsList
+    }
+
     function openItemsMngmtPage(itemtype)
     {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: itemtype, readonly: false})
@@ -132,11 +148,11 @@ Item {
     }
 
     // type, page, 0: read-only, 1: edit, 2: add
-    function openMgmtDetailPage(type, page, mode, item)
+    function openMgmtDetailPage(type, mode, item)
     {
-        if (mode === 2 && item === null) {
+        /*if (mode === 2 && item === null) {
             item = {Id:null, Name:"", OrderNr: -1, Category: null}
-        }
+        }*/
 
         switch(type) {
         case "unit":
@@ -151,7 +167,14 @@ Item {
         case "category":
             pageStack.push(Qt.resolvedUrl("pages/EnumDialog.qml"), {itemType: type, mode: mode, item: item})
             break
+        case "food":
+            pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
+        case "household":
+            pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
         }
+
 
     }
 

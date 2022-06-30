@@ -16,9 +16,15 @@ class ItemController:
 
     def getItemName(self,item):
         # could do check if exists
-        return item[FieldName]
+        name = item[FieldName]
+        if name != '':
+            return item[FieldName]
+        else:
+            raise Exception("item's Name is empty")
 
     def add(self,item):
+        if type(item) != type(dict()):
+            raise Exception('item is not a dictionary')
         itemName = self.getItemName(item)
         if (itemName in self.items.keys()):
             print(itemName + " already in list")
@@ -36,11 +42,17 @@ class ItemController:
     def update(self, oldName, new):
         if (oldName in self.items.keys()):
             if (new[FieldName] not in self.items.keys()):
+                # rename
                 self.items.pop(oldName)
                 self.items[new[FieldName]]= new
                 return True
             else:
-                print("new would cause a duplication")
+                if oldName == new[FieldName]:
+                    # pure update
+                    self.items[oldName] = new
+                else:
+                    # conflict
+                    print("new would cause a duplication")
         else:
             print("old is not present")
         return False

@@ -41,6 +41,8 @@ Page {
 
     Component.onCompleted:
     {
+        itemTypeButtons.items = ['Jan','Vero']
+        itemTypeButtons.init()
         console.log(applicationWindow.settings);
     }
 
@@ -108,6 +110,7 @@ Page {
             }
             Column {
                 width: parent.width
+                spacing: Theme.horizontalPageMargin
                 Button {
                     id: managePhydims
                     visible: true
@@ -142,6 +145,7 @@ Page {
             }
             Column {
                 width: parent.width
+                spacing: Theme.horizontalPageMargin
                 Button {
                     id: manageRecipes
                     visible: applicationWindow.settings.useRecipes
@@ -152,6 +156,10 @@ Page {
                         applicationWindow.controller.openRecipesMngmtPage();
                     }
                 }
+              /*  ItemTypeButtons {
+                    id: itemTypeButtons
+                }*/
+
                 // here we need a loop over all item-types
                 Button {
                     id: manageFood
@@ -174,6 +182,7 @@ Page {
             }
             Column {
                 width: parent.width
+                spacing: Theme.horizontalPageMargin
                 Button {
                     id: impExport
                     text: qsTr("Import Export")

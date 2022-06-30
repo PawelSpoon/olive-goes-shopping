@@ -6,12 +6,18 @@ class App:
     def setup(self,rootDir,qObject):
 
         self.assetManager = AssetManager(rootDir)
+        self.root = rootDir
         self.assetManager.load()
         self.pyHandler = qObject
         self.init = True
 
     def getAssetManager(self):
         return self.assetManager
+
+    def reInitAssetManager(self):
+        self.assetManager = AssetManager(self.root)
+        return self.assetManager
+
 
     def getAssetList(self, type):
         return self.assetManager.getController(type).getAsList()
@@ -31,9 +37,7 @@ class App:
     def addAsset(self, type, item):
         temp = self.assetManager.getController(type)
         temp.add(item)
-        temp.store()
-        # if type was itemtype, i need to create an itemcontroller too + file
-        # rename is also nice         
+        temp.store()        
         return temp.getAsList()
 
 
