@@ -36,13 +36,34 @@ Item {
         applicationWindow.controller.updateParentPage(itemType)
     }
 
-
-    function getUnitIndex(unit, listModel)
+    function fillCategoryModel(model)
     {
-        var unitName = unit['Name']
-        if (unitName === '') return
+        var list = applicationWindow.controller.getCategories()
+        model.append({"Name":" ", "Id": "-1"})
+        for (var i = 0; i < list.length ; i++) {
+            console.log(list[i].Name)
+            model.append({"Name": list[i].Name, "Id": list[i].Id})
+        }
+        return model
+    }
+
+    function fillUnitModel(model)
+    {
+        var list = applicationWindow.controller.getUnits()
+        for (var i = 0; i < list.length ; i++) {
+                        console.log(list[i].Name)
+            model.append({"Name": list[i].Name, "Id": list[i].Id})
+        }
+        return model
+    }
+
+    function getUnitIndex(item, listModel)
+    {
+        if (item === undefined) return 1
+        var itemName = item['Name']
+        if (itemName === '') return
         for (var i = 0; i < listModel.count ; i++) {
-            if( listModel.get(i).Name === unitName) {
+            if( listModel.get(i).Name === itemName) {
                 return i
             }
         }

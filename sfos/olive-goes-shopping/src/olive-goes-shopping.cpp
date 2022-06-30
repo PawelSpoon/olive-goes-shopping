@@ -8,9 +8,10 @@
 #include <QtGui>
 #include <QtQml>
 #include <QSettings>
+#include "importexport.h"
 #include "settings.h"
 #include "ogssettings.h"
-//#include <iostream>
+#include <iostream>
 
 
 /*#include <QTranslator>
@@ -48,11 +49,12 @@ bool copyDir(const QString &source, const QString &destination, bool override)
          QFileInfo fileInfo(srcFilePath);
          if (fileInfo.isFile() || fileInfo.isSymLink())
          {
-             if (override)
+           if (override)
            {
-                 QFile::setPermissions(dstFilePath, QFile::WriteOwner);
-             }
-             QFile::copy(srcFilePath, dstFilePath);
+               // what a fuck, had only write not read rights
+               QFile::setPermissions(dstFilePath, QFile::WriteOwner| QFile::ReadOwner);
+           }
+           QFile::copy(srcFilePath, dstFilePath);
          }
          else if (fileInfo.isDir())
          {
@@ -75,11 +77,11 @@ void copyAssetsToWriteable()
     QDir newDbDir = (QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + pathNew);
 
     if(newDbDir.exists()) {
-        //std::cout << "leaving early folder exits!" << std::endl;
-        return;
+        std::cout << "leaving early folder exits! fake" << std::endl;
+       //return;
     }
 
-    copyDir("/usr/share/olive-goes-shopping/assets" ,newDbDir.absolutePath(), true);
+     std::cout << copyDir("/usr/share/olive-goes-shopping/assets" ,newDbDir.absolutePath(), true);
 }
 
 int main(int argc, char *argv[])
@@ -96,7 +98,7 @@ int main(int argc, char *argv[])
 //    QCoreApplication::setOrganizationName(orgname); // needed for Sailjail
 //    QCoreApplication::setApplicationName(pkgname);
 
-//    qmlRegisterType<ImportExport>("oarg.pawelspoon.olivegoesshopping.import_export", 1, 0, "ImportExport");
+    qmlRegisterType<ImportExport>("oarg.pawelspoon.olivegoesshopping.import_export", 1, 0, "ImportExport");
     qmlRegisterType<OGSSettings>("oarg.pawelspoon.olivegoesshopping.ogssettings", 1, 0, "OGSSettings");
     qmlRegisterType<Settings>("oarg.pawelspoon.olivegoesshopping.settings", 1, 0, "Settings");
 

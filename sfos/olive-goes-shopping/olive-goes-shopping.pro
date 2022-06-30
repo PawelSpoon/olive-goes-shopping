@@ -18,13 +18,14 @@ DEPLOYMENT_PATH = /usr/share/$${TARGET}
 CONFIG += sailfishapp
 
 HEADERS += \
- #   src/importexport.h \
+    src/importexport.h \
     src/ogssettings.h \
     src/settings.h
 
 SOURCES += src/olive-goes-shopping.cpp \
     src/ogssettings.cpp \
-    src/settings.cpp
+    src/settings.cpp \
+    src/importexport.cpp
 
 DISTFILES += qml/olive-goes-shopping.qml \
     qml/ApplicationController.qml \
@@ -38,6 +39,8 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/ItemDialog.qml\
     qml/pages/EnumDialog.qml \
     qml/pages/Settings.qml \
+    qml/pages/RecipeDialog.qml \
+    qml/pages/RecipeComponent.qml \
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \

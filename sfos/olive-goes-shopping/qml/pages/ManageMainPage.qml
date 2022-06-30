@@ -191,6 +191,14 @@ Page {
                         pageStack.push(Qt.resolvedUrl("ExportPage.qml"))
                     }
                 }
+                Button {
+                    id: reset
+                    text: qsTr("Reset")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        // should trigger copy action)
+                    }
+                }
             }
         }
     }

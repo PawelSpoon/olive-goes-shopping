@@ -87,6 +87,13 @@ class AssetManagerTest(unittest.TestCase):
         ctrl.filePath = self.outDir + "/item/food.json"
         ctrl.store()
 
+    def testLoadCats(self):
+        manager = AssetManager(self.rootDir)
+        manager.load()
+        ctrl = manager.getController("category")
+        self.assertTrue(ctrl.getList()["fresh produce"]["Name"]=="fresh produce")
+
+
 
 
 if __name__ == '__main__':
