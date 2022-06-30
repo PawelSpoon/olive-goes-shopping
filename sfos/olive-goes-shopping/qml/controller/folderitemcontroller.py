@@ -12,7 +12,24 @@ class FolderItemController(ItemController):
     def __init__(self,itemName,_folderPath):
         super().__init__(itemName,_folderPath)
 
+
+    def list2FileName(self, itemTypeName):
+        return os.path.join(self.filePath,(itemTypeName +".json"))
+
+    # do not use
     def loadString(self, json): None
+
+    def update(self, oldName, new):
+        if (super().update(oldName,new)):
+            os.rename(self.list2FileName(oldName),self.list2FileName(new[FieldName]))
+            return True
+        return False
+
+    def rename(self, oldName, newName):
+        if (super().rename(oldName,newName)):
+            os.rename(self.list2FileName(oldName),self.list2FileName(newName))
+            return True
+        return False
 
     def load(self):
         # recipe conroller needs an own loader that loads all files from a folder into controller
