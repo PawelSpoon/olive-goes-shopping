@@ -45,6 +45,7 @@ class App:
         temp = self.assetManager.getController(type)
         temp.update(oldName, item)
         temp.store()
+        #pyotherside.send("a_search_stop", type)
         return temp.getAsList()
     
 

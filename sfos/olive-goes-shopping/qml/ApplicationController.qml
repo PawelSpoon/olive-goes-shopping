@@ -10,6 +10,7 @@ Item {
     property string currentPage: 'any'
     property var unitsList: 'undefined'
 
+    signal signal_asset_updated(var itemType)
 
     // array of pages
     property variant pages: []
@@ -21,6 +22,12 @@ Item {
         }
         console.log('no need to push, already there, lets replace')
         pages[getCurrentPageIndex(name1)].page = page1
+    }
+
+    function updateParentPage(itemType)
+    {
+       console.log('sending?')
+       signal_asset_updated(itemType)
     }
 
     function propageteCategoryChanged()

@@ -15,7 +15,7 @@ Dialog {
 
     property string itemType // type == tablename where enum is stored
     property int mode
-    property alias name_ : itemName.text // enum value
+    //property alias name_ : itemName.text // enum value
     
     property var item
 
@@ -90,7 +90,7 @@ Dialog {
            item = { Id: null, Category: null, Order: 0}
        }
        else {
-           name_ = item.Name
+           itemName.text = item.Name
            id = item.Id
        }
     }
@@ -110,19 +110,7 @@ Dialog {
     onAccepted: {
         // itemType,mode,oldItem, currentItem
         commons.onAccept(itemType, mode, item, collectCurrentItem())
-
-
-        // save to db and reload the prev page to make the new item visible
-        /*var oldName = item['Name']
-        if (oldName === undefined || oldName === null || oldName === '') oldName = name_
-        if (id == "" ) id = applicationWindow.controller.getUniqueId()
-        // var orderNr = DB.getDatabase().db.executeSelect("select max(ordernr) from category");
-        // here i could check old and new name for rename :)
-        item['Name'] = name_
-        item['Id'] = id
-        if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, oldName, item)
-        if (mode == 2) applicationWindow.pythonController.addAsset(itemType, item)
-        //itemsPage.initPage()*/
+        commons.updateParentPage(itemType)
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {

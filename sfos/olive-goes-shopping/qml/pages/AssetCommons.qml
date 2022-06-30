@@ -29,6 +29,14 @@ Item {
 
     }
 
+
+    function updateParentPage(itemType)
+    {
+        console.log('assetcommon send signal')
+        applicationWindow.controller.updateParentPage(itemType)
+    }
+
+
     function getUnitIndex(unit, listModel)
     {
         var unitName = unit['Name']

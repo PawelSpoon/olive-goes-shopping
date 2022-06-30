@@ -13,11 +13,11 @@ Dialog {
 
     property string itemType
     property int mode
-    property alias name_ : itemName.text
+    //property alias name_ : itemName.text
 
-    property alias amount_ : defaultAmount.text
-    property string unit_
-    property alias category_ : categoryName.text
+    //property alias amount_ : defaultAmount.text
+    //property string unit_
+    //property alias category_ : categoryName.text
 
     property var item
 
@@ -211,6 +211,7 @@ Dialog {
     onAccepted: {
         // itemType,mode,oldItem, currentItem
         commons.onAccept(itemType, mode, item, collectCurrentItem())
+        commons.updateParentPage(itemType)
 
     }
     // user has rejected editing entry data, check if there are unsaved details

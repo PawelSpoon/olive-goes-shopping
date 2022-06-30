@@ -22,8 +22,14 @@ Dialog {
 
     Component.onCompleted: {
         initPage()
+        applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
     }
 
+    function onAssetChanged(itemType) {
+        console.log("IINNN")
+        console.log(itemType)
+        page.initPage()
+    }
     onAccepted: {
         // itemsPage.initPage()
     }
