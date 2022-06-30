@@ -72,11 +72,20 @@ class AssetManagerTest(unittest.TestCase):
         manager.load()
         rpc = manager.getController(phydim)
         self.assertTrue(rpc != None)
-        ret = rpc.add("My-Recipe")
+        ret = rpc.add({"Name":"My-Recipe"})
         self.assertTrue(ret)    
         rpc.filePath = self.outDir + phydimFilePath
         rpc.store()
 
+    def testStoreFoodWithUnit(self):
+        manager = AssetManager(self.rootDir)
+        manager.load()
+        ctrl = manager.getController("food")
+        ctrl.getList()
+        ctrl.update('Apple',{ 'Name': 'Apple', 'Unit': {'Id': '4', 'Name':'pound'}})
+        print(ctrl.getList()["Apple"]['Unit']['Id'])
+        ctrl.filePath = self.outDir + "/item/food.json"
+        ctrl.store()
 
 
 

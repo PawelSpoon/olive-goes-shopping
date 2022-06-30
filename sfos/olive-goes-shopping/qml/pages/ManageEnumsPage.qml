@@ -45,7 +45,7 @@ Dialog {
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
-            print(items[i])
+            print(items[i].Name)
             itemModel.append({"Id": items[i].Id, "Name": items[i].Name, "Order" : items[i].Order, "Category": items[i].Category, "Item": items[i] })
         }
     }
@@ -128,7 +128,7 @@ Dialog {
                 text: qsTr("Add");
                 visible: !readonly
                 //onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
-                onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, page, 2)
+                onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, 2, {})
             }
 
         }
@@ -226,7 +226,7 @@ Dialog {
                         visible: !readonly
                         onClicked: {
                             var temp = itemModel.get(index).Item
-                            applicationWindow.controller.openMgmtDetailPage(enumType,page,1,temp)
+                            applicationWindow.controller.openMgmtDetailPage(enumType, 1, temp)
                         }
                     }
                     MenuItem {

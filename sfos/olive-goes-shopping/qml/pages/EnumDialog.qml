@@ -32,6 +32,10 @@ Dialog {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
+        AssetCommons {
+            id: commons
+        }
+
         Column {
             id: col
             width: parent.width
@@ -82,7 +86,7 @@ Dialog {
     }
 
     Component.onCompleted: {
-       if (item == null) {
+       if (item === null) {
            item = { Id: null, Category: null, Order: 0}
        }
        else {
@@ -95,9 +99,21 @@ Dialog {
 
     }
 
+    function collectCurrentItem()
+    {
+        var current = {}
+        current['Id'] = id
+        current['Name']  = itemName.text
+        return current;
+    }
+
     onAccepted: {
+        // itemType,mode,oldItem, currentItem
+        commons.onAccept(itemType, mode, item, collectCurrentItem())
+
+
         // save to db and reload the prev page to make the new item visible
-        var oldName = item['Name']
+        /*var oldName = item['Name']
         if (oldName === undefined || oldName === null || oldName === '') oldName = name_
         if (id == "" ) id = applicationWindow.controller.getUniqueId()
         // var orderNr = DB.getDatabase().db.executeSelect("select max(ordernr) from category");
@@ -106,7 +122,7 @@ Dialog {
         item['Id'] = id
         if (mode == 1) applicationWindow.pythonController.updateAsset(itemType, oldName, item)
         if (mode == 2) applicationWindow.pythonController.addAsset(itemType, item)
-        //itemsPage.initPage()
+        //itemsPage.initPage()*/
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {

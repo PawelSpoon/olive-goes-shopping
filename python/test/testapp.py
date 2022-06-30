@@ -5,7 +5,7 @@ sys.path.append('../src')
 from app import *
 
 
-class TaskListControllerTest(unittest.TestCase):
+class AppTest(unittest.TestCase):
     rootDir = "../src/assets"
     outDir = "./test-out"
 
@@ -16,5 +16,10 @@ class TaskListControllerTest(unittest.TestCase):
     def test(self):        
         self.assertTrue(True)
 
-    def testSetup(self):
-        global.setUp()
+    def testStoreFood(self):
+        app = App()
+        
+
+
+if __name__ == '__main__':
+    unittest.main()

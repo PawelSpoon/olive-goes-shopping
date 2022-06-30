@@ -41,6 +41,8 @@ Page {
 
     Component.onCompleted:
     {
+        itemTypeButtons.items = ['Jan','Vero']
+        itemTypeButtons.init()
         console.log(applicationWindow.settings);
     }
 
@@ -154,6 +156,10 @@ Page {
                         applicationWindow.controller.openRecipesMngmtPage();
                     }
                 }
+              /*  ItemTypeButtons {
+                    id: itemTypeButtons
+                }*/
+
                 // here we need a loop over all item-types
                 Button {
                     id: manageFood

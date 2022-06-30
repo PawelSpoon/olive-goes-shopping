@@ -93,9 +93,9 @@ Dialog {
                 }*/
                 menu: ContextMenu {
                     Repeater {
-                        model: targetModel
+                        model: unitModel
                         MenuItem {
-                            text: name
+                            text: Name
                         }
                     }
                 }
@@ -163,66 +163,55 @@ Dialog {
     }
 
     ListModel {
-        id: targetModel
+        id: unitModel
     }
 
     Component.onCompleted: {
 
-        targetModel.clear()
-        //% "Internal storage"
-        targetModel.append({"name": qsTr("internal-storage-label"), "path": StandardPaths.documents})
-        for (var i = 0; i < 10; i++) {
-            //: Label for SD-Cards where %1 represents the increasing number for each card
-            //% "SD-Card %1"
-            targetModel.append({"name": qsTr("sdcard-label").arg(i + 1), "path": i})
-        } 
-
-        if (id === "") {
-            print (id)
-        }
-        else {
-            print("i am here")
-            print(category_)
-            print("unit:" + unit_)
-            if (unit_ == "-") {
-                print("-")
-                unit.currentIndex = 0
-            }
-            else if (unit_ == "g") {
-                print("g")
-                unit.currentIndex = 1
-            }
-            else if (unit_ == "kg") {
-                print("kg")
-                unit.currentIndex = 2
-            }
-            else if (unit_ == "ml") {
-                print("ml")
-                unit.currentIndex = 3
-            }
-            else if (unit_ == "l") {
-                print("l")
-                unit.currentIndex = 4
-            }
+        unitModel.clear()
+        var list = applicationWindow.controller.getUnits()
+        for (var i = 0; i < list.length ; i++) {
+            unitModel.append({"Name": list[i].Name, "Id": list[i].Id})
         }
 
-        /*
-        var menuComponent = Qt.createComponent("MenuItem.qml");
-if(menuComponent.status == Component.Ready) {
-  var createdMenu = menuComponent.createObject(customLayout);
-  createdMenu.text = "Text from your QList";
-}*/
+        if (mode == 1) {
+            itemName.text = item['Name']
+            defaultAmount.text = item['Amount']
+            var index =  commons.getUnitIndex(item['Unit'], unitModel)
+            console.log('index'+index)
+            unit.currentIndex  = index
+            setCategory()
+        }
     }
 
     Component.onDestruction: {
 
     }
 
+    function setCategory()
+    {
+
+    }
+
+    AssetCommons {
+        id: commons
+    }
+
+    function collectCurrentItem()
+    {
+        var current = {}
+        current['Id'] = id
+        current['Name']  = itemName.text
+        current['Amount']  = defaultAmount.text
+        current['Unit']  = commons.getUnit(unit.value, unitModel)
+        current['Category']  = {} // need to get that from combo
+        return current;
+    }
+
     onAccepted: {
-        // save to db and reload the prev page to make the new item visible
-        if (id == "" ) id = DB.getDatabase().db.getUniqueId()
-        DB.getDatabase().setItem(id,itemName.text,parseInt(defaultAmount.text),unit.value,itemType,0,categoryName.text,co2.text);
-        itemsPage.initPage()
+        // itemType,mode,oldItem, currentItem
+        commons.onAccept(itemType, mode, item, collectCurrentItem())
+
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {

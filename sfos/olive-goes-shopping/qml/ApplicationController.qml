@@ -8,6 +8,7 @@ Item {
 
     id: applicationController
     property string currentPage: 'any'
+    property var unitsList: 'undefined'
 
 
     // array of pages
@@ -120,6 +121,14 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false})
     }
 
+    function getUnits() {
+        if (unitsList === 'undefined')
+        {
+            unitsList = applicationWindow.pythonController.getAssets("unit")
+        }
+        return unitsList
+    }
+
     function openItemsMngmtPage(itemtype)
     {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: itemtype, readonly: false})
@@ -132,11 +141,11 @@ Item {
     }
 
     // type, page, 0: read-only, 1: edit, 2: add
-    function openMgmtDetailPage(type, page, mode, item)
+    function openMgmtDetailPage(type, mode, item)
     {
-        if (mode === 2 && item === null) {
+        /*if (mode === 2 && item === null) {
             item = {Id:null, Name:"", OrderNr: -1, Category: null}
-        }
+        }*/
 
         switch(type) {
         case "unit":

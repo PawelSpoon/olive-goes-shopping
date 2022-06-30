@@ -53,7 +53,6 @@ Python {
     app.signal_error(module_id, method_id, description);
   }
 
-
   function getAssets(type) {
       return call_sync('app.app.getAssetList',[type])
   }

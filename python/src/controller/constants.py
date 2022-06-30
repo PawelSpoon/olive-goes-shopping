@@ -13,14 +13,10 @@ shoplistType = "shop"
 tasklistType = "task"
 
 currentDir = "current"
-currentDirPath = "/" + currentDir
 itemDir = "item"
 tasklistDir = "tasklist"
-tasklistDirPath = "/" + tasklistDir
 shoplistDir = "shoplist"
-shoplistDirPath = "/" + shoplistDir
 recipeDir = recipe
-recipeDirPath = "/" + recipeDir
 
 unitFilePath = "/" + unit + ".json"
 categoryFilePath = "/" + category + ".json"

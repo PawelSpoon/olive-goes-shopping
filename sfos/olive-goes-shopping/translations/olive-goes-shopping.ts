@@ -97,15 +97,6 @@
         <source>Set co2 footprint</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>internal-storage-label</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sdcard-label</source>
-        <extracomment>Label for SD-Cards where %1 represents the increasing number for each card</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ManageEnumsPage</name>
@@ -214,6 +205,25 @@
     </message>
     <message>
         <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecipeDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
