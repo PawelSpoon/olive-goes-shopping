@@ -1,4 +1,3 @@
-from ast import Assert
 import pyotherside
 from controller.assetmanager import AssetManager
 
