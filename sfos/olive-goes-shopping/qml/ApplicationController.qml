@@ -8,7 +8,8 @@ Item {
 
     id: applicationController
     property string currentPage: 'any'
-    property var unitsList: 'undefined'
+    property var unitsList: undefined
+    property var categoryList : undefined
 
     signal signal_asset_updated(var itemType)
 
@@ -129,11 +130,19 @@ Item {
     }
 
     function getUnits() {
-        if (unitsList === 'undefined')
+        if (unitsList === undefined)
         {
             unitsList = applicationWindow.pythonController.getAssets("unit")
         }
         return unitsList
+    }
+
+    function getCategories() {
+        if (categoryList === undefined)
+        {
+            categoryList = applicationWindow.pythonController.getAssets("category")
+        }
+        return categoryList
     }
 
     function openItemsMngmtPage(itemtype)
@@ -173,6 +182,8 @@ Item {
         case "household":
             pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
             break
+        case "recipe":
+            pageStack.push(Qt.resolvedUrl("pages/RecipeDialog.qml"), {itemType: type, mode: mode, item: item})
         }
 
 

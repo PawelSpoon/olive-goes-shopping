@@ -29,6 +29,18 @@ Dialog {
         contentWidth: parent.width
         contentHeight: col.height
 
+        ListModel {
+            id: categoryModel
+            //ListElement {Id:""; Name: "dummy" }
+        }
+
+        ListModel {
+            id: unitModel
+        }
+
+
+
+
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
@@ -43,7 +55,7 @@ Dialog {
             }
 
             Label {
-                text: { if (id === "") qsTr("New item")
+                text: { if (mode === 2) qsTr("New item")
                     else qsTr("Edit item") }
                 font.pixelSize: Theme.fontSizeLarge
                 anchors.left: parent.left
@@ -76,23 +88,13 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: unit.focus = true
             }
-            /*MenuLayout {
-             id: customLayout
-            }
-*/
 
             ComboBox {
                 id: unit
                 label: qsTr("Unit")
-                /*menu: ContextMenu {
-                    MenuItem { text: "-" }
-                    MenuItem { text: "g" }
-                    MenuItem { text: "kg" }
-                    MenuItem { text: "ml" }
-                    MenuItem { text: "l" }
-                }*/
                 menu: ContextMenu {
                     Repeater {
+                        id: unitRepeater
                         model: unitModel
                         MenuItem {
                             text: Name
@@ -101,33 +103,22 @@ Dialog {
                 }
             }
 
-            TextField {
-                id: categoryName
-                width: parent.width
-                inputMethodHints: Qt.ImhSensitiveData
-                label: qsTr("Item category")
-                property string orgText: ""
-                text: ""
-                readOnly: true
-                placeholderText: qsTr("Set category")
-                errorHighlight: text.length === 0
-                EnterKey.enabled: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                font.capitalization: Font.MixedCase
-                EnterKey.onClicked: defaultAmount.focus = true
-            }
-            Button {
-                id: changeCategory
-                text: qsTr("Change Category")
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                onClicked: {
-                    console.log("Browse for ingredient clicked ")
-                    var dialog = pageStack.push(Qt.resolvedUrl("EnumPicker.qml"), {itemType: "category", recipeDialog: settings} )
-                    dialog.accepted.connect(function() {
-                        categoryName.text = dialog.itemName});
+            ComboBox {
+                id: categoryCombo
+                label: qsTr("Category")
+                //model: categoryModel
+                menu: ContextMenu {
+                    Repeater {
+                        id: catRepeater
+                        model: categoryModel
+                        MenuItem {
+                            text: Name
+                        }
+                    }
                 }
             }
+
+
             TextField {
                 id: co2
                 width: parent.width
@@ -140,56 +131,34 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: unit.focus = true
             }
-            // nearly working combobox solution with an listmodel, only the loading into the listmodel is missing
-            /*ComboBox {
-                        id: categoryCombo
-                        width: parent.width
-                        x: Theme.paddingMedium
-                        label: "Category"
-                        menu: ContextMenu {
-                            Repeater {
-                                model: ListModel {
-                                    id: cbItems
-                                    ListElement { text: "Banana"; color: "Yellow" }
-                                    ListElement { text: "Apple"; color: "Green" }
-                                    ListElement { text: "Coconut"; color: "Brown" }
-                                }
-                                MenuItem { text: model.text
-                                }
-                            }
-                        }
-                    }*/
+
         }
     }
 
-    ListModel {
-        id: unitModel
-    }
+
 
     Component.onCompleted: {
 
         unitModel.clear()
-        var list = applicationWindow.controller.getUnits()
-        for (var i = 0; i < list.length ; i++) {
-            unitModel.append({"Name": list[i].Name, "Id": list[i].Id})
-        }
+        categoryModel.clear()
+        commons.fillUnitModel(unitModel)
+        commons.fillCategoryModel(categoryModel)
 
         if (mode == 1) {
-            itemName.text = item['Name']
-            defaultAmount.text = item['Amount']
-            var index =  commons.getUnitIndex(item['Unit'], unitModel)
-            console.log('index'+index)
-            unit.currentIndex  = index
-            setCategory()
+           send2Controlls()
         }
     }
 
-    Component.onDestruction: {
-
+    function send2Controlls() {
+        itemName.text = item['Name']
+        defaultAmount.text = item['Amount']
+        var index =  commons.getUnitIndex(item['Unit'], unitModel)
+        unit.currentIndex  = index
+        categoryCombo.currentIndex = commons.getUnitIndex(item['Category'], categoryModel)
     }
 
-    function setCategory()
-    {
+
+    Component.onDestruction: {
 
     }
 
@@ -204,7 +173,7 @@ Dialog {
         current['Name']  = itemName.text
         current['Amount']  = defaultAmount.text
         current['Unit']  = commons.getUnit(unit.value, unitModel)
-        current['Category']  = {} // need to get that from combo
+        current['Category']  = commons.getUnit(categoryCombo.value, categoryModel)
         return current;
     }
 

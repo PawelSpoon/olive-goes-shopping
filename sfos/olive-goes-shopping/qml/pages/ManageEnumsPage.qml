@@ -15,7 +15,7 @@ Dialog {
     property string enumType
     property bool readonly
     property bool sortable
-    property bool groupbyCatetgory
+    property bool groupbyCategory
     property bool neverCapitalize
 
     allowedOrientations: defaultAllowedOrientations

@@ -78,15 +78,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Item category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Change Category</source>
+        <source>Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -205,6 +197,53 @@
     </message>
     <message>
         <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecipeComponent</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recipe name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set recipe name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Servings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set number of servings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add ingredient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please add ingredient</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

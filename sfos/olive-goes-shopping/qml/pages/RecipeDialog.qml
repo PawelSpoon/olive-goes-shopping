@@ -8,17 +8,15 @@ import Sailfish.Silica 1.0
 
 Dialog {
     id: settings
-    
+
     allowedOrientations: Orientation.All
-    property alias uid_ : recipeComponent.uid_
  
     property string itemType
-    property alias name_ : recipeComponent.name_
+    property int mode
 
-    property alias servings_ : recipeComponent.servings_
-    property alias ingredients_ : recipeComponent.ingredients_
-    property alias instructions_ : recipeComponent.instructions_
-    property alias howMany_ : recipeComponent.howMany_
+    property var item
+
+
     // quick hack
     property alias recipeComponent: recipeComponent
 
@@ -45,7 +43,7 @@ Dialog {
             }
 
             Label {
-                text: { if (uid_ === "") qsTr("New recipe")
+                text: { if (id === "") qsTr("New recipe")
                         else qsTr("Recipe") }
                 font.pixelSize: Theme.fontSizeLarge
                 anchors.left: parent.left
@@ -56,8 +54,8 @@ Dialog {
 
         RecipeComponent {
             id: recipeComponent
-            itemType: itemTypes
-            itemsPage: itemsPage
+            itemType: itemType
+            item:  item
         }
     }
 
