@@ -22,10 +22,11 @@ BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  desktop-file-utils
 
 %description
-the awesome shopping list app
+Short description of my Sailfish OS Application
 
 
 %prep
@@ -65,5 +66,6 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/%{name}/assets
+%{_datadir}/%{name}/tests
 # >> files
 # << files

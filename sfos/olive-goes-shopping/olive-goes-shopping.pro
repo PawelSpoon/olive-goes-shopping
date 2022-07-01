@@ -61,26 +61,30 @@ DISTFILES += qml/olive-goes-shopping.qml \
     assets/tasklist/annual maintenance - KTM.json \
     assets/unit.json \
     \
-    test/tst_test.qml \
     rpm/olive-goes-shopping.changes.in \
     rpm/olive-goes-shopping.changes.run.in \
     rpm/olive-goes-shopping.spec \
     rpm/olive-goes-shopping.yaml \
     olive-goes-shopping.desktop \
+    test/tst_test.qml \
+    tests/SailfishTestCase.qml \
+    tests/run.sh \
     translations/*.ts
 
-include(olive-goes-shopping.pri)
+#include(olive-goes-shopping.pri)
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 assets.files = assets
 assets.path = $${DEPLOYMENT_PATH}
 
-tests.files = tests/tst_*
-tests.path = $${DEPLOYMENT_PATH}
+tests.files = tests/*
+tests.path = $${DEPLOYMENT_PATH}/tests
 
-INSTALLS += tests_qml
-OTHER_FILES += tests_qml/tst_*
+INSTALLS += tests
+INSTALLS += tests/run.sh
+
+OTHER_FILES += tests/tst_*
 
 # to disable building translations every time, comment out the
 # following CONFIG line
