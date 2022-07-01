@@ -18,8 +18,9 @@ Page {
             console.log(applicationWindow.settings.useRecipes)
 
             useRecipes.checked = applicationWindow.settings.useRecipes
-            useHousehould.checked = applicationWindow.settings.useHousehold
-            useFood.checked = applicationWindow.settings.useFood
+            useItemTypes.checked = applicationWindow.settings.useItemtypes
+            useLists.checked = applicationWindow.settings.useLists
+            useTasks.checked = applicationWindow.settings.useTasks
             useCategories.checked = applicationWindow.settings.useCategories
             categorizeItems.checked = applicationWindow.settings.categorizeItems
             categorizeShoppingList.checked = applicationWindow.settings.categorizeShoppingList
@@ -53,21 +54,30 @@ Page {
                     }
                 }
                 TextSwitch {
-                    id: useHousehould
-                    text: qsTr("Use household items")
-                    description: "will allow you to manage household items and add those to shopping list"
+                    id: useItemTypes
+                    text: qsTr("Use various pre-configured items")
+                    description: "create pick lists e.g. household, food so speed up shopping list creation"
                     automaticCheck: true;
                     onCheckedChanged: {
-                        applicationWindow.settings.useHousehold = checked;
+                        applicationWindow.settings.useItemtypes = checked;
                     }
                 }
                 TextSwitch {
-                    id: useFood
-                    text: qsTr("Use food items")
-                    description: "will allow you to manage food items and and add those to shopping list"
+                    id: useLists
+                    text: qsTr("Use (multiple) shopping lists")
+                    description: "create shopping lists and add items or recipes to them"
                     automaticCheck: true;
                     onCheckedChanged: {
-                        applicationWindow.settings.useFood = checked;
+                        applicationWindow.settings.useLists = checked;
+                    }
+                }
+                TextSwitch {
+                    id: useTasks
+                    text: qsTr("Use (multiple) task lists")
+                    description: "simple task management"
+                    automaticCheck: true;
+                    onCheckedChanged: {
+                        applicationWindow.settings.useList = checked;
                     }
                 }
             }

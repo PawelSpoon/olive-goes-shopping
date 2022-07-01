@@ -29,25 +29,36 @@ void OGSSettings::setRecipes(const bool value)
     emit moduleChanged();
 }
 
-bool OGSSettings::household()
+bool OGSSettings::itemtypes()
 {
-    return getValue("household").toBool();
+    return getValue("itemtypes").toBool();
 }
 
-void OGSSettings::setHousehold(const bool value)
+void OGSSettings::setItemtypes(const bool value)
 {
-    setValue("household", value);
+    setValue("itemtypes", value);
     emit moduleChanged();
 }
 
-bool OGSSettings::food()
+bool OGSSettings::tasks()
 {
-    return getValue("food").toBool();
+    return getValue("tasks").toBool();
 }
 
-void OGSSettings::setFood(const bool value)
+void OGSSettings::setTasks(const bool value)
 {
-    setValue("food", value);
+    setValue("tasks", value);
+    emit moduleChanged();
+}
+
+bool OGSSettings::lists()
+{
+    return getValue("lists").toBool();
+}
+
+void OGSSettings::setLists(const bool value)
+{
+    setValue("lists", value);
     emit moduleChanged();
 }
 

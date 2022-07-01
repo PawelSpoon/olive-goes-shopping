@@ -10,11 +10,16 @@ ApplicationWindow {
 
     id: applicationWindow
     property ApplicationController controller: myController
+    property DataCache cache : dataCache
     property OGSSettings settings: settings
-    property Python pythonController: python
+    property Python python: pythonHandler
 
     ApplicationController {
         id: myController
+    }
+
+    DataCache {
+        id: dataCache
     }
 
     OGSSettings {
@@ -32,7 +37,7 @@ ApplicationWindow {
 
 
     PythonHandler {
-      id: python
+      id: pythonHandler
     }
 
 

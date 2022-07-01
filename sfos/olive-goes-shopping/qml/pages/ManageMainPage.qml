@@ -41,9 +41,46 @@ Page {
 
     Component.onCompleted:
     {
-        itemTypeButtons.items = ['Jan','Vero']
-        itemTypeButtons.init()
         console.log(applicationWindow.settings);
+        applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
+        initPage()
+    }
+
+    function initPage()
+    {
+        itemtypeModel.clear()
+        if (applicationWindow.settings.useItemtypes) {
+            commons.fillItemtypesModel(itemtypeModel)
+        }
+        tasksModel.clear()
+        if (applicationWindow.settings.useTasks) {
+            commons.fillItemtypesModel(tasksModel)
+        }        
+        listsModel.clear()
+        if (applicationWindow.settings.useLists) {
+            commons.fillItemtypesModel(listsModel)
+        }        
+    }
+
+    // callback from e.g dialog pages
+    function onAssetChanged(itemType) {
+        page.initPage()
+    }
+
+    AssetCommons {
+        id: commons
+    }
+
+    ListModel { //food, household, you name it 
+        id: itemtypeModel
+    }
+
+    ListModel { // jans, olives shopping list ...
+        id: listsModel
+    }
+
+    ListModel { // task lists
+        id: tasksModel
     }
 
 
@@ -126,13 +163,6 @@ Page {
                     onClicked: applicationWindow.controller.openUnitsMngmtPage()
                 }
                 Button {
-                    id: manageItemTypes
-                    visible: true
-                    text: qsTr("Item types")
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: applicationWindow.controller.openItemTypeMngmtPage()
-                }
-                Button {
                     id: manageCategories
                     visible: applicationWindow.settings.useCategories
                     text: qsTr("Categories")
@@ -153,29 +183,88 @@ Page {
                     // anchors.top: head.bottom -- not defined, guess i would need to reference col
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
-                        applicationWindow.controller.openRecipesMngmtPage();
+                        applicationWindow.pages.openRecipesMngmtPage();
+                    }
+                }                
+                Button {
+                    id: manageItemTypes
+                    visible: applicationWindow.settings.useItemtypes
+                    text: qsTr("Pick list definition")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openItemTypeMngmtPage()
+                }
+                Label {
+                    text: qsTr(" --- Pick lists --- ")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    visible: applicationWindow.settings.useItemtypes
+                }
+                Repeater {
+                    id: itemTypeRepeater
+                    model: itemtypeModel
+                    Button {
+                        text: Name
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
                     }
                 }
-              /*  ItemTypeButtons {
-                    id: itemTypeButtons
-                }*/
-
-                // here we need a loop over all item-types
-                Button {
-                    id: manageFood
-                    visible: applicationWindow.settings.useFood
-                    text: qsTr("Food")
+                Label {
+                    text: " ------ "
+                    visible: applicationWindow.settings.useItemtypes
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: applicationWindow.controller.openItemsMngmtPage("food")
-
                 }
                 Button {
-                    id: manageHouseHold
-                    visible: applicationWindow.settings.useHousehold
-                    text: qsTr("Household")
+                    id: manageLists
+                    visible: applicationWindow.settings.useLists
+                    text: qsTr("Shopping list definition")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: applicationWindow.controller.openItemsMngmtPage("household")
+                    onClicked: applicationWindow.controller.openItemsMngmtPage("list")
                 }
+                Label {
+                    text: " ------ "
+                    visible: applicationWindow.settings.useLists                 
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+                Repeater {
+                    id: listsRepeater
+                    model: listsModel
+                    Button {
+                        text: Name
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
+                    }
+                }
+                Label {
+                    text: " ------ "
+                    visible: applicationWindow.settings.useItemtypes
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }                
+                Button {
+                    id: manageTasks
+                    visible: applicationWindow.settings.useTasks
+                    text: qsTr("Task lists")
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: applicationWindow.controller.openItemsMngmtPage("task")
+                }
+                Label {
+                    text: " ------ "
+                    visible: applicationWindow.settings.useTasks
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+                Repeater {
+                    id: tasksRepeater
+                    visible: applicationWindow.settings.useTasks
+                    model: tasksModel
+                    Button {
+                        text: Name
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
+                    }
+                }
+                Label {
+                    text: " ------ "
+                    visible: applicationWindow.settings.useTasks
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }                
             }
             SectionHeader {
                 text: qsTr("Advanced")
@@ -185,19 +274,10 @@ Page {
                 spacing: Theme.horizontalPageMargin
                 Button {
                     id: impExport
-                    text: qsTr("Import Export")
+                    text: qsTr("Import Export Reset")
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
                         pageStack.push(Qt.resolvedUrl("ExportPage.qml"))
-                    }
-                }
-                Button {
-                    id: reset
-                    text: qsTr("Reset")
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: {
-                        // should trigger copy action)
-                        applicationWindow.copyAssetsToWriteable(true)
                     }
                 }
             }

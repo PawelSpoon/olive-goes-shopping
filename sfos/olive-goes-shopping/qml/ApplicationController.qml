@@ -8,8 +8,6 @@ Item {
 
     id: applicationController
     property string currentPage: 'any'
-    property var unitsList: undefined
-    property var categoryList : undefined
 
     signal signal_asset_updated(var itemType)
 
@@ -28,15 +26,16 @@ Item {
     function updateParentPage(itemType)
     {
        console.log('sending?')
+       cache.invalidate()
        signal_asset_updated(itemType)
     }
 
-    function propageteCategoryChanged()
+    function propagateCategoryChanged()
     {
        // update everyone with new category orders
     }
 
-    function propageteUnitChanged()
+    function propagateUnitChanged()
     {
 
     }
@@ -72,7 +71,6 @@ Item {
     {
         applicationWindow.page.initPage()
     }
-
 
     function openAddDialog()
     {
@@ -126,24 +124,9 @@ Item {
 
     function openRecipesMngmtPage()
     {
-        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false})
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false, sortable: false})
     }
 
-    function getUnits() {
-        if (unitsList === undefined)
-        {
-            unitsList = applicationWindow.pythonController.getAssets("unit")
-        }
-        return unitsList
-    }
-
-    function getCategories() {
-        if (categoryList === undefined)
-        {
-            categoryList = applicationWindow.pythonController.getAssets("category")
-        }
-        return categoryList
-    }
 
     function openItemsMngmtPage(itemtype)
     {

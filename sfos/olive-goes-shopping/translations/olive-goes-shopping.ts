@@ -204,10 +204,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Update shopping list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
@@ -225,6 +221,14 @@
     </message>
     <message>
         <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -247,19 +251,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Food</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Household</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Categories</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -268,10 +260,6 @@
     </message>
     <message>
         <source>Units</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Item types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -295,7 +283,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reset</source>
+        <source>Task lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Export Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pick list definition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> --- Pick lists --- </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shopping list definition</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,11 +388,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use household items</source>
+        <source>Use various pre-configured items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use food items</source>
+        <source>Use (multiple) shopping lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use (multiple) task lists</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

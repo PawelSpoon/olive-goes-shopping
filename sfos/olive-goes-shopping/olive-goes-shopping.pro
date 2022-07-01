@@ -30,6 +30,7 @@ SOURCES += src/olive-goes-shopping.cpp \
 DISTFILES += qml/olive-goes-shopping.qml \
     qml/ApplicationController.qml \
     qml/PythonHandler.qml \
+    qml/DataCache.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/AssetCommons.qml\
@@ -59,6 +60,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     assets/tasklist/annual maintenance - KTM.json \
     assets/unit.json \
     \
+    test/tst_test.qml \
     rpm/olive-goes-shopping.changes.in \
     rpm/olive-goes-shopping.changes.run.in \
     rpm/olive-goes-shopping.spec \
@@ -66,10 +68,15 @@ DISTFILES += qml/olive-goes-shopping.qml \
     olive-goes-shopping.desktop \
     translations/*.ts
 
+
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 assets.files = assets
 assets.path = $${DEPLOYMENT_PATH}
+
+tests.files = tests/tst_*
+INSTALLS += tests_qml
+OTHER_FILES += tests_qml/tst_*
 
 # to disable building translations every time, comment out the
 # following CONFIG line

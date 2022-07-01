@@ -18,13 +18,17 @@ public:
     bool recipes();
     void setRecipes(const bool value);
 
-    Q_PROPERTY(bool useHousehold READ household WRITE setHousehold NOTIFY moduleChanged)
-    bool household();
-    void setHousehold(const bool value);
+    Q_PROPERTY(bool useItemtypes READ itemtypes WRITE setItemtypes NOTIFY moduleChanged)
+    bool itemtypes();
+    void setItemtypes(const bool value);
 
-    Q_PROPERTY(bool useFood READ food WRITE setFood NOTIFY moduleChanged)
-    bool food();
-    void setFood(const bool value);
+    Q_PROPERTY(bool useTasks READ tasks WRITE setTasks NOTIFY moduleChanged)
+    bool tasks();
+    void setTasks(const bool value);
+
+    Q_PROPERTY(bool useLists READ lists WRITE setLists NOTIFY moduleChanged)
+    bool lists();
+    void setLists(const bool value);
 
     Q_PROPERTY(bool useCategories READ categories WRITE setCategories NOTIFY categoryChanged)
     bool categories();
