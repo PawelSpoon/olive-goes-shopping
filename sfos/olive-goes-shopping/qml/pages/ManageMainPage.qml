@@ -54,11 +54,11 @@ Page {
         }
         tasksModel.clear()
         if (applicationWindow.settings.useTasks) {
-            commons.fillItemtypesModel(tasksModel)
+            //commons.fillTasksModel(tasksModel)
         }        
         listsModel.clear()
         if (applicationWindow.settings.useLists) {
-            commons.fillItemtypesModel(listsModel)
+            //commons.fillListstypesModel(listsModel)
         }        
     }
 
@@ -183,7 +183,7 @@ Page {
                     // anchors.top: head.bottom -- not defined, guess i would need to reference col
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
-                        applicationWindow.pages.openRecipesMngmtPage();
+                        applicationWindow.controller.openRecipesMngmtPage();
                     }
                 }                
                 Button {
@@ -220,7 +220,7 @@ Page {
                     onClicked: applicationWindow.controller.openItemsMngmtPage("list")
                 }
                 Label {
-                    text: " ------ "
+                    text: " --- shopping list templates --- "
                     visible: applicationWindow.settings.useLists                 
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
@@ -235,7 +235,7 @@ Page {
                 }
                 Label {
                     text: " ------ "
-                    visible: applicationWindow.settings.useItemtypes
+                    visible: applicationWindow.settings.useLists
                     anchors.horizontalCenter: parent.horizontalCenter
                 }                
                 Button {
@@ -246,7 +246,7 @@ Page {
                     onClicked: applicationWindow.controller.openItemsMngmtPage("task")
                 }
                 Label {
-                    text: " ------ "
+                    text: " --- task list templates --- "
                     visible: applicationWindow.settings.useTasks
                     anchors.horizontalCenter: parent.horizontalCenter
                 }

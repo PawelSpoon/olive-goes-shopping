@@ -44,25 +44,12 @@ CoverBackground {
 
         CoverAction {
             iconSource: "image://theme/icon-cover-next"
-            onTriggered: python.call('coveractions.action_next', [], function(newstring) {
-                label.text = newstring;
-            });
+            onTriggered: ;
         }
 
         CoverAction {
             iconSource: "image://theme/icon-cover-pause"
-            onTriggered: python.call('coveractions.action_pause', [], function(newstring) {
-                label.text = newstring;
-            });
-        }
-    }
-
-    Python {
-        id: python
-
-        Component.onCompleted: {
-            addImportPath(Qt.resolvedUrl('.'));
-            importModule('coveractions', function () {});
+            onTriggered:;
         }
     }
 }

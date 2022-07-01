@@ -30,7 +30,9 @@ Dialog {
 
     // callback from e.g dialog pages
     function onAssetChanged(itemType) {
-        page.initPage()
+        // throws unknown33 initPage of object is not a ...
+        //page.initPage() did not work either
+        initPage()
     }
 
     onAccepted: {
@@ -101,6 +103,7 @@ Dialog {
 
             MenuItem {
                 text: qsTr("Clear all")
+                visible: ! readonly
                 onClicked: {
                     remorse.execute(qsTr("Deleting all"), cleanEnumsTable);
                 }
@@ -114,6 +117,7 @@ Dialog {
 
             MenuItem {
                 text: qsTr("Import example items")
+                visible: !readonly
                 onClicked: {
                     //todo:
                     console.log('not implemented')
@@ -148,7 +152,10 @@ Dialog {
                 removal.execute(contentItem, qsTr("Deleting"), function() {
                     // is that a limitation  ?
                     applicationWindow.python.deleteAsset(enumType,Name)
-                    itemModel.remove(index); }
+                    itemModel.remove(index); 
+                    // should be moved to python handler or ..
+                    applicationWindow.controller.updateParentPage(enumType)
+                    }
                 )
             }
 

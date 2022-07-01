@@ -151,9 +151,9 @@ Dialog {
     function send2Controlls() {
         itemName.text = item['Name']
         defaultAmount.text = item['Amount']
-        var index =  commons.getUnitIndex(item['Unit'], unitModel)
+        var index =  commons.getIndexForItem(item['Unit'], unitModel)
         unit.currentIndex  = index
-        categoryCombo.currentIndex = commons.getUnitIndex(item['Category'], categoryModel)
+        categoryCombo.currentIndex = commons.getIndexForItem(item['Category'], categoryModel)
     }
 
 

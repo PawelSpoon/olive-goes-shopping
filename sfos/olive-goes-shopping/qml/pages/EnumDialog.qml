@@ -89,7 +89,7 @@ Dialog {
        if (item === null) {
            item = { Id: null, Category: null, Order: 0}
        }
-       else {
+       if (mode == 1) { // edit
            itemName.text = item.Name
            id = item.Id
        }

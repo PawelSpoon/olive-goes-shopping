@@ -16,7 +16,7 @@ Python {
     addImportPath(Qt.resolvedUrl('.'));
     importModule('controller.assetmanager', function () {});
     importModule('app', function () {
-      call('app.app.setup', ['/home/defaultuser/.local/share/oarg.pawelspoon/olive-goes-shopping/assets',python]);
+      call('app.app.setup', ['.local/share/oarg.pawelspoon/olive-goes-shopping/assets',python]);
       //call('tfl.tfl_object.set_python_handler', [python]);
     });
     /*importModule('database', function () {
@@ -42,6 +42,10 @@ Python {
   function error_handler(module_id, method_id, description) {
     console.log('Module ERROR - source:', module_id, method_id, 'error:', description);
     app.signal_error(module_id, method_id, description);
+  }
+
+  function reInit(type) {
+      return call_sync('app.app.reInitAssetManager',[])
   }
 
   // assets - what ever assetmanager can init and load is in this region

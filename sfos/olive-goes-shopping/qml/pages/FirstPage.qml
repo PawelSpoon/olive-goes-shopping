@@ -102,14 +102,11 @@ Page {
                 mainLabel.text = 'Color is ' + newvalue + '.';
             });
 
-            importModule('datadownloader', function () {});
-
         }
 
         function startDownload() {
             page.downloading = true;
             dlprogress.value = 0.0;
-            call('datadownloader.downloader.download', function() {});
         }
 
         onError: {

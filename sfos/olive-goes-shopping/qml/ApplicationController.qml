@@ -27,6 +27,11 @@ Item {
     {
        console.log('sending?')
        cache.invalidate()
+       // in case of rename of itemtype's i need to re-init assetmanager
+       if (itemType === "itemtype") {
+           // now that could take longer .. maybe async
+           applicationWindow.python.reInit(itemType)
+       }
        signal_asset_updated(itemType)
     }
 
@@ -142,9 +147,7 @@ Item {
     // type, page, 0: read-only, 1: edit, 2: add
     function openMgmtDetailPage(type, mode, item)
     {
-        /*if (mode === 2 && item === null) {
-            item = {Id:null, Name:"", OrderNr: -1, Category: null}
-        }*/
+        console.log("open editor for: " + type + " in mode: " + mode)
 
         switch(type) {
         case "unit":
@@ -167,9 +170,28 @@ Item {
             break
         case "recipe":
             pageStack.push(Qt.resolvedUrl("pages/RecipeDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
+         default:
+             // check in itemtypes then open enumdialog
+             if (isInList(type, applicationWindow.cache.getItemtypes())) {
+                pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+             }
+             break;
+
+             console.error("could not find editor")
+
         }
+    }
 
-
+    function isInList(name, list)
+    {
+        if (name === '') { return false }
+        for (var i = 0; i < list.length ; i++) {
+            if( list[i].Name === name) {
+                return true
+            }
+        }
+        return false
     }
 
 

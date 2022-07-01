@@ -10,6 +10,7 @@ Item {
 
     function onAccept(itemType,mode,oldItem, currentItem)
     {
+        console.log('onaccept of type: ' + itemType + ' and mode: ' + mode)
         if (mode === 2) { // add
             console.log('in add')
             applicationWindow.python.addAsset(itemType, currentItem)
@@ -27,6 +28,38 @@ Item {
         console.log('in edit')
         if (mode === 1) applicationWindow.python.updateAsset(itemType, oldName, currentItem)
 
+    }
+
+    ListModel {
+        id: ratingModel
+        ListElement { Name: "11"; color: "Green" }
+        ListElement { Name: "10"; color: "Green" }
+        ListElement { Name: "4"; color: "Green" }
+        ListElement { Name: "3"; color: "Yellow" }
+        ListElement { Name: "2"; color: "Orange" }
+        ListElement { Name: "1"; color: "Red" }
+        ListElement { Name: "0"; color: "Brown" }
+    }
+
+    function getRatingModel()
+    {
+        return ratingModel
+    }
+
+    ListModel {
+        id: servingsModel
+        ListElement { Name: "12"; color: "Green" }
+        ListElement { Name: "10"; color: "Green" }
+        ListElement { Name: "8"; color: "Green" }
+        ListElement { Name: "6"; color: "Yellow" }
+        ListElement { Name: "4"; color: "Orange" }
+        ListElement { Name: "2"; color: "Red" }
+        ListElement { Name: "1"; color: "Brown" }
+    }
+
+    function getServingsModel()
+    {
+        return servingsModel
     }
 
 
@@ -67,16 +100,22 @@ Item {
         return model
     }
 
-    function getUnitIndex(item, listModel)
-    {
-        if (item === undefined) return 1
-        var itemName = item['Name']
-        if (itemName === '') return
+
+    function getIndexForName(name, listModel) {
+        if (name === '') return -1
         for (var i = 0; i < listModel.count ; i++) {
-            if( listModel.get(i).Name === itemName) {
+            if( listModel.get(i).Name === name) {
                 return i
             }
         }
+        return -1
+    }
+
+    function getIndexForItem(item, listModel)
+    {
+        if (item === undefined) return -1
+        var itemName = item['Name']
+        return getIndexForName(itemName, listModel)
     }
 
     function getUnit(unitName, listModel)

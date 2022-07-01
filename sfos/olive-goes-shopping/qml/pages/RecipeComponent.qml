@@ -84,16 +84,7 @@ import Sailfish.Silica 1.0
                 label: qsTr("Servings")
                 menu: ContextMenu {
                      Repeater {
-                        model: ListModel {
-                            id: servItems
-                            ListElement { Name: "12"; color: "Green" }
-                            ListElement { Name: "10"; color: "Green" }
-                            ListElement { Name: "8"; color: "Green" }
-                            ListElement { Name: "6"; color: "Yellow" }
-                            ListElement { Name: "4"; color: "Orange" }
-                            ListElement { Name: "2"; color: "Red" }
-                            ListElement { Name: "1"; color: "Brown" }
-                        }
+                        model: commons.getServingsModel()
                         MenuItem {
                             text: Name
                         }
@@ -108,17 +99,10 @@ import Sailfish.Silica 1.0
                 label: qsTr("Rating")
                 menu: ContextMenu {
                     Repeater {
-                        model: ListModel {
-                            ListElement { Name: "11"; color: "Green" }
-                            ListElement { Name: "4"; color: "Yellow" }
-                            ListElement { Name: "3"; color: "Yellow" }
-                            ListElement { Name: "2"; color: "Red" }
-                            ListElement { Name: "1"; color: "Brown" }
-                            ListElement { Name: "0"; color: "Brown" }
-                        }
-                       MenuItem {
+                        model: commons.getRatingModel()
+                        MenuItem {
                            text: Name
-                       }
+                        }
                     }
                 }
             }
@@ -282,22 +266,23 @@ import Sailfish.Silica 1.0
 
         function doAccept() {
             //(itemType,mode,oldItem, currentItem)
-            commons.onAccept(itemType,item_,collectCurrentItem())
-
-            // save to db and reload the prev page to make the new item visible
-            //if (uid_ == "" ) uid_ = DB.getDatabase().db.getUniqueId()
-            //DB.getDatabase().setRecipe(uid_, name_, servings_,"",ingredients_, howMany_, itemType)
-
+            commons.onAccept(itemType,mode,item_,collectCurrentItem())
             commons.updateParentPage(itemType)
         }
 
         function collectCurrentItem()
         {
             var current = {}
-            current['Id'] = id
+            if (mode == 2) { // add
+                current['Id'] = applicationWindow.controller.getUniqueId()
+            } else { // edit
+                current['Id'] = item['Id']
+            }
             current['Name']  = itemName.text
-            current['Servings']  = servings.text
+            current['Servings']  = commons.getUnit(servings.value, commons.getServingsModel()).Name
+            current['Rating']  = commons.getUnit(rating.value, commons.getRatingModel()).Name
             current['Category']  = commons.getUnit(categoryCombo.value, categoryModel)
+            current['HowTo'] = howto.text
             // todo ingres:
             return current;
         }
@@ -307,24 +292,24 @@ import Sailfish.Silica 1.0
         categoryModel.clear()
         commons.fillCategoryModel(categoryModel)
 
-        if (mode == 1) {
+        if (mode != 2) {
            send2Controlls()
         }
     }
 
-    function copy2Controls()
+    function send2Controlls()
     {
-        itemName.text = item['Name']
-        servings.text = item['Servings']
-        categoryCombo.currentIndex = commons.getUnitIndex(item['Category'], categoryModel)
-        rating.text = item['Rating']
-        howto.text = item['HowTo']
-       fillIngredientsList()
+        itemName.text = item_['Name']
+        servings.currentIndex = commons.getIndexForName(item['Servings'], commons.getServingsModel())
+        categoryCombo.currentIndex = commons.getIndexForItem(item_['Category'], categoryModel)
+        rating.currentIndex = commons.getIndexForName(item['Rating'], commons.getRatingModel())
+        howto.text = item_['HowTo']
+        fillIngredientsList()
     }
 
     function fillIngredientsList()
     {
-        var ingres = itemitem['Ingredients']
+        var ingres = item_['Ingredients']
         if (ingres === null)
         {
             print("ingredient is null, set howMany to 0")

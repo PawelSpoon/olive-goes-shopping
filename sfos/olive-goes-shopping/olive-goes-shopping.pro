@@ -28,6 +28,7 @@ SOURCES += src/olive-goes-shopping.cpp \
     src/importexport.cpp
 
 DISTFILES += qml/olive-goes-shopping.qml \
+    olive-goes-shopping.pri \
     qml/ApplicationController.qml \
     qml/PythonHandler.qml \
     qml/DataCache.qml \
@@ -68,6 +69,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     olive-goes-shopping.desktop \
     translations/*.ts
 
+include(olive-goes-shopping.pri)
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -75,6 +77,8 @@ assets.files = assets
 assets.path = $${DEPLOYMENT_PATH}
 
 tests.files = tests/tst_*
+tests.path = $${DEPLOYMENT_PATH}
+
 INSTALLS += tests_qml
 OTHER_FILES += tests_qml/tst_*
 

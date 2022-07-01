@@ -77,8 +77,10 @@ void copyAssetsToWriteable(bool force)
     QDir newDbDir = (QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + pathNew);
 
     if(newDbDir.exists()) {
-        std::cout << "leaving early folder exits! fake" << std::endl;
-        if (!force) return;
+
+        if (!force) { return;
+            std::cout << "leaving early folder exits! start app with force to reset" << std::endl;
+        }
     }
 
      std::cout << copyDir("/usr/share/olive-goes-shopping/assets" ,newDbDir.absolutePath(), true);
@@ -91,6 +93,7 @@ int main(int argc, char *argv[])
     QString orgname = "oarg.pawelspoon";
 
     // rem: i could use args to forcefully rewrite the shit
+    std::cout << "argc: " << argc;
     copyAssetsToWriteable(false);
 
 //    it did work without these settings so lets try to avoid them

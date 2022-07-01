@@ -1,3 +1,4 @@
+import os
 import pyotherside
 from controller.assetmanager import AssetManager
 
@@ -5,6 +6,7 @@ class App:
 
     def setup(self,rootDir,qObject):
 
+        os.path.join("$HOME",rootDir)
         self.assetManager = AssetManager(rootDir)
         self.root = rootDir
         self.assetManager.load()
@@ -15,8 +17,8 @@ class App:
         return self.assetManager
 
     def reInitAssetManager(self):
-        self.assetManager = AssetManager(self.root)
-        return self.assetManager
+        self.assetManager = AssetManager(self.root,self.pyHandler)
+        self.assetManager.load()
 
 
     def getAssetList(self, type):

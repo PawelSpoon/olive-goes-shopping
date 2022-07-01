@@ -34,6 +34,7 @@ Dialog {
 
         Column {
             id: col
+            anchors.fill: parent
             width: parent.width
             spacing: Theme.paddingLarge
 
@@ -59,6 +60,11 @@ Dialog {
                 width: parent.width
             }
         }
+    }
+
+    Component.onCompleted: {
+        recipeComponent.mode = mode
+        recipeComponent.itemType = itemType
     }
 
 
