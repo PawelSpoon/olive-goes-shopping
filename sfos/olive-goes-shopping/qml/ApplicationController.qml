@@ -144,6 +144,11 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "shop", readonly: false})
     }
 
+    function openShoppingListPage(listName)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
+    }
+
     // type, page, 0: read-only, 1: edit, 2: add
     function openMgmtDetailPage(type, mode, item)
     {
@@ -194,6 +199,8 @@ Item {
         return false
     }
 
+
+///////////////////////////////////////////////////////////////////
 
     function setCurrentPage(pageName) {
         console.log("setCurrentPage: " + pageName)

@@ -31,16 +31,35 @@ class ListManagerTest(unittest.TestCase):
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
         self.assertEqual(1,len(manager.listController.keys()))
-        self.assertTrue("jan" in manager.listController.keys())
-  
-    def testStoreTak(self):
-        print('testStore')
-        manager = ListManager(self.rootDir, tasklistType)
+        self.assertTrue("jan" in manager.getListNames()[FieldName])
+
+    def testLoadListItems(self):
+        print('testLoadListItems')
+        manager = ListManager(self.rootDir, shoplistType)
         manager.load()
         self.assertEqual(1,len(manager.listController.keys()))
-        self.assertTrue("annual maintenance - Breva" in manager.listController.keys())
-        manager.rootDir = self.outDir
-        manager.store()
+        self.assertTrue("jan" in manager.getListNames()[FieldName])
+        ctrl = manager.getController('jan')
+        ctrl.load()
+        self.assertTrue(ctrl.rootDir==self.rootDir)
+        self.assertTrue(ctrl.mytype=='jan')
+        self.assertTrue('jan.shop.json' in ctrl.filePath)
+        self.assertTrue(ctrl.getTypeName() == 'jan')
+        self.assertTrue("Beer" in ctrl.getList().keys())
+
+    def testGetListNames(self):
+        manager = ListManager(self.rootDir, shoplistType)
+        manager.load()
+        print(manager.getListNames())
+        self.assertTrue("jan" in manager.getListNames()[FieldName])
+  
+   # def testStoreTask(self):
+     #   print('testStore')
+     #   manager = ListManager(self.rootDir, tasklistType)
+     #   manager.load()
+     #   self.assertEqual(1,len(manager.listController.keys()))
+     #   self.assertTrue("annual maintenance - Breva" in manager.listController.keys())
+    #    manager.rootDir = self.outDir
 
     def testStoreShop(self):
         print('testStore')
@@ -49,7 +68,6 @@ class ListManagerTest(unittest.TestCase):
         self.assertEqual(1,len(manager.listController.keys()))
         self.assertTrue("jan" in manager.listController.keys())
         manager.rootDir = self.outDir
-        manager.store()
 
     def testGetController(self):
         print("testGetController")

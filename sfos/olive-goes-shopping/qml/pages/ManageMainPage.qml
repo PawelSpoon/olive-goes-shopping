@@ -119,7 +119,7 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
             // could be f(orientation)
-            anchors.topMargin: Theme.paddingLarge * 3.5 * Theme.pixelRatio
+            anchors.topMargin: Theme.paddingLarge * 2 * Theme.pixelRatio
             anchors.horizontalCenter: parent.horizontalCenter
 
             TextArea {

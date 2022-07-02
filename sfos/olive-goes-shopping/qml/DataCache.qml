@@ -53,5 +53,10 @@ Item {
         return itemtypeList
     }
 
+    function getShoppingLists() {
+        return applicationWindow.python.getShoppingLists()
+    }
+
+    // DO NOT PUT CURRENT shopping lists and tasks lists here in you idiot
 
 }

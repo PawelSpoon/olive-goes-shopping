@@ -13,6 +13,8 @@ class TaskListControllerTest(unittest.TestCase):
   
     rootDir = "../src/assets"
     outDir = "./test-out"
+    currentDir = os.path.join(rootDir, currentDir)
+    brevafilePath = os.path.join(currentDir, tasklistBreva + ".task.json")
 
     def setUp(self) -> None:
         return super().setUp()
@@ -23,20 +25,20 @@ class TaskListControllerTest(unittest.TestCase):
     
     def testCreation(self):
         print('testCreation')
-        manager = TaskListController(tasklistBreva)
+        manager = TaskListController(tasklistBreva,self.brevafilePath)
         #self.assertTrue(manager.rootDir == self.rootDir)
         self.assertTrue(manager.getTypeName() == tasklistBreva)
 
     def testLoad(self):
         print('testLoad')
-        manager = TaskListController(tasklistBreva)
-        manager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        manager = TaskListController(tasklistBreva,self.brevafilePath)
+        manager.load()
         self.assertEqual(2,len(manager.getList().keys()))
         self.assertTrue("Oil change" in manager.getList().keys())
   
     def testAddItem(self):
-        manager = TaskListController(tasklistBreva)       
-        manager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        manager = TaskListController(tasklistBreva,self.brevafilePath)       
+        manager.load()
         manager.add({"Name":"olive","Done":False})
         self.assertTrue("olive" in manager.items.keys())
         manager.rootDir = self.outDir
@@ -44,16 +46,16 @@ class TaskListControllerTest(unittest.TestCase):
 
 
     def testRemoveItem(self):
-        manager = TaskListController(tasklistBreva)
-        manager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        manager.load()
         manager.add({"Name":"maja","Done":False})
         self.assertTrue("maja" in manager.getList().keys())
         manager.remove("maja")
         self.assertFalse("maja" in manager.getList().keys())
  
     def testMarkAndSetAsDone(self):
-        manager = TaskListController(tasklistBreva)
-        manager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        manager.load()
         manager.add({"Name":"maja","Done":False})
         self.assertTrue("maja" in manager.getList().keys())
         self.assertTrue(manager.getList()["maja"][FieldDone] == False)
@@ -68,8 +70,8 @@ class TaskListControllerTest(unittest.TestCase):
         self.assertTrue(manager.getList()["maja"][FieldDone] == False)    
 
     def testClearDone(self):
-        manager = TaskListController(tasklistBreva)
-        manager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        manager.load()
         manager.add({"Name":"maja","Done":False})
         self.assertTrue("maja" in manager.getList().keys())
         self.assertTrue(manager.getList()["maja"][FieldDone] == False)
@@ -78,8 +80,8 @@ class TaskListControllerTest(unittest.TestCase):
         self.assertFalse("maja" in manager.getList().keys())
 
     def testAddTaskList(self):
-        manager = TaskListController(tasklistBreva)
-        manager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        manager.load()
         manager.setDoneValue("Oil change",True)
         self.assertTrue(manager.getList()["Oil change"][FieldDone] == True)
         secondmanager = TaskListController(tasklistBreva)

@@ -33,8 +33,10 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/PythonHandler.qml \
     qml/DataCache.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
     qml/pages/AssetCommons.qml\
+    qml/pages/ListSelector.qml \
+    qml/pages/ShoppingListPage.qml \
+    qml/pages/ShoppingListItem.qml \
     qml/pages/ManageMainPage.qml \
     qml/pages/ItemTypeButtons.qml \
     qml/pages/ManageEnumsPage.qml\

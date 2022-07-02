@@ -1,0 +1,326 @@
+
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
+import Nemo.Notifications 1.0
+//import Sailfish.Share 1.0
+
+
+Page {
+    id: shoppingListPage
+    property string selectedCategory
+    property string listName
+
+    // The effective value will be restricted by ApplicationWindow.allowedOrientationso
+    allowedOrientations: Orientation.All
+
+    Component.onCompleted:
+    {
+        initPage();
+    }
+
+    function updatePage()
+    {
+        // shoppinglistitem does update the value in db but not in the model
+        // as a workaround i need to initpage
+
+        // print('updatePage')
+        // i might need to update the item too
+        // applicationWindow.updateCoverList(shoppingModel)
+        initPage()
+    }
+
+    function editCurrent(name)
+    {
+        var current = DB.getDatabase().getShoppingListItemPerName(name)
+        pageStack.push(Qt.resolvedUrl("AnyItemDialog.qml"),
+                        {shoppingListPage: firstPage, uid_: current[0].uid , name_: current[0].name, amount_: current[0].howMany, unit_: current[0].unit, category_: current[0].category })
+    }
+
+    function markAsDoneInShoppingList(name)
+    {
+        for(var i=0; i< shoppingModel.count; i++)
+        {
+          console.debug(shoppingModel.get(i).name)
+          if(shoppingModel.get(i).name === name) {
+            shoppingModel.get(i).done = true;
+            break
+          }
+        }
+    }
+
+    // currently not used by should be from ShoppingListItem to inform
+    function markAsDone(uid,name,amount,unit,category,done)
+    {
+        DB.getDatabase().setShoppingListItem(uid,name,amount,unit,true,category)
+        initPage()
+    }
+
+    function initPage()
+    {
+        var items = applicationWindow.python.getShoppingList(listName)
+        shoppingModel.clear()
+        fillShoppingListModel(items)
+        //applicationWindow.updateCoverList(shoppingModel)
+    }
+
+    function fillShoppingListModel(items)
+    {
+        print('number of items: ' +  items.length)
+        for (var i = 0; i < items.length; i++)
+        {
+            var uid = "1"
+            var name = items[i].Name
+            var amount = items[i].Amount
+            var unit = "-" //items[i].Unit
+            var done = items[i].Done
+            var category = "undefined"  //items[i].Category
+            print(items[i].Name)// + " " + items[i].amount + " " + items[i].unit + " " + items[i].done + " " + items[i].category)
+            shoppingModel.append({"uid": uid, "name": name, "amount": amount, "unit": unit, "done":done, "category":category })
+        }
+
+        sortModel();
+    }
+
+    function sortModel()
+    {
+        // not needed, done in db
+        print("sorting")
+        for(var i=0; i< shoppingModel.count; i++)
+        {
+            for(var j=0; j<i; j++)
+            {
+                // console.debug(shoppingModel.get(i).category)
+                if(shoppingModel.get(i).category === shoppingModel.get(j).category)
+                   shoppingModel.move(i,j,1)
+                // break
+            }
+        }
+    }
+
+    // converts shopping list to shareable string
+    function convertListToShareAble()
+    {
+        var listToShare = "";
+        for (var i=0; i< shoppingModel.count; i++) {
+            var oneItemAsString = shoppingModel.get(i).name + " " + shoppingModel.get(i).amount
+            listToShare += "\n" + oneItemAsString // here newline instead
+        }
+        return listToShare;
+    }
+
+    // To enable PullDownMenu, place our content in a SilicaFlickable
+    SilicaListView {
+        id: shoppingList
+        anchors.fill: parent
+        model: shoppingModel
+        VerticalScrollDecorator { flickable: shoppingList }
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Clear")
+                onClicked: {
+                    remorse.execute(qsTr("Deleting shopping list"), deleteShoppingList);
+                }
+                RemorsePopup {id: remorse }
+                function deleteShoppingList()
+                {
+                    DB.getDatabase().clearShoppingList() // this also clear the checked flag on recipes and items
+                    shoppingModel.clear()
+                }
+            }
+            MenuItem {
+                text: qsTr("Clear done")
+                onClicked: {
+                    remorse.execute(qsTr("Removing done entries"), clearDoneFromShoppingList);
+                }
+                RemorsePopup {id: remorse2 }
+                function clearDoneFromShoppingList()
+                {
+                    console.log('clearDoneFromShoppingList..')
+                    console.log(shoppingModel.count)
+                    for (var i= 0; i < shoppingModel.count; i++ )
+                    {
+                        console.log(shoppingModel.get(i).name + shoppingModel.get(i).done)
+                        if (shoppingModel.get(i).done === true)
+                        {
+                            var uid = shoppingModel.get(i).uid
+                            var name = shoppingModel.get(i).name
+                            var amount = shoppingModel.get(i).amount
+                            var unit = shoppingModel.get(i).unit
+                            var done = 1
+                            console.log('cleaning ' + name);
+                            var dbItem = DB.getDatabase().getItemPerName(name);
+                            if (dbItem.length > 0) { // why do i do that ? -- could be a non household / food ..hasOwnProperty()
+                              DB.getDatabase().setItem(dbItem[0].uid,name,dbItem[0].amount,dbItem[0].unit,dbItem[0].type,0,dbItem[0].category,dbItem[0].co2)
+                            }
+                            else {
+                                console.log('nothing to clear from items db')
+                            }
+
+                            DB.getDatabase().removeShoppingListItem(uid, name, amount, unit, done)
+                        }
+                     }
+                    initPage();
+                }
+            }
+            MenuItem {
+                text: qsTr("Modify");
+                onClicked: applicationWindow.controller.openAddDialog();
+            }
+        }
+
+        Notification {
+            id: notification
+            summary: qsTr("Copied to clipboard")
+        }
+
+        PushUpMenu {
+
+            MenuItem {
+                text: qsTr("Copy to clipboard");
+                onClicked: {
+                    if (shoppingModel.count > 0) {
+                      Clipboard.text = convertListToShareAble();
+                      //notification.body = clip;
+                      notification.publish()
+                    }
+                }
+            }
+            /*MenuItem {
+                text: qsTr("Share")
+                ShareAction {
+                    id: share
+                    title: qsTr("Share shopping list")
+                    mimeType: "text/x-"
+                }
+                onClicked: {
+                    if (shoppingModel.count > 0)
+                    {
+                        var listToShare = convertListToShareAble();
+                        var mimeType = "text/x-url";
+                        var he = {}
+                        he.data = listToShare
+                        he.name = "Buy this"
+                        he.type = mimeType
+                        he["linkTitle"] = listToShare// works in email body
+                        share.mimeType = "text/x-url";
+                        share.resources = [he]
+                        share.trigger()
+
+                        share.resources = ["listToShare"]
+                        share.trigger()
+                    }
+                }
+                //todo: else log do nothing
+            }*/
+            MenuItem {
+                text: qsTr("Manage")
+                onClicked: {
+                    controller.openManagePage();
+                }
+            }
+            /*MenuItem {
+                text: qsTr("Help")
+                onClicked: {
+                    controller.openHelpPage();
+                }
+            }
+            MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                    controller.openAboutPage();
+                }
+            }*/
+        }
+
+        header: PageHeader {
+            title: qsTr("Shopping List - " + listName)
+        }
+
+
+        ViewPlaceholder {
+            enabled: shoppingModel.count === 0
+            text: qsTr("Oh dear, <br>nothing to shop ?!")
+        }
+
+        // have sections by category
+        section {
+            property: applicationWindow.settings.categorizeShoppingList ? "category": ""
+            criteria: ViewSection.FullString
+            delegate: SectionHeader {
+                id: secHead
+                text: section
+                font.pixelSize: Theme.fontSizeLarge
+                height: li.menuOpen ? li.contextMenu.height + 100 : 100
+
+                ListItem {
+                  id: li
+                  property Item contextMenu
+                  property bool menuOpen: contextMenu != null// && contextMenu.parent === shoppingList
+
+                  onPressAndHold: {
+                    page.selectedCategory = secHead.text;
+                    if (!contextMenu)
+                        contextMenu = contextMenuComponent.createObject(shoppingList)
+                    contextMenu.open(secHead) // not good but ..
+                  }
+                }
+            }
+        }
+
+        Component {
+            id: contextMenuComponent
+            ContextMenu {
+                id: menu
+                MenuItem {
+                    text: "Move up"
+                    onClicked: {
+                       DB.getDatabase().moveCategoryInShoppingList(page.selectedCategory, true);
+                       page.selectedCategory = "";
+                       page.updatePage();
+                    }
+                }
+                MenuItem {
+                    text: "Move down"
+                    onClicked: {
+                        DB.getDatabase().moveCategoryInShoppingList(page.selectedCategory, false);
+                        page.selectedCategory = "";
+                        page.updatePage();
+                    }
+                }
+            }
+        }
+
+
+        delegate:
+            ShoppingListItem {
+            id: shoppingListItem
+            uid_: uid
+            text: name
+            amount_: amount
+            unit_: unit
+            checked: done
+            category: category
+            // order_: order
+        }
+
+
+        ListModel {
+            id: shoppingModel
+            ListElement {uid:""; name: "dummy"; amount: 1; unit: "g"; done: false; category: ""; order_: "1" }
+
+            function contains(uid) {
+                for (var i=0; i<count; i++) {
+                    if (get(i).uid === uid)  {
+                        return [true, i];
+                    }
+                }
+                return [false, i];
+            }
+        }
+
+    }
+
+}
+

@@ -124,17 +124,6 @@
     </message>
 </context>
 <context>
-    <name>FirstPage</name>
-    <message>
-        <source>Shopping List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Manage</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ItemDialog</name>
     <message>
         <source>Save</source>
@@ -182,6 +171,21 @@
     </message>
     <message>
         <source>Set co2 footprint</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ListSelector</name>
+    <message>
+        <source>Shopping List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping list in &apos;Manage&apos; page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -397,6 +401,45 @@
     </message>
     <message>
         <source>Use (multiple) task lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShoppingListPage</name>
+    <message>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing done entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
