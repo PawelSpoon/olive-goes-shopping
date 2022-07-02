@@ -43,7 +43,7 @@ Python {
   }
 
   function init_handler(module_id, method_id, description) {
-    console.log('Module ERROR - source:', module_id, method_id, 'error:', description);
+    console.log('init done:');
     applicationWindow.signal_init(module_id, method_id, description);
   }
 
@@ -80,6 +80,17 @@ Python {
   function getShoppingLists() { // and object with Name attribute that contains a list
       return call_sync('app.app_object.getShoppingLists',[])
   }
+
+  function createList(name,type) { // and object with Name attribute that contains a list
+      var type = "shop"
+      return call_sync('app.app_object.createList',[name,type])
+  }
+
+  function deleteList(name,type) { // and object with Name attribute that contains a list
+      var type = "shop"
+      return call_sync('app.app_object.deleteList',[name,type])
+  }
+
     // single task or shopping list}
   function getShoppingList(name) { // and object with Name attribute that contains a list
       return call_sync('app.app_object.getShoppingList',[name])

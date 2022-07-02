@@ -13,6 +13,8 @@ class App:
         self.assetManager.load()
         self.listManager = ListManager(rootDir,'shop')
         self.listManager.load()
+        self.taskManager = ListManager(rootDir,'task')
+        #self.taskManager.load()
         self.init = True
         pyotherside.send('init')
 
@@ -25,6 +27,8 @@ class App:
         self.assetManager.load()
         self.listManager = ListManager(self.root,'shop')
         self.listManager.load()
+        self.taskManager = ListManager(self.root,'task')
+        #self.taskManager.load()
         self.init = True
         pyotherside.send('init')
 
@@ -60,6 +64,20 @@ class App:
         temp = self.listManager.getListNames()
         print(len(temp))
         return temp
+
+    def createList(self, name, type):
+        if type == "shop":
+            self.listManager.add(name)
+            #self.listManager.store()
+        else:
+            self.taskManager.add(name)
+            #self.taskManager.store()
+        
+    def deleteList(self, name,type):
+        if type == "task":
+            self.taskManager.delete(name)
+        else:
+            self.listManager.delete(name)    
 
     def getShoppingList(self, name):
         ctrl = self.listManager.getController(name)

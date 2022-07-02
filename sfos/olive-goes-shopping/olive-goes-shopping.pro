@@ -33,6 +33,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/PythonHandler.qml \
     qml/DataCache.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/AddItemTypePage.qml \
     qml/pages/AssetCommons.qml\
     qml/pages/ListSelector.qml \
     qml/pages/ShoppingListPage.qml \
@@ -46,6 +47,8 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/RecipeDialog.qml \
     qml/pages/RecipeComponent.qml \
     qml/pages/ExportPage.qml\
+    qml/pages/ItemsComponent.qml \
+    qml/pages/StoreListItem.qml \
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \

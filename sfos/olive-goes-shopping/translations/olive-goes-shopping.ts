@@ -2,6 +2,56 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>AddItemTypePage</name>
+    <message>
+        <source>Manage </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add or import items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item type</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CreateListDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EnumDialog</name>
     <message>
         <source>Save</source>
@@ -175,17 +225,28 @@
     </message>
 </context>
 <context>
-    <name>ListSelector</name>
+    <name>ItemsComponent</name>
     <message>
-        <source>Shopping List</source>
+        <source>No items</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ListSelector</name>
     <message>
         <source>Manage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Create a shopping list in &apos;Manage&apos; page</source>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>My lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping or task list from pull down menu</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
