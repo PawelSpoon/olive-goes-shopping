@@ -29,13 +29,97 @@
     </message>
 </context>
 <context>
-    <name>FirstPage</name>
+    <name>ExportPage</name>
     <message>
-        <source>Shopping List</source>
+        <source>no-importfiles-placeholder</source>
+        <extracomment>informing user that no former exports are available</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manage</source>
+        <source>internal-storage-label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sdcard-label</source>
+        <extracomment>Label for SD-Cards where %1 represents the increasing number for each card</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export / Import</source>
+        <extracomment>export/import page headline</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export target</source>
+        <extracomment>headline for exports</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter a file name for export</source>
+        <extracomment>placeholder message to remind the user that he has to enter a name for the data export</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export data</source>
+        <extracomment>headline for the data export section</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>select-file-header</source>
+        <extracomment>headline for imports</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>delete-file-button</source>
+        <extracomment>Button to delete the selected data file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>import-button</source>
+        <extracomment>Button to import data form the selected file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>information-label</source>
+        <extracomment>headline for information about import/export mechanism</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>export-import-description</source>
+        <extracomment>Explanation of how importing and exporting data works and where the files are/have to be located.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-header</source>
+        <extracomment>headline for the database purge</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-warning</source>
+        <extracomment>warn user of destructive drop DB function</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-confirmation</source>
+        <extracomment>let user confirm the database purge</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-button</source>
+        <extracomment>Button to import data form the selected file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-success</source>
+        <extracomment>informational notification about the successful dropped data tables</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>drop-database-detail</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -91,6 +175,21 @@
     </message>
 </context>
 <context>
+    <name>ListSelector</name>
+    <message>
+        <source>Shopping List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping list in &apos;Manage&apos; page</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ManageEnumsPage</name>
     <message>
         <source>Manage </source>
@@ -106,10 +205,6 @@
     </message>
     <message>
         <source>Import example items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update shopping list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -132,6 +227,14 @@
         <source>Move down</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Deleting all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ManageMainPage</name>
@@ -152,19 +255,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Food</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Household</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Categories</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -173,10 +264,6 @@
     </message>
     <message>
         <source>Units</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Item types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -200,7 +287,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reset</source>
+        <source>Task lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import Export Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pick list definition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> --- Pick lists --- </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shopping list definition</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -231,11 +334,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Servings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set number of servings</source>
+        <source>Rating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>..how do you cook that..</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -281,11 +392,54 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use household items</source>
+        <source>Use various pre-configured items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use food items</source>
+        <source>Use (multiple) shopping lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use (multiple) task lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShoppingListPage</name>
+    <message>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing done entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

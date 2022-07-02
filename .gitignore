@@ -81,3 +81,22 @@ sfos/olive-goes-shopping/qml/storage/*
 
 python/src/controller/__pycache__/folderitemcontroller.cpython-38.pyc
 python/src/controller/__pycache__/itemtypecontroller.cpython-38.pyc
+sfos/olive-goes-shopping-test/.qmake.stash
+sfos/olive-goes-shopping-test/main.cpp
+sfos/olive-goes-shopping-test/olive-goes-shopping-test.pro
+sfos/olive-goes-shopping-test/runTests.sh
+sfos/olive-goes-shopping-test/sfdk.out
+sfos/olive-goes-shopping-test/TestOGSSettings.cpp
+sfos/olive-goes-shopping-test/TestOGSSettings.h
+sfos/olive-goes-shopping-test/tst_test.qml
+sfos/ogs.pro
+python/test/__pycache__/AssetManagerTest.cpython-38.pyc
+python/test/__pycache__/EnumControllerTest.cpython-38.pyc
+python/test/__pycache__/FolderItemControllerTest.cpython-38.pyc
+python/test/__pycache__/ItemControllerTest.cpython-38.pyc
+python/test/__pycache__/ItemTypeControllerTest.cpython-38.pyc
+python/test/__pycache__/ListManagerTest.cpython-38.pyc
+python/test/__pycache__/PersistanceTest.cpython-38.pyc
+python/test/__pycache__/ShoppingListControllerTest.cpython-38.pyc
+python/test/__pycache__/TaskListControllerTest.cpython-38.pyc
+python/test/__pycache__/test_AmountCalculatorTest.cpython-38.pyc

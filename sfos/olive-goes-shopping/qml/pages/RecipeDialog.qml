@@ -34,6 +34,7 @@ Dialog {
 
         Column {
             id: col
+            anchors.fill: parent
             width: parent.width
             spacing: Theme.paddingLarge
 
@@ -43,20 +44,27 @@ Dialog {
             }
 
             Label {
-                text: { if (id === "") qsTr("New recipe")
+                text: { if (mode === 2) qsTr("New recipe")
                         else qsTr("Recipe") }
                 font.pixelSize: Theme.fontSizeLarge
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
             }
 
-        }
 
-        RecipeComponent {
-            id: recipeComponent
-            itemType: itemType
-            item:  item
+            RecipeComponent {
+                id: recipeComponent
+                itemType: itemType
+                item_:  item
+                mode: mode
+                width: parent.width
+            }
         }
+    }
+
+    Component.onCompleted: {
+        recipeComponent.mode = mode
+        recipeComponent.itemType = itemType
     }
 
 

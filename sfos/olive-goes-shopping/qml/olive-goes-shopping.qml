@@ -10,11 +10,18 @@ ApplicationWindow {
 
     id: applicationWindow
     property ApplicationController controller: myController
+    property DataCache cache : dataCache
     property OGSSettings settings: settings
-    property Python pythonController: python
+    property Python python: pythonHandler
+    property bool initialized: false
+    property variant shopPage: listSelector
 
     ApplicationController {
         id: myController
+    }
+
+    DataCache {
+        id: dataCache
     }
 
     OGSSettings {
@@ -32,17 +39,39 @@ ApplicationWindow {
 
 
     PythonHandler {
-      id: python
+      id: pythonHandler
     }
 
+    function signal_init(module_id, method_id, description) {
+        console.log("python initialized")
+        initialized = true
+        shopPage.load()
+    }
 
-    initialPage:Component {
-        FirstPage {
-             id: firstPage
+    function singal_error(module_id, method_id, description) {
+        // show error window ?
+        console.log("from applicationWindow: ")
+        console.log("             module_id: " + module_id)
+        console.log("             method_id: " + method_id)  
+        console.log("           description: " + description)      
+    }
+
+    initialPage:  Component {
+        ListSelector {
+             id: listSelector
              Component.onCompleted: {
+                 applicationWindow.shopPage = listSelector
+
              }
+
         }
     }
+
+    Component.onCompleted: {
+        
+    }
+
+
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

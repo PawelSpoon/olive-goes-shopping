@@ -8,7 +8,9 @@ from controller.tasklistcontroller import TaskListController
 
 class ShoppingListController(TaskListController):
 
-    def __init__(self,listName,rootD):
+    # rootD is needed for amountcalculator
+    def __init__(self,listName,_filePath,rootD):
+        super().__init__(listName,_filePath)
         self.mytype = listName
         self.rootDir = rootD
         self.calculator = AmountCalculator(self.rootDir)
@@ -17,7 +19,7 @@ class ShoppingListController(TaskListController):
     def setAmountValue(self, name, value):
         self.items[name][FieldAmount] = value
 
-    def addShoppingList(self, listOfItems):
+    def addItems2ShoppingList(self, listOfItems):
         # listOfItems is in fact a dict
         for item in listOfItems.values():
             item[FieldDone] = False

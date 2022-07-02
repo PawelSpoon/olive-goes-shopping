@@ -8,8 +8,8 @@ from controller.constants import *
 
 class EnumControllerTest(unittest.TestCase):
   
-    simpleFile = "../src/assets/simple.json"
-    simpleOutFile = "./test-out/simple.json"
+    simpleFile = "./src/assets/simple.json"
+    simpleOutFile = "./test/test-out/simple.json"
 
     def setUp(self) -> None:
         return super().setUp()

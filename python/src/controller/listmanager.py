@@ -1,8 +1,6 @@
 # this is the guy who controlls the all real to-be-done lists
 # allows to create / delete shopping lists & tasklists
 
-
-from fileinput import filename
 import os
 
 from controller.constants import *
@@ -17,9 +15,9 @@ class ListManager:
         self.rootDir = root
         self.type = type
         self.listController = dict()
-
-    def getPath(self):
-        return self.rootDir + "/current"
+       
+    def getCurrentDirPath(self):
+         return os.path.join(self.rootDir,currentDir)
 
     def file2ListName(self,fileName):
         return fileName.replace("." + self.type + ".json","")
@@ -27,22 +25,36 @@ class ListManager:
     def list2FileName(self, listName):
         return listName + "." + self.type + ".json"
 
+    def createShoppingListController(self, listName):
+        filepath = os.path.join(self.getCurrentDirPath(),self.list2FileName(listName))  
+        return ShoppingListController(listName,filepath,self.rootDir)
+        
+
     def load(self):
-        lists = os.listdir(self.getPath())
+        lists = os.listdir(self.getCurrentDirPath())
         for list in lists:
             # load only if propper type
             if ("." + self.type + "." in list): 
-                lst = persistance.readItems(self.getPath() + "/" + list)
                 if (self.type == tasklistType):
-                    ctl = TaskListController(self.file2ListName(list)) 
+                    ctl = TaskListController(self.file2ListName(list))                 
                 if (self.type == shoplistType):
-                    ctl = ShoppingListController(self.file2ListName(list),self.rootDir)
-                ctl.load(lst)
-                self.listController[ctl.getTypeName()] = ctl
+                    print("adding for file: " + list)
+                    extractedListName = self.file2ListName(list)
+                    ctl = self.createShoppingListController(extractedListName)
+                    self.listController[extractedListName] = ctl
+                self.listController[ctl.getTypeName()] = ctl   
+
+    def getListNames(self):
+        listOfNames = list()
+        for listName in self.listController.keys():
+            listOfNames.append(listName)
+        dicOfNames = dict()
+        dicOfNames[FieldName] = listOfNames
+        return dicOfNames
 
     def store(self):
         for key in self.listController.keys():
-            persistance.storeItems(self.getPath() + "/" + self.list2FileName(key),self.listController[key].getList())
+            persistance.storeItems(self.getCurrentDirPath() + "/" + self.list2FileName(key),self.listController[key].getList())
 
     def getController(self, name):
         if (name in self.listController.keys()):
@@ -55,7 +67,7 @@ class ListManager:
             if (self.type == tasklistType):
                 ctl = TaskListController(name) 
             if (self.type == shoplistType):
-                ctl = ShoppingListController(name,self.rootDir)  
+                ctl = self.createShoppingListController(name)
             self.listController[name] = ctl
         else:
             print("name already exists, will not add controller")
@@ -64,5 +76,5 @@ class ListManager:
         if (name in self.listController.keys()):
             print("removing controller and file")
             self.listController.pop(name)
-            os.remove(self.getPath() + "/" + self.list2FileName(name))
+            os.remove(self.getCurrentDirPath() + "/" + self.list2FileName(name))
     

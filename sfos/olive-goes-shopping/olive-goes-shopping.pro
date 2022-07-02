@@ -28,11 +28,15 @@ SOURCES += src/olive-goes-shopping.cpp \
     src/importexport.cpp
 
 DISTFILES += qml/olive-goes-shopping.qml \
+    olive-goes-shopping.pri \
     qml/ApplicationController.qml \
     qml/PythonHandler.qml \
+    qml/DataCache.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
     qml/pages/AssetCommons.qml\
+    qml/pages/ListSelector.qml \
+    qml/pages/ShoppingListPage.qml \
+    qml/pages/ShoppingListItem.qml \
     qml/pages/ManageMainPage.qml \
     qml/pages/ItemTypeButtons.qml \
     qml/pages/ManageEnumsPage.qml\
@@ -41,6 +45,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/Settings.qml \
     qml/pages/RecipeDialog.qml \
     qml/pages/RecipeComponent.qml \
+    qml/pages/ExportPage.qml\
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \
@@ -63,12 +68,25 @@ DISTFILES += qml/olive-goes-shopping.qml \
     rpm/olive-goes-shopping.spec \
     rpm/olive-goes-shopping.yaml \
     olive-goes-shopping.desktop \
+    test/tst_test.qml \
+    tests/SailfishTestCase.qml \
+    tests/run.sh \
     translations/*.ts
+
+#include(olive-goes-shopping.pri)
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 assets.files = assets
 assets.path = $${DEPLOYMENT_PATH}
+
+tests.files = tests/*
+tests.path = $${DEPLOYMENT_PATH}/tests
+
+INSTALLS += tests
+INSTALLS += tests/run.sh
+
+OTHER_FILES += tests/tst_*
 
 # to disable building translations every time, comment out the
 # following CONFIG line

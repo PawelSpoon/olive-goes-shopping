@@ -8,8 +8,8 @@ from storage.persistance import readItems
 
 class FolderItemControllerTest(unittest.TestCase):
   
-    recipeDir = "../src/assets/recipe"
-    recipeOutDir = "./test-out/recipe"
+    recipeDir = "./src/assets/recipe"
+    recipeOutDir = "./test/test-out/recipe"
 
     def setUp(self) -> None:
         self.cleanUp()
@@ -43,6 +43,8 @@ class FolderItemControllerTest(unittest.TestCase):
     def testDuplicateAdd(self):
         controller = FolderItemController("recipe",self.recipeDir)
         controller.load()
+        self.assertTrue(len(controller.getList()) == 2)
+        self.assertTrue("Krautsuppe" in controller.getList().keys())
         ret = controller.add({"Name": "Krautsuppe"})
         self.assertTrue(ret == False)
         print(len(controller.getList()))
@@ -51,6 +53,8 @@ class FolderItemControllerTest(unittest.TestCase):
     def testRename(self):
         controller = FolderItemController("recipe",self.recipeDir)
         controller.load()
+        controller.filePath = self.recipeOutDir
+        controller.store()
         ret = controller.rename("Krautsuppe","Kartoffelsuppe")
         self.assertTrue(ret == True)
         self.assertTrue("Kartoffelsuppe" in controller.getList())
@@ -63,8 +67,19 @@ class FolderItemControllerTest(unittest.TestCase):
     def testStore(self):
         controller = FolderItemController("recipe",self.recipeDir)
         controller.load()
-        ret = controller.rename("Krautsuppe","Patata")
         controller.filePath = self.recipeOutDir
+        controller.store() # basically copies to file to our dir, needed for rename tests
+        ret = controller.rename("Krautsuppe","Patata")
+        self.assertTrue(ret)
+        controller.store()
+
+    def testUpdate(self):
+        controller = FolderItemController("recipe",self.recipeDir)
+        controller.load()
+        controller.filePath = self.recipeOutDir
+        controller.store()
+        ret = controller.update("Krautsuppe",{"Name": "Patata", "Servings": 3, "Category": "Soup", "Rating": 9, "Ingredients": [{"Name": "Kraut", "Amount": "1", "Unit": "-"}], "HowTo": "This very long text describes the cooking process"})
+        self.assertTrue(ret)
         controller.store()
 
   

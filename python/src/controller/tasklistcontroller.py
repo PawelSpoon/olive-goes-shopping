@@ -6,8 +6,8 @@ from controller.itemcontroller import ItemController
 
 class TaskListController(ItemController):
 
-    def __init__(self, name):
-        super().__init__(name)
+    def __init__(self, name, _filePath):
+        super().__init__(name, _filePath)
 
     # load - inherited
     # store - not supported, implemented in managers

@@ -8,8 +8,6 @@ Item {
 
     id: applicationController
     property string currentPage: 'any'
-    property var unitsList: undefined
-    property var categoryList : undefined
 
     signal signal_asset_updated(var itemType)
 
@@ -28,15 +26,21 @@ Item {
     function updateParentPage(itemType)
     {
        console.log('sending?')
+       cache.invalidate()
+       // in case of rename of itemtype's i need to re-init assetmanager
+       if (itemType === "itemtype") {
+           // now that could take longer .. maybe async
+           applicationWindow.python.reInit(itemType)
+       }
        signal_asset_updated(itemType)
     }
 
-    function propageteCategoryChanged()
+    function propagateCategoryChanged()
     {
        // update everyone with new category orders
     }
 
-    function propageteUnitChanged()
+    function propagateUnitChanged()
     {
 
     }
@@ -72,7 +76,6 @@ Item {
     {
         applicationWindow.page.initPage()
     }
-
 
     function openAddDialog()
     {
@@ -126,24 +129,9 @@ Item {
 
     function openRecipesMngmtPage()
     {
-        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false})
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "recipe", readonly: false, sortable: false})
     }
 
-    function getUnits() {
-        if (unitsList === undefined)
-        {
-            unitsList = applicationWindow.pythonController.getAssets("unit")
-        }
-        return unitsList
-    }
-
-    function getCategories() {
-        if (categoryList === undefined)
-        {
-            categoryList = applicationWindow.pythonController.getAssets("category")
-        }
-        return categoryList
-    }
 
     function openItemsMngmtPage(itemtype)
     {
@@ -156,12 +144,15 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: "shop", readonly: false})
     }
 
+    function openShoppingListPage(listName)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
+    }
+
     // type, page, 0: read-only, 1: edit, 2: add
     function openMgmtDetailPage(type, mode, item)
     {
-        /*if (mode === 2 && item === null) {
-            item = {Id:null, Name:"", OrderNr: -1, Category: null}
-        }*/
+        console.log("open editor for: " + type + " in mode: " + mode)
 
         switch(type) {
         case "unit":
@@ -184,11 +175,32 @@ Item {
             break
         case "recipe":
             pageStack.push(Qt.resolvedUrl("pages/RecipeDialog.qml"), {itemType: type, mode: mode, item: item})
+            break
+         default:
+             // check in itemtypes then open enumdialog
+             if (isInList(type, applicationWindow.cache.getItemtypes())) {
+                pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+             }
+             break;
+
+             console.error("could not find editor")
+
         }
-
-
     }
 
+    function isInList(name, list)
+    {
+        if (name === '') { return false }
+        for (var i = 0; i < list.length ; i++) {
+            if( list[i].Name === name) {
+                return true
+            }
+        }
+        return false
+    }
+
+
+///////////////////////////////////////////////////////////////////
 
     function setCurrentPage(pageName) {
         console.log("setCurrentPage: " + pageName)

@@ -8,10 +8,10 @@ from controller.constants import *
 
 class ItemTypeControllerTest(unittest.TestCase):
   
-    itemTypeFile = "../src/assets/itemtype.json"
-    itemTypeOutFile = "./test-out/itemtype.json"
-    itemTypeListDir = "../src/assets/item"
-    itemTypeListOuDir = "./test-out/item"
+    itemTypeFile = "./src/assets/itemtype.json"
+    itemTypeOutFile = "./test/test-out/itemtype.json"
+    itemTypeListDir = "./src/assets/item"
+    itemTypeListOuDir = "./test/test-out/item"
 
     def cleanUp(self):
         files = os.listdir(self.itemTypeListOuDir)

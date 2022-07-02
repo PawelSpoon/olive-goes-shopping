@@ -4,8 +4,11 @@ import io.thp.pyotherside 1.5
 
 /***********
   * generic list mgmt dialog for everything
-  * applicaton controller has to set the proper detail window
-  *
+  * application controller will open the proper detail windows based on provided enumType
+  * 'everything' is currently limited by the calls to delete an item, clear all..
+  * it must be within assetmanagers context
+  * could be replaced by introduction of an interface and injecting object later ?
+  * can work with something like that: { Id: "123"; Name: "dummy"; Order: 0; Category: null; Item: null}
   */
 
 Dialog {
@@ -25,11 +28,13 @@ Dialog {
         applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
     }
 
+    // callback from e.g dialog pages
     function onAssetChanged(itemType) {
-        console.log("IINNN")
-        console.log(itemType)
-        page.initPage()
+        // throws unknown33 initPage of object is not a ...
+        //page.initPage() did not work either
+        initPage()
     }
+
     onAccepted: {
         // itemsPage.initPage()
     }
@@ -41,7 +46,7 @@ Dialog {
 
     function initPage()
     {
-        var items = applicationWindow.pythonController.getAssets(enumType)
+        var items = applicationWindow.python.getAssets(enumType)
         itemModel.clear()
         fillItemsModel(items)
     }
@@ -56,14 +61,9 @@ Dialog {
         }
     }
 
-    function updateCategoriesInShoppingList()
-    {
-
-    }
-
     ListModel {
         id: itemModel
-        //ListElement {Id: "123"; Name: "dummy"; Order: 0; Category: null; Obj: null}
+        //ListElement {Id: "123"; Name: "dummy"; Order: 0; Category: null; Item: null}
 
         function contains(uid) {
             for (var i=0; i<count; i++) {
@@ -103,21 +103,24 @@ Dialog {
 
             MenuItem {
                 text: qsTr("Clear all")
+                visible: ! readonly
                 onClicked: {
-                    remorse.execute("Deleting items", cleanEnumsTable);
+                    remorse.execute(qsTr("Deleting all"), cleanEnumsTable);
                 }
                 RemorsePopup {id: remorse }
                 function cleanEnumsTable()
                 {
-                    applicationWindow.pythonController.clearAssets(enumType)
+                    applicationWindow.python.clearAssets(enumType)
                     initPage()
                 }
             }
 
             MenuItem {
                 text: qsTr("Import example items")
+                visible: !readonly
                 onClicked: {
-                    DB.getDatabase().importCategoriesFromJson()
+                    //todo:
+                    console.log('not implemented')
                     initPage()
                 }
             }
@@ -126,14 +129,8 @@ Dialog {
         PullDownMenu {
 
             MenuItem {
-                text: qsTr("Update shopping list");
-                onClicked: { updateCategoriesInShoppingList();}
-            }
-
-            MenuItem {
                 text: qsTr("Add");
                 visible: !readonly
-                //onClicked: pageStack.push(Qt.resolvedUrl("EnumDialog.qml"), {itemType:enumType, itemsPage: page})
                 onClicked: applicationWindow.controller.openMgmtDetailPage(enumType, 2, {})
             }
 
@@ -152,9 +149,13 @@ Dialog {
             function remove() {
                 var removal = removalComponent.createObject(myListItem)
                 ListView.remove.connect(removal.deleteAnimation.start)
-                removal.execute(contentItem, "Deleting", function() {
-                    applicationWindow.pythonController.deleteAsset(enumType,Name)
-                    itemModel.remove(index); }
+                removal.execute(contentItem, qsTr("Deleting"), function() {
+                    // is that a limitation  ?
+                    applicationWindow.python.deleteAsset(enumType,Name)
+                    itemModel.remove(index); 
+                    // should be moved to python handler or ..
+                    applicationWindow.controller.updateParentPage(enumType)
+                    }
                 )
             }
 
@@ -169,10 +170,8 @@ Dialog {
                 }
                 onClicked: {
                     //console.log("Clicked " + title)
-                    //todo:  already existing item
-                    //pageStack.push(Qt.resolvedUrl("ItemDialog.qml"),
-                    //               {id: uid, name_: name, itemType: type, itemsPage: page} )
-                }
+                    //todo:  could expand here to show more details
+                 }
                 Image {
                     id: typeIcon
                     anchors.left: parent.left
@@ -190,7 +189,7 @@ Dialog {
                     anchors.left: typeIcon.right
                     anchors.leftMargin: Theme.paddingMedium
                     anchors.verticalCenter: parent.verticalCenter
-                    font.capitalization: Font.Capitalize
+                    font.capitalization: Font.Normal
                     truncationMode: TruncationMode.Elide
                     elide: Text.ElideRight
                     color: contentItem.down || menuOpen ? Theme.highlightColor : Theme.primaryColor
@@ -244,6 +243,7 @@ Dialog {
                     }
                     MenuItem {
                         text: qsTr("Move up");
+                        visible: sortable
                         onClicked: {
                             DB.getDatabase().moveCategory(name, true);
                             page.initPage();
@@ -251,6 +251,7 @@ Dialog {
                     }
                     MenuItem {
                         text: qsTr("Move down");
+                        visible: sortable
                         onClicked: {
                             DB.getDatabase().moveCategory(name, false);
                             page.initPage();

@@ -7,8 +7,8 @@ from storage.persistance import readItems
 
 class ItemControllerTest(unittest.TestCase):
   
-    foodFile = "../src/assets/item/food.json"
-    foodOutFile = "./test-out/food.json"
+    foodFile = "./src/assets/item/food.json"
+    foodOutFile = "./test/test-out/food.json"
 
     def setUp(self) -> None:
         return super().setUp()
