@@ -100,3 +100,4 @@ python/test/__pycache__/PersistanceTest.cpython-38.pyc
 python/test/__pycache__/ShoppingListControllerTest.cpython-38.pyc
 python/test/__pycache__/TaskListControllerTest.cpython-38.pyc
 python/test/__pycache__/test_AmountCalculatorTest.cpython-38.pyc
+.vscode/targets.log
