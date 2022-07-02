@@ -52,9 +52,10 @@ class ListManager:
         dicOfNames[FieldName] = listOfNames
         return dicOfNames
 
-    def store(self):
-        for key in self.listController.keys():
-            persistance.storeItems(self.getCurrentDirPath() + "/" + self.list2FileName(key),self.listController[key].getList())
+    # creates new but downdates existing
+    #def store(self):
+     #   for key in self.listController.keys():
+     #       persistance.storeItems(self.getCurrentDirPath() + "/" + self.list2FileName(key),self.listController[key].getList())
 
     def getController(self, name):
         if (name in self.listController.keys()):
@@ -69,6 +70,7 @@ class ListManager:
             if (self.type == shoplistType):
                 ctl = self.createShoppingListController(name)
             self.listController[name] = ctl
+            ctl.store()
         else:
             print("name already exists, will not add controller")
 

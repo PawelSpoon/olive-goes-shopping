@@ -61,14 +61,6 @@ class ListManagerTest(unittest.TestCase):
      #   self.assertTrue("annual maintenance - Breva" in manager.listController.keys())
     #    manager.rootDir = self.outDir
 
-    def testStoreShop(self):
-        print('testStore')
-        manager = ListManager(self.rootDir, shoplistType)
-        manager.load()
-        self.assertEqual(1,len(manager.listController.keys()))
-        self.assertTrue("jan" in manager.listController.keys())
-        manager.rootDir = self.outDir
-
     def testGetController(self):
         print("testGetController")
         manager = ListManager(self.rootDir, shoplistType)
@@ -79,20 +71,21 @@ class ListManagerTest(unittest.TestCase):
         print("testAddController")
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
+        manager.rootDir = self.outDir
         manager.add("olive")
+        self.assertTrue(os.path.exists(self.outDir + "/current/olive.shop.json"))      
         self.assertTrue("olive" in manager.listController.keys())
         manager.rootDir = self.outDir
-        manager.store()
         persistance.readItems(self.outDir + "/current/olive.shop.json")
 
     def testDeleteController(self):
         print("testDeleteController")
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
+        manager.rootDir = self.outDir        
         manager.add("maja")
+        self.assertTrue(os.path.exists(self.outDir + "/current/maja.shop.json"))        
         self.assertTrue("maja" in manager.listController.keys())
-        manager.rootDir = self.outDir
-        manager.store()
         persistance.readItems(self.outDir + "/current/maja.shop.json")
         manager.delete("maja")
         self.assertFalse(os.path.exists(self.outDir + "/current/maja.shop.json"))
