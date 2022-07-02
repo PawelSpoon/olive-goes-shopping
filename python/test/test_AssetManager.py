@@ -8,8 +8,8 @@ from controller.constants import *
 
 class AssetManagerTest(unittest.TestCase):
   
-    rootDir = "../src/assets"
-    outDir = "./test-out"
+    rootDir = "./src/assets"
+    outDir = "./test/test-out"
 
     def setUp(self) -> None:
         return super().setUp()

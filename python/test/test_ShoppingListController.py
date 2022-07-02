@@ -12,7 +12,7 @@ from controller.constants import *
 
 class ShoppingListControllerTest(unittest.TestCase):
      
-    rootDir = "../src/assets"
+    rootDir = "./src/assets"
     currentDir = os.path.join(rootDir, currentDir)
     janPath = os.path.join(currentDir, "jan.shop.json")
 

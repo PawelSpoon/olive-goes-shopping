@@ -8,8 +8,8 @@ from storage.persistance import readItems
 
 class FolderItemControllerTest(unittest.TestCase):
   
-    recipeDir = "../src/assets/recipe"
-    recipeOutDir = "./test-out/recipe"
+    recipeDir = "./src/assets/recipe"
+    recipeOutDir = "./test/test-out/recipe"
 
     def setUp(self) -> None:
         self.cleanUp()

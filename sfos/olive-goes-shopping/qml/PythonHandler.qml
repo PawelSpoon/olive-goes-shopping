@@ -23,12 +23,6 @@ Python {
       call_sync('app.app_object.setup', ['.local/share/oarg.pawelspoon/olive-goes-shopping/assets',python]);
       //call('tfl.tfl_object.set_python_handler', [python]);
     });
-    /*importModule('database', function () {
-      call('database.database_object.set_app', [app]);
-      call('database.database_object.set_python_handler', [python]);
-    });
-    importModule('tfgm', function () {});
-    importModule('tfgm_xml', function () {});*/
   }
 
   Component.onDestruction: {

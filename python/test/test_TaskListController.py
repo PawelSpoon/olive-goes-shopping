@@ -11,8 +11,8 @@ from storage.persistance import readEnums, readItems, storeEnums, storeItems
 
 class TaskListControllerTest(unittest.TestCase):
   
-    rootDir = "../src/assets"
-    outDir = "./test-out"
+    rootDir = "./src/assets"
+    outDir = "./test/test-out"
     currentDir = os.path.join(rootDir, currentDir)
     brevafilePath = os.path.join(currentDir, tasklistBreva + ".task.json")
 
@@ -69,6 +69,7 @@ class TaskListControllerTest(unittest.TestCase):
         manager.resetDone()
         self.assertTrue(manager.getList()["maja"][FieldDone] == False)    
 
+    # test removing done items from shopping list
     def testClearDone(self):
         manager = TaskListController(tasklistBreva,self.brevafilePath)   
         manager.load()
@@ -79,13 +80,14 @@ class TaskListControllerTest(unittest.TestCase):
         manager.clearDone()
         self.assertFalse("maja" in manager.getList().keys())
 
+    # add from a second list list
     def testAddTaskList(self):
         manager = TaskListController(tasklistBreva,self.brevafilePath)   
         manager.load()
         manager.setDoneValue("Oil change",True)
         self.assertTrue(manager.getList()["Oil change"][FieldDone] == True)
-        secondmanager = TaskListController(tasklistBreva)
-        secondmanager.load(persistance.readItems(self.rootDir + "/" + currentDir + "/" + tasklistBreva + ".task.json"))
+        secondmanager = TaskListController(tasklistBreva, self.brevafilePath)
+        secondmanager.load()
         secondmanager.add({"Name":"Coolant change","Done":False})
         manager.addTaskList(secondmanager.getList())
         self.assertTrue(manager.getList()["Oil change"][FieldDone] == False)

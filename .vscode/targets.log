@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul  1 14:11:20 2022
+# Make data base, printed on Sat Jul  2 14:58:21 2022
 
 # Variables
 
@@ -125,7 +125,7 @@ XDG_SESSION_DESKTOP = pantheon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2916
+GIO_LAUNCHED_DESKTOP_FILE_PID = 199981
 # automatic
 %F = $(notdir $%)
 # environment
@@ -159,7 +159,7 @@ VSCODE_CODE_CACHE_PATH = /home/pawel/.config/Code/CachedData/30d9c6cd9483b2cc586
 # environment
 LOGNAME = pawel
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -191,7 +191,7 @@ SNAP_USER_DATA = /home/pawel/snap/code/99
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f3f22161-a1e1-423a-8aea-6a7eb96b2b60.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-48c97b2e-5192-49dc-bfea-6cb8b5d7b29c.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -273,22 +273,22 @@ LANG = C
 # environment
 ANDROID_HOME = /home/pawel/Android/Sdk-31
 # environment
-VSCODE_PID = 2964
+VSCODE_PID = 200025
 # variable set hash-table stats:
 # Load=131/1024=13%, Rehash=0, Collisions=16/153=10%
 
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
+ 
 
 # Directories
 
-# . (device 64768, inode 2633767): 13 files, no impossibilities.
+# . (device 64768, inode 2633767): 12 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
- 
 
 # No implicit rules.
 
@@ -336,12 +336,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 244 B / avg = 11 B
-# current buf: size = 8162 B / used = 244 B / count = 21 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 174 B / avg = 8 B
+# current buf: size = 8162 B / used = 174 B / count = 20 / avg = 8 B
 
-# strcache performance: lookups = 24 / hit rate = 12%
+# strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Fri Jul  1 14:11:20 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
+# Finished Make data base on Sat Jul  2 14:58:21 2022
 
  

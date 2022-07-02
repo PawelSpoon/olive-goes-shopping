@@ -35,3 +35,8 @@ listmanager is the controller for current working set, the real shopping lists .
 - gives you the controller for a list
 
 shall i combine all types into 1 list ?
+
+
+for unittests !!
+https://binx.io/2020/03/05/setting-python-source-folders-vscode/
+

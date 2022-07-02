@@ -1,11 +1,12 @@
 import unittest
 import sys
 sys.path.append('../src')
+
 from controller.amountcalculator import AmountCalculator
 
 class AmountCalculatorTest(unittest.TestCase):
      
-    rootDir = "../src/assets"
+    rootDir = "./src/assets"
 
     def setUp(self) -> None:
         return super().setUp()
