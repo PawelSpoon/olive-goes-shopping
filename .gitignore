@@ -90,6 +90,7 @@ sfos/olive-goes-shopping-test/TestOGSSettings.cpp
 sfos/olive-goes-shopping-test/TestOGSSettings.h
 sfos/olive-goes-shopping-test/tst_test.qml
 sfos/ogs.pro
+python/test/__pycache__/*
 python/test/__pycache__/AssetManagerTest.cpython-38.pyc
 python/test/__pycache__/EnumControllerTest.cpython-38.pyc
 python/test/__pycache__/FolderItemControllerTest.cpython-38.pyc
@@ -102,3 +103,6 @@ python/test/__pycache__/TaskListControllerTest.cpython-38.pyc
 python/test/__pycache__/test_AmountCalculatorTest.cpython-38.pyc
 .vscode/targets.log
 .vscode/targets.log
+python/test/__pycache__/test_ListManager.cpython-38.pyc
+python/test/__pycache__/test_ListManager.cpython-38.pyc
+python/test/__pycache__/test_ListManager.cpython-38.pyc
