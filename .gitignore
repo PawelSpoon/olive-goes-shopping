@@ -53,8 +53,8 @@ compile_commands.json
 
 # Python caches
 python/test/__pycache__/*
-python/src/controller/*
-python/src/storage/*
+python/src/controller/__pycache__/*
+python/src/storage/__pycache__/*
 
 # test result files
 python/test/test-out/current/*.json

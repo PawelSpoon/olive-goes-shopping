@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul  2 15:44:15 2022
+# Make data base, printed on Sat Jul  2 19:50:36 2022
 
 # Variables
 
@@ -191,7 +191,7 @@ SNAP_USER_DATA = /home/pawel/snap/code/99
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f66eb73a-4206-4531-8edc-0c66888f71f3.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4c0754fb-2334-4041-a484-917ddb808c08.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -342,6 +342,6 @@ GNUmakefile:
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Sat Jul  2 15:44:15 2022
+# Finished Make data base on Sat Jul  2 19:50:36 2022
 
  
