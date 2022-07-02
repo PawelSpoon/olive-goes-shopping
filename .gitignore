@@ -52,18 +52,9 @@ compile_commands.json
 *creator.user*
 
 # Python caches
-python/src/controller/__pycache__/__init__.cpython-38.pyc
-python/src/controller/__pycache__/amountcalculator.cpython-38.pyc
-python/src/controller/__pycache__/assetmanager.cpython-38.pyc
-python/src/controller/__pycache__/constants.cpython-38.pyc
-python/src/controller/__pycache__/enumcontroller.cpython-38.pyc
-python/src/controller/__pycache__/itemcontroller.cpython-38.pyc
-python/src/controller/__pycache__/listmanager.cpython-38.pyc
-python/src/controller/__pycache__/shoppinglistcontroller.cpython-38.pyc
-python/src/controller/__pycache__/tasklistcontroller.cpython-38.pyc
-python/src/storage/__pycache__/__init__.cpython-38.pyc
-python/src/storage/__pycache__/persistance.cpython-38.pyc
-python/test/__pycache__/testconstants.cpython-38.pyc
+python/test/__pycache__/*
+python/src/controller/*
+python/src/storage/*
 
 # test result files
 python/test/test-out/current/*.json
@@ -78,9 +69,6 @@ python/test/test-out/item/*
 sfos/olive-goes-shopping/qml/controller/*/*
 sfos/olive-goes-shopping/qml/storage/*
 
-
-python/src/controller/__pycache__/folderitemcontroller.cpython-38.pyc
-python/src/controller/__pycache__/itemtypecontroller.cpython-38.pyc
 sfos/olive-goes-shopping-test/.qmake.stash
 sfos/olive-goes-shopping-test/main.cpp
 sfos/olive-goes-shopping-test/olive-goes-shopping-test.pro
@@ -90,19 +78,5 @@ sfos/olive-goes-shopping-test/TestOGSSettings.cpp
 sfos/olive-goes-shopping-test/TestOGSSettings.h
 sfos/olive-goes-shopping-test/tst_test.qml
 sfos/ogs.pro
-python/test/__pycache__/*
-python/test/__pycache__/AssetManagerTest.cpython-38.pyc
-python/test/__pycache__/EnumControllerTest.cpython-38.pyc
-python/test/__pycache__/FolderItemControllerTest.cpython-38.pyc
-python/test/__pycache__/ItemControllerTest.cpython-38.pyc
-python/test/__pycache__/ItemTypeControllerTest.cpython-38.pyc
-python/test/__pycache__/ListManagerTest.cpython-38.pyc
-python/test/__pycache__/PersistanceTest.cpython-38.pyc
-python/test/__pycache__/ShoppingListControllerTest.cpython-38.pyc
-python/test/__pycache__/TaskListControllerTest.cpython-38.pyc
-python/test/__pycache__/test_AmountCalculatorTest.cpython-38.pyc
+
 .vscode/targets.log
-.vscode/targets.log
-python/test/__pycache__/test_ListManager.cpython-38.pyc
-python/test/__pycache__/test_ListManager.cpython-38.pyc
-python/test/__pycache__/test_ListManager.cpython-38.pyc
