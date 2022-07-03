@@ -30,15 +30,16 @@ Page {
         initPage()
     }
 
-    function update(id,name,itemType,category,amount,unit,howMany,done) {
+
+    function update(id,name,itemType,category,amount,unit,done) {
         // check all items where howmany > 0
         for (var i = 0; i < shoppingModel.count; i++)
         {
             var item = shoppingModel.get(i)
             console.log(item.Name)
             if (item.Name === name) {
-                item.howMany = howMany
-                shoppingModel.setProperty(i,"HowMany",howMany)
+                console.log(done)
+                //shoppingModel.setProperty(i,"HowMany",howMany)
                 shoppingModel.setProperty(i,"Done",done)
                 applicationWindow.python.setDoneValue(listName,name,done)
                 return
