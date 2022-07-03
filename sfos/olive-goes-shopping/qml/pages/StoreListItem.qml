@@ -8,19 +8,23 @@ import Sailfish.Silica 1.0
 MouseArea {
     id: root
 
-    property alias uid_: uidLabel.text
-    property alias text: label.text
-    property alias amount_: desc.text
-    property alias unit_: unitLabel.text
-    property alias type_: typeLabel.text
-    property int howMany_
-    property string category_
+    property alias id: uidLabel.text
+    property alias name: label.text
+    property int amount
+    property alias unit: unitLabel.text
+    property alias itemType: typeLabel.text
+    property int howMany
+    property bool done
+    property string category
 
-    property bool checked : (howMany_ > 0)
+    property variant receiver
+
+    property bool checked : (howMany > 0)
     property real leftMargin
     property real rightMargin: Theme.paddingLarge
     property bool highlighted: false
     property bool busy
+
 
     width: parent ? parent.width : Screen.width
     implicitHeight: Math.max(toggle.height, desc.y + desc.height)
@@ -82,12 +86,12 @@ MouseArea {
         anchors {
             right: parent.right
         }
-        visible: howMany_ > 0
+        visible: howMany > 0
 
         Label {
             id: prioIndicator
             anchors.centerIn: parent
-            text: howMany_
+            text: howMany
             color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
         }
     }
@@ -135,26 +139,16 @@ MouseArea {
     }
 
     onClicked: {
-        howMany_ ++
-        checked = (howMany_ > 0)
-        print(uid + " " + name + " " + howMany_ + " " + type + " " + category_)
-        DB.getDatabase().updateItemSetHowMany(uid,howMany_)
-        var shopListItems = DB.getDatabase().getShoppingListItemPerName(name)
-        if (shopListItems.length > 0) {
-            var newAmount = shopListItems[0].amount + amount
-            DB.getDatabase().updateShoppingListItemSetAmount(shopListItems[0].uid,newAmount);
-            //DB.getDatabase().setShoppingListItem(uid,name,newAmount,unit,false,category_)
-        }
-        else {
-            DB.getDatabase().setShoppingListItem(uid,name,amount,unit,false,category_)
-        }
+        howMany ++
+        checked = (howMany > 0)
+        print(id + " " + name + " " + howMany + " " + itemType + " " + category)
+        receiver.update(id,name,itemType,category,amount,unit,howMany)
     }
 
     onPressAndHold: {
-        howMany_ = 0
+        howMany = 0
         checked = false
-        DB.getDatabase().updateItemSetHowMany(uid,howMany_);
-        DB.getDatabase().removeShoppingListItem(uid,name,amount,unit,false)
+        receiver.update(id,name,itemType,category,amount,unit,howMany,done)
     }
 
 }

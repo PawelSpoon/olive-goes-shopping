@@ -81,9 +81,10 @@ Item {
         applicationWindow.page.initPage()
     }
 
-    function openAddDialog()
+    function openAddDialog(name)
     {
-         pageStack.push(Qt.resolvedUrl("pages/AddItemTypePage.qml"), { itemType: "food"})
+        console.log(name)
+        pageStack.push(Qt.resolvedUrl("pages/AddItemType2ListPage.qml"), { listName: name, itemType: "food"})
     }
 
     function openManageMainPage()

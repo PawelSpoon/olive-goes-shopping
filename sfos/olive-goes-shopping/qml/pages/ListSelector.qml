@@ -71,9 +71,13 @@ Page {
                 Button {
                     text: Name
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked:  applicationWindow.controller.openShoppingListPage(text)
+                    onClicked:  {
+                        var listName = text
+                        console.log(listName)
+                        applicationWindow.controller.openShoppingListPage(listName)
+                    }
                 }
-                }
+            }
             /*Label {
                 enabled: true
                 height: Theme.horizontalPageMargins

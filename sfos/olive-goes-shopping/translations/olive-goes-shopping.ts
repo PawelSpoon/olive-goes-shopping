@@ -2,11 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>AddItemTypePage</name>
-    <message>
-        <source>Manage </source>
-        <translation type="unfinished"></translation>
-    </message>
+    <name>AddItemType2ListPage</name>
     <message>
         <source>Add or import items</source>
         <translation type="unfinished"></translation>

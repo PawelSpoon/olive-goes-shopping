@@ -40,13 +40,16 @@ import Sailfish.Silica 1.0
 MouseArea {
     id: root
 
-    property string uid_
-    property alias text: label.text
-    property int amount_
-    property alias unit_: unitLabel.text
+    property string uid
+    property alias name: label.text
+    property int amount
+    property string itemType
+    property alias unit: unitLabel.text
     property bool checked
     property alias category : categoryLabel.text
-    property string order_
+    property string order
+
+    property variant receiver
 
     property real leftMargin
     property real rightMargin: Theme.paddingLarge
@@ -119,9 +122,9 @@ MouseArea {
         Label {
             id: amountLabel
             anchors.centerIn: parent
-            text: amount_
+            text: amount
             color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
-            opacity: (amount_ == 1 && unit_ == "-") ? 0 : 1
+            opacity: (amount == 1 && unit == "-") ? 0 : 1
         }
 
         Label {
@@ -131,7 +134,7 @@ MouseArea {
             anchors.leftMargin: Theme.paddingSmall
             //text: unit_
             color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
-            opacity: (amount_ == 1 && unit_ == "-") ? 0 : 1
+            opacity: (amount == 1 && unit == "-") ? 0 : 1
         }
 
         Label {
@@ -161,8 +164,8 @@ MouseArea {
 
     onClicked: {
         checked = !checked
-        DB.getDatabase().updateShoppingListItemChecked(uid_, checked)
-        parent.parent.parent.markAsDoneInShoppingList(text)
+        receiver.update(uid,name,itemType,category,amount,unit,
+                        checked)
     }
 
     onPressAndHold: {

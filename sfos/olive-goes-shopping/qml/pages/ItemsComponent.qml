@@ -10,6 +10,8 @@ import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
 SilicaListView {
 // Dialog {
     id: page
+    property string listName
+    // current combo box switch for asset types
     property string itemType
 
     anchors.fill: parent
@@ -21,11 +23,51 @@ SilicaListView {
 
     Component.onCompleted:
     {
-        initPage()
+
+    }
+
+    // this callback belongs to parent
+    // same as the accept
+    // this component should just visualize
+    function update(id,name,itemType,category,amount,unit,howMany) {
+        // check all items where howmany > 0
+        for (var i = 0; i < itemModel.count; i++)
+        {
+            var item = itemModel.get(i)
+            console.log(item.Name)
+            if (item.Name === name) {
+                item.HowMany = howMany
+                itemModel.setProperty(i,"HowMany",howMany)
+                //itemModel.setProperty(i,"Done",done)
+                return
+            }
+        }
+        console.log(name + " not found in list")
     }
 
     function doAccept() {
-        applicationWindow.page.initPage()
+        // in future we will store at once
+        // so collect items that were changed and pass once to ..
+        // how will that work with filter ?
+
+        var list2Add = []
+        console.log(itemModel.count)
+        // check all items where howmany > 0
+        for (var i = 0; i < itemModel.count; i++)
+        {
+            var item = itemModel.get(i)
+            if (item.HowMany > 0) {
+                var addAmount = item.HowMany * item.Amount
+                console.log("add amount:" + item.Amount)
+                // category not needed
+                console.log(item.Name +  " " + item.Amount + item.Unit)
+                var tmp = {Id: item.Id, Name: item.Name, Amount: addAmount, Unit: item.Unit }
+                list2Add.push(tmp)
+            }
+        }
+        console.log(listName)
+        console.log(list2Add.length)
+        applicationWindow.python.addItem2ShoppingList(listName,list2Add)
     }
 
     // user has rejected editing entry data, check if there are unsaved details
@@ -60,11 +102,16 @@ SilicaListView {
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
-            // print(items[i].uid + " " + items[i].name + " " + items[i].type + " " + " " + items[i].howMany + " " + items[i].category)
-            itemModel.append({"uid": items[i].Id, "name": items[i].Name, "amount": items[i].Amount, "unit": items[i].Unit, "howMany": items[i].howMany, "type": items[i].type, "category": items[i].Category })
+            itemModel.append({"Id": items[i].Id,
+                                 "Name": items[i].Name,
+                                 "Amount": items[i].Amount,
+                                 "Unit": items[i].Unit,
+                                 "HowMany": items[i].HowMany,
+                                 "ItemType": items[i].ItemType,
+                                 "Category": items[i].Category })
         }
         if (applicationWindow.settings.categorizeItems) {
-            console.log('soring items')
+            console.log('sorting items')
             sortModel();
         }
     }
@@ -147,20 +194,21 @@ SilicaListView {
             id: listItem
 
             StoreListItem {
-                uid_: uid
-                text: name
-                amount_: amount
-                unit_: unit
-                type_: type
-                howMany_: howMany
-                category_: category
+                id: _Id
+                name: Name
+                amount: Amount
+                unit: Unit
+                itemType: ItemType
+                howMany: HowMany
+                category: Category
+                receiver: page
             }
         }
 
 
         ListModel {
             id: itemModel
-            ListElement {uid: "123"; name: "dummy"; amount: 0; unit:""; howMany:0; type:"dummy"; category:""}
+            ListElement {Id: "123"; Name: "dummy"; Amount: 0; Unit:""; HowMany:0; ItemType:"dummy"; Category:""}
 
             function contains(uid) {
                 for (var i=0; i<count; i++) {

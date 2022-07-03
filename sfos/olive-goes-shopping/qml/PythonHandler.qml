@@ -9,8 +9,6 @@ Python {
   id: python
 
   Component.onCompleted: {
-    /*setHandler('asset_updated', asset_updated);
-    setHandler('a_get_station_messages', a_get_station_messages);*/
     setHandler('error', error_handler);
     // initalization done
     setHandler('init', init_handler);
@@ -20,8 +18,7 @@ Python {
     importModule('storage', function () {});
     importModule('app', function () {});
     importModule('app', function () {
-      call_sync('app.app_object.setup', ['.local/share/oarg.pawelspoon/olive-goes-shopping/assets',python]);
-      //call('tfl.tfl_object.set_python_handler', [python]);
+      call('app.app_object.setup', ['.local/share/oarg.pawelspoon/olive-goes-shopping/assets',python]);
     });
   }
 
@@ -95,4 +92,25 @@ Python {
   function getShoppingList(name) { // and object with Name attribute that contains a list
       return call_sync('app.app_object.getShoppingList',[name])
   }
+
+  function addItem2ShoppingList(listName, items) {
+      return call_sync('app.app_object.addItem2ShoppingList',[listName,items])
+  }
+
+  function setDoneValue(listName, name, done) {
+      return call_sync('app.app_object.setDoneValue',[listName,name,done])
+  }
+
+  function clearAll(listName) {
+      return call_sync('app.app_object.clearAll',[listName])
+  }
+
+  function clearDone(listName) {
+      return call_sync('app.app_object.clearDone',[listName])
+  }
+
+  function resetDone(listName) {
+      return call_sync('app.app_object.resetDone',[listName])
+  }
+
 }

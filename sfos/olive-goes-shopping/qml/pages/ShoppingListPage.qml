@@ -30,6 +30,23 @@ Page {
         initPage()
     }
 
+    function update(id,name,itemType,category,amount,unit,howMany,done) {
+        // check all items where howmany > 0
+        for (var i = 0; i < shoppingModel.count; i++)
+        {
+            var item = shoppingModel.get(i)
+            console.log(item.Name)
+            if (item.Name === name) {
+                item.howMany = howMany
+                shoppingModel.setProperty(i,"HowMany",howMany)
+                shoppingModel.setProperty(i,"Done",done)
+                applicationWindow.python.setDoneValue(listName,name,done)
+                return
+            }
+        }
+        console.log(name + " not found in list")
+    }
+
     function editCurrent(name)
     {
         var current = DB.getDatabase().getShoppingListItemPerName(name)
@@ -41,9 +58,9 @@ Page {
     {
         for(var i=0; i< shoppingModel.count; i++)
         {
-          console.debug(shoppingModel.get(i).name)
-          if(shoppingModel.get(i).name === name) {
-            shoppingModel.get(i).done = true;
+          console.debug(shoppingModel.get(i).Name)
+          if(shoppingModel.get(i).Name === name) {
+            shoppingModel.get(i).Done = true;
             break
           }
         }
@@ -52,7 +69,7 @@ Page {
     // currently not used by should be from ShoppingListItem to inform
     function markAsDone(uid,name,amount,unit,category,done)
     {
-        DB.getDatabase().setShoppingListItem(uid,name,amount,unit,true,category)
+        applicationWindow.python.setDoneValue(listName,done)
         initPage()
     }
 
@@ -64,19 +81,20 @@ Page {
         //applicationWindow.updateCoverList(shoppingModel)
     }
 
+
+
     function fillShoppingListModel(items)
     {
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
-            var uid = "1"
-            var name = items[i].Name
-            var amount = items[i].Amount
-            var unit = "-" //items[i].Unit
-            var done = items[i].Done
-            var category = "undefined"  //items[i].Category
-            print(items[i].Name)// + " " + items[i].amount + " " + items[i].unit + " " + items[i].done + " " + items[i].category)
-            shoppingModel.append({"uid": uid, "name": name, "amount": amount, "unit": unit, "done":done, "category":category })
+            shoppingModel.append({"Id": items[i].Id,
+                                 "Name": items[i].Name,
+                                 "Amount": items[i].Amount,
+                                 "Unit": items[i].Unit,
+                                 "Done": items[i].Done,
+                                 "ItemType": items[i].ItemType,
+                                 "Category": items[i].Category })
         }
 
         sortModel();
@@ -103,7 +121,7 @@ Page {
     {
         var listToShare = "";
         for (var i=0; i< shoppingModel.count; i++) {
-            var oneItemAsString = shoppingModel.get(i).name + " " + shoppingModel.get(i).amount
+            var oneItemAsString = shoppingModel.get(i).Name + " " + shoppingModel.get(i).Amount
             listToShare += "\n" + oneItemAsString // here newline instead
         }
         return listToShare;
@@ -125,7 +143,7 @@ Page {
                 RemorsePopup {id: remorse }
                 function deleteShoppingList()
                 {
-                    DB.getDatabase().clearShoppingList() // this also clear the checked flag on recipes and items
+                    applicationWindow.python.clearAll(listName)
                     shoppingModel.clear()
                 }
             }
@@ -137,36 +155,12 @@ Page {
                 RemorsePopup {id: remorse2 }
                 function clearDoneFromShoppingList()
                 {
-                    console.log('clearDoneFromShoppingList..')
-                    console.log(shoppingModel.count)
-                    for (var i= 0; i < shoppingModel.count; i++ )
-                    {
-                        console.log(shoppingModel.get(i).name + shoppingModel.get(i).done)
-                        if (shoppingModel.get(i).done === true)
-                        {
-                            var uid = shoppingModel.get(i).uid
-                            var name = shoppingModel.get(i).name
-                            var amount = shoppingModel.get(i).amount
-                            var unit = shoppingModel.get(i).unit
-                            var done = 1
-                            console.log('cleaning ' + name);
-                            var dbItem = DB.getDatabase().getItemPerName(name);
-                            if (dbItem.length > 0) { // why do i do that ? -- could be a non household / food ..hasOwnProperty()
-                              DB.getDatabase().setItem(dbItem[0].uid,name,dbItem[0].amount,dbItem[0].unit,dbItem[0].type,0,dbItem[0].category,dbItem[0].co2)
-                            }
-                            else {
-                                console.log('nothing to clear from items db')
-                            }
-
-                            DB.getDatabase().removeShoppingListItem(uid, name, amount, unit, done)
-                        }
-                     }
-                    initPage();
+                    applicationWindow.python.clearDone(listName)
                 }
             }
             MenuItem {
                 text: qsTr("Modify");
-                onClicked: applicationWindow.controller.openAddDialog();
+                onClicked: applicationWindow.controller.openAddDialog(listName);
             }
         }
 
@@ -295,20 +289,20 @@ Page {
 
         delegate:
             ShoppingListItem {
-            id: shoppingListItem
-            uid_: uid
-            text: name
-            amount_: amount
-            unit_: unit
-            checked: done
-            category: category
+            uid: Id
+            name: Name
+            amount: Amount
+            unit: Unit
+            checked: Done
+            category: Category
+            receiver: shoppingListPage
             // order_: order
         }
 
 
         ListModel {
             id: shoppingModel
-            ListElement {uid:""; name: "dummy"; amount: 1; unit: "g"; done: false; category: ""; order_: "1" }
+            ListElement {Id:""; Name: "dummy"; Amount: 1; Unit: "g"; Done: false; Category: ""; Order: "1" }
 
             function contains(uid) {
                 for (var i=0; i<count; i++) {
