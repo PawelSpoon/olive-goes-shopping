@@ -63,6 +63,13 @@ he can, similar to assetmanager for assets:
 
 shall i combine all types into 1 list ?
 
+# effort
+in total: 7 *14 == 100hrs up to version 0.4.2
+python backend 1.5-2 days
+1 day for pyotherside
+0.5 day for not beeing able to run qml tests
+rest ui part 
+
 
 
 
