@@ -8,8 +8,12 @@ can be executed on any machine that has python installed
 i did skip everything using pyotherside
 my tests concentrate on the pure python part
 i do ignore the qml -> python wrapper
-## open:
-how to test them all at once and get an overall yes / no ?
+with unittest framework .env file etc, running from vs code works
+
+# c++ tests:
+not much of use for my code
+
+# js tests:
 
 # qml tests:
 ## general

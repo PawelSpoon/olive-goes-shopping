@@ -11,13 +11,14 @@ Page {
     }
 
     Component.onCompleted: {
-        // hack for now
-        /*shoppingLists.clear()
-        var lists = applicationWindow.cache.getShoppingLists()
-        console.log(lists.length)
-        for (var i = 0; i < lists.length; i++) {
-          shoppingLists.append({"Name": lists[i].Name})
-        }*/
+        applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
+
+    }
+
+    function onAssetChanged(itemType) {
+        // throws unknown33 initPage of object is not a ...
+        //page.initPage() did not work either
+        load()
     }
 
     function load() {
@@ -30,29 +31,39 @@ Page {
         }
     }
 
-    SilicaListView {
+
+
+    SilicaFlickable {
         id: shoppingList
         anchors.fill: parent
-        height: page.height
-        width: page.width
-        anchors.topMargin: Theme.paddingLarge * 2 * Theme.pixelRatio
-
+        contentHeight: buttonColumn.height * 2
 
         VerticalScrollDecorator {  }
 
-        header: PageHeader {
-            title: qsTr("Shopping List")
-        }
-        ViewPlaceholder {
-            enabled: shoppingLists.length === 0
-            text: qsTr("Create a shopping list in 'Manage' page")
+        PageHeader {
+            title: qsTr("My lists")
         }
 
+        ViewPlaceholder {
+            enabled: shoppingLists.length === 0
+            text: qsTr("Create a shopping or task list from pull down menu")
+        }
+
+        PullDownMenu {
+
+            MenuItem {
+                text: qsTr("Add");
+                onClicked: applicationWindow.controller.openCreateListDialog()
+            }
+
+        }        
+
         Column {
+            id: buttonColumn
             width: parent.width
             spacing: Theme.horizontalPageMargin
-            anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.topMargin: Theme.paddingLarge * 3 * Theme.pixelRatio
 
             Repeater {
                 id: itemTypeRepeater
@@ -60,13 +71,17 @@ Page {
                 Button {
                     text: Name
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked:  applicationWindow.controller.openShoppingListPage(text)
-                }               
+                    onClicked:  {
+                        var listName = text
+                        console.log(listName)
+                        applicationWindow.controller.openShoppingListPage(listName)
+                    }
+                }
             }
-            Label {
+            /*Label {
                 enabled: true
                 height: Theme.horizontalPageMargins
-            }
+            }*/
 
         }
 

@@ -13,6 +13,8 @@ class App:
         self.assetManager.load()
         self.listManager = ListManager(rootDir,'shop')
         self.listManager.load()
+        self.taskManager = ListManager(rootDir,'task')
+        #self.taskManager.load()
         self.init = True
         pyotherside.send('init')
 
@@ -25,12 +27,17 @@ class App:
         self.assetManager.load()
         self.listManager = ListManager(self.root,'shop')
         self.listManager.load()
+        self.taskManager = ListManager(self.root,'task')
+        #self.taskManager.load()
         self.init = True
         pyotherside.send('init')
 
 
     def getAssetList(self, type):
-        return self.assetManager.getController(type).getAsList()
+        temp = self.assetManager.getController(type)
+        if temp == None:
+            pyotherside.send('error',['no controller',type])
+        return temp.getAsList()
 
     def clearAssets(self, type):
         temp = self.assetManager.getController(type)
@@ -61,11 +68,50 @@ class App:
         print(len(temp))
         return temp
 
+    def createList(self, name, type):
+        if type == "shop":
+            self.listManager.add(name)
+            #self.listManager.store()
+        else:
+            self.taskManager.add(name)
+            #self.taskManager.store()
+        
+    def deleteList(self, name,type):
+        if type == "task":
+            self.taskManager.delete(name)
+        else:
+            self.listManager.delete(name)    
+
     def getShoppingList(self, name):
         ctrl = self.listManager.getController(name)
         ctrl.load()
         return ctrl.getAsList()
 
+    def addItem2ShoppingList(self, listName, items):
+        ctrl = self.listManager.getController(listName)
+        ctrl.addItems2ShoppingList(items)
+        ctrl.store()
+
+    def setDoneValue(self, listName, name, done):
+        ctrl = self.listManager.getController(listName)
+        ctrl.setDoneValue(name, done)
+        ctrl.store()
+
+    def clearDone(self, listName):
+        ctrl = self.listManager.getController(listName)
+        ctrl.clearDone()
+        ctrl.store()
+
+    # reset all
+    def resetDone(self, listName):
+        ctrl = self.listManager.getController(listName)
+        ctrl.resetDone()
+        ctrl.store()
+
+    def clearAll(self, listName):
+        ctrl = self.listManager.getController(listName)
+        ctrl.clearItems()
+        ctrl.store()
 
 
 app_object = App()

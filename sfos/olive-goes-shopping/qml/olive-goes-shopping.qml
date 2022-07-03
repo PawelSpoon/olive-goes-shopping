@@ -42,6 +42,7 @@ ApplicationWindow {
       id: pythonHandler
     }
 
+    // loads the many page only after python was succesfully intialized
     function signal_init(module_id, method_id, description) {
         console.log("python initialized")
         initialized = true

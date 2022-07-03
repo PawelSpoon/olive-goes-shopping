@@ -20,8 +20,8 @@ class ShoppingListController(TaskListController):
         self.items[name][FieldAmount] = value
 
     def addItems2ShoppingList(self, listOfItems):
-        # listOfItems is in fact a dict
-        for item in listOfItems.values():
+        # listOfItems is in fact a dict .values() but that does not work with qml, so removed
+        for item in listOfItems:
             item[FieldDone] = False
             itemName = item[FieldName]
             # add if not there

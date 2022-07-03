@@ -23,6 +23,7 @@ Item {
         pages[getCurrentPageIndex(name1)].page = page1
     }
 
+    // should be renamed to something better
     function updateParentPage(itemType)
     {
        console.log('sending?')
@@ -31,6 +32,9 @@ Item {
        if (itemType === "itemtype") {
            // now that could take longer .. maybe async
            applicationWindow.python.reInit(itemType)
+       }
+       if (itemType == "shop") { // when added / removed a shopping list
+            applicationWindow.python.reInit(itemType)       
        }
        signal_asset_updated(itemType)
     }
@@ -77,9 +81,10 @@ Item {
         applicationWindow.page.initPage()
     }
 
-    function openAddDialog()
+    function openAddDialog(name)
     {
-         pageStack.push(Qt.resolvedUrl("pages/TabedAddDialogX.qml"), {shoppingListPage: applicationWindow.page, itemType: "-"})
+        console.log(name)
+        pageStack.push(Qt.resolvedUrl("pages/AddItemType2ListPage.qml"), { listName: name, itemType: "food"})
     }
 
     function openManageMainPage()
@@ -149,6 +154,11 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
     }
 
+    function openCreateListDialog()
+    {
+        pageStack.push(Qt.resolvedUrl("pages/CreateListDialog.qml"), {mode: 2})
+    }
+
     // type, page, 0: read-only, 1: edit, 2: add
     function openMgmtDetailPage(type, mode, item)
     {
@@ -197,6 +207,16 @@ Item {
             }
         }
         return false
+    }
+
+    function createList(name, type) {
+        applicationWindow.python.createList(name,type)
+        updateParentPage(type)
+    }
+
+    function deleteList(name, type) {
+        applicationWindow.python.deleteList(name,type)
+        updateParentPage(type)
     }
 
 

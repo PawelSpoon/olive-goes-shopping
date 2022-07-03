@@ -53,10 +53,17 @@ Item {
         return itemtypeList
     }
 
+    // returns the names of existing shopping lists
     function getShoppingLists() {
         return applicationWindow.python.getShoppingLists()
     }
 
+    function getItemsOfType(type)
+    {
+        return applicationWindow.python.getAssets(type)
+    }
+
     // DO NOT PUT CURRENT shopping lists and tasks lists here in you idiot
+
 
 }
