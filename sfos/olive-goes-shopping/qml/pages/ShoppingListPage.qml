@@ -160,7 +160,11 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Modify");
+                text: qsTr("Add from picklist");
+                onClicked: applicationWindow.controller.openAddPicklistDialog(listName);
+            }
+            MenuItem {
+                text: qsTr("Add");
                 onClicked: applicationWindow.controller.openAddDialog(listName);
             }
         }

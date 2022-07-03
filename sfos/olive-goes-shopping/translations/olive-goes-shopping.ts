@@ -13,6 +13,80 @@
     </message>
 </context>
 <context>
+    <name>AnyItemComponent</name>
+    <message>
+        <source>Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard package size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set standard package size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create another</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All following fields are only required, if you want to add this item also into your db. if not, swipe to accept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>co2 in []</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set co2 footprint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add this item to DB</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AnyItemDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CreateListDialog</name>
     <message>
         <source>Save</source>
@@ -480,10 +554,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Modify</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copied to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -497,6 +567,14 @@
     </message>
     <message>
         <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

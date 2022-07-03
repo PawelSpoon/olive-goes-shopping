@@ -81,10 +81,16 @@ Item {
         applicationWindow.page.initPage()
     }
 
+    function openAddPicklistDialog(name)
+    {
+        console.log('opening add from picklist dialog for list: ' + name)
+        pageStack.push(Qt.resolvedUrl("pages/AddItemType2ListPage.qml"), { listName: name, itemType: "food"})
+    }
+
     function openAddDialog(name)
     {
-        console.log(name)
-        pageStack.push(Qt.resolvedUrl("pages/AddItemType2ListPage.qml"), { listName: name, itemType: "food"})
+        console.log('opening add dialog for list: ' + name)
+        pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), { listName: name})
     }
 
     function openManageMainPage()
