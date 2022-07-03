@@ -10,5 +10,6 @@
     {"Id": "9", "Name": "magazines", "Order": 9},
     {"Id": "10", "Name": "hardware", "Order": 10},
     {"Id": "11", "Name": "automotive", "Order": 11},
-    {"Id": "12", "Name": "others", "Order":12}
+    {"Id": "12", "Name": "others", "Order":12},
+    {"Id": "13", "Name": "liquors", "Order":13}    
 ]

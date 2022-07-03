@@ -12,6 +12,7 @@ class ItemTypeControllerTest(unittest.TestCase):
     itemTypeOutFile = "./test/test-out/itemtype.json"
     itemTypeListDir = "./src/assets/item"
     itemTypeListOuDir = "./test/test-out/item"
+    itemTypesCount = 4
 
     def cleanUp(self):
         files = os.listdir(self.itemTypeListOuDir)
@@ -60,7 +61,7 @@ class ItemTypeControllerTest(unittest.TestCase):
         controller.add({"Id":5,"Name":"Dummy"})
         self.assertTrue("Dummy" in controller.getList().keys())
         self.assertTrue(os.path.exists(controller.list2FileName("Dummy")))
-        self.assertTrue(len(controller.getList()) == 4)
+        self.assertTrue(len(controller.getList()) == self.itemTypesCount+1)
 
     def testDuplicateAdd(self):
         controller = ItemTypeController(itemtype,self.itemTypeFile,self.itemTypeListDir)
@@ -71,7 +72,7 @@ class ItemTypeControllerTest(unittest.TestCase):
         self.assertTrue(ret == True)
         ret = controller.add({"Id":5,"Name":"Dummy"})
         self.assertTrue(ret == False)
-        self.assertTrue(len(controller.getList()) == 4)
+        self.assertTrue(len(controller.getList()) == self.itemTypesCount+1)
 
     def testRename(self):
         controller = ItemTypeController(itemtype,self.itemTypeFile,self.itemTypeListDir)
@@ -82,7 +83,7 @@ class ItemTypeControllerTest(unittest.TestCase):
         self.assertTrue(ret == True)
         self.assertTrue("feeed" in controller.getList())
         self.assertTrue("food" not in controller.getList())
-        self.assertTrue(len(controller.getList()) == 3)    
+        self.assertTrue(len(controller.getList()) == self.itemTypesCount)    
         self.assertTrue(os.path.exists(controller.list2FileName("feeed")))
         self.assertFalse(os.path.exists(controller.list2FileName("food")))
 
