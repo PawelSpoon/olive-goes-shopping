@@ -12,6 +12,25 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Jul 3 2022 Jack Tar <jack.tar@example.com> 0.4.2-1
+- fix settings storage
+
+* Sun Jul 3 2022 Jack Tar <jack.tar@example.com> 0.4.1-1
+- create / delete shopping lists
+- add from picklist
+- add from scratch
+- clear done
+- creal all
+- create / delete categories
+- create / delete item types 
+  each item type represents a picklist
+  if you delete it, its gone
+- ugly ui
+- all files are in ~/.local/share/oarg.pawelspoon/olive-goes-shopping/assets
+  you can backup it from there
+  you can upload it to nextcloud
+- slava - my backup support
+
 * Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
 - Scrubbed the deck
 - Hoisted the sails

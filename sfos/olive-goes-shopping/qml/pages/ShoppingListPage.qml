@@ -16,7 +16,13 @@ Page {
 
     Component.onCompleted:
     {
+        applicationWindow.controller.signal_list_updated.connect(onListChanged)
         initPage();
+    }
+
+    function onListChanged(listName) {
+        console.log(" i was told to update myself")
+        initPage()
     }
 
     function updatePage()
@@ -137,18 +143,6 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Clear")
-                onClicked: {
-                    remorse.execute(qsTr("Deleting shopping list"), deleteShoppingList);
-                }
-                RemorsePopup {id: remorse }
-                function deleteShoppingList()
-                {
-                    applicationWindow.python.clearAll(listName)
-                    shoppingModel.clear()
-                }
-            }
-            MenuItem {
                 text: qsTr("Clear done")
                 onClicked: {
                     remorse.execute(qsTr("Removing done entries"), clearDoneFromShoppingList);
@@ -157,6 +151,7 @@ Page {
                 function clearDoneFromShoppingList()
                 {
                     applicationWindow.python.clearDone(listName)
+                    initPage()
                 }
             }
             MenuItem {
@@ -186,51 +181,31 @@ Page {
                     }
                 }
             }
-            /*MenuItem {
-                text: qsTr("Share")
-                ShareAction {
-                    id: share
-                    title: qsTr("Share shopping list")
-                    mimeType: "text/x-"
-                }
-                onClicked: {
-                    if (shoppingModel.count > 0)
-                    {
-                        var listToShare = convertListToShareAble();
-                        var mimeType = "text/x-url";
-                        var he = {}
-                        he.data = listToShare
-                        he.name = "Buy this"
-                        he.type = mimeType
-                        he["linkTitle"] = listToShare// works in email body
-                        share.mimeType = "text/x-url";
-                        share.resources = [he]
-                        share.trigger()
-
-                        share.resources = ["listToShare"]
-                        share.trigger()
-                    }
-                }
-                //todo: else log do nothing
-            }*/
             MenuItem {
-                text: qsTr("Manage")
+                text: qsTr("Clear")
                 onClicked: {
-                    controller.openManagePage();
+                    remorse.execute(qsTr("Clearing all entries"), deleteShoppingList);
                 }
-            }
-            /*MenuItem {
-                text: qsTr("Help")
-                onClicked: {
-                    controller.openHelpPage();
+                RemorsePopup {id: remorse }
+                function deleteShoppingList()
+                {
+                    applicationWindow.python.clearAll(listName)
+                    shoppingModel.clear()
                 }
             }
             MenuItem {
-                text: qsTr("About")
+                text: qsTr("Delete this list")
                 onClicked: {
-                    controller.openAboutPage();
+                    remorse.execute(qsTr("Deleting shopping list"), deleteShoppingList);
                 }
-            }*/
+                RemorsePopup {id: remorse3 }
+                function deleteShoppingList()
+                {
+                    applicationWindow.python.deleteList(listName,"shop")
+                    applicationWindow.controller.signal_asset_updated("shop") // this should reload list selector
+                    pageStack.pop()
+                }
+            }
         }
 
         header: PageHeader {

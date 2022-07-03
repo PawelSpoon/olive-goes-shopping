@@ -31,27 +31,27 @@ class ListManagerTest(unittest.TestCase):
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
         self.assertEqual(1,len(manager.listController.keys()))
-        self.assertTrue("jan" in manager.getListNames()[FieldName])
+        self.assertTrue("demo" in manager.getListNames()[FieldName])
 
     def testLoadListItems(self):
         print('testLoadListItems')
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
         self.assertEqual(1,len(manager.listController.keys()))
-        self.assertTrue("jan" in manager.getListNames()[FieldName])
-        ctrl = manager.getController('jan')
+        self.assertTrue("demo" in manager.getListNames()[FieldName])
+        ctrl = manager.getController('demo')
         ctrl.load()
         self.assertTrue(ctrl.rootDir==self.rootDir)
-        self.assertTrue(ctrl.mytype=='jan')
-        self.assertTrue('jan.shop.json' in ctrl.filePath)
-        self.assertTrue(ctrl.getTypeName() == 'jan')
+        self.assertTrue(ctrl.mytype=='demo')
+        self.assertTrue('demo.shop.json' in ctrl.filePath)
+        self.assertTrue(ctrl.getTypeName() == 'demo')
         self.assertTrue("Beer" in ctrl.getList().keys())
 
     def testGetListNames(self):
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
         print(manager.getListNames())
-        self.assertTrue("jan" in manager.getListNames()[FieldName])
+        self.assertTrue("demo" in manager.getListNames()[FieldName])
   
    # def testStoreTask(self):
      #   print('testStore')
@@ -65,7 +65,7 @@ class ListManagerTest(unittest.TestCase):
         print("testGetController")
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
-        rpc = manager.getController("jan")
+        rpc = manager.getController("demo")
 
     def testAddController(self):
         print("testAddController")

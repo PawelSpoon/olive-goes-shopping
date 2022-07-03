@@ -21,19 +21,19 @@ Settings::~Settings()
 
 QVariant Settings::getValue(const QString &key)
 {
-    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/oarg.pawelspoon/harbour-olive-goes-shopping/harbour-olive-goes-shopping.conf", QSettings::NativeFormat);
+    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/oarg.pawelspoon/olive-goes-shopping/olive-goes-shopping.conf", QSettings::NativeFormat);
     return settings.value(key, "");
 }
 
 QString Settings::getStringValue(const QString &key)
 {
-    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/oarg.pawelspoon/harbour-olive-goes-shopping/harbour-olive-goes-shopping.conf", QSettings::NativeFormat);
+    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/oarg.pawelspoon/olive-goes-shopping/olive-goes-shopping.conf", QSettings::NativeFormat);
     return settings.value(key, "").toString();
 }
 
 void Settings::setValue(const QString &key, const QVariant &value)
 {
-    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/oarg.pawelspoon/harbour-olive-goes-shopping/harbour-olive-goes-shopping.conf", QSettings::NativeFormat);
+    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/oarg.pawelspoon/olive-goes-shopping/olive-goes-shopping.conf", QSettings::NativeFormat);
     settings.setValue(key, value);
 }
 

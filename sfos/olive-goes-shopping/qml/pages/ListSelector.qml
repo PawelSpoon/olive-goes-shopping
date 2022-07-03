@@ -12,7 +12,6 @@ Page {
 
     Component.onCompleted: {
         applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
-
     }
 
     function onAssetChanged(itemType) {

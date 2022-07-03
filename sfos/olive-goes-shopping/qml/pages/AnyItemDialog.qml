@@ -52,7 +52,6 @@ Dialog {
 
     onAccepted: {
         anyItemDialog.doAccept();
-        /*applicationWindow.controller.setCurrentPage('any'); // just to be on save side
-        applicationWindow.controller.doAccept();*/
+        applicationWindow.controller.signal_list_updated(listName)
     }
 }

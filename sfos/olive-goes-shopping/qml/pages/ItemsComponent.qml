@@ -68,6 +68,7 @@ SilicaListView {
         console.log(listName)
         console.log(list2Add.length)
         applicationWindow.python.addItem2ShoppingList(listName,list2Add)
+        applicationWindow.controller.signal_list_updated(listName)
     }
 
     // user has rejected editing entry data, check if there are unsaved details

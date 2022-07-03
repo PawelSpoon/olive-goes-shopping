@@ -562,10 +562,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -575,6 +571,14 @@
     </message>
     <message>
         <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

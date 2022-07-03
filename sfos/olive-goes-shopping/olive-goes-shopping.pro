@@ -54,7 +54,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \
-    assets/current/jan.shop.json \
+    assets/current/demo.shop.json \
     assets/item/entertainment.json \
     assets/item/food.json \
     assets/item/household.json \

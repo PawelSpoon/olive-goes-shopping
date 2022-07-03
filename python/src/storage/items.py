@@ -73,6 +73,8 @@ def getCategories():
     retItems.append({ "Id":getId(retItems),"Name": qsTr("hardware"), "Order": 10000 })
     retItems.append({ "Id":getId(retItems),"Name": qsTr("automotive"), "Order": 11000 })
     retItems.append({ "Id":getId(retItems),"Name": qsTr("others"), "Order": 12000 })
+    retItems.append({ "Id":getId(retItems),"Name": qsTr("liquors"), "Order": 13000 })
+    retItems.append({ "Id":getId(retItems),"Name": qsTr("kitchen"), "Order": 14000 })
     return retItems
 
 def generateFile(filePath, listerl):

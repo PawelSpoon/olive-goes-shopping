@@ -9,7 +9,13 @@ Item {
     id: applicationController
     property string currentPage: 'any'
 
+    // this gets fired when unit, phydim , pick lists get updated
+    // it should also invalidate the cache
     signal signal_asset_updated(var itemType)
+
+    // this gets fired, when a list was updated
+    // everybody should reload
+    signal signal_list_updated(var name)
 
     // array of pages
     property variant pages: []
@@ -33,7 +39,7 @@ Item {
            // now that could take longer .. maybe async
            applicationWindow.python.reInit(itemType)
        }
-       if (itemType == "shop") { // when added / removed a shopping list
+       if (itemType === "shop") { // when added / removed a shopping list
             applicationWindow.python.reInit(itemType)       
        }
        signal_asset_updated(itemType)

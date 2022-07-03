@@ -83,8 +83,8 @@ Dialog {
 
     ListModel {
         id: typeModel
-        ListElement { Name: "task"; DisplayName: qsTr("tasklist ") }
         ListElement { Name: "shop"; DisplayName: qsTr("shopping list") }
+        ListElement { Name: "task"; DisplayName: qsTr("tasklist ") }
     }
 
     Component.onCompleted: {
