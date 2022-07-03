@@ -24,7 +24,7 @@ phydimFilePath = "/" + phydim + ".json"
 itemtypeFilePath = "/" + itemtype + ".json"
  
 
-
+FieldId = "Id"
 FieldDone = "Done"
 FieldName = "Name"
 FieldAmount = "Amount"
@@ -32,6 +32,7 @@ FieldUnit = "Unit"
 FieldPhydim = "Phydim"
 FieldFactor = "Factor"
 FieldOffset = "Offset"
+FieldCategory = "Category"
 
 # ab 1.7 freitesten verkehrsbeschränkt, wenn 48 stunden
 # ab 6.7 frei
