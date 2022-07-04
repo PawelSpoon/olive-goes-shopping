@@ -13,12 +13,6 @@ Dialog {
 
     property string itemType
     property int mode
-    //property alias name_ : itemName.text
-
-    //property alias amount_ : defaultAmount.text
-    //property string unit_
-    //property alias category_ : categoryName.text
-
     property var item
 
     SilicaFlickable{
@@ -37,8 +31,6 @@ Dialog {
         ListModel {
             id: unitModel
         }
-
-
 
 
         // Show a scollbar when the view is flicked, place this over all other content

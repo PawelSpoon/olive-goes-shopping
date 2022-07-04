@@ -26,13 +26,16 @@ Dialog {
 
     property string listName
 
-    property bool add: false
+    property alias mode : anyItemDialog.mode
 
     DialogHeader {
         id: dialogHeader
         acceptText: qsTr("Save") // should be switchable based on add: property
         cancelText: qsTr("Discard")
     }
+
+    // will not work till i get updates from ..
+    //canAccept: name_.len > 0
 
     AnyItemComponent {
         id:  anyItemDialog

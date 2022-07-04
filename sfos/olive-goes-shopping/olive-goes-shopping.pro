@@ -36,8 +36,9 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/AddItemType2ListPage.qml \
     qml/pages/AssetCommons.qml\
     qml/pages/ListSelector.qml \
-    qml/pages/ShoppingListPage.qml \
     qml/pages/ShoppingListItem.qml \
+    qml/pages/ShoppingListItem2.qml \
+    qml/pages/ShoppingListPage.qml \
     qml/pages/ManageMainPage.qml \
     qml/pages/ItemTypeButtons.qml \
     qml/pages/ManageEnumsPage.qml\
@@ -48,9 +49,9 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/RecipeComponent.qml \
     qml/pages/ExportPage.qml\
     qml/pages/ItemsComponent.qml \
-    qml/pages/StoreListItem.qml \
     qml/pages/AnyItemDialog.qml \
     qml/pages/AnyItemComponent.qml \
+    qml/pages/FirstPage.qml\
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \
@@ -68,6 +69,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     assets/tasklist/annual maintenance - KTM.json \
     assets/unit.json \
     \
+    qml/pages/StoreListItem.qml \
     rpm/olive-goes-shopping.changes.in \
     rpm/olive-goes-shopping.changes.run.in \
     rpm/olive-goes-shopping.spec \
@@ -88,8 +90,13 @@ assets.path = $${DEPLOYMENT_PATH}
 tests.files = tests/*
 tests.path = $${DEPLOYMENT_PATH}/tests
 
+icons.files = icons/*.png
+icons.path = $${DEPLOYMENT_PATH}/icons
+
 INSTALLS += tests
 INSTALLS += tests/run.sh
+
+INSTALLS += icons
 
 OTHER_FILES += tests/tst_*
 
@@ -103,7 +110,8 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/olive-goes-shopping-de.ts
 
-OTHER_FILES += assets/category.json \
+OTHER_FILES += assets/phydim.json \
+    assets/category.json \
     assets/unit.json \
     assets/shoplist/weekly.json
 

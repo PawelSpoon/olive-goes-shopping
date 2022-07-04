@@ -1,5 +1,5 @@
 
-import QtQuick 2.0
+import QtQuick 2.1
 import Sailfish.Silica 1.0
 import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
 import Nemo.Notifications 1.0
@@ -76,7 +76,7 @@ Page {
     // currently not used by should be from ShoppingListItem to inform
     function markAsDone(uid,name,amount,unit,category,done)
     {
-        applicationWindow.python.setDoneValue(listName,done)
+        applicationWindow.python.setDoneValue(listName,name,done)
         initPage()
     }
 
@@ -102,6 +102,13 @@ Page {
                                  "Done": items[i].Done,
                                  "ItemType": items[i].ItemType,
                                  "Category": items[i].Category })
+            console.log("Id" + items[i].Id +
+                        "Name"+ items[i].Name,
+                        "Amount"+ items[i].Amount+
+                        "Unit"+ items[i].Unit+
+                        "Done"+ items[i].Done+
+                        "ItemType"+ items[i].ItemType+
+                        "Category"+ items[i].Category )
         }
 
         sortModel();
@@ -160,7 +167,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("Add");
-                onClicked: applicationWindow.controller.openAddDialog(listName);
+                onClicked: applicationWindow.controller.openAddDialog(listName,2);
             }
         }
 
@@ -269,14 +276,38 @@ Page {
 
         delegate:
             ShoppingListItem {
-            uid: Id
-            name: Name
-            amount: Amount
-            unit: Unit
-            checked: Done
-            category: Category
-            receiver: shoppingListPage
-            // order_: order
+                uid: Id
+                name: Name
+                amount: Amount
+                unit: Unit
+                checked: Done
+                category: Category
+                //receiver: shoppingListPage
+                onToggled: {
+                    console.log("item toggled received: " + uid + name + checked )
+                    applicationWindow.python.setDoneValue(listName,name,checked)
+                    //initPage()
+                }
+                onPressed:
+                {
+                    console.log("item pressed received" + uid + name + mode )
+                    // mode = 1 edit
+                    if (mode === 1) {
+                        var item = shoppingModel.getElementByName(name)
+
+                        applicationWindow.controller.openEditDialog(listName,mode,item)
+                        return;
+                    } //add
+                    if (mode === 2) {
+                        applicationWindow.controller.openAddDialog(listName,mode)
+                        return
+                    }
+                    if (mode === 3) {
+                        applicationWindow.python.deleteOne(listName,name)
+                        var x = shoppingModel.getElementIndexName(name)
+                        if (x > -1) shoppingModel.remove(x)
+                    }
+                }
         }
 
 
@@ -285,12 +316,25 @@ Page {
             ListElement {Id:""; Name: "dummy"; Amount: 1; Unit: "g"; Done: false; Category: ""; Order: "1" }
 
             function contains(uid) {
-                for (var i=0; i<count; i++) {
+                for (var i=0; i< count; i++) {
                     if (get(i).uid === uid)  {
                         return [true, i];
                     }
                 }
                 return [false, i];
+            }
+            function getElementIndexName(name) {
+                for (var i=0; i< count; i++) {
+                    if (get(i).Name === name)  {
+                        return i
+                    }
+                }
+                return -1
+            }
+            function getElementByName(name) {
+                var x = getElementIndexName(name)
+                if (x == -1) return {}
+                return get(x)
             }
         }
 

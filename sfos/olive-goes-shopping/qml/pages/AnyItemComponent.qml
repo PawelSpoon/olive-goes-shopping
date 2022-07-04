@@ -4,8 +4,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 //import QtQuick.Controls 2.0
 
-
-// hosting container is TabedAddDialog
 // this component allows to add an item to shopping list that does not exist in db
 // it allows also to quickly add one item to db
 SilicaListView {
@@ -13,12 +11,40 @@ SilicaListView {
     id: anyItemComponent
 
     property string uid_ : ""
-    //property FirstPage shoppingListPage
     property string itemType
     property alias name_ : itemName.text
     property alias amount_ : defaultAmount.text
     property string unit_
     property alias category_ : categoryName.text
+
+    property int mode
+
+    AssetCommons{
+        id: commons
+    }
+
+    ListModel {
+        id: unitModel
+    }
+
+    Component.onCompleted: {
+        unitModel.clear()
+        //categoryModel.clear()
+        commons.fillUnitModel(unitModel)
+        //commons.fillCategoryModel(categoryModel)
+
+        if (mode == 1) {
+           send2Controlls()
+        }
+         itemName.forceActiveFocus()
+    }
+
+    function send2Controlls(){
+        itemName.text = name_ //item['Name']
+        defaultAmount.text = amount_ //item['Amount']
+        var index =  commons.getIndexForItem(unit_/*item['Unit']*/, unitModel)
+        unit.currentIndex  = index
+    }
 
     SilicaFlickable{
 
@@ -117,12 +143,13 @@ SilicaListView {
                 id: unit
                 label: qsTr("Unit")
                 menu: ContextMenu {
-                    // missing qsTr ??
-                    MenuItem { text: "-" }
-                    MenuItem { text: "g" }
-                    MenuItem { text: "kg" }
-                    MenuItem { text: "ml" }
-                    MenuItem { text: "l" }
+                    Repeater {
+                        id: unitRepeater
+                        model: unitModel
+                        MenuItem {
+                            text: Name
+                        }
+                    }
                 }
             }
             /*Button {
@@ -139,6 +166,7 @@ SilicaListView {
             Button {
                 id: saveAndKeep
                 text: qsTr("Create another")
+                visible: mode == 2
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.paddingLarge
@@ -150,7 +178,7 @@ SilicaListView {
                       itemName.editor.forceActiveFocus();
                 }
             }
-            TextArea {
+            /*TextArea {
                 id: explain
                 width: parent.width
                 text: qsTr("All following fields are only required, if you want to add this item also into your db. if not, swipe to accept.")
@@ -195,7 +223,7 @@ SilicaListView {
                     }
                     //todo: show pop up error that aready there
                 }
-            }
+            }*/
             TextArea {
                 id: empty
                 width: parent.width
@@ -205,85 +233,61 @@ SilicaListView {
         }
     }
 
-    Component.onCompleted: {
-
-       if (uid_ === "") {
-           print (uid_)
-       }
-       else {
-           // set unit
-           if (unit_ === "-") {
-               unit.currentIndex = 0
-           }
-           else if (unit_ === "g") {
-               unit.currentIndex = 1
-           }
-           else if (unit_ === "kg") {
-               unit.currentIndex = 2
-           }
-           else if (unit_ === "ml") {
-               unit.currentIndex = 3
-           }
-           else if (unit_ === "l") {
-               unit.currentIndex = 4
-           }
-           // set itemType
-           if (itemType === "household") {
-               type.currentIndex = 0
-
-           }
-           else if (itemType === "food") {
-               type.currentIndex = 1
-           }
-       }
-       /*
-                    MenuItem { text: "-" }
-                    MenuItem { text: "g" }
-                    MenuItem { text: "kg" }
-                    MenuItem { text: "ml" }
-                    MenuItem { text: "l" }
-*/
-       /*
-                    MenuItem { text: "household" }
-                    MenuItem { text: "food" }
-*/
-       itemName.forceActiveFocus()
-    }
-
     Component.onDestruction: {
 
     }
 
+    function collectCurrentItem()
+    {
+        var current = {}
+        current['Id'] = uid_
+        current['Name']  = name_
+        current['Amount']  = amount_
+        current['Unit']  = unit_
+        current['Category']  = category_
+        return current;
+    }
+
     function doAccept() {
-        // adds item to shopping list !
-        // ignore accept if no name was entered
-        var name = itemName.text;
-        if (itemName.text == null || itemName.text === "") return;
-        if (applicationWindow.settings.useCapitalization === false) {
-          name = name.toLowerCase();
-        }
 
 
-        // make sure that this 'new' item is really new, if not, use uid from db
-        // nice idea but later ..
-        //var isThereAny = DB.getDatabase().getItemPerName(name)
-        //if (isThereAny.length < 1)
-        if (true) //not in db
-        {
-          uid_= applicationWindow.controller.getUniqueId()
-        }
-        else
-        {
-          uid_ = isThereAny[0].uid // take uid from db if the new item, actually does exist in db
-          // in case of the unlikely usecase, that item exists in db AND in shoppinglist an new add will reset the counter in shoppinglist
+        if (mode == 1) {
+            // edit -> needs to update list
+            console.log('update list')
+            applicationWindow.python.updateOne(listName,name,collectCurrentItem())
+            return
         }
 
-        // convert object to list and store
-        var list2Add = []
-        var addAmount = amount_
-        var tmp = {Id: uid_, Name: name_, Amount: addAmount, Unit: unit_, Category: category_, ItemType: itemType }
-        list2Add.push(tmp)
-        applicationWindow.python.addItem2ShoppingList(listName,list2Add)
+        if (mode == 2) {
+            // adds item to shopping list !
+            // ignore accept if no name was entered
+            var name = itemName.text;
+            if (itemName.text == null || itemName.text === "") return;
+            if (applicationWindow.settings.useCapitalization === false) {
+              name = name.toLowerCase();
+            }
+
+            // make sure that this 'new' item is really new, if not, use uid from db
+            // nice idea but later ..
+            //var isThereAny = DB.getDatabase().getItemPerName(name)
+            //if (isThereAny.length < 1)
+                if (true) //not in db
+            {
+              uid_= applicationWindow.controller.getUniqueId()
+            }
+            else
+            {
+              uid_ = isThereAny[0].uid // take uid from db if the new item, actually does exist in db
+              // in case of the unlikely usecase, that item exists in db AND in shoppinglist an new add will reset the counter in shoppinglist
+            }
+
+            // convert object to list and store
+            var list2Add = []
+            var addAmount = amount_
+            var tmp = {Id: uid_, Name: name_, Amount: addAmount, Unit: unit_, Category: category_, ItemType: itemType }
+            list2Add.push(tmp)
+            applicationWindow.python.addItem2ShoppingList(listName,list2Add)
+        }
     }
 
     function reset()
@@ -295,4 +299,5 @@ SilicaListView {
         category_ = "";
         itemType = "household"
     }
+
 }

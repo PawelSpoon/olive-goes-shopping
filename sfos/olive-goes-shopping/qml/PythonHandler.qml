@@ -101,6 +101,14 @@ Python {
       return call_sync('app.app_object.setDoneValue',[listName,name,done])
   }
 
+  function deleteOne(listName, name) {
+      return call_sync('app.app_object.deleteOne',[listName,name])
+  }
+
+  function updateOne(listName, oldName, item) {
+      return call_sync('app.app_object.updateOne',[listName,oldName,item])
+  }
+
   function clearAll(listName) {
       return call_sync('app.app_object.clearAll',[listName])
   }

@@ -11,6 +11,10 @@
         <source>Item type</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnyItemComponent</name>
@@ -52,26 +56,6 @@
     </message>
     <message>
         <source>Create another</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>All following fields are only required, if you want to add this item also into your db. if not, swipe to accept.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>co2 in []</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set co2 footprint</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add this item to DB</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -240,6 +224,37 @@
     </message>
     <message>
         <source>drop-database-detail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FirstPage</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete All Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Fish Monger&apos;s Shopping List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -532,6 +547,17 @@
     </message>
     <message>
         <source>Use (multiple) task lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShoppingListItem</name>
+    <message>
+        <source>Edit Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

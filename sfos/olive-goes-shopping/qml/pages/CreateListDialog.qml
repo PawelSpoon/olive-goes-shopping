@@ -7,17 +7,17 @@ import Sailfish.Silica 1.0
 Dialog {
     id: settings
 
-    // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
     property string id : ""
 
     property string itemType : "shop" // shop/task
-    property int mode
-    //property alias name_ : itemName.text // enum value
+    property int mode // 0 read only 1 edit 2 create, not used here atm
     
     property var item
 
     property bool showCategory
+
+    canAccept: itemName.text.len > 0
 
     SilicaFlickable{
 
@@ -60,9 +60,11 @@ Dialog {
                 placeholderText: qsTr("Set name")
                 errorHighlight: text.length === 0
                 EnterKey.enabled: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                // EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 font.capitalization: Font.MixedCase
-                //EnterKey.onClicked: defaultAmount.focus = true
+                onTextChanged: {
+                    settings.canAccept = text.length >= 3
+                }
             }
 
             ComboBox {
@@ -113,13 +115,10 @@ Dialog {
         // itemType,mode,oldItem, currentItem
         applicationWindow.controller.createList(itemName.text, itemType)
         // currenly called by controller:
-        // bcommons.updateParentPage(itemType)
+        // commons.updateParentPage(itemType)
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {
-        // no need for saving if input fields are invalid
-        if (canNavigateForward) {
-            // ?!
-        }
+        //
     }
 }

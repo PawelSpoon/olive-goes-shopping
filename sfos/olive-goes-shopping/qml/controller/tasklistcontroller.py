@@ -19,7 +19,7 @@ class TaskListController(ItemController):
     def setDoneValue(self, name, done):
         self.items[name][FieldDone] = done
 
-    # clear done
+    # clear done (remove all done items)
     def clearDone(self):
         deletethose = list()
         for item in self.getList().values():
@@ -28,7 +28,7 @@ class TaskListController(ItemController):
         for key in deletethose:
             self.getList().pop(key)
 
-    # reset
+    # reset (set all as undone)
     def resetDone(self):
         for item in self.getList().values():
             if item[FieldDone] == True:
@@ -55,4 +55,10 @@ class TaskListController(ItemController):
                 else:
                     # print("nothing to do")
                     pass
-                
+
+    def deleteOne(self, name):
+        if name not in self.getList().keys():
+            print('not in')
+            return False
+        self.getList().pop(name)
+        return True

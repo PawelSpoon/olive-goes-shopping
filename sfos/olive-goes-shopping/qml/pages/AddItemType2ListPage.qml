@@ -19,7 +19,7 @@ Dialog {
 
     PageHeader {
         id: pageHeader
-        title: 'add xxx'
+        title: qsTr("Add")
     }
 
     AssetCommons {

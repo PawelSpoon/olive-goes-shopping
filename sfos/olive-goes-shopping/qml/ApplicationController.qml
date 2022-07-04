@@ -93,11 +93,27 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/AddItemType2ListPage.qml"), { listName: name, itemType: "food"})
     }
 
-    function openAddDialog(name)
+    function openAddDialog(name,mode)
     {
-        console.log('opening add dialog for list: ' + name)
-        pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), { listName: name})
+        console.log('opening add dialog for list: ' + name + ' in mode: ' + mode)
+        pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), { listName: name, mode: mode})
     }
+
+    function openEditDialog(name,mode,item)
+    {
+        console.log('opening add dialog for list: ' + name + ' in mode: ' + mode)
+        console.log(item.Id+item.Name+item.Amount+item.Unit)
+        pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), {
+                           listName: name,
+                           mode: mode,
+                           uid: item['Id'],
+                           name_: item['Name'],
+                           amount_: item['Amount'],
+                           unit_ : item['Unit'],
+                           category_ : item['Category']
+                       })
+    }
+
 
     function openManageMainPage()
     {
