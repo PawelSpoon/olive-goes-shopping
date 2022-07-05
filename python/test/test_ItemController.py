@@ -68,21 +68,21 @@ class ItemControllerTest(unittest.TestCase):
     def testUpdateFoodWithUnit(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        controller.update('apple',{ 'Name': 'apple', 'Unit': {'Id': '4', 'Name':'pound'}})
-        self.assertTrue(controller.getList()['apple']['Unit']['Name']=='pound')
+        controller.update('apple',{ 'Name': 'apple', 'Unit': {'Id': '4', 'Name':'lbs'}})
+        self.assertTrue(controller.getList()['apple']['Unit']['Name']=='lbs')
 
     def testRenameFoodWithUnit(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        ret = controller.update('apple',{ 'Name': 'Pear', 'Unit': {'Id': '4', 'Name':'pound'}})
+        ret = controller.update('apple',{ 'Name': 'Pear', 'Unit': {'Id': '4', 'Name':'lbs'}})
         self.assertTrue(ret)
-        self.assertTrue(controller.getList()['Pear']['Unit']['Name']=='pound')   
+        self.assertTrue(controller.getList()['Pear']['Unit']['Name']=='lbs')   
         self.assertEqual(len(controller.getList().keys()), 107)  
 
     def testRenameFoodWithUnitWithConflict(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        ret = controller.update('apple',{ 'Name': 'potatoes', 'Unit': {'Id': '4', 'Name':'pound'}})
+        ret = controller.update('apple',{ 'Name': 'potatoes', 'Unit': {'Id': '4', 'Name':'lbs'}})
         self.assertFalse(ret)
         self.assertTrue(controller.getList()['potatoes']['Unit']['Name']=='kg')   
         self.assertEqual(len(controller.getList().keys()), 107)   

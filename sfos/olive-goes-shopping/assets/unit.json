@@ -6,7 +6,7 @@
     {"Id": "5", "Name": "dag", "Phydim": "Weight", "Factor": 0.01, "Offset": 0},
     {"Id": "6", "Name": "g", "Phydim": "Weight", "Factor": 0.001, "Offset": 0},
     {"Id": "7", "Name": "t", "Phydim": "Weight", "Factor": 1000, "Offset": 0},
-    {"Id": "8", "Name": "pound", "Phydim": "Weight", "Factor": 0.5, "Offset": 0},
+    {"Id": "8", "Name": "lbs", "Phydim": "Weight", "Factor": 0.5, "Offset": 0},
     {"Id": "9", "Name": "l", "Phydim": "Volume", "Factor": 1, "Offset": 0},
     {"Id": "10", "Name": "dl", "Phydim": "Volume", "Factor": 0.1, "Offset": 0},
     {"Id": "11", "Name": "ml", "Phydim": "Volume", "Factor": 0.01, "Offset": 0},

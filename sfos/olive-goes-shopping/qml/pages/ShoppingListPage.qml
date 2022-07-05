@@ -22,7 +22,7 @@ Page {
 
     function onListChanged(listName) {
         console.log(" i was told to update myself")
-        initPage()
+        shoppingListPage.initPage()
     }
 
     function updatePage()
@@ -103,7 +103,7 @@ Page {
                                  "ItemType": items[i].ItemType,
                                  "Category": items[i].Category })
             console.log("Id" + items[i].Id +
-                        "Name"+ items[i].Name,
+                        "Name"+ items[i].Name+
                         "Amount"+ items[i].Amount+
                         "Unit"+ items[i].Unit+
                         "Done"+ items[i].Done+

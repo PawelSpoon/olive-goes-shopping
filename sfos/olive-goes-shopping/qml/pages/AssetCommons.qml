@@ -129,4 +129,14 @@ Item {
             }
         }
     }
+
+    function traceItem(item)
+    {
+        if (item === undefined) {
+            console.log('item is undefined')
+            return
+        }
+
+        console.log('Id: ' + item.Id + 'Name: +' + item.Name + 'Amount: '+ item.Amount + '[' + item.Unit +'] Category: ' + item.Category)
+    }
 }

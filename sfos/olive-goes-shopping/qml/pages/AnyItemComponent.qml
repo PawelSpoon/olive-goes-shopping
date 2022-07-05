@@ -13,7 +13,7 @@ SilicaListView {
     property string uid_ : ""
     property string itemType
     property alias name_ : itemName.text
-    property alias amount_ : defaultAmount.text
+    property int amount_
     property string unit_
     property alias category_ : categoryName.text
 
@@ -44,6 +44,7 @@ SilicaListView {
         defaultAmount.text = amount_ //item['Amount']
         var index =  commons.getIndexForItem(unit_/*item['Unit']*/, unitModel)
         unit.currentIndex  = index
+        //todo: same for category
     }
 
     SilicaFlickable{
@@ -241,10 +242,11 @@ SilicaListView {
     {
         var current = {}
         current['Id'] = uid_
-        current['Name']  = name_
-        current['Amount']  = amount_
-        current['Unit']  = unit_
+        current['Name']  = itemName.text
+        current['Amount']  = parseInt(defaultAmount.text)
+        current['Unit']  = unit.value
         current['Category']  = category_
+        current['ItemType'] = itemType
         return current;
     }
 
@@ -262,7 +264,7 @@ SilicaListView {
             // adds item to shopping list !
             // ignore accept if no name was entered
             var name = itemName.text;
-            if (itemName.text == null || itemName.text === "") return;
+            if (itemName.text === null || itemName.text === "") return;
             if (applicationWindow.settings.useCapitalization === false) {
               name = name.toLowerCase();
             }
@@ -271,7 +273,7 @@ SilicaListView {
             // nice idea but later ..
             //var isThereAny = DB.getDatabase().getItemPerName(name)
             //if (isThereAny.length < 1)
-                if (true) //not in db
+            if (true) //not in db
             {
               uid_= applicationWindow.controller.getUniqueId()
             }
@@ -283,8 +285,8 @@ SilicaListView {
 
             // convert object to list and store
             var list2Add = []
-            var addAmount = amount_
-            var tmp = {Id: uid_, Name: name_, Amount: addAmount, Unit: unit_, Category: category_, ItemType: itemType }
+            var tmp= collectCurrentItem()
+            commons.traceItem(tmp)
             list2Add.push(tmp)
             applicationWindow.python.addItem2ShoppingList(listName,list2Add)
         }

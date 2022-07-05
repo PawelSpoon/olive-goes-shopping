@@ -110,7 +110,8 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/olive-goes-shopping-de.ts
 
-OTHER_FILES += assets/phydim.json \
+OTHER_FILES += \
+    assets/phydim.json \
     assets/category.json \
     assets/unit.json \
     assets/shoplist/weekly.json

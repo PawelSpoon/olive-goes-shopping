@@ -83,7 +83,7 @@ class AssetManagerTest(unittest.TestCase):
         manager.load()
         ctrl = manager.getController("food")
         ctrl.getList()
-        ctrl.update('apple',{ 'Name': 'apple', 'Unit': {'Id': '4', 'Name':'pound'}})
+        ctrl.update('apple',{ 'Name': 'apple', 'Unit': {'Id': '4', 'Name':'lbs'}})
         print(ctrl.getList()["apple"]['Unit']['Id'])
         ctrl.filePath = self.outDir + "/item/food.json"
         ctrl.store()

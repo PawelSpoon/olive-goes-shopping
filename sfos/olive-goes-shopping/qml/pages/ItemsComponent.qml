@@ -6,6 +6,7 @@ import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
 //each click increases howMany by 1
 //longpress shows context menu with reset to 0
 //swipe to left or right (cancel / ok) will store items to db and update shoppingList
+// works with assets so unit and cat are refs no string
 
 SilicaListView {
 // Dialog {
@@ -45,6 +46,19 @@ SilicaListView {
         console.log(name + " not found in list")
     }
 
+    function collectCurrentItem(item)
+    {
+        var current = {}
+        current['Id'] = item.Id
+        current['Name']  = item.Name
+        console.log(item.Name + " howm:" +item.HowMany + " amount" + item.Amount)
+        current['Amount']  = item.HowMany * item.Amount
+        current['Unit']  = item.Unit
+        current['Category']  = item.Category
+        current['ItemType'] = item.ItemType
+        return current;
+    }
+
     function doAccept() {
         // in future we will store at once
         // so collect items that were changed and pass once to ..
@@ -57,11 +71,12 @@ SilicaListView {
         {
             var item = itemModel.get(i)
             if (item.HowMany > 0) {
-                var addAmount = item.HowMany * item.Amount
-                console.log("add amount:" + item.Amount)
+                var tmp = collectCurrentItem(item)
+                //var addAmount = item.HowMany * item.Amount
+                console.log("add amount:" + tmp.Amount)
                 // category not needed
-                console.log(item.Name +  " " + item.Amount + item.Unit)
-                var tmp = {Id: item.Id, Name: item.Name, Amount: addAmount, Unit: item.Unit }
+                //console.log(item.Name +  " " + item.Amount + item.Unit)
+                //var tmp = {Id: item.Id, Name: item.Name, Amount: addAmount, Unit: item.Unit }
                 list2Add.push(tmp)
             }
         }
@@ -103,13 +118,23 @@ SilicaListView {
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
-            itemModel.append({"Id": items[i].Id,
-                                 "Name": items[i].Name,
-                                 "Amount": items[i].Amount,
-                                 "Unit": items[i].Unit,
+            var item = items[i]
+            var unit = ""
+            if (item.Unit !== undefined) {
+                unit = item.Unit.Name
+            }
+            var cat = ""
+            if (item.Category!== undefined) {
+                cat = item.Category.Name
+            }
+
+            itemModel.append({"Id": item.Id,
+                                 "Name": item.Name,
+                                 "Amount": parseInt(item.Amount),
+                                 "Unit": unit,
                                  "HowMany": items[i].HowMany,
                                  "ItemType": items[i].ItemType,
-                                 "Category": items[i].Category })
+                                 "Category": cat})
         }
         if (applicationWindow.settings.categorizeItems) {
             console.log('sorting items')

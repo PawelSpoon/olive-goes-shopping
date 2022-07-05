@@ -12,6 +12,12 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Jul 45 2022 Jack Tar <jack.tar@example.com> 0.5.3-1
+- fix units in add dialogs
+- make units smaller and alligned at bottom
+- hide - unit in shopping list
+- fix copying of cats into .local
+
 * Mon Jul 4 2022 Jack Tar <jack.tar@example.com> 0.4.3-1
 - replace shopping list with with fishmongers
 - context menue in shopping list with edit & delete

@@ -40,7 +40,7 @@ ListItem {
         Column
         {
             id: amount_column
-            width: 120
+            width: 140
             y: Theme.paddingLarge
             anchors
             {
@@ -51,9 +51,7 @@ ListItem {
             Label {
                 id: amountLabel
                 x: Theme.horizontalPageMargin
-                // text: model.qty + " " + model.checked + " " + model.item + " :: " + model.order
-               // text: amount
-                horizontalAlignment: Text.AlignLeft
+                horizontalAlignment: Text.AlignRight
 //                        anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
                 width: parent.width
@@ -64,24 +62,24 @@ ListItem {
         Column
         {
             id: unit_column
-            width: 120
+            width: 80
             y: Theme.paddingLarge
             anchors
             {
                 left: amount_column.right
+                leftMargin: Theme.paddingSmall
                 verticalCenter: checked_column.verticalCenter
+                verticalCenterOffset: checked_column.height/16
             }
 
             Label {
                 id: unitLabel
-                font.pixelSize: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeTiny
                 x: Theme.horizontalPageMargin
-                // text: model.qty + " " + model.checked + " " + model.item + " :: " + model.order
-               // text: amount
                 horizontalAlignment: Text.AlignLeft
-//                        anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
                 width: parent.width
+                visible: (text != "-")
                 truncationMode: TruncationMode.Fade
                 font.strikeout: (checked > 0 && settings.strike_checked) ? true : false
             }
@@ -89,7 +87,7 @@ ListItem {
         Column
         {
             id: spacing_column
-            width: 20
+            width: 10
             anchors
             {
                 left: unit_column.right

@@ -26,7 +26,7 @@ def getUnits():
     retItems.append({ "Id":getId(retItems), "Name": "dag", "Phydim": "Weight", "Factor": 0.01, "Offset": 0})
     retItems.append({ "Id":getId(retItems), "Name": "g", "Phydim": "Weight", "Factor": 0.001, "Offset": 0})
     retItems.append({ "Id":getId(retItems), "Name": "t", "Phydim": "Weight", "Factor": 1000, "Offset": 0})
-    retItems.append({ "Id":getId(retItems), "Name": "pound", "Phydim": "Weight", "Factor": 0.5, "Offset": 0})
+    retItems.append({ "Id":getId(retItems), "Name": "lbs", "Phydim": "Weight", "Factor": 0.5, "Offset": 0})
     retItems.append({ "Id":getId(retItems), "Name": "l", "Phydim": "Volume", "Factor": 1, "Offset": 0})
     retItems.append({ "Id":getId(retItems), "Name": "dl", "Phydim": "Volume", "Factor": 0.1, "Offset": 0})
     retItems.append({ "Id":getId(retItems), "Name": "ml", "Phydim": "Volume", "Factor": 0.01, "Offset": 0})
