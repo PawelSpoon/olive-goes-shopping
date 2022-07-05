@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul  3 14:38:04 2022
+# Make data base, printed on Mon Jul  4 19:31:42 2022
 
 # Variables
 
@@ -189,7 +191,7 @@ SNAP_USER_DATA = /home/pawel/snap/code/99
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7fd1ef61-2427-4e00-a59c-61471fce92c2.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e0e914dd-eabb-46d1-8dca-5e777857454e.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -278,9 +280,6 @@ VSCODE_PID = 353068
 # Pattern-specific Variable Values
 
 # No pattern-specific variable values.
- 
-make: *** No rule to make target 'all'.  Stop.
-
 
 # Directories
 
@@ -289,6 +288,7 @@ make: *** No rule to make target 'all'.  Stop.
 # 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
+ 
 
 # No implicit rules.
 
@@ -342,6 +342,6 @@ GNUmakefile:
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Sun Jul  3 14:38:04 2022
+# Finished Make data base on Mon Jul  4 19:31:42 2022
 
  
