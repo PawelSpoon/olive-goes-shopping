@@ -18,11 +18,12 @@ class ItemsTest(unittest.TestCase):
 
     outDir = "./test/test-out"
     
-    phydimOutFile = os.path.join(outDir,"phydiim.json")
+    phydimOutFile = os.path.join(outDir,"phydim.json")
     unitOutFile = os.path.join(outDir,"unit.json")
     catOutFile =  os.path.join(outDir,"category.json")
     foodOutFile = os.path.join(outDir,"food.json")
     househouldFile = os.path.join(outDir,"household.json")
+    carsnbikes = os.path.join(outDir,"cars n bikes.json")
 
     def setUp(self) -> None:
         return super().setUp()
@@ -51,6 +52,11 @@ class ItemsTest(unittest.TestCase):
         generateFile(self.househouldFile,getHousehold())
         items = persistance.readItems(self.househouldFile)     
         self.assertTrue("condoms" in items)
-  
+
+    def testGenCarsNBikes(self):
+        generateFile(self.carsnbikes,getCarsNBikes())
+        items = persistance.readItems(self.carsnbikes)     
+        self.assertTrue("motor oil" in items)
+   
 if __name__ == '__main__':
     unittest.main()

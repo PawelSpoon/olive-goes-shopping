@@ -41,8 +41,7 @@ Python {
 
   function init_handler(module_id, method_id, description) {
     console.log('init done:');
-    applicationWindow.signal_init(module_id, method_id, description);
-  }
+    applicationWindow.signal_init(module_id, method_id, description);  }
 
   function reInit(type) {
     applicationWindow.cache.invalidate()

@@ -106,7 +106,7 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), {
                            listName: name,
                            mode: mode,
-                           uid: item['Id'],
+                           uid_: item['Id'],
                            name_: item['Name'],
                            amount_: item['Amount'],
                            unit_ : item['Unit'],

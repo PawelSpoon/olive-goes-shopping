@@ -31,18 +31,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Item category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Standard package size</source>
         <translation type="unfinished"></translation>
     </message>
@@ -56,6 +44,10 @@
     </message>
     <message>
         <source>Create another</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -448,10 +440,6 @@
         <source> --- Pick lists --- </source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Shopping list definition</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>RecipeComponent</name>
@@ -543,10 +531,6 @@
     </message>
     <message>
         <source>Use (multiple) shopping lists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use (multiple) task lists</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

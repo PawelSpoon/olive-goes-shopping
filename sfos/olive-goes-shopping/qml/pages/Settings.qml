@@ -71,7 +71,7 @@ Page {
                         applicationWindow.settings.useLists = checked;
                     }
                 }
-                TextSwitch {
+                /*TextSwitch {
                     id: useTasks
                     text: qsTr("Use (multiple) task lists")
                     description: "simple task management"
@@ -79,7 +79,7 @@ Page {
                     onCheckedChanged: {
                         applicationWindow.settings.useList = checked;
                     }
-                }
+                }*/
             }
             SectionHeader {
                 text: "Categories"
@@ -117,7 +117,7 @@ Page {
                     applicationWindow.settings.categorizeItems = checked;
                 }
             }
-            SectionHeader {
+            /*SectionHeader {
                 text: "Text input"
             }
             TextSwitch {
@@ -131,8 +131,8 @@ Page {
                         categorizeItems.checked = false;
                         categorizeShoppingList.checked = false;
                     }*/
-                }
-            }
+            /*    }
+            }*/
         }
     }
 }

@@ -47,7 +47,7 @@ class ShoppingListControllerTest(unittest.TestCase):
         controller.load()
         # load to have a file to modify
         second = persistance.readItems(self.demoPath)
-        second["Condoms"][FieldUnit] = "10er"
+        second["Condoms"][FieldUnit] = "10"
         second["Beer"][FieldUnit] = "-"
         controller.addItems2ShoppingList(second.values())
         self.assertEqual(2,len(controller.getList()))

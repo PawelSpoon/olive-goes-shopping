@@ -216,7 +216,7 @@ Page {
         }
 
         header: PageHeader {
-            title: qsTr("Shopping List - " + listName)
+            title: listName
         }
 
 
@@ -227,7 +227,7 @@ Page {
 
         // have sections by category
         section {
-            property: applicationWindow.settings.categorizeShoppingList ? "category": ""
+            property: applicationWindow.settings.categorizeShoppingList ? "Category": ""
             criteria: ViewSection.FullString
             delegate: SectionHeader {
                 id: secHead
@@ -294,7 +294,6 @@ Page {
                     // mode = 1 edit
                     if (mode === 1) {
                         var item = shoppingModel.getElementByName(name)
-
                         applicationWindow.controller.openEditDialog(listName,mode,item)
                         return;
                     } //add

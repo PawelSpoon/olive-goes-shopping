@@ -32,7 +32,7 @@ class AssetManagerTest(unittest.TestCase):
         self.assertEqual(4,len(manager.phydimController.getList()))
         self.assertTrue("food" in manager.itemControllerDict.keys())
         self.assertEqual(107,len(manager.itemControllerDict["food"].getList()))
-        self.assertEqual(13,len(manager.unitController.getList()))
+        self.assertEqual(14,len(manager.unitController.getList()))
   
     def testStore(self):
         print('testStore')

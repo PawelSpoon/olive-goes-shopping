@@ -37,7 +37,6 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/AssetCommons.qml\
     qml/pages/ListSelector.qml \
     qml/pages/ShoppingListItem.qml \
-    qml/pages/ShoppingListItem2.qml \
     qml/pages/ShoppingListPage.qml \
     qml/pages/ManageMainPage.qml \
     qml/pages/ItemTypeButtons.qml \

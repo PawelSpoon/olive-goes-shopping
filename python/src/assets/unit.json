@@ -1,6 +1,6 @@
 [
     {"Id": "1", "Name": "-", "Phydim": "Piece", "Factor": 1, "Offset": 0}, 
-    {"Id": "2", "Name": "10er", "Phydim": "Piece", "Factor": 10, "Offset": 0},
+    {"Id": "2", "Name": "10", "Phydim": "Piece", "Factor": 10, "Offset": 0},
     {"Id": "3", "Name": "dozen", "Phydim": "Piece", "Factor": 12, "Offset": 0},
     {"Id": "4", "Name": "kg", "Phydim": "Weight", "Factor": 1, "Offset": 0},
     {"Id": "5", "Name": "dag", "Phydim": "Weight", "Factor": 0.01, "Offset": 0},

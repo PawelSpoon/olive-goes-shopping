@@ -28,11 +28,11 @@ class AmountCalculatorTest(unittest.TestCase):
         ret = calc.doAmountMagic(1,"kg",200,"g")
         self.assertEqual(1.2,ret) 
 
-    def testKgAndg(self):
+    def testOneAnd10(self):
         calc = AmountCalculator(self.rootDir)
         calc.init()
         self.assertTrue("kg" in calc.units.keys())
-        ret = calc.doAmountMagic(1,"-",1,"10er")
+        ret = calc.doAmountMagic(1,"-",1,"10")
         self.assertEqual(11,ret) 
 
     def testNotFittingPhydims(self):

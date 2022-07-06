@@ -12,10 +12,10 @@ SilicaListView {
 
     property string uid_ : ""
     property string itemType
-    property alias name_ : itemName.text
+    property string name_
     property int amount_
     property string unit_
-    property alias category_ : categoryName.text
+    property string category_
 
     property int mode
 
@@ -27,11 +27,15 @@ SilicaListView {
         id: unitModel
     }
 
+    ListModel {
+        id: categoryModel
+    }
+
     Component.onCompleted: {
         unitModel.clear()
-        //categoryModel.clear()
+        categoryModel.clear()
         commons.fillUnitModel(unitModel)
-        //commons.fillCategoryModel(categoryModel)
+        commons.fillCategoryModel(categoryModel)
 
         if (mode == 1) {
            send2Controlls()
@@ -42,9 +46,12 @@ SilicaListView {
     function send2Controlls(){
         itemName.text = name_ //item['Name']
         defaultAmount.text = amount_ //item['Amount']
-        var index =  commons.getIndexForItem(unit_/*item['Unit']*/, unitModel)
-        unit.currentIndex  = index
-        //todo: same for category
+        var index =  commons.getIndexForName(unit_/*item['Unit']*/, unitModel)
+        console.log("index of unit: " + unit_ + " is " + index)
+        if (index > -1) { unit.currentIndex  = index }
+        index =  commons.getIndexForName(category_/*item['Unit']*/, categoryModel)
+        if (index > -1) { category.currentIndex  = index }
+        console.log("index of category: " + category_ + " is " + index)
     }
 
     SilicaFlickable{
@@ -91,42 +98,6 @@ SilicaListView {
                     }
                 }
             }
-            Item {
-                id: categoryGroupItem
-                visible: applicationWindow.settings.useCategories
-                anchors.left: parent.left
-                width: parent.width
-                height: categoryName.height
-                TextField {
-                    id: categoryName
-                    width: parent.width * 2 / 3
-                    readOnly: categoryName.text !== "" ? false: true
-                    label: qsTr("Item category")
-                    property string orgText: ""
-                    text: ""
-                    opacity: itemName.opacity
-                    placeholderText: qsTr("Set category")
-                    // errorHighlight: text.length === 0
-                    EnterKey.enabled: !errorHighlight
-                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                    font.capitalization: Font.MixedCase
-                    EnterKey.onClicked: defaultAmount.focus = true
-                }
-                Button {
-                    id: changeCategory
-                    text: qsTr("Select")
-                    anchors.top: categoryName.top
-                    anchors.left: categoryName.right
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
-                    anchors.leftMargin: Theme.paddingLarge
-                      onClicked: {
-                       var dialog = pageStack.push(Qt.resolvedUrl("EnumPicker.qml"), {itemType: "category"} )
-                       dialog.accepted.connect(function() {
-                           categoryName.text = dialog.itemName});
-                    }
-                }
-            }
             TextField {
                 id: defaultAmount
                 width: parent.width
@@ -147,6 +118,19 @@ SilicaListView {
                     Repeater {
                         id: unitRepeater
                         model: unitModel
+                        MenuItem {
+                            text: Name
+                        }
+                    }
+                }
+            }
+            ComboBox {
+                id: category
+                label: qsTr("Category")
+                menu: ContextMenu {
+                    Repeater {
+                        id: categoryRepeater
+                        model: categoryModel
                         MenuItem {
                             text: Name
                         }
@@ -245,18 +229,19 @@ SilicaListView {
         current['Name']  = itemName.text
         current['Amount']  = parseInt(defaultAmount.text)
         current['Unit']  = unit.value
-        current['Category']  = category_
+        current['Category']  = category.value
         current['ItemType'] = itemType
+        commons.traceItem(current)
         return current;
     }
 
     function doAccept() {
 
-
+        console.log("mode: " + mode)
         if (mode == 1) {
             // edit -> needs to update list
             console.log('update list')
-            applicationWindow.python.updateOne(listName,name,collectCurrentItem())
+            applicationWindow.python.updateOne(listName,name_,collectCurrentItem())
             return
         }
 
@@ -267,20 +252,6 @@ SilicaListView {
             if (itemName.text === null || itemName.text === "") return;
             if (applicationWindow.settings.useCapitalization === false) {
               name = name.toLowerCase();
-            }
-
-            // make sure that this 'new' item is really new, if not, use uid from db
-            // nice idea but later ..
-            //var isThereAny = DB.getDatabase().getItemPerName(name)
-            //if (isThereAny.length < 1)
-            if (true) //not in db
-            {
-              uid_= applicationWindow.controller.getUniqueId()
-            }
-            else
-            {
-              uid_ = isThereAny[0].uid // take uid from db if the new item, actually does exist in db
-              // in case of the unlikely usecase, that item exists in db AND in shoppinglist an new add will reset the counter in shoppinglist
             }
 
             // convert object to list and store
