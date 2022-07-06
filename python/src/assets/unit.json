@@ -9,7 +9,8 @@
     {"Id": "8", "Name": "lbs", "Phydim": "Weight", "Factor": 0.5, "Offset": 0},
     {"Id": "9", "Name": "l", "Phydim": "Volume", "Factor": 1, "Offset": 0},
     {"Id": "10", "Name": "dl", "Phydim": "Volume", "Factor": 0.1, "Offset": 0},
-    {"Id": "11", "Name": "ml", "Phydim": "Volume", "Factor": 0.01, "Offset": 0},
-    {"Id": "12", "Name": "m", "Phydim": "Length", "Factor": 1, "Offset": 0}, 
-    {"Id": "13", "Name": "cm", "Phydim": "Length", "Factor": 0.01, "Offset": 0}
+    {"Id": "11", "Name": "ml", "Phydim": "Volume", "Factor": 0.001, "Offset": 0},
+    {"Id": "12", "Name": "oz", "Phydim": "Volume", "Factor": 0.02841306, "Offset": 0},    
+    {"Id": "13", "Name": "m", "Phydim": "Length", "Factor": 1, "Offset": 0}, 
+    {"Id": "14", "Name": "cm", "Phydim": "Length", "Factor": 0.01, "Offset": 0}
 ]
