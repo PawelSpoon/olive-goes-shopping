@@ -1,198 +1,182 @@
-/****************************************************************************************
-**
-** Copyright (C) 2013 Jolla Ltd.
-** Contact: Matt Vogt <matthew.vogt@jollamobile.com>
-** All rights reserved.
-**
-** Copyright (C) 2015 Murat Khairulin
-**
-** This file is part of Sailfish Silica UI component package.
-**
-** You may use this file under the terms of BSD license as follows:
-**
-** Redistribution and use in source and binary forms, with or without
-** modification, are permitted provided that the following conditions are met:
-**     * Redistributions of source code must retain the above copyright
-**       notice, this list of conditions and the following disclaimer.
-**     * Redistributions in binary form must reproduce the above copyright
-**       notice, this list of conditions and the following disclaimer in the
-**       documentation and/or other materials provided with the distribution.
-**     * Neither the name of the Jolla Ltd nor the
-**       names of its contributors may be used to endorse or promote products
-**       derived from this software without specific prior written permission.
-**
-** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-** ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-** DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR
-** ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-** (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-** LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-** ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-** SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-**
-****************************************************************************************/
-
-import QtQuick 2.1
+import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-MouseArea {
-    id: root
+ListItem {
+        id: delegate
 
-    property string uid
-    property alias name: label.text
-    property int amount
-    property string itemType
-    property alias unit: unitLabel.text
-    property bool checked
-    property alias category : categoryLabel.text
-    property string order
+        property string uid
+        property alias name : itemLabel.text
+        property int amount
+        property string itemType
+        property alias unit : unitLabel.text
+        property string category //: categoryLabel.text
+        property string order
+        property bool checked
 
-    property variant receiver
+        signal toggled(string uid, string name, bool checked)
+        signal pressed(string uid, string name, int mode)
 
-    property real leftMargin
-    property real rightMargin: Theme.paddingLarge
-    property bool highlighted //: blinker.isOn || (pressed && containsMouse)
-    // property bool blinking: blinker.remainingBlinks > 0
-    property bool busy
-
-    width: parent ? parent.width : Screen.width
-    implicitHeight: Math.max(toggle.height)
-
-    Item {
-        id: toggle
-
-        width: Theme.itemSizeExtraSmall
-        height: Theme.itemSizeSmall
-        anchors {
-            left: parent.left
-            leftMargin: root.leftMargin
+        Component.onCompleted: {
+            amountLabel.text = amount
         }
 
-        GlassItem {
-            id: indicator
-            anchors.centerIn: parent
-            opacity: !root.checked ? 1.0 : 0.4
-            //dimmed: checked
-            falloffRadius: checked ? defaultFalloffRadius : 0.075
-            Behavior on falloffRadius {
-                NumberAnimation { duration: busy ? 450 : 50; easing.type: Easing.InOutQuad }
-            }
-            // KLUDGE: Behavior and State don't play well together
-            // http://qt-project.org/doc/qt-5/qtquick-statesanimations-behaviors.html
-            // force re-evaluation of brightness when returning to default state
-            brightness: { return 1.0 }
-            Behavior on brightness {
-                NumberAnimation { duration: busy ? 450 : 50; easing.type: Easing.InOutQuad }
-            }
-            color: highlighted ? Theme.highlightColor : Theme.primaryColor
-        }
-    }
-
-    Label {
-        id: label
-        opacity: !root.checked ? 1.0 : 0.4
-        anchors {
-            verticalCenter: toggle.verticalCenter
-            // center on the first line if there are multiple lines
-            //verticalCenterOffset: lineCount > 1 ? (lineCount-1)*height/lineCount/2 : 0
-            left: toggle.right
-            //right: prio.left
-        }
-        wrapMode: Text.NoWrap
-        font.strikeout: root.checked
-        color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
-        truncationMode: TruncationMode.Elide
-    }
-
-    Item {
-        id: prio
-        opacity: !root.checked ? 1.0 : 0.4
-        width: Theme.itemSizeExtraSmall
-        height: label.height / 2
-        //right: parent.right - Theme.
-        //left: parent.right //- Theme.horizontalPageMargin
-        anchors {
-            left: label.right// + Theme.paddingLarge
-            verticalCenter: toggle.verticalCenter
-        }
-        visible: true
-
-        Label {
-            id: amountLabel
-            anchors.centerIn: parent
-            text: amount
-            color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
-            opacity: (amount == 1 && unit == "-") ? 0 : 1
-        }
-
-        Label {
-            id: unitLabel
-            anchors.top : amountLabel.top
-            anchors.left : amountLabel.right
-            anchors.leftMargin: Theme.paddingSmall
-            //text: unit_
-            color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
-            opacity: (amount == 1 && unit == "-") ? 0 : 1
-        }
-
-        Label {
-            id: categoryLabel
-            anchors.top : unitLabel.top
-            anchors.left : unitLabel.right
-            //text: unit_
-            color: highlighted ? Theme.highlightColor : (checked ? Theme.primaryColor : Theme.secondaryColor)
-        }
-    }
-
-    Component {
-        id: removalComponent
-        RemorseItem {
-            property QtObject deleteAnimation: SequentialAnimation {
-                PropertyAction { target: toggle; property: "ListView.delayRemove"; value: true }
-                NumberAnimation {
-                    target: toggle
-                    properties: "height,opacity"; to: 0; duration: 300
-                    easing.type: Easing.InOutQuad
+        Column
+        {
+            id: checked_column
+            width: 80
+            IconButton
+            {
+                icon.source: (checked > 0 ?
+                    "../../icons/icon-m-checked.png" :
+                    "../../icons/icon-m-unchecked.png")
+                onClicked:
+                {
+                    console.log(uid + ": Clicked " + checked);
+                    checked != checked
+                    toggled(uid,name,checked)
                 }
-                PropertyAction { target: toggle; property: "ListView.delayRemove"; value: false }
             }
-            onCanceled: destroy()
         }
-    }
-
-    onClicked: {
-        checked = !checked
-        receiver.update(uid,name,itemType,category,amount,unit,
-                        checked)
-    }
-
-    onPressAndHold: {
-        if (checked) {
-          print('remove')
-          remove();
-        }
-        else {
-           print('edit')
-           parent.parent.parent.editCurrent(text)
-        }
-    }
-
-    function remove() {
-        var removal = removalComponent.createObject() // should it be shoppingListItem ?
-        //ListView.remove.connect(removal.deleteAnimation.start)
-        removal.execute(shoppingListItem, "Deleting", function() {
-            var dbItem = DB.getDatabase().getItemPerName(name);
-            if (dbItem.length > 0) { // why do i do that ?
-              DB.getDatabase().setItem(dbItem[0].uid,name,dbItem[0].amount,dbItem[0].unit,dbItem[0].type,0,dbItem[0].category,dbItem[0].co2)
-            }
-            else {
-                console.log('item not found: ' + name)
+        Column
+        {
+            id: amount_column
+            width: 140
+            y: Theme.paddingLarge
+            anchors
+            {
+                left: checked_column.right
+                verticalCenter: checked_column.verticalCenter
             }
 
-            DB.getDatabase().removeShoppingListItem(uid_,name,0,unit,false)
-            parent.parent.parent.initPage()}
-        )
-    }
+            Label {
+                id: amountLabel
+                x: Theme.horizontalPageMargin
+                horizontalAlignment: Text.AlignRight
+//                        anchors.verticalCenter: parent.verticalCenter
+                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                width: parent.width
+                truncationMode: TruncationMode.Fade
+                font.strikeout: (checked > 0 && settings.strike_checked) ? true : false
+            }
+        }
+        Column
+        {
+            id: unit_column
+            width: 80
+            y: Theme.paddingLarge
+            anchors
+            {
+                left: amount_column.right
+                leftMargin: Theme.paddingSmall
+                verticalCenter: checked_column.verticalCenter
+                verticalCenterOffset: checked_column.height/16
+            }
+
+            Label {
+                id: unitLabel
+                font.pixelSize: Theme.fontSizeTiny
+                x: Theme.horizontalPageMargin
+                horizontalAlignment: Text.AlignLeft
+                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                width: parent.width
+                visible: (text != "-")
+                truncationMode: TruncationMode.Fade
+                font.strikeout: (checked > 0 && settings.strike_checked) ? true : false
+            }
+        }
+        Column
+        {
+            id: spacing_column
+            width: 10
+            anchors
+            {
+                left: unit_column.right
+                verticalCenter: checked_column.verticalCenter
+            }
+
+            Label {
+                text: ""
+                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                font.strikeout: (checked > 0 && settings.strike_checked) ? true : false
+            }
+        }
+        Column
+        {
+            id: item_column
+            width: 150
+            y: Theme.paddingLarge
+            anchors
+            {
+                left: spacing_column.right
+                verticalCenter: checked_column.verticalCenter
+            }
+
+            Label {
+                id: itemLabel
+                x: Theme.horizontalPageMargin
+                horizontalAlignment: Text.AlignLeft
+//                        anchors.verticalCenter: parent.verticalCenter
+                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                truncationMode: TruncationMode.Fade
+                font.strikeout: (checked > 0 && settings.strike_checked) ? true : false
+            }
+        }
+//                onClicked: console.log(id + ": Clicked " + model.checked)
+        onClicked:
+        {
+            console.log(uid + ": Clicked " + checked);
+            checked = !checked
+            toggled(uid,name,checked)
+        }
+
+        menu: ContextMenu {
+            /*MenuItem {
+                text: qsTr("Add Items")
+                onClicked:
+                {
+                pressed(uid,name,3)
+                }
+            }*/
+            MenuItem {
+                text: qsTr("Edit Item")
+                onClicked:
+                {
+                    pressed(uid,name,1)
+                }
+            }
+            MenuItem {
+                text: qsTr("Delete Item")
+                // we need a remorse timer here
+                onClicked:
+                {
+                    // this will create and remorse and finally fire event
+                    remove(listName,name)
+                }
+            }
+        }
+
+        Component {
+            id: removalComponent
+            RemorseItem {
+                property QtObject deleteAnimation: SequentialAnimation {
+                    PropertyAction { target: root; property: "ListView.delayRemove"; value: true }
+                    NumberAnimation {
+                        target: root
+                        properties: "height,opacity"; to: 0; duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+                    PropertyAction { target: root; property: "ListView.delayRemove"; value: false }
+                }
+                onCanceled: destroy()
+            }
+        }
+
+        // create remorse and fire if not canceled
+        function remove(listName,name) {
+            var removal = removalComponent.createObject() // should it be shoppingListItem ?
+            //ListView.remove.connect(removal.deleteAnimation.start)
+            removal.execute(delegate, "Deleting", function() {
+                pressed(uid,name,3)
+            })
+        }
 }

@@ -11,6 +11,56 @@
         <source>Item type</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AnyItemComponent</name>
+    <message>
+        <source>Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set item name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard package size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set standard package size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create another</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AnyItemDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CreateListDialog</name>
@@ -166,6 +216,37 @@
     </message>
     <message>
         <source>drop-database-detail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FirstPage</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete All Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Fish Monger&apos;s Shopping List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -359,10 +440,6 @@
         <source> --- Pick lists --- </source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Shopping list definition</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>RecipeComponent</name>
@@ -456,8 +533,15 @@
         <source>Use (multiple) shopping lists</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ShoppingListItem</name>
     <message>
-        <source>Use (multiple) task lists</source>
+        <source>Edit Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -480,10 +564,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Modify</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copied to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -492,11 +572,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Manage</source>
+        <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
+        <source>Add from picklist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

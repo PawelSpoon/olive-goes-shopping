@@ -22,10 +22,10 @@ class ItemControllerTest(unittest.TestCase):
     def testLoad(self):
         print("testLoad")
         enums = readItems(self.foodFile)
-        self.assertTrue("Potato" in enums)
+        self.assertTrue("potatoes" in enums)
         controller = ItemController("food",self.foodFile)
         controller.loadString(enums)
-        self.assertTrue("Potato" in controller.getList())
+        self.assertTrue("potatoes" in controller.getList())
         test = controller.getAsList()
         for t in test:
             print(t)
@@ -34,26 +34,26 @@ class ItemControllerTest(unittest.TestCase):
         print("testAdd")
         controller = ItemController("food",self.foodFile)
         controller.load()
-        self.assertTrue("Potato" in controller.getList().keys())
+        self.assertTrue("potatoes" in controller.getList().keys())
         self.assertTrue(controller.add({'Name':"me"}))
         self.assertTrue("me" in controller.getList().keys())
 
     def testDuplicateAdd(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        ret = controller.add({"Name": "Potato"})
+        ret = controller.add({"Name": "potatoes"})
         self.assertTrue(ret == False)
-        self.assertTrue(len(controller.getList()) == 2)
+        self.assertEqual(len(controller.getList()),107)
 
     def testRename(self):
         enums = readItems(self.foodFile)
         controller = ItemController("food",self.foodFile)
         controller.loadString(enums)
-        ret = controller.rename("Potato","Pitato")
+        ret = controller.rename("potatoes","Pitato")
         self.assertTrue(ret == True)
         self.assertTrue("Pitato" in controller.getList())
-        self.assertTrue("Potato" not in controller.getList())
-        self.assertTrue(len(controller.getList()) == 2)    
+        self.assertTrue("potatoes" not in controller.getList())
+        self.assertEqual(len(controller.getList()),107)    
         ret = controller.rename("Potato","Patata")  
         self.assertTrue(ret == False)  
         self.assertTrue("Patata" not in controller.getList())
@@ -68,24 +68,24 @@ class ItemControllerTest(unittest.TestCase):
     def testUpdateFoodWithUnit(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        controller.update('Apple',{ 'Name': 'Apple', 'Unit': {'Id': '4', 'Name':'pound'}})
-        self.assertTrue(controller.getList()['Apple']['Unit']['Name']=='pound')
+        controller.update('apple',{ 'Name': 'apple', 'Unit': {'Id': '4', 'Name':'lbs'}})
+        self.assertTrue(controller.getList()['apple']['Unit']['Name']=='lbs')
 
     def testRenameFoodWithUnit(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        ret = controller.update('Apple',{ 'Name': 'Pear', 'Unit': {'Id': '4', 'Name':'pound'}})
+        ret = controller.update('apple',{ 'Name': 'Pear', 'Unit': {'Id': '4', 'Name':'lbs'}})
         self.assertTrue(ret)
-        self.assertTrue(controller.getList()['Pear']['Unit']['Name']=='pound')   
-        self.assertTrue(len(controller.getList().keys()) == 2)  
+        self.assertTrue(controller.getList()['Pear']['Unit']['Name']=='lbs')   
+        self.assertEqual(len(controller.getList().keys()), 107)  
 
     def testRenameFoodWithUnitWithConflict(self):
         controller = ItemController("food",self.foodFile)
         controller.load()
-        ret = controller.update('Apple',{ 'Name': 'Potato', 'Unit': {'Id': '4', 'Name':'pound'}})
+        ret = controller.update('apple',{ 'Name': 'potatoes', 'Unit': {'Id': '4', 'Name':'lbs'}})
         self.assertFalse(ret)
-        self.assertTrue(controller.getList()['Potato']['Unit']['Name']=='kg')   
-        self.assertTrue(len(controller.getList().keys()) == 2)   
+        self.assertTrue(controller.getList()['potatoes']['Unit']['Name']=='kg')   
+        self.assertEqual(len(controller.getList().keys()), 107)   
 
     #def testInvAdd(self):
     #    print("testInvAdd")

@@ -6,8 +6,8 @@ from storage.persistance import readEnums, readItems, readObject, storeEnums, st
 
 class PersistanceTest(unittest.TestCase):
   
-    shopFile = "./src/assets/current/jan.shop.json"
-    shopOutFile = "./test/test-out/current/jan.shop.json"
+    shopFile = "./src/assets/current/demo.shop.json"
+    shopOutFile = "./test/test-out/current/demo.shop.json"
 
     recipeFile = "./src/assets/recipe/Krautsuppe.json"
     recipeOutFile = "./test/test-out/recipe/Krautsuppe.json"

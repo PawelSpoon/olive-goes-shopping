@@ -41,8 +41,7 @@ Python {
 
   function init_handler(module_id, method_id, description) {
     console.log('init done:');
-    applicationWindow.signal_init(module_id, method_id, description);
-  }
+    applicationWindow.signal_init(module_id, method_id, description);  }
 
   function reInit(type) {
     applicationWindow.cache.invalidate()
@@ -99,6 +98,14 @@ Python {
 
   function setDoneValue(listName, name, done) {
       return call_sync('app.app_object.setDoneValue',[listName,name,done])
+  }
+
+  function deleteOne(listName, name) {
+      return call_sync('app.app_object.deleteOne',[listName,name])
+  }
+
+  function updateOne(listName, oldName, item) {
+      return call_sync('app.app_object.updateOne',[listName,oldName,item])
   }
 
   function clearAll(listName) {

@@ -43,6 +43,7 @@ bool copyDir(const QString &source, const QString &destination, bool override)
      QStringList fileNames = directory.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::Hidden);
      for (QStringList::size_type i=0; i != fileNames.size(); ++i)
      {
+         std::cerr << fileNames.at(i).toStdString();
          QString fileName = fileNames.at(i);
          QString srcFilePath = srcPath + fileName;
          QString dstFilePath = dstPath + fileName;
@@ -60,6 +61,7 @@ bool copyDir(const QString &source, const QString &destination, bool override)
          {
              QDir dstDir(dstFilePath);
              dstDir.mkpath(dstFilePath);
+             std::cerr  << "first time mkdir";
              if (!copyDir(srcFilePath, dstFilePath, override))
              {
                  error = true;
@@ -79,11 +81,13 @@ void copyAssetsToWriteable(bool force)
     if(newDbDir.exists()) {
 
         if (!force) { return;
-            std::cout << "leaving early folder exits! start app with force to reset" << std::endl;
+            std::cerr << "leaving early folder exits! start app with force to reset" << std::endl;
         }
     }
+    QDir dstDir(pathNew);
+    dstDir.mkpath(newDbDir.absolutePath());
 
-     std::cout << copyDir("/usr/share/olive-goes-shopping/assets" ,newDbDir.absolutePath(), true);
+     std::cerr << copyDir("/usr/share/olive-goes-shopping/assets" ,newDbDir.absolutePath(), true);
 }
 
 int main(int argc, char *argv[])

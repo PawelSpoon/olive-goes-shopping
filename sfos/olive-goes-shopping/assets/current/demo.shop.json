@@ -1,0 +1,5 @@
+[
+       {"Name": "Condoms", "ItemType": "food", "Amount": 1, "Unit": "-", "Category": "Personal hygiene", "Done": false},
+       {"Name": "Beer",  "ItemType": "food", "Amount": 1, "Unit": "10", "Category": "Drinks", "Done": false}
+]
+

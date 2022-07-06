@@ -212,7 +212,8 @@ Page {
                     visible: applicationWindow.settings.useItemtypes
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
-                Button {
+                // not yet implemented
+                /*Button {
                     id: manageLists
                     visible: applicationWindow.settings.useLists
                     text: qsTr("Shopping list definition")
@@ -232,7 +233,7 @@ Page {
                         anchors.horizontalCenter: parent.horizontalCenter
                         onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
                     }
-                }
+                }*/
                 Label {
                     text: " ------ "
                     visible: applicationWindow.settings.useLists

@@ -9,7 +9,7 @@ Name:       olive-goes-shopping
 # << macros
 
 Summary:    Olive goes shopping
-Version:    0.3
+Version:    0.6
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE

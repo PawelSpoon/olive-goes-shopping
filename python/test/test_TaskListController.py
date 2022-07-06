@@ -93,5 +93,21 @@ class TaskListControllerTest(unittest.TestCase):
         self.assertTrue(manager.getList()["Oil change"][FieldDone] == False)
         self.assertTrue("Coolant change" in manager.getList().keys())
 
+    def testDeleteNonExistingOne(self):
+        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        manager.load()
+        manager.setDoneValue("Oil change",True) 
+        self.assertTrue(manager.getList()["Oil change"][FieldDone] == True)
+        self.assertFalse(manager.deleteOne("something"))    
+
+    def testDeleteExistingOne(self):
+        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        manager.load()
+        manager.setDoneValue("Oil change",True) 
+        self.assertTrue(manager.getList()["Oil change"][FieldDone] == True)
+        self.assertTrue(manager.deleteOne("Oil change"))     
+        self.assertEqual(1,len(manager.getAsList()))   
+
+
 if __name__ == '__main__':
     unittest.main()

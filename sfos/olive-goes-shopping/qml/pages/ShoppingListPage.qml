@@ -1,5 +1,5 @@
 
-import QtQuick 2.0
+import QtQuick 2.1
 import Sailfish.Silica 1.0
 import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
 import Nemo.Notifications 1.0
@@ -16,7 +16,13 @@ Page {
 
     Component.onCompleted:
     {
+        applicationWindow.controller.signal_list_updated.connect(onListChanged)
         initPage();
+    }
+
+    function onListChanged(listName) {
+        console.log(" i was told to update myself")
+        shoppingListPage.initPage()
     }
 
     function updatePage()
@@ -70,7 +76,7 @@ Page {
     // currently not used by should be from ShoppingListItem to inform
     function markAsDone(uid,name,amount,unit,category,done)
     {
-        applicationWindow.python.setDoneValue(listName,done)
+        applicationWindow.python.setDoneValue(listName,name,done)
         initPage()
     }
 
@@ -96,6 +102,13 @@ Page {
                                  "Done": items[i].Done,
                                  "ItemType": items[i].ItemType,
                                  "Category": items[i].Category })
+            console.log("Id" + items[i].Id +
+                        "Name"+ items[i].Name+
+                        "Amount"+ items[i].Amount+
+                        "Unit"+ items[i].Unit+
+                        "Done"+ items[i].Done+
+                        "ItemType"+ items[i].ItemType+
+                        "Category"+ items[i].Category )
         }
 
         sortModel();
@@ -137,18 +150,6 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Clear")
-                onClicked: {
-                    remorse.execute(qsTr("Deleting shopping list"), deleteShoppingList);
-                }
-                RemorsePopup {id: remorse }
-                function deleteShoppingList()
-                {
-                    applicationWindow.python.clearAll(listName)
-                    shoppingModel.clear()
-                }
-            }
-            MenuItem {
                 text: qsTr("Clear done")
                 onClicked: {
                     remorse.execute(qsTr("Removing done entries"), clearDoneFromShoppingList);
@@ -157,11 +158,16 @@ Page {
                 function clearDoneFromShoppingList()
                 {
                     applicationWindow.python.clearDone(listName)
+                    initPage()
                 }
             }
             MenuItem {
-                text: qsTr("Modify");
-                onClicked: applicationWindow.controller.openAddDialog(listName);
+                text: qsTr("Add from picklist");
+                onClicked: applicationWindow.controller.openAddPicklistDialog(listName);
+            }
+            MenuItem {
+                text: qsTr("Add");
+                onClicked: applicationWindow.controller.openAddDialog(listName,2);
             }
         }
 
@@ -182,55 +188,35 @@ Page {
                     }
                 }
             }
-            /*MenuItem {
-                text: qsTr("Share")
-                ShareAction {
-                    id: share
-                    title: qsTr("Share shopping list")
-                    mimeType: "text/x-"
-                }
-                onClicked: {
-                    if (shoppingModel.count > 0)
-                    {
-                        var listToShare = convertListToShareAble();
-                        var mimeType = "text/x-url";
-                        var he = {}
-                        he.data = listToShare
-                        he.name = "Buy this"
-                        he.type = mimeType
-                        he["linkTitle"] = listToShare// works in email body
-                        share.mimeType = "text/x-url";
-                        share.resources = [he]
-                        share.trigger()
-
-                        share.resources = ["listToShare"]
-                        share.trigger()
-                    }
-                }
-                //todo: else log do nothing
-            }*/
             MenuItem {
-                text: qsTr("Manage")
+                text: qsTr("Clear")
                 onClicked: {
-                    controller.openManagePage();
+                    remorse.execute(qsTr("Clearing all entries"), deleteShoppingList);
                 }
-            }
-            /*MenuItem {
-                text: qsTr("Help")
-                onClicked: {
-                    controller.openHelpPage();
+                RemorsePopup {id: remorse }
+                function deleteShoppingList()
+                {
+                    applicationWindow.python.clearAll(listName)
+                    shoppingModel.clear()
                 }
             }
             MenuItem {
-                text: qsTr("About")
+                text: qsTr("Delete this list")
                 onClicked: {
-                    controller.openAboutPage();
+                    remorse.execute(qsTr("Deleting shopping list"), deleteShoppingList);
                 }
-            }*/
+                RemorsePopup {id: remorse3 }
+                function deleteShoppingList()
+                {
+                    applicationWindow.python.deleteList(listName,"shop")
+                    applicationWindow.controller.signal_asset_updated("shop") // this should reload list selector
+                    pageStack.pop()
+                }
+            }
         }
 
         header: PageHeader {
-            title: qsTr("Shopping List - " + listName)
+            title: listName
         }
 
 
@@ -241,7 +227,7 @@ Page {
 
         // have sections by category
         section {
-            property: applicationWindow.settings.categorizeShoppingList ? "category": ""
+            property: applicationWindow.settings.categorizeShoppingList ? "Category": ""
             criteria: ViewSection.FullString
             delegate: SectionHeader {
                 id: secHead
@@ -290,14 +276,37 @@ Page {
 
         delegate:
             ShoppingListItem {
-            uid: Id
-            name: Name
-            amount: Amount
-            unit: Unit
-            checked: Done
-            category: Category
-            receiver: shoppingListPage
-            // order_: order
+                uid: Id
+                name: Name
+                amount: Amount
+                unit: Unit
+                checked: Done
+                category: Category
+                //receiver: shoppingListPage
+                onToggled: {
+                    console.log("item toggled received: " + uid + name + checked )
+                    applicationWindow.python.setDoneValue(listName,name,checked)
+                    //initPage()
+                }
+                onPressed:
+                {
+                    console.log("item pressed received" + uid + name + mode )
+                    // mode = 1 edit
+                    if (mode === 1) {
+                        var item = shoppingModel.getElementByName(name)
+                        applicationWindow.controller.openEditDialog(listName,mode,item)
+                        return;
+                    } //add
+                    if (mode === 2) {
+                        applicationWindow.controller.openAddDialog(listName,mode)
+                        return
+                    }
+                    if (mode === 3) {
+                        applicationWindow.python.deleteOne(listName,name)
+                        var x = shoppingModel.getElementIndexName(name)
+                        if (x > -1) shoppingModel.remove(x)
+                    }
+                }
         }
 
 
@@ -306,12 +315,25 @@ Page {
             ListElement {Id:""; Name: "dummy"; Amount: 1; Unit: "g"; Done: false; Category: ""; Order: "1" }
 
             function contains(uid) {
-                for (var i=0; i<count; i++) {
+                for (var i=0; i< count; i++) {
                     if (get(i).uid === uid)  {
                         return [true, i];
                     }
                 }
                 return [false, i];
+            }
+            function getElementIndexName(name) {
+                for (var i=0; i< count; i++) {
+                    if (get(i).Name === name)  {
+                        return i
+                    }
+                }
+                return -1
+            }
+            function getElementByName(name) {
+                var x = getElementIndexName(name)
+                if (x == -1) return {}
+                return get(x)
             }
         }
 

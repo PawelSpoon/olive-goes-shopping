@@ -12,7 +12,6 @@ Page {
 
     Component.onCompleted: {
         applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
-
     }
 
     function onAssetChanged(itemType) {
@@ -36,7 +35,7 @@ Page {
     SilicaFlickable {
         id: shoppingList
         anchors.fill: parent
-        contentHeight: buttonColumn.height * 2
+        //contentHeight: buttonColumn.height * 2
 
         VerticalScrollDecorator {  }
 
@@ -63,14 +62,15 @@ Page {
             width: parent.width
             spacing: Theme.horizontalPageMargin
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.topMargin: Theme.paddingLarge * 3 * Theme.pixelRatio
+            //anchors.topMargin: Theme.paddingLarge * 3 * Theme.pixelRatio
+            anchors.verticalCenter: parent.verticalCenter
 
             Repeater {
                 id: itemTypeRepeater
                 model: shoppingLists
                 Button {
-                    text: Name
                     anchors.horizontalCenter: parent.horizontalCenter
+                    text: Name
                     onClicked:  {
                         var listName = text
                         console.log(listName)

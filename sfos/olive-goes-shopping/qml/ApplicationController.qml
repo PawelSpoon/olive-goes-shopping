@@ -9,7 +9,13 @@ Item {
     id: applicationController
     property string currentPage: 'any'
 
+    // this gets fired when unit, phydim , pick lists get updated
+    // it should also invalidate the cache
     signal signal_asset_updated(var itemType)
+
+    // this gets fired, when a list was updated
+    // everybody should reload
+    signal signal_list_updated(var name)
 
     // array of pages
     property variant pages: []
@@ -33,7 +39,7 @@ Item {
            // now that could take longer .. maybe async
            applicationWindow.python.reInit(itemType)
        }
-       if (itemType == "shop") { // when added / removed a shopping list
+       if (itemType === "shop") { // when added / removed a shopping list
             applicationWindow.python.reInit(itemType)       
        }
        signal_asset_updated(itemType)
@@ -81,11 +87,33 @@ Item {
         applicationWindow.page.initPage()
     }
 
-    function openAddDialog(name)
+    function openAddPicklistDialog(name)
     {
-        console.log(name)
+        console.log('opening add from picklist dialog for list: ' + name)
         pageStack.push(Qt.resolvedUrl("pages/AddItemType2ListPage.qml"), { listName: name, itemType: "food"})
     }
+
+    function openAddDialog(name,mode)
+    {
+        console.log('opening add dialog for list: ' + name + ' in mode: ' + mode)
+        pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), { listName: name, mode: mode})
+    }
+
+    function openEditDialog(name,mode,item)
+    {
+        console.log('opening add dialog for list: ' + name + ' in mode: ' + mode)
+        console.log(item.Id+item.Name+item.Amount+item.Unit)
+        pageStack.push(Qt.resolvedUrl("pages/AnyItemDialog.qml"), {
+                           listName: name,
+                           mode: mode,
+                           uid_: item['Id'],
+                           name_: item['Name'],
+                           amount_: item['Amount'],
+                           unit_ : item['Unit'],
+                           category_ : item['Category']
+                       })
+    }
+
 
     function openManageMainPage()
     {

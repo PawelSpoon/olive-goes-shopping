@@ -113,5 +113,15 @@ class App:
         ctrl.clearItems()
         ctrl.store()
 
+    def deleteOne(self, listName,name):
+        ctrl = self.listManager.getController(listName)
+        ctrl.deleteOne(name)
+        ctrl.store()
+
+    def updateOne(self, listName, oldName, item):
+        ctrl = self.listManager.getController(listName)
+        ctrl.update(oldName,item)
+        ctrl.store()
+
 
 app_object = App()

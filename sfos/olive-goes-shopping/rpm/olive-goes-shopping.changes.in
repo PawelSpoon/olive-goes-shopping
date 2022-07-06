@@ -12,6 +12,40 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Jul 45 2022 Jack Tar <jack.tar@example.com> 0.5.3-1
+- fix units in add dialogs
+- make units smaller and alligned at bottom
+- hide - unit in shopping list
+- fix copying of cats into .local
+
+* Mon Jul 4 2022 Jack Tar <jack.tar@example.com> 0.4.3-1
+- replace shopping list with with fishmongers
+- context menue in shopping list with edit & delete
+- edit does not store yet, but it shows at least the item again
+
+* Sun Jul 3 2022 Jack Tar <jack.tar@example.com> 0.4.3-1
+- adjust buttons nicer on main page
+- min 3 chars for list name
+
+* Sun Jul 3 2022 Jack Tar <jack.tar@example.com> 0.4.2-1
+- fix settings storage
+
+* Sun Jul 3 2022 Jack Tar <jack.tar@example.com> 0.4.1-1
+- create / delete shopping lists
+- add from picklist
+- add from scratch
+- clear done
+- creal all
+- create / delete categories
+- create / delete item types 
+  each item type represents a picklist
+  if you delete it, its gone
+- ugly ui
+- all files are in ~/.local/share/oarg.pawelspoon/olive-goes-shopping/assets
+  you can backup it from there
+  you can upload it to nextcloud
+- slava - my backup support
+
 * Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
 - Scrubbed the deck
 - Hoisted the sails

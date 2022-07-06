@@ -10,6 +10,7 @@ class AssetManagerTest(unittest.TestCase):
   
     rootDir = "./src/assets"
     outDir = "./test/test-out"
+    itemTypeCount = 4
 
     def setUp(self) -> None:
         return super().setUp()
@@ -27,11 +28,11 @@ class AssetManagerTest(unittest.TestCase):
         print('testLoad')
         manager = AssetManager(self.rootDir)
         manager.load()
-        self.assertEqual(3,len(manager.itemtypeController.getList()))
+        self.assertEqual(self.itemTypeCount,len(manager.itemtypeController.getList()))
         self.assertEqual(4,len(manager.phydimController.getList()))
         self.assertTrue("food" in manager.itemControllerDict.keys())
-        self.assertEqual(2,len(manager.itemControllerDict["food"].getList()))
-        self.assertEqual(13,len(manager.unitController.getList()))
+        self.assertEqual(107,len(manager.itemControllerDict["food"].getList()))
+        self.assertEqual(14,len(manager.unitController.getList()))
   
     def testStore(self):
         print('testStore')
@@ -82,8 +83,8 @@ class AssetManagerTest(unittest.TestCase):
         manager.load()
         ctrl = manager.getController("food")
         ctrl.getList()
-        ctrl.update('Apple',{ 'Name': 'Apple', 'Unit': {'Id': '4', 'Name':'pound'}})
-        print(ctrl.getList()["Apple"]['Unit']['Id'])
+        ctrl.update('apple',{ 'Name': 'apple', 'Unit': {'Id': '4', 'Name':'lbs'}})
+        print(ctrl.getList()["apple"]['Unit']['Id'])
         ctrl.filePath = self.outDir + "/item/food.json"
         ctrl.store()
 

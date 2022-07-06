@@ -141,7 +141,7 @@ MouseArea {
     onClicked: {
         howMany ++
         checked = (howMany > 0)
-        print(id + " " + name + " " + howMany + " " + itemType + " " + category)
+        print(id + " " + name + " " + howMany + " " + " " + unit + itemType + " " + category)
         receiver.update(id,name,itemType,category,amount,unit,howMany)
     }
 
@@ -149,6 +149,10 @@ MouseArea {
         howMany = 0
         checked = false
         receiver.update(id,name,itemType,category,amount,unit,howMany,done)
+    }
+
+    Component.onCompleted: {
+        desc.text = amount
     }
 
 }
