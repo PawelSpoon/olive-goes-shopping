@@ -10,7 +10,7 @@ Name:       olive-goes-shopping
 
 Summary:    Olive goes shopping
 Version:    0.6
-Release:    1
+Release:    5
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
@@ -26,7 +26,7 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my Sailfish OS Application
+Shopping list app with multiple list support, recipes and ingredient calculation
 
 
 %prep

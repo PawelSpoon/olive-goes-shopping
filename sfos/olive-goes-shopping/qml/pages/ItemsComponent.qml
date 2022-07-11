@@ -54,6 +54,7 @@ SilicaListView {
         console.log(item.Name + " howm:" +item.HowMany + " amount" + item.Amount)
         current['Amount']  = item.HowMany * item.Amount
         current['Unit']  = item.Unit
+        //current['Done']  = false
         current['Category']  = item.Category
         current['ItemType'] = item.ItemType
         return current;

@@ -63,6 +63,13 @@
     </message>
 </context>
 <context>
+    <name>CoverPage</name>
+    <message>
+        <source>Olive &lt;br&gt;goes &lt;br&gt; shoppin&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CreateListDialog</name>
     <message>
         <source>Save</source>

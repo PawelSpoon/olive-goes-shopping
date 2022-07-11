@@ -17,6 +17,11 @@ Item {
     // everybody should reload
     signal signal_list_updated(var name)
 
+    function updateCoverList(listName,model) {
+        applicationWindow.cover.fillModel(listName,model)
+    }
+
+
     // array of pages
     property variant pages: []
     function addPage(name1, page1) {
@@ -110,7 +115,8 @@ Item {
                            name_: item['Name'],
                            amount_: item['Amount'],
                            unit_ : item['Unit'],
-                           category_ : item['Category']
+                           category_ : item['Category'],
+                           done_: item['Done']
                        })
     }
 
@@ -282,17 +288,6 @@ Item {
             return null;
         }
         return pages[index].page
-    }
-
-    function updateCoverList(pageName, model) {
-        //todo:
-        /*
-        if (currentPage !== pageName) return
-        if (model === null) {
-            console.log('try to reload model')
-            model = getCurrentPageView(pageName).getCoverPageModel()
-        }
-        applicationWindow.cover.fillModel(model)*/
     }
 
     function getCapitalization()

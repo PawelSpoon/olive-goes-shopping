@@ -85,7 +85,7 @@ Page {
         var items = applicationWindow.python.getShoppingList(listName)
         shoppingModel.clear()
         fillShoppingListModel(items)
-        //applicationWindow.updateCoverList(shoppingModel)
+        applicationWindow.controller.updateCoverList(listName,shoppingModel)
     }
 
 
@@ -282,11 +282,10 @@ Page {
                 unit: Unit
                 checked: Done
                 category: Category
-                //receiver: shoppingListPage
                 onToggled: {
                     console.log("item toggled received: " + uid + name + checked )
                     applicationWindow.python.setDoneValue(listName,name,checked)
-                    //initPage()
+                    //applicationWindow.controller.updateCoverList(listName,shoppingModel)
                 }
                 onPressed:
                 {

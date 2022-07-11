@@ -1,7 +1,7 @@
 Name: olive-goes-shopping
 Summary: Olive goes shopping
 Version: 0.6
-Release: 1
+Release: 5
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
 Group: Qt/Qt
@@ -12,7 +12,7 @@ License: LICENSE
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my Sailfish OS Application
+  Shopping list app with multiple list support, recipes and ingredient calculation
 Builder: qmake5
 
 # This section specifies build dependencies that are resolved using pkgconfig.
