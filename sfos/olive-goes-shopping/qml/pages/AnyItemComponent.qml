@@ -16,6 +16,7 @@ SilicaListView {
     property int amount_
     property string unit_
     property string category_
+    property bool done_
 
     property int mode
 
@@ -229,6 +230,7 @@ SilicaListView {
         current['Name']  = itemName.text
         current['Amount']  = parseInt(defaultAmount.text)
         current['Unit']  = unit.value
+        current['Done'] = done_
         current['Category']  = category.value
         current['ItemType'] = itemType
         commons.traceItem(current)

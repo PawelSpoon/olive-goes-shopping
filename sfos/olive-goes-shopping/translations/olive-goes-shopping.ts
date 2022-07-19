@@ -15,6 +15,10 @@
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AnyItemComponent</name>
@@ -59,6 +63,13 @@
     </message>
     <message>
         <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CoverPage</name>
+    <message>
+        <source>Olive &lt;br&gt;goes &lt;br&gt; shoppin&apos;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -216,37 +227,6 @@
     </message>
     <message>
         <source>drop-database-detail</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FirstPage</name>
-    <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete All Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The Fish Monger&apos;s Shopping List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete Item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

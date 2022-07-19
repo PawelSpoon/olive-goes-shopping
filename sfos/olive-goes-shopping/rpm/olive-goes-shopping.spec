@@ -9,7 +9,7 @@ Name:       olive-goes-shopping
 # << macros
 
 Summary:    Olive goes shopping
-Version:    0.6
+Version:    0.7
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -26,7 +26,7 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my Sailfish OS Application
+Shopping list app with multiple list support, recipes and ingredient calculation
 
 
 %prep

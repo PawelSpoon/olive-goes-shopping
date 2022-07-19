@@ -17,9 +17,11 @@ Dialog {
     property bool groupbyCategory
     property bool neverCapitalize
 
-    PageHeader {
+    DialogHeader {
         id: pageHeader
-        title: qsTr("Add")
+        //title: qsTr("Add")
+        acceptText: qsTr("Add")
+        cancelText: qsTr("Discard")
     }
 
     AssetCommons {
@@ -89,10 +91,11 @@ Dialog {
 
         Column {
             anchors.fill: parent
+            anchors.topMargin:  pageHeader.height
             ComboBox {
                 id: itemTypeCombo
                 label: qsTr("Item type")
-                anchors.topMargin: itemTypeCombo.height
+                //anchors.topMargin: itemTypeCombo.height + pageHeader.height
                 menu: ContextMenu {
                     Repeater {
                         id: itemTypeRepeater

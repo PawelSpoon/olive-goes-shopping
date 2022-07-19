@@ -50,7 +50,6 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/pages/ItemsComponent.qml \
     qml/pages/AnyItemDialog.qml \
     qml/pages/AnyItemComponent.qml \
-    qml/pages/FirstPage.qml\
     \
     assets/category.json \
     assets/current/annual maintenance - Breva.task.json \
@@ -107,7 +106,10 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/olive-goes-shopping-de.ts
+TRANSLATIONS += translations/olive-goes-shopping-de.ts \
+    translations/olive-goes-shopping-es.ts \
+    translations/olive-goes-shopping-fi_FI.ts \
+    translations/olive-goes-shopping-sk_SK.ts
 
 OTHER_FILES += \
     assets/phydim.json \

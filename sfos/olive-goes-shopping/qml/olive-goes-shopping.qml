@@ -5,6 +5,7 @@ import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
 import io.thp.pyotherside 1.5
 
 import "pages"
+import "cover"
 
 ApplicationWindow {
 
@@ -15,6 +16,7 @@ ApplicationWindow {
     property Python python: pythonHandler
     property bool initialized: false
     property variant shopPage: listSelector
+    property alias coverPage: _coverPage
 
     ApplicationController {
         id: myController
@@ -22,6 +24,10 @@ ApplicationWindow {
 
     DataCache {
         id: dataCache
+    }
+
+    CoverPage {
+        id: _coverPage
     }
 
     OGSSettings {
@@ -75,7 +81,7 @@ ApplicationWindow {
     }
 
 
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    cover: coverPage//Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }
 
