@@ -101,21 +101,23 @@ SilicaListView {
 
     function filterPage(nameFilter)
     {
+        var items = applicationWindow.python.getAssets(itemType);
         itemModel.clear()
-        fillItemsModel(items)
+        fillItemsModel(items,nameFilter)
     }
 
-    function filterItemsModel(texti)
+    /*function filterItemsModel(texti)
     {
         if (texti.length > 0) {
             filterPage(texti)
         } else {
             initPage()
         }
-    }
+    }*/
 
-    function fillItemsModel(items)
+    function fillItemsModel(items,nameFilter)
     {
+        console.log('nameFilter:' + nameFilter)
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
@@ -128,14 +130,20 @@ SilicaListView {
             if (item.Category!== undefined) {
                 cat = item.Category.Name
             }
-
-            itemModel.append({"Id": item.Id,
-                                 "Name": item.Name,
-                                 "Amount": parseInt(item.Amount),
-                                 "Unit": unit,
-                                 "HowMany": items[i].HowMany,
-                                 "ItemType": items[i].ItemType,
-                                 "Category": cat})
+            var tempItem = {"Id": item.Id,
+                "Name": item.Name,
+                "Amount": parseInt(item.Amount),
+                "Unit": unit,
+                "HowMany": items[i].HowMany,
+                "ItemType": items[i].ItemType,
+                "Category": cat}
+            if (nameFilter === undefined) {
+                itemModel.append(tempItem)
+            }
+            else if (item.Name.toString().match(nameFilter)) {
+                console.log('including item')
+                 itemModel.append(tempItem)
+            }
         }
         if (applicationWindow.settings.categorizeItems) {
             console.log('sorting items')

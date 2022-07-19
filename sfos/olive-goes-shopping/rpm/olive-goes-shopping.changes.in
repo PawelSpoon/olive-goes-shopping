@@ -12,7 +12,15 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Tue Jul 45 2022 Jack Tar <jack.tar@example.com> 0.5.3-1
+* Tue Jul 19 2022 Jack Tar <jack.tar@example.com> 0.7.1-1
+- clean up
+- a lot of other stuff
+
+* Sun Jul 17 2022 Jack Tar <jack.tar@example.com> 0.6.6-1
+- updated finish, slovak, spanish translations
+- a lot of other stuff
+
+* Tue Jul 5 2022 Jack Tar <jack.tar@example.com> 0.5.3-1
 - fix units in add dialogs
 - make units smaller and alligned at bottom
 - hide - unit in shopping list

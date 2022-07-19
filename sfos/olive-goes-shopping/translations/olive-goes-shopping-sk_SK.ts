@@ -1,138 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="sk_SK">
 <context>
     <name>AddItemType2ListPage</name>
     <message>
         <source>Add or import items</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať alebo načítať položky</translation>
     </message>
     <message>
         <source>Item type</source>
-        <translation type="unfinished"></translation>
+        <translation>Druh položky</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zahodiť</translation>
     </message>
 </context>
 <context>
     <name>AnyItemComponent</name>
     <message>
         <source>Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Položka</translation>
     </message>
     <message>
         <source>Item name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov položky</translation>
     </message>
     <message>
         <source>Set item name</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať názov položky</translation>
     </message>
     <message>
         <source>Standard package size</source>
-        <translation type="unfinished"></translation>
+        <translation>Štandardná veľkosť balenia</translation>
     </message>
     <message>
         <source>Set standard package size</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať štandardnú veľkosť balenia</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotky</translation>
     </message>
     <message>
         <source>Create another</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť ďalší</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategória</translation>
     </message>
 </context>
 <context>
     <name>AnyItemDialog</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahodiť</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Olive &lt;br&gt;goes &lt;br&gt; shoppin&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Olive &lt;br&gt;ide &lt;br&gt; nakupovať&apos;</translation>
     </message>
 </context>
 <context>
     <name>CreateListDialog</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahodiť</translation>
     </message>
     <message>
         <source>New list</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový zoznam</translation>
     </message>
     <message>
         <source>List name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov zoznamu</translation>
     </message>
     <message>
         <source>Set name</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať názov</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Druh</translation>
     </message>
     <message>
         <source>tasklist </source>
-        <translation type="unfinished"></translation>
+        <translation>zoznam úloh</translation>
     </message>
     <message>
         <source>shopping list</source>
-        <translation type="unfinished"></translation>
+        <translation>nákupný zoznam</translation>
     </message>
 </context>
 <context>
     <name>EnumDialog</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahodiť</translation>
     </message>
     <message>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>Nová položka</translation>
     </message>
     <message>
         <source>Edit item</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť položku</translation>
     </message>
     <message>
         <source>Item name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov položky</translation>
     </message>
     <message>
         <source>Set item name</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať názov položky</translation>
     </message>
 </context>
 <context>
@@ -140,145 +140,145 @@
     <message>
         <source>no-importfiles-placeholder</source>
         <extracomment>informing user that no former exports are available</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Neexistujú exporty</translation>
     </message>
     <message>
         <source>internal-storage-label</source>
-        <translation type="unfinished"></translation>
+        <translation>Návestie ukladacieho priestoru</translation>
     </message>
     <message>
         <source>sdcard-label</source>
         <extracomment>Label for SD-Cards where %1 represents the increasing number for each card</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Návestie SD karty</translation>
     </message>
     <message>
         <source>Export / Import</source>
         <extracomment>export/import page headline</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať/Importovať</translation>
     </message>
     <message>
         <source>Export target</source>
         <extracomment>headline for exports</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cieľ exportu</translation>
     </message>
     <message>
         <source>Choose target</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvoliť cieľ</translation>
     </message>
     <message>
         <source>Enter a file name for export</source>
         <extracomment>placeholder message to remind the user that he has to enter a name for the data export</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Zadať názov súboru pre export</translation>
     </message>
     <message>
         <source>Export data</source>
         <extracomment>headline for the data export section</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Exportovať dáta</translation>
     </message>
     <message>
         <source>select-file-header</source>
         <extracomment>headline for imports</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Výber súboru</translation>
     </message>
     <message>
         <source>delete-file-button</source>
         <extracomment>Button to delete the selected data file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť súbor</translation>
     </message>
     <message>
         <source>import-button</source>
         <extracomment>Button to import data form the selected file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Importovať</translation>
     </message>
     <message>
         <source>information-label</source>
         <extracomment>headline for information about import/export mechanism</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Informačné návestie</translation>
     </message>
     <message>
         <source>export-import-description</source>
         <extracomment>Explanation of how importing and exporting data works and where the files are/have to be located.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Popis exportu-importu</translation>
     </message>
     <message>
         <source>drop-database-header</source>
         <extracomment>headline for the database purge</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Hlavička odstránenej databázy</translation>
     </message>
     <message>
         <source>drop-database-warning</source>
         <extracomment>warn user of destructive drop DB function</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Varovania odstránenia databázy</translation>
     </message>
     <message>
         <source>drop-database-confirmation</source>
         <extracomment>let user confirm the database purge</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Potvrdiť odstránenie databázy</translation>
     </message>
     <message>
         <source>drop-database-button</source>
         <extracomment>Button to import data form the selected file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť databázu</translation>
     </message>
     <message>
         <source>drop-database-success</source>
         <extracomment>informational notification about the successful dropped data tables</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Úspešné odstránenie databázy</translation>
     </message>
     <message>
         <source>drop-database-detail</source>
-        <translation type="unfinished"></translation>
+        <translation>Podrobnosti odstránenej databázy</translation>
     </message>
 </context>
 <context>
     <name>ItemDialog</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahodiť</translation>
     </message>
     <message>
         <source>New item</source>
-        <translation type="unfinished"></translation>
+        <translation>Nová položka</translation>
     </message>
     <message>
         <source>Edit item</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť položku</translation>
     </message>
     <message>
         <source>Item name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov položky</translation>
     </message>
     <message>
         <source>Set item name</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať názov položky</translation>
     </message>
     <message>
         <source>Standard package size</source>
-        <translation type="unfinished"></translation>
+        <translation>Štandardná veľkosť balenia</translation>
     </message>
     <message>
         <source>Set standard package size</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať štandardnú veľkosť balenia</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategória</translation>
     </message>
     <message>
         <source>co2 in []</source>
-        <translation type="unfinished"></translation>
+        <translation>CO2 v []</translation>
     </message>
     <message>
         <source>Set co2 footprint</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať uhlíkovú stopu</translation>
     </message>
 </context>
 <context>
@@ -292,284 +292,284 @@
     <name>ListSelector</name>
     <message>
         <source>Manage</source>
-        <translation type="unfinished"></translation>
+        <translation>Spravovať</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <source>My lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Moje zoznamy</translation>
     </message>
     <message>
         <source>Create a shopping or task list from pull down menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvoriť nákupný zoznam alebo zoznam úloh zo sťahovacej ponuky</translation>
     </message>
 </context>
 <context>
     <name>ManageEnumsPage</name>
     <message>
         <source>Manage </source>
-        <translation type="unfinished"></translation>
+        <translation>Spravovať</translation>
     </message>
     <message>
         <source>Add or import items</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať alebo načítať položky</translation>
     </message>
     <message>
         <source>Clear all</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať všetko</translation>
     </message>
     <message>
         <source>Import example items</source>
-        <translation type="unfinished"></translation>
+        <translation>Načítať vzorové položky</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť</translation>
     </message>
     <message>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Posunúť nahor</translation>
     </message>
     <message>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Posunúť nadol</translation>
     </message>
     <message>
         <source>Deleting all</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazávanie všetkého</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazávanie</translation>
     </message>
 </context>
 <context>
     <name>ManageMainPage</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomoc</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O aplikácii</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>Recipes</source>
-        <translation type="unfinished"></translation>
+        <translation>Recepty</translation>
     </message>
     <message>
         <source>Categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategórie</translation>
     </message>
     <message>
         <source>Physical dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Fyzikálne vlastnosti</translation>
     </message>
     <message>
         <source>Units</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotky</translation>
     </message>
     <message>
         <source>Basics</source>
-        <translation type="unfinished"></translation>
+        <translation>Základné</translation>
     </message>
     <message>
         <source>Presets</source>
-        <translation type="unfinished"></translation>
+        <translation>Predvoľby</translation>
     </message>
     <message>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokročilé</translation>
     </message>
     <message>
         <source>Configure Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastaviť aplikáciu</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Všeobecné</translation>
     </message>
     <message>
         <source>Task lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoznamy úloh</translation>
     </message>
     <message>
         <source>Import Export Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovať Exportovať Znovunastaviť</translation>
     </message>
     <message>
         <source>Pick list definition</source>
-        <translation type="unfinished"></translation>
+        <translation>Určenie výberového zoznamu</translation>
     </message>
     <message>
         <source> --- Pick lists --- </source>
-        <translation type="unfinished"></translation>
+        <translation> --- Výberové zoznamy --- </translation>
     </message>
 </context>
 <context>
     <name>RecipeComponent</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahodiť</translation>
     </message>
     <message>
         <source>New recipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový recept</translation>
     </message>
     <message>
         <source>Recipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <source>Recipe name</source>
-        <translation type="unfinished"></translation>
+        <translation>Názov receptu</translation>
     </message>
     <message>
         <source>Set recipe name</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadať názov receptu</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategória</translation>
     </message>
     <message>
         <source>Servings</source>
-        <translation type="unfinished"></translation>
+        <translation>Porcie</translation>
     </message>
     <message>
         <source>Rating</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnotenie</translation>
     </message>
     <message>
         <source>..how do you cook that..</source>
-        <translation type="unfinished"></translation>
+        <translation>..ako uvaríš toto..</translation>
     </message>
     <message>
         <source>Add ingredient</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať prísadu</translation>
     </message>
     <message>
         <source>Please add ingredient</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridajte prísadu, prosím</translation>
     </message>
 </context>
 <context>
     <name>RecipeDialog</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahodiť</translation>
     </message>
     <message>
         <source>New recipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový recept</translation>
     </message>
     <message>
         <source>Recipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Recept</translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavenia</translation>
     </message>
     <message>
         <source>Modules</source>
-        <translation type="unfinished"></translation>
+        <translation>Moduly</translation>
     </message>
     <message>
         <source>Use recipes</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť recepty</translation>
     </message>
     <message>
         <source>Use various pre-configured items</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť rôzne prednastavené položky</translation>
     </message>
     <message>
         <source>Use (multiple) shopping lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Použiť (viacnásobné) nákupné zoznamy</translation>
     </message>
 </context>
 <context>
     <name>ShoppingListItem</name>
     <message>
         <source>Edit Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Upraviť položku</translation>
     </message>
     <message>
         <source>Delete Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť položku</translation>
     </message>
 </context>
 <context>
     <name>ShoppingListPage</name>
     <message>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať</translation>
     </message>
     <message>
         <source>Deleting shopping list</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstraňovanie nákupného zoznamu</translation>
     </message>
     <message>
         <source>Clear done</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazať vybavené</translation>
     </message>
     <message>
         <source>Removing done entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstraňovanie vybavených záznamov</translation>
     </message>
     <message>
         <source>Copied to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopírované do schránky</translation>
     </message>
     <message>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovať do schránky</translation>
     </message>
     <message>
         <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
-        <translation type="unfinished"></translation>
+        <translation>Miláčik, &lt;br&gt;nakupovať netreba?!</translation>
     </message>
     <message>
         <source>Add from picklist</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať zo zoznamu</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pridať</translation>
     </message>
     <message>
         <source>Clearing all entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazávanie všetkých záznamov</translation>
     </message>
     <message>
         <source>Delete this list</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstrániť tento zoznam</translation>
     </message>
 </context>
 </TS>
