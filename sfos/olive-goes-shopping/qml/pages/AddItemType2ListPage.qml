@@ -16,6 +16,7 @@ Dialog {
     property bool sortable
     property bool groupbyCategory
     property bool neverCapitalize
+    property bool init : false;
 
     DialogHeader {
         id: pageHeader
@@ -48,18 +49,18 @@ Dialog {
 
     function initPage()
     {
-        console.log("listName: " + listName)
+        console.log("listName: " + listName + " ,itemType: " + itemType)
 
         // fill combo list
         itemTypeModel.clear()
         commons.fillItemtypesModel(itemTypeModel)
-        console.log(itemTypeModel.length)
+        console.log(itemTypeModel.count)
         // check that provided (or not provided) itemtype exist
         var index = commons.getIndexForName(itemType,itemTypeModel)
         console.log(index,itemType)
-        if (index == -1) {index = 0}
+        /*if (index == -1) {index = 0}
         // set combo to an existing value and use that to populate the list
-        itemTypeCombo.currentIndex = index
+        itemTypeCombo.currentIndex = index*/
         // will be synced in combo
         //itemType = commons.getUnit(..
         console.log(index, itemType)
@@ -67,6 +68,10 @@ Dialog {
         items.itemType = itemType
         items.listName = listName
         items.initPage()
+        if (index == -1) {index = 0}
+        // set combo to an existing value and use that to populate the list
+        itemTypeCombo.currentIndex = index
+        init = true;
     }
 
 
@@ -85,6 +90,7 @@ Dialog {
             text: qsTr("Add or import items")
         }
 
+        // model of types: food, household and user specific
         ListModel {
             id: itemTypeModel
         }
@@ -107,8 +113,11 @@ Dialog {
 
                 }
                 onCurrentIndexChanged: {
-                    items.itemType = itemTypeCombo.value
-                    items.initPage()
+                    if (init) {
+                        itemType = itemTypeCombo.value
+                        items.itemType = itemTypeCombo.value
+                        items.initPage()
+                    }
                 }
             }
 

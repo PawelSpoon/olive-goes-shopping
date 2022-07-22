@@ -10,7 +10,7 @@ Name:       olive-goes-shopping
 
 Summary:    Olive goes shopping
 Version:    0.7
-Release:    1
+Release:    3
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/

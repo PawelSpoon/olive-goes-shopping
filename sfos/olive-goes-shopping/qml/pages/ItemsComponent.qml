@@ -30,6 +30,7 @@ SilicaListView {
     // this callback belongs to parent
     // same as the accept
     // this component should just visualize
+    // here i need to pass that value to rawModel !!
     function update(id,name,itemType,category,amount,unit,howMany) {
         // check all items where howmany > 0
         for (var i = 0; i < itemModel.count; i++)
@@ -40,10 +41,21 @@ SilicaListView {
                 item.HowMany = howMany
                 itemModel.setProperty(i,"HowMany",howMany)
                 //itemModel.setProperty(i,"Done",done)
+                break
+            }
+        }
+        // todo: do the same for rawModel !!
+        console.log(name + " not found in list")
+        for (var j = 0; j < rawModel.count; j++) {
+            var item = rawModel.get(j)
+            console.log(item.Name)
+            if (item.Name === name) {
+                item.HowMany = howMany
+                rawModel.setProperty(i,"HowMany",howMany)
+                //itemModel.setProperty(i,"Done",done)
                 return
             }
         }
-        console.log(name + " not found in list")
     }
 
     function collectCurrentItem(item)
@@ -68,9 +80,9 @@ SilicaListView {
         var list2Add = []
         console.log(itemModel.count)
         // check all items where howmany > 0
-        for (var i = 0; i < itemModel.count; i++)
+        for (var i = 0; i < rawModel.count; i++)
         {
-            var item = itemModel.get(i)
+            var item = rawModel.get(i)
             if (item.HowMany > 0) {
                 var tmp = collectCurrentItem(item)
                 //var addAmount = item.HowMany * item.Amount
@@ -92,18 +104,29 @@ SilicaListView {
         applicationWindow.page.initPage()
     }
 
+    // unfiltered model
+    ListModel {
+        id: rawModel
+    }
+
     function initPage()
     {
+        console.log("itemscomponent.initpage(): " + itemType)
         var items = applicationWindow.python.getAssets(itemType);
+        // fill and store itemModel
+        // used filtered one for the list// This is available in all editors.
         itemModel.clear()
-        fillItemsModel(items)
+        rawModel.clear()
+        fillrawModel(items)
+        fillItemsModel(undefined)
     }
 
     function filterPage(nameFilter)
     {
-        var items = applicationWindow.python.getAssets(itemType);
+        // use rawModel instead of loading it again
+        // var items = applicationWindow.python.getAssets(itemType);
         itemModel.clear()
-        fillItemsModel(items,nameFilter)
+        fillItemsModel(nameFilter)
     }
 
     /*function filterItemsModel(texti)
@@ -115,9 +138,8 @@ SilicaListView {
         }
     }*/
 
-    function fillItemsModel(items,nameFilter)
+    function fillrawModel(items)
     {
-        console.log('nameFilter:' + nameFilter)
         print('number of items: ' +  items.length)
         for (var i = 0; i < items.length; i++)
         {
@@ -137,10 +159,22 @@ SilicaListView {
                 "HowMany": items[i].HowMany,
                 "ItemType": items[i].ItemType,
                 "Category": cat}
+            rawModel.append(tempItem)
+        }
+    }
+
+    function fillItemsModel(nameFilter)
+    {
+        console.log('nameFilter:' + nameFilter)
+        print('number of items: ' +  rawModel.count)
+        console.log('rawModel contains :' + rawModel.count)
+        for (var i = 0; i < rawModel.count; i++)
+        {
+            var tempItem = rawModel.get(i)
             if (nameFilter === undefined) {
                 itemModel.append(tempItem)
             }
-            else if (item.Name.toString().match(nameFilter)) {
+            else if (tempItem.Name.toString().match(nameFilter)) {
                 console.log('including item')
                  itemModel.append(tempItem)
             }
@@ -149,6 +183,7 @@ SilicaListView {
             console.log('sorting items')
             sortModel();
         }
+        console.log('itemModel contains: ' + itemModel.count)
     }
 
     function sortModel()

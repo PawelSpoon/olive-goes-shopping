@@ -12,6 +12,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Fri Jul 22 2022 Jack Tar <jack.tar@example.com> 0.7.1-1
+- improve filter, clearing filter or adapting will not loose checked items
+- switching item-type still will
+
 * Tue Jul 19 2022 Jack Tar <jack.tar@example.com> 0.7.1-1
 - clean up
 - a lot of other stuff
