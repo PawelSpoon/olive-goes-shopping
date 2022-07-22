@@ -19,8 +19,7 @@ SilicaListView {
 
     // value of search..
     property string searchString
-    onSearchStringChanged: filterPage(searchString) //listModel.update()
-    //Component.onCompleted: listModel.update()
+    onSearchStringChanged: filterPage(searchString)
 
     Component.onCompleted:
     {
@@ -30,7 +29,6 @@ SilicaListView {
     // this callback belongs to parent
     // same as the accept
     // this component should just visualize
-    // here i need to pass that value to rawModel !!
     function update(id,name,itemType,category,amount,unit,howMany) {
         // check all items where howmany > 0
         for (var i = 0; i < itemModel.count; i++)
@@ -40,11 +38,9 @@ SilicaListView {
             if (item.Name === name) {
                 item.HowMany = howMany
                 itemModel.setProperty(i,"HowMany",howMany)
-                //itemModel.setProperty(i,"Done",done)
                 break
             }
         }
-        // todo: do the same for rawModel !!
         console.log(name + " not found in list")
         for (var j = 0; j < rawModel.count; j++) {
             var item = rawModel.get(j)
@@ -52,7 +48,6 @@ SilicaListView {
             if (item.Name === name) {
                 item.HowMany = howMany
                 rawModel.setProperty(i,"HowMany",howMany)
-                //itemModel.setProperty(i,"Done",done)
                 return
             }
         }
@@ -123,21 +118,12 @@ SilicaListView {
 
     function filterPage(nameFilter)
     {
-        // use rawModel instead of loading it again
-        // var items = applicationWindow.python.getAssets(itemType);
         itemModel.clear()
         fillItemsModel(nameFilter)
     }
 
-    /*function filterItemsModel(texti)
-    {
-        if (texti.length > 0) {
-            filterPage(texti)
-        } else {
-            initPage()
-        }
-    }*/
-
+    // rawModel contains all items
+    // itemModel only those that should be visualized
     function fillrawModel(items)
     {
         print('number of items: ' +  items.length)
@@ -179,16 +165,15 @@ SilicaListView {
                  itemModel.append(tempItem)
             }
         }
-        if (applicationWindow.settings.categorizeItems) {
+        /*if (applicationWindow.settings.categorizeItems) {
             console.log('sorting items')
             sortModel();
-        }
+        }*/
         console.log('itemModel contains: ' + itemModel.count)
     }
 
     function sortModel()
     {
-        // not needed, done in db
         print("sorting")
         for(var i=0; i< itemModel.count; i++)
         {

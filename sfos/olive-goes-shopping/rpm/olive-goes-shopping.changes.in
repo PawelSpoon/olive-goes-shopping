@@ -12,9 +12,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Fri Jul 22 2022 Jack Tar <jack.tar@example.com> 0.7.1-1
+* Fri Jul 22 2022 Jack Tar <jack.tar@example.com> 0.7.5-1
 - improve filter, clearing filter or adapting will not loose checked items
 - switching item-type still will
+- fixed sorting in add-from-picklist
 
 * Tue Jul 19 2022 Jack Tar <jack.tar@example.com> 0.7.1-1
 - clean up

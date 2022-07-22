@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 21 21:33:50 2022
+# Make data base, printed on Fri Jul 22 13:17:36 2022
 
 # Variables
 
@@ -119,7 +119,7 @@ XDG_SESSION_DESKTOP = pantheon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 49289
+GIO_LAUNCHED_DESKTOP_FILE_PID = 80443
 # automatic
 %F = $(notdir $%)
 # environment
@@ -263,7 +263,7 @@ LANG = C
 # environment
 ANDROID_HOME = /home/pawel/Android/Sdk-31
 # environment
-VSCODE_PID = 49339
+VSCODE_PID = 80490
 # variable set hash-table stats:
 # Load=126/1024=12%, Rehash=0, Collisions=15/148=10%
 
@@ -332,6 +332,6 @@ GNUmakefile:
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Thu Jul 21 21:33:50 2022
+# Finished Make data base on Fri Jul 22 13:17:36 2022
 
  
