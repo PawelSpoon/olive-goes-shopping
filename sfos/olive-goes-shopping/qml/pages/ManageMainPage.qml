@@ -233,18 +233,20 @@ Page {
                         anchors.horizontalCenter: parent.horizontalCenter
                         onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
                     }
-                }*/
+                }
                 Label {
                     text: " ------ "
                     visible: applicationWindow.settings.useLists
                     anchors.horizontalCenter: parent.horizontalCenter
-                }                
+                } */
                 Button {
                     id: manageTasks
                     visible: applicationWindow.settings.useTasks
-                    text: qsTr("Task lists")
+                    text: qsTr("Task list templates definition")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: applicationWindow.controller.openItemsMngmtPage("task")
+                    // this should allow to add / delete templates ..
+                    // edit using buttons below
+                    onClicked: applicationWindow.controller.openTemplateMngmtPage("task")
                 }
                 Label {
                     text: " --- task list templates --- "
@@ -258,7 +260,7 @@ Page {
                     Button {
                         text: Name
                         anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
+                        onClicked: applicationWindow.controller.openTemplateMngmtPage("task",text)
                     }
                 }
                 Label {

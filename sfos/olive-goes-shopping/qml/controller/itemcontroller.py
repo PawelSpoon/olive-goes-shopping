@@ -1,6 +1,7 @@
 
  
 from controller.constants import FieldName
+from controller.model import ControlledItem
 from storage import persistance
 
 
@@ -22,6 +23,11 @@ class ItemController:
         else:
             raise Exception("item's Name is empty")
 
+    def addWithName(self, name):
+        item = dict()
+        item[FieldName] = name
+        self.add(item)
+            
     def add(self,item):
         if type(item) != type(dict()):
             raise Exception('item is not a dictionary')
@@ -71,9 +77,15 @@ class ItemController:
             print("old is not present")
         return False
 
+    # returns in fact a dictiory
     def getList(self):
         return self.items
 
+    # returns keys == names of items
+    def getKeys(self):
+        return self.items.keys()
+
+    # returns a real list
     def getAsList(self):
         return list(self.items.values()).copy()
 
@@ -88,5 +100,7 @@ class ItemController:
         self.items.clear()
 
     def store(self):
-        persistance.storeItems(self.filePath,self.items)
+        persistance.storeItems(self.filePath,self.items)        
+
+
 

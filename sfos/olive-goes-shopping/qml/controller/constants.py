@@ -18,10 +18,18 @@ tasklistDir = "tasklist"
 shoplistDir = "shoplist"
 recipeDir = recipe
 
+# contains all units
 unitFilePath = "/" + unit + ".json"
+# contains all categories
 categoryFilePath = "/" + category + ".json"
+# contains all physical dimensions
 phydimFilePath = "/" + phydim + ".json"
+# contains all item types
 itemtypeFilePath = "/" + itemtype + ".json"
+# contains all task templates
+tasktemplateFilePath = "/" + tasklistType + ".json"
+# contains all shop list templates
+shoplisttemplateFilePath = "/" + shoplistType + ".json"
  
 
 FieldId = "Id"
@@ -34,6 +42,4 @@ FieldFactor = "Factor"
 FieldOffset = "Offset"
 FieldCategory = "Category"
 
-# ab 1.7 freitesten verkehrsbeschränkt, wenn 48 stunden
-# ab 6.7 frei
 

@@ -39,7 +39,7 @@ class TaskListController(ItemController):
 
     # addFromList - cant be inherited, shoppin list needs to sum up
     # in both cases Done must be added
-    def addTaskList(self, listOfItems):
+    def addItems2TaskList(self, listOfItems):
         # listOfItems is in fact a dict
         for item in listOfItems.values():
             item[FieldDone] = False

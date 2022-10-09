@@ -100,11 +100,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>tasklist </source>
+        <source>Initial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>empty list</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -405,10 +413,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Task lists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Import Export Reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -418,6 +422,10 @@
     </message>
     <message>
         <source> --- Pick lists --- </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Task list templates definition</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -511,6 +519,10 @@
     </message>
     <message>
         <source>Use (multiple) shopping lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use (multiple) task lists</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

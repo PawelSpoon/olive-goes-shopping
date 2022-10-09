@@ -68,12 +68,33 @@ Dialog {
             }
 
             ComboBox {
-                id: unit
+                id: itemTypeCombo
                 label: qsTr("Type")
                 menu: ContextMenu {
                     Repeater {
                         id: typeRepeater
                         model: typeModel
+                        MenuItem {
+                            text: DisplayName
+                        }
+                    }
+                }
+                onCurrentIndexChanged: {
+                    if (1==1) { //if (init) { // init might not be needed as no complex init fu
+                        itemType = itemTypeCombo.value
+                        //items.itemType = itemTypeCombo.value
+                        loadTemplateModel()
+                    }
+                }
+            }
+
+            ComboBox {
+                id: prefil
+                label: qsTr("Initial")
+                menu: ContextMenu {
+                    Repeater {
+                        id: templateRepeater
+                        model: templateModel
                         MenuItem {
                             text: DisplayName
                         }
@@ -89,6 +110,11 @@ Dialog {
         ListElement { Name: "task"; DisplayName: qsTr("tasklist ") }
     }
 
+    ListModel {
+        id: templateModel
+        ListElement { Name: "empty"; DisplayName: qsTr("empty list") }
+    }
+
     Component.onCompleted: {
        if (item === null) {
            item = { Id: null, Category: null, Order: 0}
@@ -101,6 +127,21 @@ Dialog {
 
     Component.onDestruction: {
 
+    }
+
+    function loadTemplateModel()
+    {
+      // first entry is empty
+      // then the template names
+      // can use GetAssets (with task/shop)
+      print(itemType)
+      var items = applicationWindow.python.getAssets(itemType);
+      // fill and store itemModel
+      // used filtered one for the list// This is available in all editors.
+      var firstEntry = templateModel.get(0)
+      templateModel.clear()
+      templateModel.append(firstEntry)
+      templateModel.append(items)
     }
 
     function collectCurrentItem()

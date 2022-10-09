@@ -3,6 +3,14 @@ new (hopefully) cross platform version of the shopping list app harbour-olive-go
 
 # details
 ## python
+### template handling
+- every list can persist itself as a template
+- can override an existing template
+- add list
+-- select type
+-- select from scratch / template
+-- requires to load all templates for a type
+-- create a new list as copy, could be done by itemcontroller with an alternative load, then store or by listmanager that copies it.
 ## sfos
 ### applicationcontroller
 - invokes all the pages

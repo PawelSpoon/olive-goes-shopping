@@ -66,6 +66,8 @@ DISTFILES += qml/olive-goes-shopping.qml \
     assets/tasklist/annual maintenance - Breva.json \
     assets/tasklist/annual maintenance - KTM.json \
     assets/unit.json \
+    assets/task.json \
+    assets/shop.json \
     \
     qml/pages/StoreListItem.qml \
     rpm/olive-goes-shopping.changes.in \

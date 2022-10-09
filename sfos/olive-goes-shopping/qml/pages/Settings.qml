@@ -71,15 +71,15 @@ Page {
                         applicationWindow.settings.useLists = checked;
                     }
                 }
-                /*TextSwitch {
+                TextSwitch {
                     id: useTasks
                     text: qsTr("Use (multiple) task lists")
                     description: "simple task management"
                     automaticCheck: true;
                     onCheckedChanged: {
-                        applicationWindow.settings.useList = checked;
+                        applicationWindow.settings.useTasks = checked;
                     }
-                }*/
+                }
             }
             SectionHeader {
                 text: "Categories"

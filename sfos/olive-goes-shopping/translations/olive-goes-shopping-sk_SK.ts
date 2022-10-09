@@ -77,35 +77,43 @@
     <name>CreateListDialog</name>
     <message>
         <source>Save</source>
-        <translation>Uložiť</translation>
+        <translation type="unfinished">Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Zahodiť</translation>
+        <translation type="unfinished">Zahodiť</translation>
     </message>
     <message>
         <source>New list</source>
-        <translation>Nový zoznam</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>List name</source>
-        <translation>Názov zoznamu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set name</source>
-        <translation>Zadať názov</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Druh</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>tasklist </source>
-        <translation>zoznam úloh</translation>
+        <source>Initial</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>shopping list</source>
-        <translation>nákupný zoznam</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>empty list</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -405,10 +413,6 @@
         <translation>Všeobecné</translation>
     </message>
     <message>
-        <source>Task lists</source>
-        <translation>Zoznamy úloh</translation>
-    </message>
-    <message>
         <source>Import Export Reset</source>
         <translation>Importovať Exportovať Znovunastaviť</translation>
     </message>
@@ -419,6 +423,10 @@
     <message>
         <source> --- Pick lists --- </source>
         <translation> --- Výberové zoznamy --- </translation>
+    </message>
+    <message>
+        <source>Task list templates definition</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -512,6 +520,10 @@
     <message>
         <source>Use (multiple) shopping lists</source>
         <translation>Použiť (viacnásobné) nákupné zoznamy</translation>
+    </message>
+    <message>
+        <source>Use (multiple) task lists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

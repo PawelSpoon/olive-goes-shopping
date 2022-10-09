@@ -120,6 +120,10 @@ Item {
                        })
     }
 
+    function openTemplateMngmtPage(type)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: type, readonly: false});
+    }
 
     function openManageMainPage()
     {

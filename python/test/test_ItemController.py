@@ -26,6 +26,7 @@ class ItemControllerTest(unittest.TestCase):
         controller = ItemController("food",self.foodFile)
         controller.loadString(enums)
         self.assertTrue("potatoes" in controller.getList())
+        self.assertTrue("potatoes" in controller.getKeys())
         test = controller.getAsList()
         for t in test:
             print(t)

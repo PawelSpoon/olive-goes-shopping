@@ -77,35 +77,43 @@
     <name>CreateListDialog</name>
     <message>
         <source>Save</source>
-        <translation>Tallenna</translation>
+        <translation type="unfinished">Tallenna</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Hylkää</translation>
+        <translation type="unfinished">Hylkää</translation>
     </message>
     <message>
         <source>New list</source>
-        <translation>Uusi lista</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>List name</source>
-        <translation>Listan nimi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set name</source>
-        <translation>Aseta nimi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Tyyppi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>tasklist </source>
-        <translation>tehtävälista</translation>
+        <source>Initial</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>shopping list</source>
-        <translation>kauppalista</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>empty list</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -405,10 +413,6 @@
         <translation>Yleinen</translation>
     </message>
     <message>
-        <source>Task lists</source>
-        <translation>Tehtävälista</translation>
-    </message>
-    <message>
         <source>Import Export Reset</source>
         <translation>Tuo Vie Nollaa</translation>
     </message>
@@ -419,6 +423,10 @@
     <message>
         <source> --- Pick lists --- </source>
         <translation>--- Keräyslista ---</translation>
+    </message>
+    <message>
+        <source>Task list templates definition</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -512,6 +520,10 @@
     <message>
         <source>Use (multiple) shopping lists</source>
         <translation>Käytä (useita) kauppalistoja</translation>
+    </message>
+    <message>
+        <source>Use (multiple) task lists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

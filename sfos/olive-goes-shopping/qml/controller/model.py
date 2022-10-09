@@ -4,7 +4,7 @@ from typing import Dict
 class ControlledItem:
   myName = ""
   def __init__(self, name):
-    myName = name
+    self.myName = name
 
 
 class Category(ControlledItem):

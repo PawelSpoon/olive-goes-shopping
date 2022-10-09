@@ -13,18 +13,25 @@ everything is now a json with Id, Name:
 # FOLDERSTRUCTURE
 
 root
-   /recipe contains all recipes
-   /list contains reusable - repeatable lists
-   /item contains the items db json files, one per each itemtype
-      food.json
-      household.json
-   /current contains (multiple ?) shopping list and possibly multiple tasklists
-      jan.shop.json
-      jan.task.json
+
+      /recipe   contains all recipes
+      /shoplist contains reusable - repeatable lists 
+      /tasklist contains reusable task lists
+      /item     contains picklists, one for each category
+         household.json
+         food.json
+         ..
+         entertainsment.json
+      /current contains (multiple) shopping list and multiple tasklists
+         jan.shop.json
+         jan.task.json
       ..
-   category.json
-   unit.json
-   phydim.json
+      category.json
+      unit.json
+      phydim.json
+      itemtype.json (all item type enlisted)
+      task.json     (all task templates enlisted)
+      shop.json     (all shop templates enlisted)
 
 thought on serialization: if i want to bring in version -> then i will have
 { version: 1, data: [] }
@@ -68,7 +75,7 @@ in total: 7 *14 == 100hrs up to version 0.4.2
 python backend 1.5-2 days
 1 day for pyotherside
 0.5 day for not beeing able to run qml tests
-rest ui part 
+rest ui part   
 
 
 

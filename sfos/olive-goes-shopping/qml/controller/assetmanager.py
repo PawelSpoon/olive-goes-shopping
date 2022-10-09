@@ -21,18 +21,35 @@ class AssetManager:
          os.path.join(self.rootDir,itemDir)) 
         self.unitController = ItemController(unit, self.rootDir + unitFilePath)
         self.phydimController = ItemController(phydim,self.rootDir + phydimFilePath)
-        # multiple itemControllers
+        # multiple item-controller, one for each item-type 
         self.itemControllerDict = dict()
         # one recipe controller
         self.recipeController = FolderItemController(recipe,os.path.join(self.rootDir,recipeDir))
-        # multiple task list controler
-        self.taskitemController = dict()
+        # do i need these controllers for pre-defined list at all ? aren't names sufficient ?
 
+        self.taskTemplateController = ItemTypeController(tasklistType,
+          self.rootDir + tasktemplateFilePath,
+          self.getTaskPath())
+        self.shopListTemplateController = ItemTypeController(shoplistType, 
+          self.rootDir + shoplisttemplateFilePath,
+          self.getShopListPath())
+        # multiple task list controler (to modify pre-defined task lists)
+        self.taskitemController = dict()
+        # multiple shop list controler (to modify pre-defined shop lists)
+        self.shopitemController = dict()
+
+
+    # folder with recipes
     def getRecipePath(self):
         return os.path.join(self.rootDir,recipeDir)
 
+    # folder with pre-defined task list 'templates'
     def getTaskPath(self):
         return os.path.join(self.rootDir,tasklistDir)
+
+    # folder with pre-defined shopping list
+    def getShopListPath(self):
+        return os.path.join(self.rootDir,shoplistDir)
 
     def load(self):
         print('asset manager loading from: ' + self.rootDir)
@@ -53,6 +70,9 @@ class AssetManager:
         # ..
         self.recipeController.load()
 
+        # 
+        self.taskTemplateController.load()
+
 
         # predefined task list takes over the name from file
         # get all files from /list folder and init multiple itemcontrollers
@@ -61,7 +81,20 @@ class AssetManager:
         tasklists = os.listdir(self.getTaskPath())
         for tasklist in tasklists:
             tmp = persistance.readItems(self.getTaskPath() + "/" + tasklist)
-            self.taskitemController[tasklist.replace(".json","")] = tmp
+            templateName = tasklist.replace(".json","")
+            self.taskitemController[templateName] = tmp
+            # todo: if not in tasktemplatecontroller -> add it
+            if templateName not in self.taskTemplateController.items.keys():
+              self.taskTemplateController.add(templateName)
+
+        shoplists = os.listdir(self.getShopListPath())
+        for shoplist in shoplists:
+            tmp = persistance.readItems(self.getShopListPath() + "/" + shoplist)
+            templateName = shoplist.replace(".json","")
+            self.shopitemController[shoplist.replace(".json","")] = tmp
+            # todo: if not in tasktemplatecontroller -> add it
+            if templateName not in self.shopListTemplateController.getList().keys():
+              self.shopListTemplateController.addWithName(templateName)
     
     def getController(self, type):
         if (type == phydim):
@@ -74,16 +107,34 @@ class AssetManager:
             return self.recipeController
         if (type == itemtype):
             return self.itemtypeController
+        if (type == tasklistType):
+            return self.taskTemplateController
+        if (type == shoplistType):
+            return self.shopListTemplateController
         # first look in itemtypes
         if (type in self.itemControllerDict.keys()):
             return self.itemControllerDict[type]
         if (type in self.taskitemController.keys()):
             return self.taskitemController[type]
+        if (type in self.shopitemController.keys()):
+            return self.shopitemController [type]  
         print("not found")
         return None
         # second look lists
         # shall we look into active too ?
-        # no this i another controller
+        # no, this is assetscontroller, active are in another controller
+
+    def getTemplateListName(self, type):
+        if (type == shoplistType):
+            return self.shopitemController.keys()
+        if (type == tasklistType):
+            return self.taskitemController.keys()
+    
+    # i do not want to add store-as-new to itemcontroller
+    # feels wrong for me, even though it would be just a copy ..
+    # rather get the items from current
+    def createTemplate(self, items, type, name):
+        return
 
 
     # not used as the controller copies contain data not the managers ones

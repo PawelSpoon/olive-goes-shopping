@@ -77,35 +77,43 @@
     <name>CreateListDialog</name>
     <message>
         <source>Save</source>
-        <translation>Guardar</translation>
+        <translation type="unfinished">Guardar</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <source>New list</source>
-        <translation>Nueva lista</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>List name</source>
-        <translation>Nombre de lista</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set name</source>
-        <translation>Indica nombre</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>tasklist </source>
-        <translation>lista de tareas</translation>
+        <source>Initial</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>shopping list</source>
-        <translation>lista de compra</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>empty list</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -405,10 +413,6 @@
         <translation>General</translation>
     </message>
     <message>
-        <source>Task lists</source>
-        <translation>Listas de tareas</translation>
-    </message>
-    <message>
         <source>Import Export Reset</source>
         <translation>Importar Exportar Restablecer</translation>
     </message>
@@ -419,6 +423,10 @@
     <message>
         <source> --- Pick lists --- </source>
         <translation>--- Listas de pedidos ---</translation>
+    </message>
+    <message>
+        <source>Task list templates definition</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -512,6 +520,10 @@
     <message>
         <source>Use (multiple) shopping lists</source>
         <translation>Usa (varias) listas de compra</translation>
+    </message>
+    <message>
+        <source>Use (multiple) task lists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

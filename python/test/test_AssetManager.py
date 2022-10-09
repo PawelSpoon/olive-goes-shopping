@@ -33,6 +33,8 @@ class AssetManagerTest(unittest.TestCase):
         self.assertTrue("food" in manager.itemControllerDict.keys())
         self.assertEqual(107,len(manager.itemControllerDict["food"].getList()))
         self.assertEqual(14,len(manager.unitController.getList()))
+        self.assertTrue("weekly" in manager.getTemplateListName(shoplistType))
+        self.assertTrue("annual maintenance - Breva" in manager.getTemplateListName(tasklistType))
   
     def testStore(self):
         print('testStore')
@@ -47,6 +49,16 @@ class AssetManagerTest(unittest.TestCase):
         rpc = manager.getController(recipe)
         ret = rpc.add({"Name":"My-Recipe"})
         self.assertTrue(ret)
+        manager.rootDir = self.outDir
+    
+    def testGetTemplateController(self):
+        print("testTemplateGetController")
+        manager = AssetManager(self.rootDir)
+        manager.load()
+        rpc = manager.getController(tasklistType)
+        ret = rpc.getAsList()
+        self.assertTrue(ret)
+        self.assertEqual(2,len(ret))
         manager.rootDir = self.outDir
 
     def testGetNoneController(self):

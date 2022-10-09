@@ -81,7 +81,7 @@ class TaskListControllerTest(unittest.TestCase):
         self.assertFalse("maja" in manager.getList().keys())
 
     # add from a second list list
-    def testAddTaskList(self):
+    def testAddItems2TaskList(self):
         manager = TaskListController(tasklistBreva,self.brevafilePath)   
         manager.load()
         manager.setDoneValue("Oil change",True)
@@ -89,7 +89,7 @@ class TaskListControllerTest(unittest.TestCase):
         secondmanager = TaskListController(tasklistBreva, self.brevafilePath)
         secondmanager.load()
         secondmanager.add({"Name":"Coolant change","Done":False})
-        manager.addTaskList(secondmanager.getList())
+        manager.addItems2TaskList(secondmanager.getList())
         self.assertTrue(manager.getList()["Oil change"][FieldDone] == False)
         self.assertTrue("Coolant change" in manager.getList().keys())
 

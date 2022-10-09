@@ -5,9 +5,12 @@ from controller.constants import FieldName
 from controller.itemcontroller import ItemController
 from storage import persistance
 
-# extends the normal itemcontroller with sync to itemtype lists localted in item
+# extends the normal itemcontroller with sync to itemtype lists located in item
 # stores immediately !! in that sense that list files are created, renamed deleted..
 # it does not care about the content of the item files
+
+# can work for templates too if i introduce a file similar to itemtype.json
+# tasktemplate.json shoplisttemplate.json
 class ItemTypeController(ItemController):
 
     def __init__(self,itemName,_filePath,_itemListDir):
