@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
         contentHeight: col.height
 
         // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator {}
+        // VerticalScrollDecorator {}
 
         AssetCommons {
             id: commons
@@ -36,11 +36,6 @@ import Sailfish.Silica 1.0
             id: col
             width: parent.width
             spacing: Theme.paddingLarge
-
-            DialogHeader {
-                acceptText: qsTr("Save")
-                cancelText: qsTr("Discard")
-            }
 
             Label {
                 text: { if ( mode === 2) qsTr("New recipe")
@@ -61,7 +56,7 @@ import Sailfish.Silica 1.0
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 font.capitalization: applicationWindow.controller.getCapitalization();//Font.MixedCase
-                EnterKey.onClicked: servings.focus = true
+                //EnterKey.onClicked: servings.focus = true
             }
 
             ComboBox {
@@ -299,6 +294,8 @@ import Sailfish.Silica 1.0
 
     function send2Controlls()
     {
+        print(item_)
+        print(mode)
         itemName.text = item_['Name']
         servings.currentIndex = commons.getIndexForName(item['Servings'], commons.getServingsModel())
         categoryCombo.currentIndex = commons.getIndexForItem(item_['Category'], categoryModel)

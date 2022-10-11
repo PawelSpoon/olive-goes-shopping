@@ -432,14 +432,6 @@
 <context>
     <name>RecipeComponent</name>
     <message>
-        <source>Save</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Discard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>New recipe</source>
         <translation type="unfinished"></translation>
     </message>
@@ -488,14 +480,6 @@
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>New recipe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recipe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -581,6 +565,60 @@
     </message>
     <message>
         <source>Delete this list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateSelector</name>
+    <message>
+        <source>My templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping or task list from pull down menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

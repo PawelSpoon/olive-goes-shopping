@@ -123,5 +123,12 @@ class App:
         ctrl.update(oldName,item)
         ctrl.store()
 
+    def createTemplate(self, name, type):
+        if type == "shop":
+            # ### self.listManager.add(name)
+            #self.listManager.store()
+        else:
+            # ###self.taskManager.add(name)
+            #self.taskManager.store()
 
 app_object = App()

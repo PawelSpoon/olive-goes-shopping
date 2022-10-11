@@ -120,9 +120,9 @@ Item {
                        })
     }
 
-    function openTemplateMngmtPage(type)
+    function openTemplatePage(type, mode, name)
     {
-        pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: type, readonly: false});
+        pageStack.push(Qt.resolvedUrl("pages/TemplateDialog.qml"), {itemType: type, mode: mode, item: {}});
     }
 
     function openManageMainPage()
@@ -181,6 +181,11 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ManageEnumsPage.qml"), {enumType: itemtype, readonly: false})
     }
 
+    function openTemplateMngmtPage(type)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/TemplateSelector.qml"), {itemType: type})
+    }
+
     // this is the page for managing re-ocurring shoping lists
     function openShopListMngmtPage()
     {
@@ -224,6 +229,9 @@ Item {
         case "recipe":
             pageStack.push(Qt.resolvedUrl("pages/RecipeDialog.qml"), {itemType: type, mode: mode, item: item})
             break
+         case "task":
+             pageStack.push(Qt.resolvedUrl("pages/ItemDialog.qml"), {itemType: type, mode: mode, item: item})
+             break
          default:
              // check in itemtypes then open enumdialog
              if (isInList(type, applicationWindow.cache.getItemtypes())) {
@@ -257,6 +265,15 @@ Item {
         updateParentPage(type)
     }
 
+    function createTemplate(name, type) {
+        applicationWindow.python.createTemplate(name,type)
+        updateParentPage(type)
+    }
+
+    function deleteTemplate(name, type) {
+        applicationWindow.python.deleteTemplate(name,type)
+        updateParentPage(type)
+    }
 
 ///////////////////////////////////////////////////////////////////
 

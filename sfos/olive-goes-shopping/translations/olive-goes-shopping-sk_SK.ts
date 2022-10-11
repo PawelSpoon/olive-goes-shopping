@@ -432,52 +432,44 @@
 <context>
     <name>RecipeComponent</name>
     <message>
-        <source>Save</source>
-        <translation>Uložiť</translation>
-    </message>
-    <message>
-        <source>Discard</source>
-        <translation>Zahodiť</translation>
-    </message>
-    <message>
         <source>New recipe</source>
-        <translation>Nový recept</translation>
+        <translation type="unfinished">Nový recept</translation>
     </message>
     <message>
         <source>Recipe</source>
-        <translation>Recept</translation>
+        <translation type="unfinished">Recept</translation>
     </message>
     <message>
         <source>Recipe name</source>
-        <translation>Názov receptu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set recipe name</source>
-        <translation>Zadať názov receptu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Kategória</translation>
+        <translation type="unfinished">Kategória</translation>
     </message>
     <message>
         <source>Servings</source>
-        <translation>Porcie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rating</source>
-        <translation>Hodnotenie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>..how do you cook that..</source>
-        <translation>..ako uvaríš toto..</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add ingredient</source>
-        <translation>Pridať prísadu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Please add ingredient</source>
-        <translation>Pridajte prísadu, prosím</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -489,14 +481,6 @@
     <message>
         <source>Discard</source>
         <translation>Zahodiť</translation>
-    </message>
-    <message>
-        <source>New recipe</source>
-        <translation>Nový recept</translation>
-    </message>
-    <message>
-        <source>Recipe</source>
-        <translation>Recept</translation>
     </message>
 </context>
 <context>
@@ -582,6 +566,60 @@
     <message>
         <source>Delete this list</source>
         <translation>Odstrániť tento zoznam</translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Uložiť</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished">Zahodiť</translation>
+    </message>
+    <message>
+        <source>New template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateSelector</name>
+    <message>
+        <source>My templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping or task list from pull down menu</source>
+        <translation type="unfinished">Vytvoriť nákupný zoznam alebo zoznam úloh zo sťahovacej ponuky</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Pridať</translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished">Spravovať</translation>
     </message>
 </context>
 </TS>

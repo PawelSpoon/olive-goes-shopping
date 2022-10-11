@@ -432,52 +432,44 @@
 <context>
     <name>RecipeComponent</name>
     <message>
-        <source>Save</source>
-        <translation>Guardar</translation>
-    </message>
-    <message>
-        <source>Discard</source>
-        <translation>Cancelar</translation>
-    </message>
-    <message>
         <source>New recipe</source>
-        <translation>Nueva receta</translation>
+        <translation type="unfinished">Nueva receta</translation>
     </message>
     <message>
         <source>Recipe</source>
-        <translation>Receta</translation>
+        <translation type="unfinished">Receta</translation>
     </message>
     <message>
         <source>Recipe name</source>
-        <translation>Nombre de receta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set recipe name</source>
-        <translation>Indica nombre de receta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Categoría</translation>
+        <translation type="unfinished">Categoría</translation>
     </message>
     <message>
         <source>Servings</source>
-        <translation>Raciones</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rating</source>
-        <translation>Clasificación</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>..how do you cook that..</source>
-        <translation>...cómo se cocina esto...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add ingredient</source>
-        <translation>Añadir ingredientes</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Please add ingredient</source>
-        <translation>Añade ingredientes</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -489,14 +481,6 @@
     <message>
         <source>Discard</source>
         <translation>Cancelar</translation>
-    </message>
-    <message>
-        <source>New recipe</source>
-        <translation>Nueva receta</translation>
-    </message>
-    <message>
-        <source>Recipe</source>
-        <translation>Receta</translation>
     </message>
 </context>
 <context>
@@ -582,6 +566,60 @@
     <message>
         <source>Delete this list</source>
         <translation>Borrar esta lista</translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Guardar</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <source>New template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateSelector</name>
+    <message>
+        <source>My templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping or task list from pull down menu</source>
+        <translation type="unfinished">Crea una lista de compra o tareas desde el menú deslizante</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Añadir</translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished">Gestionar</translation>
     </message>
 </context>
 </TS>

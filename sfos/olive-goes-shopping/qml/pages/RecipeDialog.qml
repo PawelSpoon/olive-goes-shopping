@@ -43,21 +43,17 @@ Dialog {
                 cancelText: qsTr("Discard")
             }
 
-            Label {
-                text: { if (mode === 2) qsTr("New recipe")
-                        else qsTr("Recipe") }
-                font.pixelSize: Theme.fontSizeLarge
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-            }
-
+            // important. else it will scroll up and never back again
+            height: recipeComponent.height + 300
 
             RecipeComponent {
                 id: recipeComponent
+                topMargin: 300
                 itemType: itemType
                 item_:  item
                 mode: mode
                 width: parent.width
+
             }
         }
     }

@@ -432,52 +432,44 @@
 <context>
     <name>RecipeComponent</name>
     <message>
-        <source>Save</source>
-        <translation>Tallenna</translation>
-    </message>
-    <message>
-        <source>Discard</source>
-        <translation>Hylkää</translation>
-    </message>
-    <message>
         <source>New recipe</source>
-        <translation>Uusi resepti</translation>
+        <translation type="unfinished">Uusi resepti</translation>
     </message>
     <message>
         <source>Recipe</source>
-        <translation>Resepti</translation>
+        <translation type="unfinished">Resepti</translation>
     </message>
     <message>
         <source>Recipe name</source>
-        <translation>Reseptin nimi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Set recipe name</source>
-        <translation>Aseta reseptin nimi</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Kategoria</translation>
+        <translation type="unfinished">Kategoria</translation>
     </message>
     <message>
         <source>Servings</source>
-        <translation>Annoksia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Rating</source>
-        <translation>Arvostele</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>..how do you cook that..</source>
-        <translation>..kuinka kokkaat sen..</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add ingredient</source>
-        <translation>Lisää ainesosa</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Please add ingredient</source>
-        <translation>Ole hyvä ja lisää ainesosa</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -489,14 +481,6 @@
     <message>
         <source>Discard</source>
         <translation>Hylkää</translation>
-    </message>
-    <message>
-        <source>New recipe</source>
-        <translation>Uusi resepti</translation>
-    </message>
-    <message>
-        <source>Recipe</source>
-        <translation>Resepti</translation>
     </message>
 </context>
 <context>
@@ -582,6 +566,60 @@
     <message>
         <source>Delete this list</source>
         <translation>Poista tämä lista</translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Tallenna</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished">Hylkää</translation>
+    </message>
+    <message>
+        <source>New template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shopping list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tasklist </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateSelector</name>
+    <message>
+        <source>My templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping or task list from pull down menu</source>
+        <translation type="unfinished">Luo kauppa- tai tehtävälista alasvetomenusta</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Lisää</translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished">Ylläpidä</translation>
     </message>
 </context>
 </TS>

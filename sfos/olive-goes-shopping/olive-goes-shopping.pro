@@ -70,6 +70,8 @@ DISTFILES += qml/olive-goes-shopping.qml \
     assets/shop.json \
     \
     qml/pages/StoreListItem.qml \
+    qml/pages/TemplateDialog.qml \
+    qml/pages/TemplateSelector.qml \
     rpm/olive-goes-shopping.changes.in \
     rpm/olive-goes-shopping.changes.run.in \
     rpm/olive-goes-shopping.spec \

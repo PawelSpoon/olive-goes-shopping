@@ -246,7 +246,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     // this should allow to add / delete templates ..
                     // edit using buttons below
-                    onClicked: applicationWindow.controller.openTemplateMngmtPage("task")
+                    onClicked: applicationWindow.controller.openTemplateMngmtPage("task",2)
                 }
                 Label {
                     text: " --- task list templates --- "

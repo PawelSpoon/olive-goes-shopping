@@ -73,7 +73,7 @@ Python {
 
   // list manager to manage task and shopping list creation
 
-  function getShoppingLists() { // and object with Name attribute that contains a list
+  function getShoppingLists() {
       return call_sync('app.app_object.getShoppingLists',[])
   }
 
@@ -118,6 +118,24 @@ Python {
 
   function resetDone(listName) {
       return call_sync('app.app_object.resetDone',[listName])
+  }
+
+  /// template management
+
+  function getTemplates(type) {
+      // shop or task
+      print('type: ' + type)
+      return call_sync('app.app_object.getAssetList',[type])
+  }
+
+  function createTemplate(name,type) {
+      //var type = "shop"
+      return call_sync('app.app_object.createTemplate',[name,type])
+  }
+
+  function deleteTemplate(name,type) {
+      //var type = "shop"
+      return call_sync('app.app_object.deleteTemplate',[name,type])
   }
 
 }
