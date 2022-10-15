@@ -1,6 +1,7 @@
 import os
 import unittest
 import sys
+from controller.assetmanager import AssetManager
 sys.path.append('../src')
 
 from storage import persistance
@@ -15,6 +16,8 @@ class TaskListControllerTest(unittest.TestCase):
     outDir = "./test/test-out"
     currentDir = os.path.join(rootDir, currentDir)
     brevafilePath = os.path.join(currentDir, tasklistBreva + ".task.json")
+    testOutDir = "./test/test-out"
+    testTemplateDir = os.path.join(testOutDir, "tasklist")
 
     def setUp(self) -> None:
         return super().setUp()
@@ -101,12 +104,30 @@ class TaskListControllerTest(unittest.TestCase):
         self.assertFalse(manager.deleteOne("something"))    
 
     def testDeleteExistingOne(self):
-        manager = TaskListController(tasklistBreva,self.brevafilePath)   
+        controller = TaskListController(tasklistBreva,self.brevafilePath)   
+        controller.load()
+        controller.setDoneValue("Oil change",True) 
+        self.assertTrue(controller.getList()["Oil change"][FieldDone] == True)
+        self.assertTrue(controller.deleteOne("Oil change"))     
+        self.assertEqual(1,len(controller.getAsList()))   
+
+    def testTemplateCreationFromExisting(self):
+        # should create a copy in templtes folder
+        # and name should appear in getTemplateNames
+        # os.remove(os.path.join(self.testTemplateDir,"Breva-copy.json"))
+        manager = AssetManager(self.testOutDir)
         manager.load()
-        manager.setDoneValue("Oil change",True) 
-        self.assertTrue(manager.getList()["Oil change"][FieldDone] == True)
-        self.assertTrue(manager.deleteOne("Oil change"))     
-        self.assertEqual(1,len(manager.getAsList()))   
+        templates = manager.getTemplateListNames(tasklistType)
+        self.assertEqual(2,len(templates))         
+
+        controller = TaskListController(tasklistBreva,self.brevafilePath)   
+        controller.load()
+        # controller.export(os.path.join(self.testTemplateDir,"Breva-copy.json"))
+        manager.createTemplate(controller.items,tasklistType,"Breva-copy")
+        manager.load()
+        templates = manager.getTemplateListNames(tasklistType)
+        self.assertEqual(3,len(templates))   
+
 
 
 if __name__ == '__main__':

@@ -33,8 +33,8 @@ class AssetManagerTest(unittest.TestCase):
         self.assertTrue("food" in manager.itemControllerDict.keys())
         self.assertEqual(107,len(manager.itemControllerDict["food"].getList()))
         self.assertEqual(14,len(manager.unitController.getList()))
-        self.assertTrue("weekly" in manager.getTemplateListName(shoplistType))
-        self.assertTrue("annual maintenance - Breva" in manager.getTemplateListName(tasklistType))
+        self.assertTrue("weekly" in manager.getTemplateListNames(shoplistType))
+        self.assertTrue("annual maintenance - Breva" in manager.getTemplateListNames(tasklistType))
   
     def testStore(self):
         print('testStore')
@@ -105,6 +105,7 @@ class AssetManagerTest(unittest.TestCase):
         manager.load()
         ctrl = manager.getController("category")
         self.assertTrue(ctrl.getList()["fresh produce"]["Name"]=="fresh produce")
+
 
 
 

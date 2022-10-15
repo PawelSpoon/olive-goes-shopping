@@ -15,6 +15,8 @@ class ShoppingListControllerTest(unittest.TestCase):
     rootDir = "./src/assets"
     currentDir = os.path.join(rootDir, currentDir)
     demoPath = os.path.join(currentDir, "demo.shop.json")
+    testOutDir = "./test/test-out"
+    testTemplateDir = os.path.join(testOutDir, "shoplist")
 
     def setUp(self) -> None:
         return super().setUp()
@@ -64,6 +66,13 @@ class ShoppingListControllerTest(unittest.TestCase):
         self.assertEqual(2,controller.getList()["Condoms"][FieldAmount])
         self.assertEqual(1,controller.getList()["Beer"][FieldAmount])
         self.assertEqual(1,controller.getList()["Beer:l"][FieldAmount])
+
+    def testTemplateCreationFromExisting(self):
+        # should create a copy in templtes folder
+        # and name should appear in getTemplateNames
+        controller = ShoppingListController("demo",self.demoPath,self.rootDir)     
+        controller.load()
+        controller.export(os.path.join(self.testTemplateDir,"demo-template.json"))
 
 if __name__ == '__main__':
     unittest.main()
