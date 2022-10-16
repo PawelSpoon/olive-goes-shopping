@@ -22,6 +22,14 @@ class TaskListControllerTest(unittest.TestCase):
     def setUp(self) -> None:
         return super().setUp()
         
+    def cleanUp(self):
+        try:
+            os.remove(os.path.join(self.testTemplateDir, "Breva-copy.json"))  
+        except OSError as e: # name the Exception `e`
+            print("Failed with:", e.strerror) # look what it says
+
+            
+        
     # Returns True or False. 
     def test(self):        
         self.assertTrue(True)
@@ -126,7 +134,7 @@ class TaskListControllerTest(unittest.TestCase):
         manager.createTemplate(controller.items,tasklistType,"Breva-copy")
         manager.load()
         templates = manager.getTemplateListNames(tasklistType)
-        self.assertEqual(3,len(templates))   
+        self.assertEqual(3,len(templates))
 
 
 

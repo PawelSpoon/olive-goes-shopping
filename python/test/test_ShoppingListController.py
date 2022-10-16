@@ -1,6 +1,7 @@
 import os
 import unittest
 import sys
+from controller.assetmanager import AssetManager
 sys.path.append('../src')
 
 
@@ -18,8 +19,12 @@ class ShoppingListControllerTest(unittest.TestCase):
     testOutDir = "./test/test-out"
     testTemplateDir = os.path.join(testOutDir, "shoplist")
 
-    def setUp(self) -> None:
-        return super().setUp()
+    def setUp(self):
+        super().setUp()
+        try:
+            os.remove(os.path.join(self.testTemplateDir, "demo-copy.json"))  
+        except OSError as e: # name the Exception `e`
+            print("Failed with:", e.strerror) # look what it says        
         
     # Returns True or False. 
     def test(self):        
@@ -69,10 +74,18 @@ class ShoppingListControllerTest(unittest.TestCase):
 
     def testTemplateCreationFromExisting(self):
         # should create a copy in templtes folder
-        # and name should appear in getTemplateNames
-        controller = ShoppingListController("demo",self.demoPath,self.rootDir)     
+        # and name should appear in getTemplateNames   
+        manager = AssetManager(self.testOutDir)
+        manager.load()
+        templates = manager.getTemplateListNames(shoplistType)
+        self.assertEqual(1,len(templates))         
+
+        controller = ShoppingListController("demo",self.demoPath,self.rootDir)  
         controller.load()
-        controller.export(os.path.join(self.testTemplateDir,"demo-template.json"))
+        manager.createTemplate(controller.items,shoplistType,"demo-copy")
+        manager.load()
+        templates = manager.getTemplateListNames(tasklistType)
+        self.assertEqual(2,len(templates))   
 
 if __name__ == '__main__':
     unittest.main()
