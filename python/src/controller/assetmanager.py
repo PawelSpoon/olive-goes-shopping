@@ -158,7 +158,8 @@ class AssetManager:
         return
 
 
-    # not used as the controller copies contain data not the managers ones
+    # not used, does not work
+    # seems python return controller by value store wont use the updated items in the lists
     def store(self):
         return
         print('asset manager storing to: ' + self.rootDir)
