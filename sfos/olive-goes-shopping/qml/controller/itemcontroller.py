@@ -89,16 +89,25 @@ class ItemController:
     def getAsList(self):
         return list(self.items.values()).copy()
 
+    # used for create-new-from-template usecase
+    def loadItems(self, items):
+        self.items = items
+        return True
+
     def loadString(self, json):
         self.items = dict(json)
         return True
 
+    # standard load function
+    # will load items from filePath defined in constructor
     def load(self):
         return self.loadString(persistance.readItemsIfExists(self.filePath))
 
     def clearItems(self):
         self.items.clear()
 
+    # standard save
+    # will update items in file defined in constructor
     def store(self):
         persistance.storeItems(self.filePath,self.items)        
 
