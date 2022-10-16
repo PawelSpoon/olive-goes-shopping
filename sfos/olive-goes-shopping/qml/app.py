@@ -130,12 +130,12 @@ class App:
             pyotherside.send('error',['no controller',type])
         return temp.getAsList()
 
-    def createTemplate(self, items, name, type):
+    def createTemplate(self, items, type, name):
         self.assetManager.createTemplate(items,type,name)
         #self.assetManager.load()
         self.reInitAssetManager()
 
-    def deleteTemplate(self, name, type):
+    def deleteTemplate(self, type, name):
         return self.assetManager.deleteTemplate(type,name)
 
 app_object = App()

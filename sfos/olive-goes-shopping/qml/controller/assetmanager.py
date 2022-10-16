@@ -72,7 +72,8 @@ class AssetManager:
         self.recipeController.load()
 
         # 
-        self.taskTemplateController.load()
+        #self.taskTemplateController.load()
+        #self.shopListTemplateController.load()
 
 
         # predefined task list takes over the name from file
@@ -89,6 +90,7 @@ class AssetManager:
         for tasklist in tasklists:
             templateName = tasklist.replace(".json","")
             tmp = TaskListController(templateName,os.path.join(self.getTaskPath(),tasklist))
+            tmp.load()
             self.taskitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.taskTemplateController.items.keys():
@@ -98,6 +100,7 @@ class AssetManager:
         for shoplist in shoplists:
             templateName = shoplist.replace(".json","")
             tmp = ShoppingListController(templateName,os.path.join(self.getShopListPath(),shoplist),self.rootDir)
+            tmp.load()
             self.shopitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.shopListTemplateController.getList().keys():
@@ -132,8 +135,6 @@ class AssetManager:
         # no, this is assetscontroller, active are in another controller
 
     # returns all available template-names for a type
-    # but never reached qml
-    # calling getController().getAsList in app.py instead
     def getTemplateListNames(self, type):
         if (type == shoplistType):
             names =  self.shopListTemplateController.getAsList()
