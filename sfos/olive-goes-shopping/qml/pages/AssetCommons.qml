@@ -90,6 +90,16 @@ Item {
         return model
     }
 
+    function fillTemplatesModel(type,model)
+    {
+        var list = applicationWindow.cache.getTemplates(type)
+        for (var i = 0; i < list.length ; i++) {
+            console.log(list[i].Name)
+            model.append({"Name": list[i].Name, "Id": list[i].Id})
+        }
+        return model
+    }
+
     function fillUnitModel(model)
     {
         var list = applicationWindow.cache.getUnits()

@@ -82,6 +82,7 @@ Dialog {
                 onCurrentIndexChanged: {
                     if (1==1) { //if (init) { // init might not be needed as no complex init fu
                         itemType = itemTypeCombo.value
+                        print(itemType)
                         //items.itemType = itemTypeCombo.value
                         loadTemplateModel()
                     }
@@ -106,8 +107,8 @@ Dialog {
 
     ListModel {
         id: typeModel
-        ListElement { Name: "shop"; DisplayName: qsTr("shopping list") }
-        ListElement { Name: "task"; DisplayName: qsTr("tasklist ") }
+        ListElement { Name: "shop"; DisplayName: qsTr("shop") }
+        ListElement { Name: "task"; DisplayName: qsTr("task") }
     }
 
     ListModel {

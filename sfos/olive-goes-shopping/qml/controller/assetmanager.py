@@ -88,16 +88,16 @@ class AssetManager:
         tasklists = os.listdir(self.getTaskPath())
         for tasklist in tasklists:
             templateName = tasklist.replace(".json","")
-            tmp = TaskListController(templateName,self.getTaskPath() + "/" + tasklist)
+            tmp = TaskListController(templateName,os.path.join(self.getTaskPath(),tasklist))
             self.taskitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.taskTemplateController.items.keys():
-              self.taskTemplateController.add(templateName)
+              self.taskTemplateController.addWithName(templateName)
         
         shoplists = os.listdir(self.getShopListPath())
         for shoplist in shoplists:
             templateName = shoplist.replace(".json","")
-            tmp = ShoppingListController(templateName,self.getTaskPath() + "/" + shoplist,self.rootDir)
+            tmp = ShoppingListController(templateName,os.path.join(self.getShopListPath(),shoplist),self.rootDir)
             self.shopitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.shopListTemplateController.getList().keys():
@@ -132,11 +132,15 @@ class AssetManager:
         # no, this is assetscontroller, active are in another controller
 
     # returns all available template-names for a type
+    # but never reached qml
+    # calling getController().getAsList in app.py instead
     def getTemplateListNames(self, type):
         if (type == shoplistType):
-            return self.shopitemController.keys()
+            names =  self.shopListTemplateController.getAsList()
         if (type == tasklistType):
-            return self.taskitemController.keys()
+            names = self.taskTemplateController.getAsList()
+        return names
+            
     
     # i do not want to add store-as-new to itemcontroller
     # feels wrong for me, even though it would be just a copy ..
@@ -147,15 +151,24 @@ class AssetManager:
             # make sure it exists
             self.loadTemplateController()
             controller = self.getController(name)
-            controller.items = items
+            if (items is not None):
+                controller.items = items
             controller.store()
         else:
             self.taskTemplateController.addWithName(name)
             self.loadTemplateController()
             controller = self.getController(name)
-            controller.items = items
+            if (items is not None):
+                controller.items = items
             controller.store()
         return
+    
+    def deleteTemplate(self, type, name):
+        if (type == shoplistType):
+            self.shopListTemplateController.remove(name)
+        else:
+            self.taskTemplateController.remove(name)
+        return       
 
 
     # not used, does not work

@@ -51,7 +51,10 @@ Python {
   // assets - what ever assetmanager can init and load is in this region
 
   function getAssets(type) {
-      return call_sync('app.app_object.getAssetList',[type])
+     console.log("python.getAssets("+type+")")
+     var ret = call_sync('app.app_object.getAssetList',[type])
+     console.log(ret)
+     return ret
   }
 
   function clearAssets(type) {
@@ -78,17 +81,22 @@ Python {
   }
 
   function createList(name,type) { // and object with Name attribute that contains a list
-      var type = "shop"
-      return call_sync('app.app_object.createList',[name,type])
+      console.log("python.createList("+name+","+type+")")
+      var ret = call_sync('app.app_object.createList',[name,type])
+      console.log(ret)
+      return ret
   }
 
   function deleteList(name,type) { // and object with Name attribute that contains a list
-      var type = "shop"
-      return call_sync('app.app_object.deleteList',[name,type])
+      console.log("python.deleteList("+name+","+type+")")
+      var ret = call_sync('app.app_object.deleteList',[name,type])
+      console.log(ret)
+      return ret
   }
 
     // single task or shopping list}
   function getShoppingList(name) { // and object with Name attribute that contains a list
+      console.log("python.getShoppingList("+name+")")
       return call_sync('app.app_object.getShoppingList',[name])
   }
 
@@ -123,19 +131,24 @@ Python {
   /// template management
 
   function getTemplates(type) {
-      // shop or task
-      print('type: ' + type)
-      return call_sync('app.app_object.getAssetList',[type])
+      console.log("python.getTemplates("+type+")")
+      var ret = call_sync('app.app_object.getTemplateListNames',[type])
+      console.log(ret.toString())
+      return ret
   }
 
-  function createTemplate(name,type) {
-      //var type = "shop"
-      return call_sync('app.app_object.createTemplate',[name,type])
+  function createTemplate(items,name,type) {
+      console.log("python.createTemplate("+name+","+type+")")
+      var ret = call_sync('app.app_object.createTemplate',[items, type, name])
+      console.log(ret)
+      return ret
   }
 
   function deleteTemplate(name,type) {
-      //var type = "shop"
-      return call_sync('app.app_object.deleteTemplate',[name,type])
+      console.log("python.deleteTemplate("+name+","+type+")")
+      var ret =  call_sync('app.app_object.deleteTemplate',[type,name])
+      console.log(ret)
+      return ret
   }
 
 }

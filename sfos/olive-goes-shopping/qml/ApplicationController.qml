@@ -183,6 +183,7 @@ Item {
 
     function openTemplateMngmtPage(type)
     {
+        console.log(type)
         pageStack.push(Qt.resolvedUrl("pages/TemplateSelector.qml"), {itemType: type})
     }
 
@@ -193,6 +194,11 @@ Item {
     }
 
     function openShoppingListPage(listName)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
+    }
+
+    function openShoppingListTemplatePage(listName)
     {
         pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
     }
@@ -265,8 +271,9 @@ Item {
         updateParentPage(type)
     }
 
-    function createTemplate(name, type) {
-        applicationWindow.python.createTemplate(name,type)
+    function createTemplate(items, name, type) {
+        console.log('create template: ' + name + " " + type)
+        applicationWindow.python.createTemplate(items, name,type)
         updateParentPage(type)
     }
 

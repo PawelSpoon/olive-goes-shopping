@@ -120,7 +120,7 @@ Dialog {
 
     onAccepted: {
         // itemType,mode,oldItem, currentItem
-        applicationWindow.controller.createTemplate(itemName.text, itemType)
+        applicationWindow.controller.createTemplate(null, itemName.text, itemType)
         // currenly called by controller:
         // commons.updateParentPage(itemType)
     }

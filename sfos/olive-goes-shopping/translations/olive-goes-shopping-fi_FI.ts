@@ -104,15 +104,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>shopping list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>tasklist </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>empty list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>task</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -428,6 +428,10 @@
         <source>Task list templates definition</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Shopping list definition</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecipeComponent</name>
@@ -616,10 +620,6 @@
     <message>
         <source>Add</source>
         <translation type="unfinished">Lisää</translation>
-    </message>
-    <message>
-        <source>Manage</source>
-        <translation type="unfinished">Ylläpidä</translation>
     </message>
 </context>
 </TS>

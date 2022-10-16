@@ -13,12 +13,16 @@ Item {
     property var unitsList: undefined
     property var categoryList : undefined
     property var itemtypeList : undefined
+    property var taskTemplateList: undefined
+    property var shopTemplateList: undefined
 
     function invalidate() {
         phydimList = undefined
         unitsList= undefined
         categoryList = undefined
         itemtypeList = undefined
+        taskTemplateList = undefined
+        shopTemplateList = undefined
     }
 
     function getPhydims() {
@@ -51,6 +55,24 @@ Item {
             itemtypeList = applicationWindow.python.getAssets("itemtype")
         }
         return itemtypeList
+    }
+
+    function getTemplates(type) {
+        if (type === "task") {
+            if (taskTemplateList === undefined)
+            {
+                taskTemplateList = applicationWindow.python.getTemplates("task")
+            }
+            return taskTemplateList
+        }
+        if (type === "shop") {
+            if (shopTemplateList === undefined)
+            {
+                shopTemplateList = applicationWindow.python.getTemplates("shop")
+            }
+            return shopTemplateList
+        }
+        console.error("wrong type: " + type)
     }
 
     // returns the names of existing shopping lists

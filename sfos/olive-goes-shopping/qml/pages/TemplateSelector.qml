@@ -13,21 +13,24 @@ Page {
 
     Component.onCompleted: {
         applicationWindow.controller.signal_asset_updated.connect(onAssetChanged)
+        load()
     }
 
     function onAssetChanged(itemType) {
         // throws unknown33 initPage of object is not a ...
         //page.initPage() did not work either
-        load()
+       // page.load()
     }
 
     function load() {
         shoppingLists.clear()
-        var lis = applicationWindow.python.getTemplates(itemType)
-        var lists = lis['Name']
+        console.log(itemType)
+        var lists = applicationWindow.python.getTemplates(itemType)
+        console.log(lists)
+        // var lists = lis['Name']
         for (var i = 0; i < lists.length ; i++) {
-            console.log(lists[i])
-            shoppingLists.append({"Name": lists[i], "Id": 1})
+            console.log(lists[i].Name)
+            shoppingLists.append({"Name": lists[i].Name, "Id": 1})
         }
     }
 
@@ -89,12 +92,12 @@ Page {
 
     PushUpMenu {
 
-        MenuItem {
+        /*MenuItem {
             text: qsTr("Manage");
             onClicked: {
                  onClicked: applicationWindow.controller.openManageMainPage();
            }
-        }
+        }*/
     }
 
     }

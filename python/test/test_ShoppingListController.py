@@ -24,7 +24,11 @@ class ShoppingListControllerTest(unittest.TestCase):
         try:
             os.remove(os.path.join(self.testTemplateDir, "demo-copy.json"))  
         except OSError as e: # name the Exception `e`
-            print("Failed with:", e.strerror) # look what it says        
+            print("Failed with:", e.strerror) # look what it says       
+        try:
+            os.remove(os.path.join(self.testTemplateDir, "empty-copy.json"))  
+        except OSError as e: # name the Exception `e`
+            print("Failed with:", e.strerror) # look what it says   
         
     # Returns True or False. 
     def test(self):        
@@ -83,8 +87,20 @@ class ShoppingListControllerTest(unittest.TestCase):
         controller = ShoppingListController("demo",self.demoPath,self.rootDir)  
         controller.load()
         manager.createTemplate(controller.items,shoplistType,"demo-copy")
+        templates = manager.getTemplateListNames(shoplistType)
+        self.assertEqual(2,len(templates))   
+
+
+    def testTemplateCreationEmpty(self):
+        # should create a copy in templtes folder
+        # and name should appear in getTemplateNames   
+        manager = AssetManager(self.testOutDir)
         manager.load()
-        templates = manager.getTemplateListNames(tasklistType)
+        templates = manager.getTemplateListNames(shoplistType)
+        self.assertEqual(1,len(templates))         
+
+        manager.createTemplate(None,shoplistType,"empty-copy")
+        templates = manager.getTemplateListNames(shoplistType)
         self.assertEqual(2,len(templates))   
 
 if __name__ == '__main__':

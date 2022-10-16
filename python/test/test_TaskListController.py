@@ -19,10 +19,8 @@ class TaskListControllerTest(unittest.TestCase):
     testOutDir = "./test/test-out"
     testTemplateDir = os.path.join(testOutDir, "tasklist")
 
-    def setUp(self) -> None:
-        return super().setUp()
-        
-    def cleanUp(self):
+    def setUp(self):
+        super().setUp()
         try:
             os.remove(os.path.join(self.testTemplateDir, "Breva-copy.json"))  
         except OSError as e: # name the Exception `e`
@@ -132,7 +130,6 @@ class TaskListControllerTest(unittest.TestCase):
         controller.load()
         # controller.export(os.path.join(self.testTemplateDir,"Breva-copy.json"))
         manager.createTemplate(controller.items,tasklistType,"Breva-copy")
-        manager.load()
         templates = manager.getTemplateListNames(tasklistType)
         self.assertEqual(3,len(templates))
 

@@ -54,11 +54,11 @@ Page {
         }
         tasksModel.clear()
         if (applicationWindow.settings.useTasks) {
-            //commons.fillTasksModel(tasksModel)
-        }        
+            commons.fillTemplatesModel("task",tasksModel)
+        }
         listsModel.clear()
         if (applicationWindow.settings.useLists) {
-            //commons.fillListstypesModel(listsModel)
+             commons.fillTemplatesModel("shop",listsModel)
         }        
     }
 
@@ -75,18 +75,18 @@ Page {
         id: itemtypeModel
     }
 
-    ListModel { // jans, olives shopping list ...
+    ListModel { // pre-def shop lists
         id: listsModel
     }
 
-    ListModel { // task lists
+    ListModel { // pre-def task lists
         id: tasksModel
     }
 
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
-        id: shoppingList
+        id: mainpage
         anchors.fill: parent
         contentHeight: col.height
 
@@ -185,7 +185,7 @@ Page {
                     onClicked: {
                         applicationWindow.controller.openRecipesMngmtPage();
                     }
-                }                
+                }
                 Button {
                     id: manageItemTypes
                     visible: applicationWindow.settings.useItemtypes
@@ -213,12 +213,12 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
                 // not yet implemented
-                /*Button {
+                Button {
                     id: manageLists
                     visible: applicationWindow.settings.useLists
                     text: qsTr("Shopping list definition")
                     anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: applicationWindow.controller.openItemsMngmtPage("list")
+                    onClicked: applicationWindow.controller.openTemplateMngmtPage("shop",2)
                 }
                 Label {
                     text: " --- shopping list templates --- "
@@ -231,14 +231,14 @@ Page {
                     Button {
                         text: Name
                         anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: applicationWindow.controller.openItemsMngmtPage(text)                        
+                        onClicked: applicationWindow.controller.openShoppingListTemplatePage(Name)   // openItemsMngmtPage(text)
                     }
                 }
                 Label {
                     text: " ------ "
                     visible: applicationWindow.settings.useLists
                     anchors.horizontalCenter: parent.horizontalCenter
-                } */
+                }
                 Button {
                     id: manageTasks
                     visible: applicationWindow.settings.useTasks

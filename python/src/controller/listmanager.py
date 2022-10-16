@@ -44,14 +44,6 @@ class ListManager:
                     self.listController[extractedListName] = ctl
                 self.listController[ctl.getTypeName()] = ctl   
 
-    # returns all loaded templates
-    def getTemplateNames(self, type):
-        listOfNames = list()
-        dicOfNames = dict()
-        return dicOfNames
-
-    # store template as list an add list controller ?
-
     # returns all loaded lists
     def getListNames(self):
         listOfNames = list()

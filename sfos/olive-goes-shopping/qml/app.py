@@ -113,22 +113,29 @@ class App:
         ctrl.clearItems()
         ctrl.store()
 
-    def deleteOne(self, listName,name):
+    def deleteOne(self, listName, name):
         ctrl = self.listManager.getController(listName)
         ctrl.deleteOne(name)
         ctrl.store()
 
     def updateOne(self, listName, oldName, item):
         ctrl = self.listManager.getController(listName)
-        ctrl.update(oldName,item)
+        ctrl.update(oldName, item)
         ctrl.store()
 
-    def createTemplate(self, name, type):
-        if type == "shop":
-            # ### self.listManager.add(name)
-            #self.listManager.store()
-        else:
-            # ###self.taskManager.add(name)
-            #self.taskManager.store()
+    def getTemplateListNames(self, type):
+        return self.assetManager.getTemplateListNames(type)
+        temp = self.assetManager.getController(type)
+        if temp == None:
+            pyotherside.send('error',['no controller',type])
+        return temp.getAsList()
+
+    def createTemplate(self, items, name, type):
+        self.assetManager.createTemplate(items,type,name)
+        #self.assetManager.load()
+        self.reInitAssetManager()
+
+    def deleteTemplate(self, name, type):
+        return self.assetManager.deleteTemplate(type,name)
 
 app_object = App()
