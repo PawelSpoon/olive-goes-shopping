@@ -19,7 +19,7 @@ Page {
     function onAssetChanged(itemType) {
         // throws unknown33 initPage of object is not a ...
         //page.initPage() did not work either
-       // page.load()
+       load()
     }
 
     function load() {

@@ -132,7 +132,6 @@ class App:
 
     def createTemplate(self, items, type, name):
         self.assetManager.createTemplate(items,type,name)
-        #self.assetManager.load()
         self.reInitAssetManager()
 
     def deleteTemplate(self, type, name):
