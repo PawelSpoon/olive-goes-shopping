@@ -80,6 +80,10 @@ Python {
       return call_sync('app.app_object.getShoppingLists',[])
   }
 
+  function getTaskLists() {
+      return call_sync('app.app_object.getTaskLists',[])
+  }
+
   function createList(name,type) { // and object with Name attribute that contains a list
       console.log("python.createList("+name+","+type+")")
       var ret = call_sync('app.app_object.createList',[name,type])
@@ -94,38 +98,43 @@ Python {
       return ret
   }
 
-    // single task or shopping list}
-  function getShoppingList(name) { // and object with Name attribute that contains a list
-      console.log("python.getShoppingList("+name+")")
-      return call_sync('app.app_object.getShoppingList',[name])
+  // single task or shopping list}
+  function getList(type, name) { // and object with Name attribute that contains a list
+      console.log("python.getList("+type+","+name+")")
+      return call_sync('app.app_object.getList',[type,name])
+  }
+
+  function addItem2TaskList(listName, items) {
+      return call_sync('app.app_object.addItem2TaskList',[listName,items])
   }
 
   function addItem2ShoppingList(listName, items) {
       return call_sync('app.app_object.addItem2ShoppingList',[listName,items])
   }
 
-  function setDoneValue(listName, name, done) {
-      return call_sync('app.app_object.setDoneValue',[listName,name,done])
+  function setDoneValue(type, listName, name, done) {
+      return call_sync('app.app_object.setDoneValue',[type,listName,name,done])
   }
 
-  function deleteOne(listName, name) {
-      return call_sync('app.app_object.deleteOne',[listName,name])
+  function deleteOne(type, listName, name) {
+      console.log("deleteOne("+type+","+listName+","+name+")")
+      return call_sync('app.app_object.deleteOne',[type,listName,name])
   }
 
-  function updateOne(listName, oldName, item) {
-      return call_sync('app.app_object.updateOne',[listName,oldName,item])
+  function updateOne(type, listName, oldName, item) {
+      return call_sync('app.app_object.updateOne',[type, listName,oldName,item])
   }
 
-  function clearAll(listName) {
-      return call_sync('app.app_object.clearAll',[listName])
+  function clearAll(type, listName) {
+      return call_sync('app.app_object.clearAll',[type, listName])
   }
 
-  function clearDone(listName) {
-      return call_sync('app.app_object.clearDone',[listName])
+  function clearDone(type, listName) {
+      return call_sync('app.app_object.clearDone',[type, listName])
   }
 
-  function resetDone(listName) {
-      return call_sync('app.app_object.resetDone',[listName])
+  function resetDone(type, listName) {
+      return call_sync('app.app_object.resetDone',[type, listName])
   }
 
   /// template management

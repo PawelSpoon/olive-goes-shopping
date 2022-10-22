@@ -1,5 +1,7 @@
 # this is the guy who controlls the all real to-be-done lists
 # allows to create / delete shopping lists & tasklists
+# you need two instances of this, one for task, one for shop but the class works for both
+
 
 import os
 
@@ -28,7 +30,10 @@ class ListManager:
     def createShoppingListController(self, listName):
         filepath = os.path.join(self.getCurrentDirPath(),self.list2FileName(listName))  
         return ShoppingListController(listName,filepath,self.rootDir)
-        
+
+    def createTaskListController(self, listName):
+        filepath = os.path.join(self.getCurrentDirPath(),self.list2FileName(listName))  
+        return TaskListController(listName,filepath)    
 
     def load(self):
         lists = os.listdir(self.getCurrentDirPath())
@@ -36,12 +41,16 @@ class ListManager:
             # load only if propper type
             if ("." + self.type + "." in list): 
                 if (self.type == tasklistType):
-                    ctl = TaskListController(self.file2ListName(list))                 
+                    print("adding tasklist for file: " + list)
+                    extractedListName = self.file2ListName(list)
+                    ctl = self.createTaskListController(extractedListName)
+                    self.listController[extractedListName] = ctl
                 if (self.type == shoplistType):
-                    print("adding for file: " + list)
+                    print("adding shoppinglist for file: " + list)
                     extractedListName = self.file2ListName(list)
                     ctl = self.createShoppingListController(extractedListName)
                     self.listController[extractedListName] = ctl
+                # what the hack is this good for ?
                 self.listController[ctl.getTypeName()] = ctl   
 
     # returns all loaded lists
@@ -67,7 +76,7 @@ class ListManager:
         if (name not in self.listController.keys()):
             print("adding controller")
             if (self.type == tasklistType):
-                ctl = TaskListController(name) 
+                ctl = self.createTaskListController(name) 
             if (self.type == shoplistType):
                 ctl = self.createShoppingListController(name)
             self.listController[name] = ctl

@@ -4,8 +4,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 //import QtQuick.Controls 2.0
 
-// this component allows to add an item to shopping list that does not exist in db
-// it allows also to quickly add one item to db
+// this component allows to add an item to shopping list
 SilicaListView {
 
     id: anyItemComponent

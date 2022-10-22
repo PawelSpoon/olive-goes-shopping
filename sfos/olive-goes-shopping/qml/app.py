@@ -6,6 +6,9 @@ from controller.listmanager import ListManager
 
 class App:
 
+    shopType = "shop"
+    taskType = "task"
+
     def setup(self,rootDir,qObject):
         self.init = False
         self.assetManager = AssetManager(rootDir)
@@ -14,7 +17,7 @@ class App:
         self.listManager = ListManager(rootDir,'shop')
         self.listManager.load()
         self.taskManager = ListManager(rootDir,'task')
-        #self.taskManager.load()
+        self.taskManager.load()
         self.init = True
         pyotherside.send('init')
 
@@ -25,10 +28,10 @@ class App:
         self.init = False
         self.assetManager = AssetManager(self.root)
         self.assetManager.load()
-        self.listManager = ListManager(self.root,'shop')
+        self.listManager = ListManager(self.root, 'shop')
         self.listManager.load()
-        self.taskManager = ListManager(self.root,'task')
-        #self.taskManager.load()
+        self.taskManager = ListManager(self.root, 'task')
+        self.taskManager.load()
         self.init = True
         pyotherside.send('init')
 
@@ -68,8 +71,13 @@ class App:
         print(len(temp))
         return temp
 
+    def getTaskLists(self):
+        temp = self.taskManager.getListNames()
+        print(len(temp))
+        return temp
+
     def createList(self, name, type):
-        if type == "shop":
+        if type == self.shopType :
             self.listManager.add(name)
             #self.listManager.store()
         else:
@@ -77,49 +85,63 @@ class App:
             #self.taskManager.store()
         
     def deleteList(self, name,type):
-        if type == "task":
+        if type == self.taskType:
             self.taskManager.delete(name)
         else:
             self.listManager.delete(name)    
 
-    def getShoppingList(self, name):
-        ctrl = self.listManager.getController(name)
+    def getListController(self,type,name):
+        if type == self.shopType:
+            return self.listManager.getController(name)
+        if type == self.taskType:
+            return self.taskManager.getController(name)
+        pyotherside.send('error',['no controller',type])
+        return None
+
+    def getList(self, type, name):
+        ctrl = self.getListController(type,name)
         ctrl.load()
         return ctrl.getAsList()
 
+    # add is separated for some reason
     def addItem2ShoppingList(self, listName, items):
         ctrl = self.listManager.getController(listName)
         ctrl.addItems2ShoppingList(items)
         ctrl.store()
 
-    def setDoneValue(self, listName, name, done):
-        ctrl = self.listManager.getController(listName)
+    def addItem2TaskList(self, listName, items):
+        ctrl = self.taskManager.getController(listName)
+        ctrl.addItems2TaskList(items)
+        ctrl.store()
+
+    def setDoneValue(self, type, listName, name, done):
+        ctrl = self.getListController(type,listName)
         ctrl.setDoneValue(name, done)
         ctrl.store()
 
-    def clearDone(self, listName):
-        ctrl = self.listManager.getController(listName)
+    def clearDone(self, type, listName):
+        ctrl = self.getListController(type,listName)
         ctrl.clearDone()
         ctrl.store()
 
     # reset all
-    def resetDone(self, listName):
-        ctrl = self.listManager.getController(listName)
+    def resetDone(self, type, listName):
+        ctrl = self.getListController(type,listName)
         ctrl.resetDone()
         ctrl.store()
 
-    def clearAll(self, listName):
-        ctrl = self.listManager.getController(listName)
+    def clearAll(self, type, listName):
+        ctrl = self.getListController(type,listName)
         ctrl.clearItems()
         ctrl.store()
 
-    def deleteOne(self, listName, name):
-        ctrl = self.listManager.getController(listName)
+    def deleteOne(self, type, listName, name):
+        ctrl = self.getListController(type,listName)
         ctrl.deleteOne(name)
         ctrl.store()
 
-    def updateOne(self, listName, oldName, item):
-        ctrl = self.listManager.getController(listName)
+    def updateOne(self, type, listName, oldName, item):
+        ctrl = self.getListController(type,listName)
         ctrl.update(oldName, item)
         ctrl.store()
 

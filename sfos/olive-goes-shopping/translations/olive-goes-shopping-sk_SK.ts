@@ -242,51 +242,51 @@
     <name>ItemDialog</name>
     <message>
         <source>Save</source>
-        <translation>Uložiť</translation>
+        <translation type="unfinished">Uložiť</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Zahodiť</translation>
+        <translation type="unfinished">Zahodiť</translation>
     </message>
     <message>
         <source>New item</source>
-        <translation>Nová položka</translation>
+        <translation type="unfinished">Nová položka</translation>
     </message>
     <message>
         <source>Edit item</source>
-        <translation>Upraviť položku</translation>
+        <translation type="unfinished">Upraviť položku</translation>
     </message>
     <message>
         <source>Item name</source>
-        <translation>Názov položky</translation>
+        <translation type="unfinished">Názov položky</translation>
     </message>
     <message>
         <source>Set item name</source>
-        <translation>Zadať názov položky</translation>
+        <translation type="unfinished">Zadať názov položky</translation>
     </message>
     <message>
         <source>Standard package size</source>
-        <translation>Štandardná veľkosť balenia</translation>
+        <translation type="unfinished">Štandardná veľkosť balenia</translation>
     </message>
     <message>
         <source>Set standard package size</source>
-        <translation>Zadať štandardnú veľkosť balenia</translation>
+        <translation type="unfinished">Zadať štandardnú veľkosť balenia</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation>Jednotka</translation>
+        <translation type="unfinished">Jednotky</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Kategória</translation>
+        <translation type="unfinished">Kategória</translation>
     </message>
     <message>
         <source>co2 in []</source>
-        <translation>CO2 v []</translation>
+        <translation type="unfinished">CO2 v []</translation>
     </message>
     <message>
         <source>Set co2 footprint</source>
-        <translation>Zadať uhlíkovú stopu</translation>
+        <translation type="unfinished">Zadať uhlíkovú stopu</translation>
     </message>
 </context>
 <context>
@@ -299,20 +299,20 @@
 <context>
     <name>ListSelector</name>
     <message>
-        <source>Manage</source>
-        <translation>Spravovať</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>Pridať</translation>
-    </message>
-    <message>
         <source>My lists</source>
-        <translation>Moje zoznamy</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create a shopping or task list from pull down menu</source>
-        <translation>Vytvoriť nákupný zoznam alebo zoznam úloh zo sťahovacej ponuky</translation>
+        <translation type="unfinished">Vytvoriť nákupný zoznam alebo zoznam úloh zo sťahovacej ponuky</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Pridať</translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -528,10 +528,6 @@
 <context>
     <name>ShoppingListPage</name>
     <message>
-        <source>Clear</source>
-        <translation>Vymazať</translation>
-    </message>
-    <message>
         <source>Deleting shopping list</source>
         <translation>Odstraňovanie nákupného zoznamu</translation>
     </message>
@@ -570,6 +566,74 @@
     <message>
         <source>Delete this list</source>
         <translation>Odstrániť tento zoznam</translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskListItem</name>
+    <message>
+        <source>Edit Item</source>
+        <translation type="unfinished">Upraviť položku</translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
+        <translation type="unfinished">Odstrániť položku</translation>
+    </message>
+</context>
+<context>
+    <name>TaskListPage</name>
+    <message>
+        <source>Clear done</source>
+        <translation type="unfinished">Vymazať vybavené</translation>
+    </message>
+    <message>
+        <source>Removing done entries</source>
+        <translation type="unfinished">Odstraňovanie vybavených záznamov</translation>
+    </message>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished">Pridať zo zoznamu</translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished">Skopírované do schránky</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished">Kopírovať do schránky</translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished">Vymazávanie všetkých záznamov</translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
+        <translation type="unfinished">Odstrániť tento zoznam</translation>
+    </message>
+    <message>
+        <source>Deleting task list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to do ?!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New task</source>
+        <extracomment>placeholder where the user should enter a name for a new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>you can now store</source>
+        <extracomment>a label to inform the user how to confirm the new task</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

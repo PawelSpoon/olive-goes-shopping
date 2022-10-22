@@ -242,51 +242,51 @@
     <name>ItemDialog</name>
     <message>
         <source>Save</source>
-        <translation>Tallenna</translation>
+        <translation type="unfinished">Tallenna</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Hylkää</translation>
+        <translation type="unfinished">Hylkää</translation>
     </message>
     <message>
         <source>New item</source>
-        <translation>Uusi nimike</translation>
+        <translation type="unfinished">Uusi nimike</translation>
     </message>
     <message>
         <source>Edit item</source>
-        <translation>Muokkaa nimikettä</translation>
+        <translation type="unfinished">Muokkaa nimikettä</translation>
     </message>
     <message>
         <source>Item name</source>
-        <translation>Nimikkeen nimi</translation>
+        <translation type="unfinished">Nimikkeen nimi</translation>
     </message>
     <message>
         <source>Set item name</source>
-        <translation>Aseta nimikkeen nimi</translation>
+        <translation type="unfinished">Aseta nimikkeen nimi</translation>
     </message>
     <message>
         <source>Standard package size</source>
-        <translation>Oletuspakkauskoko</translation>
+        <translation type="unfinished">Oletuspakkauskoko</translation>
     </message>
     <message>
         <source>Set standard package size</source>
-        <translation>Aseta oletuspakkauskoko</translation>
+        <translation type="unfinished">Aseta oletuspakkauskoko</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation>Yksikkö</translation>
+        <translation type="unfinished">Yksikkö</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Kategoria</translation>
+        <translation type="unfinished">Kategoria</translation>
     </message>
     <message>
         <source>co2 in []</source>
-        <translation>co2 []</translation>
+        <translation type="unfinished">co2 []</translation>
     </message>
     <message>
         <source>Set co2 footprint</source>
-        <translation>Aseta co2-jalanjälki</translation>
+        <translation type="unfinished">Aseta co2-jalanjälki</translation>
     </message>
 </context>
 <context>
@@ -299,20 +299,20 @@
 <context>
     <name>ListSelector</name>
     <message>
-        <source>Manage</source>
-        <translation>Ylläpidä</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>Lisää</translation>
-    </message>
-    <message>
         <source>My lists</source>
-        <translation>Minun listani</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create a shopping or task list from pull down menu</source>
-        <translation>Luo kauppa- tai tehtävälista alasvetomenusta</translation>
+        <translation type="unfinished">Luo kauppa- tai tehtävälista alasvetomenusta</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Lisää</translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -528,10 +528,6 @@
 <context>
     <name>ShoppingListPage</name>
     <message>
-        <source>Clear</source>
-        <translation>Tyhjennä</translation>
-    </message>
-    <message>
         <source>Deleting shopping list</source>
         <translation>Poistaa kauppalistaa</translation>
     </message>
@@ -570,6 +566,74 @@
     <message>
         <source>Delete this list</source>
         <translation>Poista tämä lista</translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskListItem</name>
+    <message>
+        <source>Edit Item</source>
+        <translation type="unfinished">Muokkaa nimikettä</translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
+        <translation type="unfinished">Poista nimike</translation>
+    </message>
+</context>
+<context>
+    <name>TaskListPage</name>
+    <message>
+        <source>Clear done</source>
+        <translation type="unfinished">Tyhjennys tehty</translation>
+    </message>
+    <message>
+        <source>Removing done entries</source>
+        <translation type="unfinished">Poista tehdyt</translation>
+    </message>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished">Lisää valintalistalta</translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished">Kopioitu leikepöydälle</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished">Kopioi leikepöydälle</translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished">Tyhjennä kaikki merkinnät</translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
+        <translation type="unfinished">Poista tämä lista</translation>
+    </message>
+    <message>
+        <source>Deleting task list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to do ?!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New task</source>
+        <extracomment>placeholder where the user should enter a name for a new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>you can now store</source>
+        <extracomment>a label to inform the user how to confirm the new task</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

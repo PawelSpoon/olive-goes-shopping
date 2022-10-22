@@ -80,6 +80,10 @@ Item {
         return applicationWindow.python.getShoppingLists()
     }
 
+    function getTaskLists() {
+        return applicationWindow.python.getTaskLists()
+    }
+
     function getItemsOfType(type)
     {
         return applicationWindow.python.getAssets(type)

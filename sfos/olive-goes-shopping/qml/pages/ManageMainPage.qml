@@ -64,7 +64,7 @@ Page {
 
     // callback from e.g dialog pages
     function onAssetChanged(itemType) {
-        page.initPage()
+        initPage()
     }
 
     AssetCommons {
@@ -260,7 +260,7 @@ Page {
                     Button {
                         text: Name
                         anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: applicationWindow.controller.openTemplateMngmtPage("task",text)
+                        onClicked: applicationWindow.controller.openTaskTemplatePage(Name)
                     }
                 }
                 Label {

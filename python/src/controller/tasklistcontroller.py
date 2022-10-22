@@ -41,7 +41,7 @@ class TaskListController(ItemController):
     # in both cases Done must be added
     def addItems2TaskList(self, listOfItems):
         # listOfItems is in fact a dict
-        for item in listOfItems.values():
+        for item in listOfItems:
             item[FieldDone] = False
             itemName = item[FieldName]
             # add if not there

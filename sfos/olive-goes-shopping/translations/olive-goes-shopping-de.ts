@@ -299,7 +299,11 @@
 <context>
     <name>ListSelector</name>
     <message>
-        <source>Manage</source>
+        <source>My lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create a shopping or task list from pull down menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -307,11 +311,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>My lists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Create a shopping or task list from pull down menu</source>
+        <source>Manage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -528,10 +528,6 @@
 <context>
     <name>ShoppingListPage</name>
     <message>
-        <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Deleting shopping list</source>
         <translation type="unfinished"></translation>
     </message>
@@ -569,6 +565,74 @@
     </message>
     <message>
         <source>Delete this list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskListItem</name>
+    <message>
+        <source>Edit Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskListPage</name>
+    <message>
+        <source>Clear done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing done entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting task list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to do ?!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New task</source>
+        <extracomment>placeholder where the user should enter a name for a new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>you can now store</source>
+        <extracomment>a label to inform the user how to confirm the new task</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

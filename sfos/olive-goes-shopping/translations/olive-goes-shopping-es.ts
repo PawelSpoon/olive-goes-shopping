@@ -242,51 +242,51 @@
     <name>ItemDialog</name>
     <message>
         <source>Save</source>
-        <translation>Guardar</translation>
+        <translation type="unfinished">Guardar</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <source>New item</source>
-        <translation>Nuevo artículo</translation>
+        <translation type="unfinished">Nuevo artículo</translation>
     </message>
     <message>
         <source>Edit item</source>
-        <translation>Editar artículo</translation>
+        <translation type="unfinished">Editar artículo</translation>
     </message>
     <message>
         <source>Item name</source>
-        <translation>Nombre de artículo</translation>
+        <translation type="unfinished">Nombre de artículo</translation>
     </message>
     <message>
         <source>Set item name</source>
-        <translation>Indica nombre del artículo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Standard package size</source>
-        <translation>Tamaño estándar del paquete</translation>
+        <translation type="unfinished">Tamaño estándar del paquete</translation>
     </message>
     <message>
         <source>Set standard package size</source>
-        <translation>Indica tamaño estándar del paquete</translation>
+        <translation type="unfinished">Indica tamaño estándar del paquete</translation>
     </message>
     <message>
         <source>Unit</source>
-        <translation>Unidad</translation>
+        <translation type="unfinished">Unidad</translation>
     </message>
     <message>
         <source>Category</source>
-        <translation>Categoría</translation>
+        <translation type="unfinished">Categoría</translation>
     </message>
     <message>
         <source>co2 in []</source>
-        <translation>co2 en []</translation>
+        <translation type="unfinished">co2 en []</translation>
     </message>
     <message>
         <source>Set co2 footprint</source>
-        <translation>Indica huella de co2</translation>
+        <translation type="unfinished">Indica huella de co2</translation>
     </message>
 </context>
 <context>
@@ -299,20 +299,20 @@
 <context>
     <name>ListSelector</name>
     <message>
-        <source>Manage</source>
-        <translation>Gestionar</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>Añadir</translation>
-    </message>
-    <message>
         <source>My lists</source>
-        <translation>Mis listas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create a shopping or task list from pull down menu</source>
-        <translation>Crea una lista de compra o tareas desde el menú deslizante</translation>
+        <translation type="unfinished">Crea una lista de compra o tareas desde el menú deslizante</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Añadir</translation>
+    </message>
+    <message>
+        <source>Manage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -528,10 +528,6 @@
 <context>
     <name>ShoppingListPage</name>
     <message>
-        <source>Clear</source>
-        <translation>Eliminar</translation>
-    </message>
-    <message>
         <source>Deleting shopping list</source>
         <translation>Borrando lista de compra</translation>
     </message>
@@ -570,6 +566,74 @@
     <message>
         <source>Delete this list</source>
         <translation>Borrar esta lista</translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskListItem</name>
+    <message>
+        <source>Edit Item</source>
+        <translation type="unfinished">Editar artículo</translation>
+    </message>
+    <message>
+        <source>Delete Item</source>
+        <translation type="unfinished">Borrar artículo</translation>
+    </message>
+</context>
+<context>
+    <name>TaskListPage</name>
+    <message>
+        <source>Clear done</source>
+        <translation type="unfinished">Se ha eliminado</translation>
+    </message>
+    <message>
+        <source>Removing done entries</source>
+        <translation type="unfinished">Eliminando entradas realizadas</translation>
+    </message>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished">Añadir a la lista</translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished">Copiado al portapapeles</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished">Copiar al portapapeles</translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished">Eliminando todas las entradas</translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
+        <translation type="unfinished">Borrar esta lista</translation>
+    </message>
+    <message>
+        <source>Deleting task list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to do ?!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New task</source>
+        <extracomment>placeholder where the user should enter a name for a new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>you can now store</source>
+        <extracomment>a label to inform the user how to confirm the new task</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

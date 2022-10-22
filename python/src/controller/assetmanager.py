@@ -3,6 +3,7 @@
 # item types
 # recipes
 # pre defined task lists
+# pre defined shopping lists
 
 import os
 from controller.constants import *

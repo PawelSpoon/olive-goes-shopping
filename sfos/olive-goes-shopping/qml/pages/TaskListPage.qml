@@ -5,11 +5,12 @@ import oarg.pawelspoon.olivegoesshopping.ogssettings 1.0
 import Nemo.Notifications 1.0
 //import Sailfish.Share 1.0
 
+
 Page {
     id: listPage
     property string selectedCategory
     property string listName
-    property string itemType : "shop"
+    property string itemType : "task"
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientationso
     allowedOrientations: Orientation.All
@@ -23,7 +24,7 @@ Page {
 
     function onListChanged(listName) {
         console.log(" i was told to update myself")
-        listPage.updatePage()
+        listPage.initPage()
     }
 
     function updatePage()
@@ -48,7 +49,7 @@ Page {
                 console.log(done)
                 //listModel.setProperty(i,"HowMany",howMany)
                 listModel.setProperty(i,"Done",done)
-                applicationWindow.python.setDoneValue(itemType, listName, name, done)
+                applicationWindow.python.setDoneValue(itemType,listName,name,done)
                 return
             }
         }
@@ -77,12 +78,13 @@ Page {
     // currently not used by should be from ShoppingListItem to inform
     function markAsDone(uid,name,amount,unit,category,done)
     {
-        applicationWindow.python.setDoneValue(itemType, listName, name, done)
+        applicationWindow.python.setDoneValue(itemType,listName,name,done)
         initPage()
     }
 
     function initPage()
     {
+        console.log("initPage " + itemType + listName)
         var items = applicationWindow.python.getList(itemType,listName)
         listModel.clear()
         fillShoppingListModel(items)
@@ -98,15 +100,13 @@ Page {
         {
             listModel.append({"Id": items[i].Id,
                                  "Name": items[i].Name,
-                                 "Amount": items[i].Amount,
-                                 "Unit": items[i].Unit,
+                                 "Order": items[i].Order,
                                  "Done": items[i].Done,
                                  "ItemType": items[i].ItemType,
                                  "Category": items[i].Category })
             console.log("Id" + items[i].Id +
                         "Name"+ items[i].Name+
-                        "Amount"+ items[i].Amount+
-                        "Unit"+ items[i].Unit+
+                        "Order"+ items[i].Order+
                         "Done"+ items[i].Done+
                         "ItemType"+ items[i].ItemType+
                         "Category"+ items[i].Category )
@@ -142,7 +142,20 @@ Page {
         return listToShare;
     }
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
+
+
+    function storeNewTask(task) {
+        // convert object to list and store
+        var list2Add = []
+        var tmp = {}
+        tmp['Id'] = ""
+        tmp['Name']  = task
+        list2Add.push(tmp)
+        applicationWindow.python.addItem2TaskList(listName,list2Add)
+        applicationWindow.controller.signal_list_updated(listName)
+    }
+
+
     SilicaListView {
         id: shoppingList
         anchors.fill: parent
@@ -158,17 +171,13 @@ Page {
                 RemorsePopup {id: remorse2 }
                 function clearDoneFromShoppingList()
                 {
-                    applicationWindow.python.clearDone(itemType, listName)
+                    applicationWindow.python.clearDone(itemType,listName)
                     initPage()
                 }
             }
             MenuItem {
                 text: qsTr("Add from picklist");
                 onClicked: applicationWindow.controller.openAddPicklistDialog(listName);
-            }
-            MenuItem {
-                text: qsTr("Add");
-                onClicked: applicationWindow.controller.openAddDialog(listName,2);
             }
         }
 
@@ -197,14 +206,14 @@ Page {
                 RemorsePopup {id: remorse }
                 function deleteShoppingList()
                 {
-                    applicationWindow.python.clearAll(listPage.itemType, listName)
+                    applicationWindow.python.clearAll(listPage.itemType,listName)
                     listModel.clear()
                 }
             }
             MenuItem {
                 text: qsTr("Delete this list")
                 onClicked: {
-                    remorse.execute(qsTr("Deleting shopping list"), deleteShoppingList);
+                    remorse.execute(qsTr("Deleting task list"), deleteShoppingList);
                 }
                 RemorsePopup {id: remorse3 }
                 function deleteShoppingList()
@@ -216,14 +225,60 @@ Page {
             }
         }
 
-        header: PageHeader {
-            title: listName
+        header: Column {
+            width: parent.width
+            id: taskListHeaderColumn
+
+            PageHeader {
+                width: parent.width
+                title: listName
+            }
+
+            Row {
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                spacing: Theme.paddingLarge
+
+                TextField {
+                    id: taskAdd
+                    width: parent.width
+                    //: placeholder where the user should enter a name for a new task
+                    //% "Enter unique task name"
+                    placeholderText: qsTr("New task")
+                    font.capitalization: applicationWindow.controller.getCapitalization();//Font.MixedCase
+                    //: a label to inform the user how to confirm the new task
+                    //% "Press Enter/Return to add the new task"
+                    label: qsTr("you can now store")
+                    // enable enter key if minimum task length has been reached
+                    EnterKey.enabled: text.length > 0
+
+                    EnterKey.onClicked: {
+                        storeNewTask(text)
+                        text = ""
+                        taskAdd.forceActiveFocus()
+                    }
+
+                    onTextChanged: {
+                        // todo: check for uniqueness and support multiline add
+                        // divide text by new line characters
+                        var textSplit = taskAdd.text.split(/\r\n|\r|\n/)
+                        // if there are new lines
+                        if (textSplit.length > 1) {
+                            // clear textfield
+                            // taskAdd.text = ""
+                            // helper array to check task's uniqueness before adding them
+                            var tasksArray = []
+
+                        }
+                    }
+                }
+
+            }
         }
 
 
         ViewPlaceholder {
             enabled: listModel.count === 0
-            text: qsTr("Oh dear, <br>nothing to shop ?!")
+            text: qsTr("Oh dear, <br>nothing to do ?!")
         }
 
         // have sections by category
@@ -276,11 +331,9 @@ Page {
 
 
         delegate:
-            ShoppingListItem {
+            TaskListItem {
                 uid: Id
                 name: Name
-                amount: Amount
-                unit: Unit
                 checked: Done
                 category: Category
                 onToggled: {
@@ -312,7 +365,7 @@ Page {
 
         ListModel {
             id: listModel
-            ListElement {Id:""; Name: "dummy"; Amount: 1; Unit: "g"; Done: false; Category: ""; Order: "1" }
+            ListElement {Id:""; Name: "dummy"; Done: false; Category: ""; Order: "1" }
 
             function contains(uid) {
                 for (var i=0; i< count; i++) {

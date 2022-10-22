@@ -122,6 +122,7 @@ Item {
 
     function openTemplatePage(type, mode, name)
     {
+        console.log("openTemplatePage for type: " + type)
         pageStack.push(Qt.resolvedUrl("pages/TemplateDialog.qml"), {itemType: type, mode: mode, item: {}});
     }
 
@@ -198,9 +199,19 @@ Item {
         pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
     }
 
+    function openTaskListPage(listName)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/TaskListPage.qml"), {listName: listName})
+    }
+
     function openShoppingListTemplatePage(listName)
     {
         pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
+    }
+
+    function openTaskTemplatePage(listName)
+    {
+        pageStack.push(Qt.resolvedUrl("pages/TaskListPage.qml"), {listName: listName})
     }
 
     function openCreateListDialog()

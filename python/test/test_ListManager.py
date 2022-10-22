@@ -61,11 +61,17 @@ class ListManagerTest(unittest.TestCase):
      #   self.assertTrue("annual maintenance - Breva" in manager.listController.keys())
     #    manager.rootDir = self.outDir
 
-    def testGetController(self):
+    def testGetController4Shoppinglist(self):
         print("testGetController")
         manager = ListManager(self.rootDir, shoplistType)
         manager.load()
         rpc = manager.getController("demo")
+
+    def testGetController4Tasklist(self):
+        print("testGetController")
+        manager = ListManager(self.rootDir, shoplistType)
+        manager.load()
+        rpc = manager.getController("annual maintenance - Breva")
 
     def testAddController(self):
         print("testAddController")

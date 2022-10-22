@@ -24,9 +24,17 @@ Page {
         shoppingLists.clear()
         var lis = applicationWindow.cache.getShoppingLists()
         var lists = lis['Name']
+        console.log(lists.length)
         for (var i = 0; i < lists.length ; i++) {
             console.log(lists[i])
-            shoppingLists.append({"Name": lists[i], "Id": 1})
+            shoppingLists.append({"Name": lists[i], "Id": 1, "Type" : "shop" })
+        }
+        var tas = applicationWindow.cache.getTaskLists()
+        var taks = tas['Name']
+        console.log(taks.length)
+        for (var i = 0; i < taks.length ; i++) {
+            console.log(lists[i])
+            shoppingLists.append({"Name": taks[i], "Id": 1, "Type" : "task" })
         }
     }
 
@@ -68,13 +76,26 @@ Page {
             Repeater {
                 id: itemTypeRepeater
                 model: shoppingLists
-                Button {
+                /*Image {
+                    id: typeIcon
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.paddingSmall
+                    source: {
+                        (Type === "shop") ?  "image://theme/icon-m-levels" : "image://theme/icon-l-copy"
+                    }
+                    height: parent.height
+                    width: height
+                }*/
+                ListButton {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: Name
+                    itemType: Type
+                    //icon: {(Type === "shop") ?  "image://theme/icon-m-levels" : "image://theme/icon-l-copy"}
                     onClicked:  {
                         var listName = text
                         console.log(listName)
-                        applicationWindow.controller.openShoppingListPage(listName)
+                        if (itemType == "shop") applicationWindow.controller.openShoppingListPage(listName)
+                        else applicationWindow.controller.openTaskListPage(listName)
                     }
                 }
             }

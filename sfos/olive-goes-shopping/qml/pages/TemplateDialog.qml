@@ -96,6 +96,12 @@ Dialog {
     }
 
     Component.onCompleted: {
+       if (itemType === "shop") {
+           itemTypeCombo.currentIndex = 0
+       } else {
+           itemTypeCombo.currentIndex = 1
+       }
+
        if (item === null) {
            item = { Id: null, Category: null, Order: 0}
        }
