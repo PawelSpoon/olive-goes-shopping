@@ -272,8 +272,14 @@ Item {
         return false
     }
 
-    function createList(name, type) {
-        applicationWindow.python.createList(name,type)
+    function createList(type, name, template) {
+        console.log(template)
+        var items
+        if (template != undefined) {
+            items = applicationWindow.python.getTemplateItems(type,template)
+            console.log("loaded following number of items: " + items.length)
+        }
+        applicationWindow.python.createList(name,type,items)
         updateParentPage(type)
     }
 

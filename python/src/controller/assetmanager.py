@@ -72,11 +72,6 @@ class AssetManager:
         # ..
         self.recipeController.load()
 
-        # 
-        #self.taskTemplateController.load()
-        #self.shopListTemplateController.load()
-
-
         # predefined task list takes over the name from file
         # get all files from /list folder and init multiple itemcontrollers
         # to be done later
@@ -95,7 +90,8 @@ class AssetManager:
             self.taskitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.taskTemplateController.items.keys():
-              self.taskTemplateController.addWithName(templateName)
+              #self.taskTemplateController.addWithName(templateName)
+              self.taskTemplateController.addExisting(templateName)
         
         shoplists = os.listdir(self.getShopListPath())
         for shoplist in shoplists:
@@ -105,7 +101,7 @@ class AssetManager:
             self.shopitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.shopListTemplateController.getList().keys():
-              self.shopListTemplateController.addWithName(templateName)
+              self.shopListTemplateController.addExisting(templateName)
 
     def getController(self, type):
         if (type == phydim):

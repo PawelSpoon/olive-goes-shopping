@@ -84,9 +84,14 @@ Python {
       return call_sync('app.app_object.getTaskLists',[])
   }
 
-  function createList(name,type) { // and object with Name attribute that contains a list
+  function getTemplateItems(type,name) {
+      console.log("python.getTemplateItems("+type+","+name+")")
+      return call_sync('app.app_object.getTemplateItems',[type,name])
+  }
+
+  function createList(name,type,items) { // and object with Name attribute that contains a list
       console.log("python.createList("+name+","+type+")")
-      var ret = call_sync('app.app_object.createList',[name,type])
+      var ret = call_sync('app.app_object.createList',[name,type,items])
       console.log(ret)
       return ret
   }

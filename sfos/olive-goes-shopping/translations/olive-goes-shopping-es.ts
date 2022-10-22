@@ -626,12 +626,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New task</source>
+        <source>Enter unique task name</source>
         <extracomment>placeholder where the user should enter a name for a new task</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>you can now store</source>
+        <source>Click on enter to store</source>
         <extracomment>a label to inform the user how to confirm the new task</extracomment>
         <translation type="unfinished"></translation>
     </message>

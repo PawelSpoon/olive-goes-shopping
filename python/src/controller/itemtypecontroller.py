@@ -24,6 +24,14 @@ class ItemTypeController(ItemController):
     def list2FileName(self, itemTypeName):
         return os.path.join(self.itemListDir,(itemTypeName +".json"))
 
+    def addExisting(self,name):
+        item = dict()
+        item[FieldName] = name        
+        if super().add(item):
+            return True
+        return False
+
+    # creates an empty file   
     def add(self,item):
         if super().add(item):
             # create new file in itemListDir

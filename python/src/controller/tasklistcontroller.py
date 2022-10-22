@@ -37,7 +37,7 @@ class TaskListController(ItemController):
     # add - inherited
     # edit == update - inherited
 
-    # addFromList - cant be inherited, shoppin list needs to sum up
+    # addFromList - can't be inherited, shoppin list needs to sum up
     # in both cases Done must be added
     def addItems2TaskList(self, listOfItems):
         # listOfItems is in fact a dict

@@ -116,6 +116,11 @@ Dialog {
         ListElement { Name: "empty"; DisplayName: qsTr("empty list") }
     }
 
+    ListModel {
+        id: tmpModel
+        ListElement { Name: "empty"; DisplayName: qsTr("empty list") }
+    }
+
     Component.onCompleted: {
        if (item === null) {
            item = { Id: null, Category: null, Order: 0}
@@ -124,11 +129,13 @@ Dialog {
            itemName.text = item.Name
            id = item.Id
        }
+       loadTemplateModel()
     }
 
     Component.onDestruction: {
 
     }
+
 
     function loadTemplateModel()
     {
@@ -139,10 +146,16 @@ Dialog {
       var items = applicationWindow.python.getAssets(itemType);
       // fill and store itemModel
       // used filtered one for the list// This is available in all editors.
-      var firstEntry = templateModel.get(0)
+      tmpModel.clear()
+      var tmp = templateModel.get(0)
       templateModel.clear()
-      templateModel.append(firstEntry)
-      templateModel.append(items)
+      templateModel.append(tmp)
+      for (var i=0; i< items.length; i++)
+      {
+          items[i]["DisplayName"] = items[i]["Name"]
+          console.log(items[i]["DisplayName"])
+          templateModel.append(items[i])
+      }
     }
 
     function collectCurrentItem()
@@ -155,7 +168,7 @@ Dialog {
 
     onAccepted: {
         // itemType,mode,oldItem, currentItem
-        applicationWindow.controller.createList(itemName.text, itemType)
+        applicationWindow.controller.createList(itemType, itemName.text, prefil.value)
         // currenly called by controller:
         // commons.updateParentPage(itemType)
     }

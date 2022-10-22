@@ -243,11 +243,11 @@ Page {
                     width: parent.width
                     //: placeholder where the user should enter a name for a new task
                     //% "Enter unique task name"
-                    placeholderText: qsTr("New task")
+                    placeholderText: qsTr("Enter unique task name")
                     font.capitalization: applicationWindow.controller.getCapitalization();//Font.MixedCase
                     //: a label to inform the user how to confirm the new task
                     //% "Press Enter/Return to add the new task"
-                    label: qsTr("you can now store")
+                    label: qsTr("Click on enter to store")
                     // enable enter key if minimum task length has been reached
                     EnterKey.enabled: text.length > 0
 

@@ -1,1 +1,4 @@
-[]
+[
+    {"Name": "Oil change", "Description": "", "Amount": 4, "Unit": "l", "Done": false},
+    {"Name": "Oil filter", "Description": "", "Amount": 1, "Unit": "-", "Done": false}
+]

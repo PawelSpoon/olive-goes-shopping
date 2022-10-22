@@ -35,6 +35,12 @@ class App:
         self.init = True
         pyotherside.send('init')
 
+    def getTemplateItems(self, type, name):
+        # shop / task would return the controller to add/remove a template
+        # name will return the template-controller
+        # templates are also per name in
+        temp = self.assetManager.getController(name)
+        return temp.getAsList()
 
     def getAssetList(self, type):
         temp = self.assetManager.getController(type)
@@ -76,7 +82,7 @@ class App:
         print(len(temp))
         return temp
 
-    def createList(self, name, type):
+    def createList(self, name, type, items):
         if type == self.shopType :
             self.listManager.add(name)
             #self.listManager.store()
@@ -158,5 +164,11 @@ class App:
 
     def deleteTemplate(self, type, name):
         return self.assetManager.deleteTemplate(type,name)
+
+    def addItem2Template(self, type, listName, items):
+        ctrl = self.assetManager.getController(type)
+        ctrl2 = ctrl[listName]
+        ctrl2.addItems2TaskList(items)
+        ctrl2.store()
 
 app_object = App()
