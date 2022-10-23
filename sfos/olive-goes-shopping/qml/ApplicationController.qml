@@ -47,6 +47,9 @@ Item {
        if (itemType === "shop") { // when added / removed a shopping list
             applicationWindow.python.reInit(itemType)       
        }
+       if (itemType === "task") { // when added / removed a shopping list
+            applicationWindow.python.reInit(itemType)
+       }
        signal_asset_updated(itemType)
     }
 
@@ -120,10 +123,11 @@ Item {
                        })
     }
 
-    function openTemplatePage(type, mode, name)
+    function openTemplatePage(type, name)
     {
-        console.log("openTemplatePage for type: " + type)
-        pageStack.push(Qt.resolvedUrl("pages/TemplateDialog.qml"), {itemType: type, mode: mode, item: {}});
+        console.log("openTemplatePage for type: " + type + " " + name)
+        if (type === "task") pageStack.push(Qt.resolvedUrl("pages/TaskListTemplatePage.qml"), {itemType: type, listName: name});
+        if (type === "shop") pageStack.push(Qt.resolvedUrl("pages/ShoppingListTemplatePage.qml"), {itemType: type, listName: name});
     }
 
     function openManageMainPage()
@@ -206,12 +210,12 @@ Item {
 
     function openShoppingListTemplatePage(listName)
     {
-        pageStack.push(Qt.resolvedUrl("pages/ShoppingListPage.qml"), {listName: listName})
+        pageStack.push(Qt.resolvedUrl("pages/ShoppingListTemplatePage.qml"), {listName: listName})
     }
 
-    function openTaskTemplatePage(listName)
+    function openCreateTemplateDialog(type)
     {
-        pageStack.push(Qt.resolvedUrl("pages/TaskListPage.qml"), {listName: listName})
+        pageStack.push(Qt.resolvedUrl("pages/CreateTemplateDialog.qml"), {mode: 2, itemType: type})
     }
 
     function openCreateListDialog()
@@ -275,7 +279,7 @@ Item {
     function createList(type, name, template) {
         console.log(template)
         var items
-        if (template != undefined) {
+        if (template !== "") {
             items = applicationWindow.python.getTemplateItems(type,template)
             console.log("loaded following number of items: " + items.length)
         }
@@ -288,9 +292,9 @@ Item {
         updateParentPage(type)
     }
 
-    function createTemplate(items, name, type) {
+    function createTemplate(type, name) {
         console.log('create template: ' + name + " " + type)
-        applicationWindow.python.createTemplate(items, name,type)
+        applicationWindow.python.createTemplate([], name,type)
         updateParentPage(type)
     }
 

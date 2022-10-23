@@ -151,6 +151,13 @@ Python {
       return ret
   }
 
+  function getTemplate(type,name) {
+      console.log("python.getTemplate("+type+","+name+")")
+      var ret = call_sync('app.app_object.getTemplate',[type, name])
+      console.log(ret.toString())
+      return ret
+  }
+
   function createTemplate(items,name,type) {
       console.log("python.createTemplate("+name+","+type+")")
       var ret = call_sync('app.app_object.createTemplate',[items, type, name])
@@ -160,7 +167,26 @@ Python {
 
   function deleteTemplate(name,type) {
       console.log("python.deleteTemplate("+name+","+type+")")
-      var ret =  call_sync('app.app_object.deleteTemplate',[type,name])
+      var ret =  call_sync('app.app_object.deleteTemplate',[type, name])
+      console.log(ret)
+      return ret
+  }
+
+  function addItem2Template(type, listName, items) {
+      console.log("python.addItem2Template("+type+","+listName+")")
+      call_sync('app.app_object.addItem2Template',[type, listName, items])
+  }
+
+  function updateOneInTemplate(type, listName, oldName, item) {
+      console.log("python.updateOneInTemplate("+listName+","+type+")")
+      var ret =  call_sync('app.app_object.updateOneInTemplate',[type, listName, oldName, item])
+      console.log(ret)
+      return ret
+  }
+
+  function deleteOneFromTemplate(type, listName, name) {
+      console.log("python.deleteOneFromTemplate("+listName+","+type+")")
+      var ret =  call_sync('app.app_object.deleteOneFromTemplate',[type, listName, name])
       console.log(ret)
       return ret
   }

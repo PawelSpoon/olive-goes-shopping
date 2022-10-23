@@ -76,13 +76,29 @@ class ListManager:
         if (name not in self.listController.keys()):
             print("adding controller")
             if (self.type == tasklistType):
-                ctl = self.createTaskListController(name) 
+                ctl = self.createTaskListController(name)
             if (self.type == shoplistType):
                 ctl = self.createShoppingListController(name)
             self.listController[name] = ctl
             ctl.store()
         else:
             print("name already exists, will not add controller")
+
+    def addFromTemplate(self, name, items):
+        if (name not in self.listController.keys()):
+            print("adding controller")
+            if (self.type == tasklistType):
+                ctl = self.createTaskListController(name)
+            if (self.type == shoplistType):
+                ctl = self.createShoppingListController(name)
+            self.listController[name] = ctl
+            ctl.store()
+            ctl.addItems2List(items)
+            ctl.store()
+        else:
+            print("name already exists, will not add controller")
+            # todo: get controller
+            # ctl.addItems2List(items)    
 
     def delete(self, name):
         if (name in self.listController.keys()):

@@ -72,11 +72,6 @@ class AssetManager:
         # ..
         self.recipeController.load()
 
-        # 
-        #self.taskTemplateController.load()
-        #self.shopListTemplateController.load()
-
-
         # predefined task list takes over the name from file
         # get all files from /list folder and init multiple itemcontrollers
         # to be done later
@@ -95,7 +90,9 @@ class AssetManager:
             self.taskitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.taskTemplateController.items.keys():
-              self.taskTemplateController.addWithName(templateName)
+              #self.taskTemplateController.addWithName(templateName)
+              self.taskTemplateController.addExisting(templateName)
+        self.taskTemplateController.store()
         
         shoplists = os.listdir(self.getShopListPath())
         for shoplist in shoplists:
@@ -105,7 +102,8 @@ class AssetManager:
             self.shopitemController[templateName] = tmp
             # todo: if not in tasktemplatecontroller -> add it
             if templateName not in self.shopListTemplateController.getList().keys():
-              self.shopListTemplateController.addWithName(templateName)
+              self.shopListTemplateController.addExisting(templateName)
+        self.shopListTemplateController.store()
 
     def getController(self, type):
         if (type == phydim):
@@ -142,7 +140,16 @@ class AssetManager:
         if (type == tasklistType):
             names = self.taskTemplateController.getAsList()
         return names
-            
+
+    def getTemplateController(self, type, name):
+        #if (name not in self.getTemplateListNames(type)):
+        #    print('no controller')
+        #    return None
+        if (type == shoplistType):
+            return self.shopitemController[name]
+        if (type == tasklistType):
+            return self.taskitemController[name]
+          
     
     # i do not want to add store-as-new to itemcontroller
     # feels wrong for me, even though it would be just a copy ..
