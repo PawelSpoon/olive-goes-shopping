@@ -35,6 +35,7 @@ DISTFILES += qml/olive-goes-shopping.qml \
     qml/cover/CoverPage.qml \
     qml/pages/AddItemType2ListPage.qml \
     qml/pages/AssetCommons.qml\
+    qml/pages/CreateTemplateDialog.qml \
     qml/pages/ListButton.qml \
     qml/pages/ListSelector.qml \
     qml/pages/ShoppingListItem.qml \
@@ -70,9 +71,11 @@ DISTFILES += qml/olive-goes-shopping.qml \
     assets/task.json \
     assets/shop.json \
     \
+    qml/pages/ShoppingListTemplatePage.qml \
     qml/pages/StoreListItem.qml \
     qml/pages/TaskListItem.qml \
     qml/pages/TaskListPage.qml \
+    qml/pages/TaskListTemplatePage.qml \
     qml/pages/TemplateDialog.qml \
     qml/pages/TemplateSelector.qml \
     rpm/olive-goes-shopping.changes.in \

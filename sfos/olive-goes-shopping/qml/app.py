@@ -84,12 +84,11 @@ class App:
 
     def createList(self, name, type, items):
         if type == self.shopType :
-            self.listManager.add(name)
-            #self.listManager.store()
+            self.listManager.addFromTemplate(name, items)
         else:
-            self.taskManager.add(name)
-            #self.taskManager.store()
-        
+            ctrl = self.taskManager.addFromTemplate(name, items)
+
+    # does not delete list from file    
     def deleteList(self, name,type):
         if type == self.taskType:
             self.taskManager.delete(name)
@@ -112,12 +111,12 @@ class App:
     # add is separated for some reason
     def addItem2ShoppingList(self, listName, items):
         ctrl = self.listManager.getController(listName)
-        ctrl.addItems2ShoppingList(items)
+        ctrl.addItems2List(items)
         ctrl.store()
 
     def addItem2TaskList(self, listName, items):
         ctrl = self.taskManager.getController(listName)
-        ctrl.addItems2TaskList(items)
+        ctrl.addItems2List(items)
         ctrl.store()
 
     def setDoneValue(self, type, listName, name, done):
@@ -165,10 +164,23 @@ class App:
     def deleteTemplate(self, type, name):
         return self.assetManager.deleteTemplate(type,name)
 
+    def getTemplate(self, type, name):
+        ctrl = self.assetManager.getTemplateController(type, name)
+        return ctrl.getAsList()
+
+    def deleteOneFromTemplate(self, type, listName, name):
+        ctrl = self.assetManager.getTemplateController(type, listName)
+        ctrl.deleteOne(name)
+        ctrl.store()
+
+    def updateOneInTemplate(self, type, listName, oldName, item):
+        ctrl = self.assetManager.getTemplateController(type, listName)
+        ctrl.update(oldName, item)
+        ctrl.store()
+
     def addItem2Template(self, type, listName, items):
-        ctrl = self.assetManager.getController(type)
-        ctrl2 = ctrl[listName]
-        ctrl2.addItems2TaskList(items)
-        ctrl2.store()
+        ctrl = self.assetManager.getTemplateController(type, listName)
+        ctrl.addItems2List(items)
+        ctrl.store()
 
 app_object = App()

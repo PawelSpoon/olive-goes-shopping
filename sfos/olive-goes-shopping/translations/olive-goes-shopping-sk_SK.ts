@@ -117,6 +117,45 @@
     </message>
 </context>
 <context>
+    <name>CreateTemplateDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished">Uložiť</translation>
+    </message>
+    <message>
+        <source>Discard</source>
+        <translation type="unfinished">Zahodiť</translation>
+    </message>
+    <message>
+        <source>New list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>shop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>task</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>empty list</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EnumDialog</name>
     <message>
         <source>Save</source>
@@ -573,6 +612,45 @@
     </message>
 </context>
 <context>
+    <name>ShoppingListTemplatePage</name>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished">Pridať zo zoznamu</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished">Pridať</translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished">Skopírované do schránky</translation>
+    </message>
+    <message>
+        <source>Clear list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clearing all entries</source>
+        <translation type="unfinished">Vymazávanie všetkých záznamov</translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
+        <translation type="unfinished">Odstrániť tento zoznam</translation>
+    </message>
+    <message>
+        <source>Deleting shopping list</source>
+        <translation type="unfinished">Odstraňovanie nákupného zoznamu</translation>
+    </message>
+    <message>
+        <source>Oh dear, &lt;br&gt;nothing to shop ?!</source>
+        <translation type="unfinished">Miláčik, &lt;br&gt;nakupovať netreba?!</translation>
+    </message>
+    <message>
+        <source>Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TaskListItem</name>
     <message>
         <source>Edit Item</source>
@@ -633,6 +711,43 @@
     <message>
         <source>Click on enter to store</source>
         <extracomment>a label to inform the user how to confirm the new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskListTemplatePage</name>
+    <message>
+        <source>Add from picklist</source>
+        <translation type="unfinished">Pridať zo zoznamu</translation>
+    </message>
+    <message>
+        <source>Copied to clipboard</source>
+        <translation type="unfinished">Skopírované do schránky</translation>
+    </message>
+    <message>
+        <source>Delete this list</source>
+        <translation type="unfinished">Odstrániť tento zoznam</translation>
+    </message>
+    <message>
+        <source>Deleting task list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter unique task name</source>
+        <extracomment>placeholder where the user should enter a name for a new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click on enter to store</source>
+        <extracomment>a label to inform the user how to confirm the new task</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add tasks to template...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Template</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -37,9 +37,9 @@ class TaskListController(ItemController):
     # add - inherited
     # edit == update - inherited
 
-    # addFromList - cant be inherited, shoppin list needs to sum up
+    # addFromList - can't be inherited, shoppin list needs to sum up
     # in both cases Done must be added
-    def addItems2TaskList(self, listOfItems):
+    def addItems2List(self, listOfItems):
         # listOfItems is in fact a dict
         for item in listOfItems:
             item[FieldDone] = False
@@ -48,7 +48,8 @@ class TaskListController(ItemController):
             # skip if there and not done
             # change to undo if there and done
             if itemName not in self.getList().keys():
-                self.getList()[itemName] = item
+                self.add(item)
+                # self.getList()[itemName] = item
             else:
                 if self.getList()[itemName][FieldDone] == True:
                     self.setDoneValue(itemName,False)

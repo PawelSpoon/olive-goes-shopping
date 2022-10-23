@@ -48,7 +48,7 @@ class ShoppingListControllerTest(unittest.TestCase):
         controller = ShoppingListController("demo",self.demoPath,self.rootDir)
         controller.load()
         self.assertEqual(2,len(controller.getList().keys()))             
-        controller.addItems2ShoppingList(persistance.readItems(self.demoPath).values())
+        controller.addItems2List(persistance.readItems(self.demoPath).values())
         self.assertEqual(2,len(controller.getList().keys()))
         self.assertEqual(2,controller.getList()["Condoms"][FieldAmount])
         self.assertEqual(2,controller.getList()["Beer"][FieldAmount])
@@ -60,7 +60,7 @@ class ShoppingListControllerTest(unittest.TestCase):
         second = persistance.readItems(self.demoPath)
         second["Condoms"][FieldUnit] = "10"
         second["Beer"][FieldUnit] = "-"
-        controller.addItems2ShoppingList(second.values())
+        controller.addItems2List(second.values())
         self.assertEqual(2,len(controller.getList()))
         self.assertEqual(11,controller.getList()["Condoms"][FieldAmount])
         self.assertEqual(1.1,controller.getList()["Beer"][FieldAmount])
@@ -70,7 +70,7 @@ class ShoppingListControllerTest(unittest.TestCase):
         controller.load()
         second = persistance.readItems(self.demoPath)
         second["Beer"][FieldUnit] = "l"
-        controller.addItems2ShoppingList(second.values())
+        controller.addItems2List(second.values())
         self.assertEqual(3,len(controller.getList()))
         self.assertEqual(2,controller.getList()["Condoms"][FieldAmount])
         self.assertEqual(1,controller.getList()["Beer"][FieldAmount])

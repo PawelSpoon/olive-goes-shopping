@@ -54,7 +54,7 @@ Page {
 
             MenuItem {
                 text: qsTr("Add");
-                onClicked: applicationWindow.controller.openTemplatePage(itemType,2)
+                onClicked: applicationWindow.controller.openCreateTemplateDialog(itemType)
             }
 
         }        
@@ -76,14 +76,10 @@ Page {
                     onClicked:  {
                         var listName = text
                         console.log(listName)
-                        applicationWindow.controller.openTemplatePage(itemType,1, listName)
+                        applicationWindow.controller.openTemplatePage(itemType, listName)
                     }
                 }
             }
-            /*Label {
-                enabled: true
-                height: Theme.horizontalPageMargins
-            }*/
 
         }
 

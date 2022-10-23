@@ -231,7 +231,7 @@ Page {
                     Button {
                         text: Name
                         anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: applicationWindow.controller.openShoppingListTemplatePage(Name)   // openItemsMngmtPage(text)
+                        onClicked: applicationWindow.controller.openTemplatePage("shop", Name)
                     }
                 }
                 Label {
@@ -260,7 +260,7 @@ Page {
                     Button {
                         text: Name
                         anchors.horizontalCenter: parent.horizontalCenter
-                        onClicked: applicationWindow.controller.openTaskTemplatePage(Name)
+                        onClicked: applicationWindow.controller.openTemplatePage("task", Name)
                     }
                 }
                 Label {

@@ -30,7 +30,7 @@ class ItemController:
             
     def add(self,item):
         if type(item) != type(dict()):
-            raise Exception('item is not a dictionary')
+            raise Exception('argument item is not a dictionary')
         itemName = self.getItemName(item)
         if (itemName in self.items.keys()):
             print(itemName + " already in list")
@@ -42,6 +42,7 @@ class ItemController:
     def remove(self, name):
         if (name in self.items.keys()):
             self.items.pop(name)
+            self.store()
             return True
         return False
 

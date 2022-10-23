@@ -98,7 +98,7 @@ class TaskListControllerTest(unittest.TestCase):
         secondmanager = TaskListController(tasklistBreva, self.brevafilePath)
         secondmanager.load()
         secondmanager.add({"Name":"Coolant change","Done":False})
-        manager.addItems2TaskList(secondmanager.getAsList())
+        manager.addItems2List(secondmanager.getAsList())
         self.assertTrue(manager.getList()["Oil change"][FieldDone] == False)
         self.assertTrue("Coolant change" in manager.getList().keys())
 

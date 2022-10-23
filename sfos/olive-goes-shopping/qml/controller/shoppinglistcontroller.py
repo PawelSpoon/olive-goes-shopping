@@ -19,7 +19,7 @@ class ShoppingListController(TaskListController):
     def setAmountValue(self, name, value):
         self.items[name][FieldAmount] = value
 
-    def addItems2ShoppingList(self, listOfItems):
+    def addItems2List(self, listOfItems):
         # listOfItems is in fact a dict .values() but that does not work with qml, so removed
         for item in listOfItems:
             item[FieldDone] = False

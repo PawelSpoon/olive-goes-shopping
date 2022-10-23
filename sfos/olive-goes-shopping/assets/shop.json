@@ -1,3 +1,1 @@
-[
-    {"Id": "1", "Name": "weekly", "Order": 1}
-]
+[{"Name": "monthly"}, {"Name": "weekly"}]
